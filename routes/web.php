@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Manage;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
+
+Route::group(
+    [
+        'as' => 'manage.',
+        'prefix' => 'manage',
+        'middleware' => ['auth', 'can:view-any']
+    ],
+    static function() {
+        Route::get('', Manage\IndexController::class)->name('index');
+    }
+);
+
+Route::group(
+    [
+        'as' => 'visible.'
+    ],
+    static function() {
+
+    }
+);
