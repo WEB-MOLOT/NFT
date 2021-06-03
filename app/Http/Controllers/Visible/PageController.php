@@ -18,6 +18,6 @@ class PageController extends Controller
             abort(404);
         }
 
-        return $page->getTemplate()->view();
+        return $page->getTemplate()->visibleView();
     }
 }

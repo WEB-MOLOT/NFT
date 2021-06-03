@@ -16,6 +16,6 @@ class IndexController extends Controller
      */
     public function __invoke(): View
     {
-        // TODO: Implement __invoke() method.
+        return view('layouts.manage');
     }
 }

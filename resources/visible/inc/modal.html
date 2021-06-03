@@ -1,0 +1,434 @@
+<div id="callback-modal" class="callback-modal modal" style="display: none;">
+	<div class="modal__top">
+		<div class="modal__closed flex-center svg-contain" data-fancybox-close>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M16.7348 9.0794C16.8396 8.98169 16.9241 8.86431 16.9835 8.73394C17.043 8.60357 17.0761 8.46277 17.0811 8.31958C17.0862 8.17639 17.0629 8.03362 17.0127 7.89941C16.9626 7.76521 16.8865 7.64219 16.7888 7.5374C16.6911 7.4326 16.5737 7.34808 16.4433 7.28865C16.3129 7.22922 16.1721 7.19605 16.029 7.19104C15.8858 7.18603 15.743 7.20926 15.6088 7.25943C15.4746 7.30959 15.3516 7.3857 15.2468 7.4834L12.0548 10.4594L9.07877 7.26631C8.87965 7.06236 8.6086 6.94444 8.32364 6.9378C8.03868 6.93115 7.76244 7.0363 7.55402 7.23075C7.3456 7.4252 7.22156 7.69349 7.20845 7.97823C7.19534 8.26297 7.2942 8.54153 7.48387 8.75431L10.4599 11.9463L7.26677 14.9223C7.15828 15.019 7.0702 15.1364 7.00772 15.2677C6.94523 15.3989 6.9096 15.5413 6.90292 15.6865C6.89623 15.8317 6.91863 15.9767 6.96879 16.1131C7.01895 16.2496 7.09586 16.3746 7.19501 16.4808C7.29416 16.5871 7.41355 16.6725 7.54616 16.732C7.67877 16.7915 7.82194 16.8239 7.96724 16.8273C8.11254 16.8307 8.25706 16.805 8.3923 16.7517C8.52754 16.6985 8.65078 16.6188 8.75477 16.5172L11.9468 13.5423L14.9228 16.7343C15.0189 16.8448 15.1362 16.9348 15.2678 16.999C15.3995 17.0632 15.5427 17.1002 15.6889 17.1079C15.8351 17.1155 15.9814 17.0937 16.119 17.0436C16.2566 16.9935 16.3828 16.9162 16.4899 16.8164C16.597 16.7165 16.6829 16.5961 16.7425 16.4624C16.8021 16.3286 16.8341 16.1842 16.8367 16.0378C16.8393 15.8914 16.8124 15.7459 16.7576 15.6102C16.7028 15.4744 16.6212 15.351 16.5177 15.2474L13.5428 12.0554L16.7348 9.0794Z" fill="#8EA5B2"/>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M0 12C0 5.37273 5.37273 0 12 0C18.6273 0 24 5.37273 24 12C24 18.6273 18.6273 24 12 24C5.37273 24 0 18.6273 0 12ZM12 21.8182C10.7107 21.8182 9.43394 21.5642 8.24274 21.0708C7.05155 20.5774 5.9692 19.8542 5.0575 18.9425C4.14579 18.0308 3.42259 16.9485 2.92918 15.7573C2.43577 14.5661 2.18182 13.2893 2.18182 12C2.18182 10.7107 2.43577 9.43394 2.92918 8.24274C3.42259 7.05155 4.14579 5.9692 5.0575 5.0575C5.9692 4.14579 7.05155 3.42259 8.24274 2.92918C9.43394 2.43577 10.7107 2.18182 12 2.18182C14.6039 2.18182 17.1012 3.21623 18.9425 5.0575C20.7838 6.89876 21.8182 9.39606 21.8182 12C21.8182 14.6039 20.7838 17.1012 18.9425 18.9425C17.1012 20.7838 14.6039 21.8182 12 21.8182Z" fill="#8EA5B2"/>
+			</svg>
+		</div>
+	</div>
+	<form action="#" class="modal__body">
+		<div class="modal__title">Enter your information</div>
+		<div class="modal__subtitle">We will notify you one hour in advance</div>
+		<div class="modal__box">
+			<label class="modal__label">
+				<input type="text" name="text" class="modal__field field" placeholder="Enter nickname in telegram or email">
+			</label>
+			<label class="modal__label">
+				<input type="text" name="text" class="modal__field field" placeholder="Enter email">
+			</label>
+			<button class="modal__btn">
+				<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M2.33388 9.19206V9.04607C2.3553 8.61415 2.49373 8.19564 2.7349 7.83372C3.13633 7.39896 3.41113 6.86619 3.53047 6.2913C3.53047 5.84698 3.53047 5.39632 3.56928 4.952C3.76979 2.81293 5.88485 1.33398 7.97403 1.33398H8.02578C10.115 1.33398 12.23 2.81293 12.437 4.952C12.4758 5.39632 12.437 5.84698 12.4693 6.2913C12.5903 6.86752 12.8648 7.40195 13.2649 7.84007C13.5079 8.19879 13.6465 8.61576 13.6659 9.04607V9.18572C13.6804 9.76601 13.4805 10.3319 13.1032 10.7789C12.6046 11.3016 11.9281 11.6268 11.2016 11.6929C9.07132 11.9215 6.92202 11.9215 4.79174 11.6929C4.06609 11.624 3.3905 11.2993 2.89013 10.7789C2.51866 10.3315 2.32149 9.76904 2.33388 9.19206Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+					<path d="M6.36995 13.9023C6.7028 14.3201 7.19159 14.5905 7.72814 14.6536C8.2647 14.7168 8.80477 14.5675 9.22884 14.2388C9.35926 14.1415 9.47662 14.0285 9.57811 13.9023" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+				<span>follow</span>
+			</button>
+		</div>
+	</form>
+</div><!-- end callback-modal -->
+
+<div id="project-modal" class="project-modal modal" style="display: none;">
+	<div class="modal__top">
+		<div class="modal__closed flex-center svg-contain" data-fancybox-close>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M16.7348 9.0794C16.8396 8.98169 16.9241 8.86431 16.9835 8.73394C17.043 8.60357 17.0761 8.46277 17.0811 8.31958C17.0862 8.17639 17.0629 8.03362 17.0127 7.89941C16.9626 7.76521 16.8865 7.64219 16.7888 7.5374C16.6911 7.4326 16.5737 7.34808 16.4433 7.28865C16.3129 7.22922 16.1721 7.19605 16.029 7.19104C15.8858 7.18603 15.743 7.20926 15.6088 7.25943C15.4746 7.30959 15.3516 7.3857 15.2468 7.4834L12.0548 10.4594L9.07877 7.26631C8.87965 7.06236 8.6086 6.94444 8.32364 6.9378C8.03868 6.93115 7.76244 7.0363 7.55402 7.23075C7.3456 7.4252 7.22156 7.69349 7.20845 7.97823C7.19534 8.26297 7.2942 8.54153 7.48387 8.75431L10.4599 11.9463L7.26677 14.9223C7.15828 15.019 7.0702 15.1364 7.00772 15.2677C6.94523 15.3989 6.9096 15.5413 6.90292 15.6865C6.89623 15.8317 6.91863 15.9767 6.96879 16.1131C7.01895 16.2496 7.09586 16.3746 7.19501 16.4808C7.29416 16.5871 7.41355 16.6725 7.54616 16.732C7.67877 16.7915 7.82194 16.8239 7.96724 16.8273C8.11254 16.8307 8.25706 16.805 8.3923 16.7517C8.52754 16.6985 8.65078 16.6188 8.75477 16.5172L11.9468 13.5423L14.9228 16.7343C15.0189 16.8448 15.1362 16.9348 15.2678 16.999C15.3995 17.0632 15.5427 17.1002 15.6889 17.1079C15.8351 17.1155 15.9814 17.0937 16.119 17.0436C16.2566 16.9935 16.3828 16.9162 16.4899 16.8164C16.597 16.7165 16.6829 16.5961 16.7425 16.4624C16.8021 16.3286 16.8341 16.1842 16.8367 16.0378C16.8393 15.8914 16.8124 15.7459 16.7576 15.6102C16.7028 15.4744 16.6212 15.351 16.5177 15.2474L13.5428 12.0554L16.7348 9.0794Z" fill="#8EA5B2"/>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M0 12C0 5.37273 5.37273 0 12 0C18.6273 0 24 5.37273 24 12C24 18.6273 18.6273 24 12 24C5.37273 24 0 18.6273 0 12ZM12 21.8182C10.7107 21.8182 9.43394 21.5642 8.24274 21.0708C7.05155 20.5774 5.9692 19.8542 5.0575 18.9425C4.14579 18.0308 3.42259 16.9485 2.92918 15.7573C2.43577 14.5661 2.18182 13.2893 2.18182 12C2.18182 10.7107 2.43577 9.43394 2.92918 8.24274C3.42259 7.05155 4.14579 5.9692 5.0575 5.0575C5.9692 4.14579 7.05155 3.42259 8.24274 2.92918C9.43394 2.43577 10.7107 2.18182 12 2.18182C14.6039 2.18182 17.1012 3.21623 18.9425 5.0575C20.7838 6.89876 21.8182 9.39606 21.8182 12C21.8182 14.6039 20.7838 17.1012 18.9425 18.9425C17.1012 20.7838 14.6039 21.8182 12 21.8182Z" fill="#8EA5B2"/>
+			</svg>
+		</div>
+	</div>
+	<div class="project project_modal">
+		<div class="project__body flex">
+			<div class="project__left">
+				<div class="project__title">EtherBear</div>
+				<div class="project__left-top flex">
+					<div class="active-item">Active</div>
+					<div class="star star_good flex">
+						<img src="img/catalog/star.svg" alt="">
+						<span>8.0</span>
+					</div>
+					<div class="category category_amber">collectible</div>
+				</div>
+				<div class="project__profile flex">
+					<div class="project__avatar img-cover">
+						<img src="img/project/avatar.jpg" alt="">
+					</div>
+					<div class="project__profile-box">
+						<div class="project__profile-caption">Start date</div>
+						<div class="project__profile-date">05-04-2021 3:00PM UTC</div>
+					</div>
+				</div>
+				<div class="timer">
+					<div class="timer__caption">before the start</div>
+					<div class="countdown">
+						<div class="timer__section">
+							<span class="count" id="days"></span>
+						</div>
+						<div class="timer__section">
+							<span class="count" id="hours"></span>
+						</div>
+						<div class="timer__section">
+							<span class="count" id="minutes"></span>
+						</div>
+						<div class="timer__section">
+							<span class="count" id="seconds"></span>
+						</div>
+					</div>
+				</div>
+				<div class="project__buttons flex">
+					<a href="#" class="project__btn btn btn_blue">
+						<div class="btn__caption">site project</div>
+						<div class="btn__icon svg-contain">
+							<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M9.33334 1.99967C9.33334 1.63148 9.63182 1.33301 10 1.33301H14C14.3682 1.33301 14.6667 1.63148 14.6667 1.99967C14.6667 2.36786 14.3682 2.66634 14 2.66634H10C9.63182 2.66634 9.33334 2.36786 9.33334 1.99967Z" fill="white"/>
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M14 1.33301C14.3682 1.33301 14.6667 1.63148 14.6667 1.99967V5.99967C14.6667 6.36786 14.3682 6.66634 14 6.66634C13.6318 6.66634 13.3333 6.36786 13.3333 5.99967V1.99967C13.3333 1.63148 13.6318 1.33301 14 1.33301Z" fill="white"/>
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M13.8047 2.19526C14.0651 2.45561 14.0651 2.87772 13.8047 3.13807L9.13807 7.80474C8.87772 8.06509 8.45561 8.06509 8.19526 7.80474C7.93491 7.54439 7.93491 7.12228 8.19526 6.86193L12.8619 2.19526C13.1223 1.93491 13.5444 1.93491 13.8047 2.19526Z" fill="white"/>
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M2.66667 3.33268C2.66667 2.96449 2.96515 2.66602 3.33334 2.66602H7.33334C7.70153 2.66602 8 2.96449 8 3.33268C8 3.70087 7.70153 3.99935 7.33334 3.99935H4.00001V11.9993H12V8.66602C12 8.29783 12.2985 7.99935 12.6667 7.99935C13.0349 7.99935 13.3333 8.29783 13.3333 8.66602V12.666C13.3333 13.0342 13.0349 13.3327 12.6667 13.3327H3.33334C2.96515 13.3327 2.66667 13.0342 2.66667 12.666V3.33268Z" fill="white"/>
+							</svg>
+						</div>
+					</a>
+					<a href="#" class="project__btn btn">
+						<div class="btn__icon svg-contain">
+							<svg width="13" height="16" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M0.833886 9.19109V9.0451C0.855303 8.61317 0.993735 8.19467 1.23491 7.83274C1.63634 7.39798 1.91114 6.86521 2.03048 6.29033C2.03048 5.84601 2.03048 5.39534 2.06929 4.95103C2.2698 2.81195 4.38485 1.33301 6.47404 1.33301H6.52578C8.61497 1.33301 10.73 2.81195 10.937 4.95103C10.9758 5.39534 10.937 5.84601 10.9693 6.29033C11.0903 6.86654 11.3648 7.40097 11.7649 7.83909C12.0079 8.19781 12.1465 8.61478 12.1659 9.0451V9.18474C12.1804 9.76504 11.9805 10.3309 11.6032 10.7779C11.1046 11.3007 10.4281 11.6259 9.70161 11.692C7.57133 11.9205 5.42202 11.9205 3.29175 11.692C2.5661 11.623 1.89051 11.2983 1.39014 10.7779C1.01867 10.3305 0.821496 9.76806 0.833886 9.19109Z" stroke="#3340B4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+								<path d="M4.86996 13.9014C5.20281 14.3191 5.6916 14.5895 6.22815 14.6527C6.76471 14.7158 7.30478 14.5665 7.72884 14.2378C7.85927 14.1406 7.97663 14.0275 8.07812 13.9014" stroke="#3340B4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+						</div>
+						<div class="btn__caption">follow</div>
+					</a>
+				</div>
+				<div class="social-item">
+					<div class="social-item__caption">project links</div>
+					<div class="social-item__list flex">
+						<div class="social-item__coll">
+							<a href="#" class="social-item__link flex">
+								<div class="social-item__icon img-contain">
+									<img src="img/project/social/mail.svg" alt="">
+									<img src="img/project/social/mail-hover.svg" alt="">
+								</div>
+								<div class="social-item__name">Email</div>
+							</a>
+							<a href="#" class="social-item__link flex">
+								<div class="social-item__icon img-contain">
+									<img src="img/project/social/discord.svg" alt="">
+									<img src="img/project/social/discord-hover.svg" alt="">
+								</div>
+								<div class="social-item__name">Discord </div>
+							</a>
+							<a href="#" class="social-item__link flex">
+								<div class="social-item__icon img-contain">
+									<img src="img/project/social/medium.svg" alt="">
+									<img src="img/project/social/medium-hover.svg" alt="">
+								</div>
+								<div class="social-item__name">Medium</div>
+							</a>
+							<a href="#" class="social-item__link flex">
+								<div class="social-item__icon img-contain">
+									<img src="img/project/social/site.svg" alt="">
+									<img src="img/project/social/site-hover.svg" alt="">
+								</div>
+								<div class="social-item__name">site.ru</div>
+							</a>
+						</div>
+						<div class="social-item__coll">
+							<a href="#" class="social-item__link flex">
+								<div class="social-item__icon img-contain">
+									<img src="img/project/social/telegram.svg" alt="">
+									<img src="img/project/social/telegram-hover.svg" alt="">
+								</div>
+								<div class="social-item__name">Telegram <small>(142k followers)</small></div>
+							</a>
+							<a href="#" class="social-item__link flex">
+								<div class="social-item__icon img-contain">
+									<img src="img/project/social/instagram.svg" alt="">
+									<img src="img/project/social/instagram-hover.svg" alt="">
+								</div>
+								<div class="social-item__name">Instagram <small>(142k followers)</small></div>
+							</a>
+							<a href="#" class="social-item__link flex">
+								<div class="social-item__icon img-contain">
+									<img src="img/project/social/facebook.svg" alt="">
+									<img src="img/project/social/facebook-hover.svg" alt="">
+								</div>
+								<div class="social-item__name">Facebook <small>(142k followers)</small></div>
+							</a>
+							<a href="#" class="social-item__link flex">
+								<div class="social-item__icon img-contain">
+									<img src="img/project/social/twitter.svg" alt="">
+									<img src="img/project/social/twitter-hover.svg" alt="">
+								</div>
+								<div class="social-item__name">Twitter <small>(142k followers)</small></div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="project__right">
+				<div class="project__wrap">
+					<div class="arrow arrow_prew">
+						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M16.875 10.0002C16.875 9.57833 16.533 9.23633 16.1111 9.23633H3.88889C3.467 9.23633 3.125 9.57833 3.125 10.0002C3.125 10.4221 3.467 10.7641 3.88889 10.7641H16.1111C16.533 10.7641 16.875 10.4221 16.875 10.0002Z" fill="#3340B4"/>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M9.77626 4.11241C9.47794 3.81409 8.99428 3.81409 8.69596 4.11241L3.34874 9.45963C3.05042 9.75795 3.05042 10.2416 3.34874 10.5399L8.69596 15.8872C8.99428 16.1855 9.47794 16.1855 9.77626 15.8872C10.0746 15.5888 10.0746 15.1052 9.77626 14.8069L4.96919 9.99978L9.77626 5.19271C10.0746 4.89439 10.0746 4.41073 9.77626 4.11241Z" fill="#3340B4"/>
+						</svg>
+					</div>
+					<div class="arrow arrow_next">
+						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M3.12524 9.99881C3.12524 10.4207 3.46725 10.7627 3.88913 10.7627L16.1114 10.7627C16.5332 10.7627 16.8752 10.4207 16.8752 9.99881C16.8752 9.57693 16.5332 9.23492 16.1114 9.23492L3.88913 9.23492C3.46725 9.23492 3.12524 9.57692 3.12524 9.99881Z" fill="#3340B4"/>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M10.224 15.8866C10.5223 16.1849 11.006 16.1849 11.3043 15.8866L16.6515 10.5394C16.9498 10.2411 16.9498 9.75741 16.6515 9.45909L11.3043 4.11187C11.006 3.81355 10.5223 3.81355 10.224 4.11187C9.92567 4.41018 9.92567 4.89385 10.224 5.19217L15.0311 9.99924L10.224 14.8063C9.92566 15.1046 9.92566 15.5883 10.224 15.8866Z" fill="#3340B4"/>
+						</svg>
+					</div>
+					<div class="project__slick">
+						<div class="project__slide swiper-slide">
+							<a href="img/project/img-1.jpg" class="project__slide-box img-cover" data-fancybox="project">
+								<img src="img/project/img-1.jpg" alt="">
+							</a>
+						</div>
+						<div class="project__slide swiper-slide">
+							<a href="img/project/img-2.jpg" class="project__slide-box img-cover" data-fancybox="project">
+								<img src="img/project/img-2.jpg" alt="">
+							</a>
+						</div>
+						<div class="project__slide swiper-slide">
+							<a href="img/project/img-3.jpg" class="project__slide-box img-cover" data-fancybox="project">
+								<img src="img/project/img-3.jpg" alt="">
+							</a>
+						</div>
+						<div class="project__slide swiper-slide">
+							<a href="img/project/img-2.jpg" class="project__slide-box img-cover" data-fancybox="project">
+								<img src="img/project/img-2.jpg" alt="">
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="project__items">
+					<div class="project__item">
+						<div class="project__item-caption">Min price</div>
+						<div class="project__item-desc">$0.01</div>
+					</div>
+					<div class="project__item">
+						<div class="project__item-caption">Max price</div>
+						<div class="project__item-desc">$239</div>
+					</div>
+					<div class="project__item">
+						<div class="project__item-caption">Available for sale</div>
+						<div class="project__item-desc">1 000 000 tokens</div>
+					</div>
+				</div>
+				<div class="project__row flex">
+					<div class="project__coll">
+						<div class="project__coll-item flex">
+							<div class="project__coll-caption">Website:</div>
+							<a href="#" class="project__coll-link">mariotestino-nft.art</a>
+						</div>
+						<div class="project__coll-item flex">
+							<div class="project__coll-caption">Calebrity:</div>
+							<a href="#" class="project__coll-link">Mario Testino</a>
+						</div>
+						<div class="project__coll-item flex">
+							<div class="project__coll-caption">Available on:</div>
+							<a href="#" class="project__coll-link">OpenSea.io</a>
+						</div>
+					</div>
+					<div class="project__coll">
+						<div class="project__coll-item flex">
+							<div class="project__coll-caption">BlockChain:</div>
+							<a href="#" class="project__coll-info flex">
+								<div class="project__coll-icon">
+									<img src="img/project/icon-1.svg" alt="">
+								</div>
+								<div class="project__coll-name">Ethereum (ETH)</div>
+							</a>
+						</div>
+						<div class="project__coll-item flex">
+							<div class="project__coll-caption">Platform:</div>
+							<a href="#" class="project__coll-info flex">
+								<div class="project__coll-icon">
+									<img src="img/project/icon-2.svg" alt="">
+								</div>
+								<div class="project__coll-name">Dmarket</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="project__article">
+					<h2>About</h2>
+					<p>The Agoric testnet is a series of global, competitive challenges for validators to prepare, learn, and earn points in advance of Agoric's mainnet. The testnet will consist of five (5) phases, each phase focused on testing a different aspect of validating and securing the Agoric blockchain network. Points are earned by completing network and community tasks during each phase, with bonus points awarded to the winners of the challenge tasks. The Agoric testnet is a series of global, competitive challenges for validators to prepare, learn, and earn points in advance of Agoric's mainnet. The testnet will consist of five (5) phases, each phase focused on testing a different aspect of validating and securing the Agoric blockchain network. </p>
+				</div>
+				<div class="project__article">
+					<h2>Testnet Goals</h2>
+					<ol>
+						<li>Secure the Network Scale # of validators on our network. Take part in governance and upgrades, and keep the Agoric chain secure.</li>
+						<li>Train and Prepare Validators Prepare validators to be ready for mainnet. Learn about the nuances of running a node for mainnet and earn points.</li>
+						<li>Grow Community We want to work with the best people from all over the world. A diverse network of validators is the way forward to a strong network.</li>
+					</ol>
+				</div>
+				<div class="project__article">
+					<h2>Getting Started</h2>
+					<ol>
+						<li>Join the <a href="#">Agoric Discord Server</a></li>
+						<li>Complete the testnet <a href="#">application form</a> (if you don't have a node yet, more info below)</li>
+						<li>If your application is approved, Agoric will send you an email with a link to complete KYC/AML.</li>
+						<li>Agoric will then confirm your KYC/AML approval by email.</li>
+						<li>Agoric will then give you a unique tag on the Discord giving you access to an incentivized testnet channel.</li>
+						<li>You can now (if you haven't) set up your node by following the <a href="#">Validator Setup Guide</a> and add your Public Key into your original application form.</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+</div><!-- end project-modal -->
+
+<div id="delete-modal" class="delete-modal modal" style="display: none;">
+	<div class="delete-modal__body">
+		<div class="delete-modal__title">Delete selected project?</div>
+		<div class="delete-modal__buttons">
+			<a href="#" class="delete-modal__btn btn btn_blue">delete</a>
+			<div class="delete-modal__btn btn btn_gray" data-fancybox-close>cancel</div>
+		</div>
+	</div>
+</div><!-- end delete-modal -->
+
+<div id="signin-modal" class="signin-modal modal modal_item" style="display: none;">
+	<div class="modal__top">
+		<div class="modal__closed flex-center svg-contain" data-fancybox-close>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M16.7348 9.0794C16.8396 8.98169 16.9241 8.86431 16.9835 8.73394C17.043 8.60357 17.0761 8.46277 17.0811 8.31958C17.0862 8.17639 17.0629 8.03362 17.0127 7.89941C16.9626 7.76521 16.8865 7.64219 16.7888 7.5374C16.6911 7.4326 16.5737 7.34808 16.4433 7.28865C16.3129 7.22922 16.1721 7.19605 16.029 7.19104C15.8858 7.18603 15.743 7.20926 15.6088 7.25943C15.4746 7.30959 15.3516 7.3857 15.2468 7.4834L12.0548 10.4594L9.07877 7.26631C8.87965 7.06236 8.6086 6.94444 8.32364 6.9378C8.03868 6.93115 7.76244 7.0363 7.55402 7.23075C7.3456 7.4252 7.22156 7.69349 7.20845 7.97823C7.19534 8.26297 7.2942 8.54153 7.48387 8.75431L10.4599 11.9463L7.26677 14.9223C7.15828 15.019 7.0702 15.1364 7.00772 15.2677C6.94523 15.3989 6.9096 15.5413 6.90292 15.6865C6.89623 15.8317 6.91863 15.9767 6.96879 16.1131C7.01895 16.2496 7.09586 16.3746 7.19501 16.4808C7.29416 16.5871 7.41355 16.6725 7.54616 16.732C7.67877 16.7915 7.82194 16.8239 7.96724 16.8273C8.11254 16.8307 8.25706 16.805 8.3923 16.7517C8.52754 16.6985 8.65078 16.6188 8.75477 16.5172L11.9468 13.5423L14.9228 16.7343C15.0189 16.8448 15.1362 16.9348 15.2678 16.999C15.3995 17.0632 15.5427 17.1002 15.6889 17.1079C15.8351 17.1155 15.9814 17.0937 16.119 17.0436C16.2566 16.9935 16.3828 16.9162 16.4899 16.8164C16.597 16.7165 16.6829 16.5961 16.7425 16.4624C16.8021 16.3286 16.8341 16.1842 16.8367 16.0378C16.8393 15.8914 16.8124 15.7459 16.7576 15.6102C16.7028 15.4744 16.6212 15.351 16.5177 15.2474L13.5428 12.0554L16.7348 9.0794Z" fill="#8EA5B2"/>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M0 12C0 5.37273 5.37273 0 12 0C18.6273 0 24 5.37273 24 12C24 18.6273 18.6273 24 12 24C5.37273 24 0 18.6273 0 12ZM12 21.8182C10.7107 21.8182 9.43394 21.5642 8.24274 21.0708C7.05155 20.5774 5.9692 19.8542 5.0575 18.9425C4.14579 18.0308 3.42259 16.9485 2.92918 15.7573C2.43577 14.5661 2.18182 13.2893 2.18182 12C2.18182 10.7107 2.43577 9.43394 2.92918 8.24274C3.42259 7.05155 4.14579 5.9692 5.0575 5.0575C5.9692 4.14579 7.05155 3.42259 8.24274 2.92918C9.43394 2.43577 10.7107 2.18182 12 2.18182C14.6039 2.18182 17.1012 3.21623 18.9425 5.0575C20.7838 6.89876 21.8182 9.39606 21.8182 12C21.8182 14.6039 20.7838 17.1012 18.9425 18.9425C17.1012 20.7838 14.6039 21.8182 12 21.8182Z" fill="#8EA5B2"/>
+			</svg>
+		</div>
+	</div>
+	<form action="#" class="modal__body">
+		<div class="modal__links flex">
+			<a href="javascript:void(0)" class="modal__link active">Sign In</a>
+			<a href="#" class="modal__link registration--js">Registration</a>
+		</div>
+		<div class="modal__social">
+			<a href="#" class="modal__social-link google flex">
+				<div class="modal__social-icon">
+					<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="18" cy="18" r="18" fill="#C5331E"/>
+						<path d="M18.3074 16.5979V20.1604H23.1524C22.4399 22.0841 20.5874 23.3666 18.4499 23.3666C15.6712 23.3666 13.4624 21.1579 13.4624 18.3791C13.4624 15.6004 15.6712 13.3916 18.4499 13.3916C19.5187 13.3916 20.5162 13.7479 21.3712 14.3179L21.6562 14.5316L23.7937 11.7529L23.5087 11.5391C22.0124 10.4704 20.3024 9.90039 18.4499 9.90039C13.7474 9.90039 9.8999 13.7479 9.8999 18.4504C9.8999 23.1529 13.7474 27.0004 18.4499 27.0004C23.1524 27.0004 26.9999 23.1529 26.9999 18.4504V16.6691H18.3074V16.5979Z" fill="white"/>
+					</svg>
+				</div>
+				<div class="modal__social-caption">Sign In with Google</div>
+			</a>
+			<a href="#" class="modal__social-link telegram flex">
+				<div class="modal__social-icon">
+					<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="18" cy="18" r="18" fill="#2F89CE"/>
+						<path d="M8.41573 18.3375L12.554 19.8805L14.1672 25.0709C14.2374 25.4216 14.6582 25.4918 14.9388 25.2813L17.2534 23.3876C17.4638 23.1771 17.8145 23.1771 18.0951 23.3876L22.2334 26.4036C22.5139 26.614 22.9348 26.4737 23.0049 26.123L26.0911 11.3936C26.1612 11.0429 25.8105 10.6922 25.4598 10.8325L8.41573 17.4256C7.99489 17.5659 7.99489 18.1972 8.41573 18.3375ZM13.9568 19.109L22.0931 14.129C22.2333 14.0589 22.3736 14.2693 22.2334 14.3395L15.57 20.5819C15.3596 20.7924 15.1492 21.0729 15.1492 21.4236L14.9388 23.107C14.9388 23.3174 14.5881 23.3875 14.5179 23.107L13.6762 20.0208C13.4658 19.6701 13.6061 19.2493 13.9568 19.109Z" fill="white"/>
+					</svg>
+				</div>
+				<div class="modal__social-caption">Sign In with Telegram</div>
+			</a>
+			<a href="#" class="modal__social-link twitter flex">
+				<div class="modal__social-icon">
+					<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="18" cy="18" r="18" fill="#55ACE3"/>
+						<path d="M27.5399 13.4092C26.9099 13.6792 26.1899 13.8592 25.4699 13.9492C26.1899 13.4992 26.8199 12.7792 27.0899 11.9692C26.3699 12.4192 25.6499 12.6892 24.7499 12.8692C24.1199 12.1492 23.1299 11.6992 22.1399 11.6992C20.1599 11.6992 18.5399 13.3192 18.5399 15.2992C18.5399 15.5692 18.5399 15.8392 18.6299 16.1092C15.6599 15.9292 12.9599 14.4892 11.1599 12.3292C10.8899 12.8692 10.7099 13.4992 10.7099 14.1292C10.7099 15.3892 11.3399 16.4692 12.3299 17.0992C11.6999 17.0992 11.1599 16.9192 10.7099 16.6492C10.7099 18.3592 11.9699 19.8892 13.5899 20.1592C13.3199 20.2492 12.9599 20.2492 12.5999 20.2492C12.3299 20.2492 12.1499 20.2492 11.8799 20.1592C12.3299 21.5992 13.6799 22.6792 15.2999 22.6792C14.0399 23.6692 12.5099 24.2092 10.7999 24.2092C10.5299 24.2092 10.2599 24.2092 9.8999 24.1192C11.5199 25.1092 13.4099 25.7392 15.4799 25.7392C22.1399 25.7392 25.7399 20.2492 25.7399 15.4792V15.0292C26.4599 14.7592 27.0899 14.1292 27.5399 13.4092Z" fill="white"/>
+					</svg>
+				</div>
+				<div class="modal__social-caption">Sign In with Twitter</div>
+			</a>
+		</div>
+		<div class="modal__caption">
+			<span>Or Sign up with email</span>
+		</div>
+		<div class="modal__box">
+			<label class="modal__label">
+				<input type="text" name="text" class="modal__field field" placeholder="Enter email">
+			</label>
+			<label class="modal__label password">
+				<input type="password" name="text" class="modal__field field" placeholder="Password">
+				<div class="password__icon">
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M17.7141 9.13533C18.1091 9.65199 18.1091 10.3495 17.7141 10.8653C16.4699 12.4895 13.4849 15.8337 9.99993 15.8337C6.51493 15.8337 3.52993 12.4895 2.28576 10.8653C2.09358 10.6179 1.98926 10.3136 1.98926 10.0003C1.98926 9.68706 2.09358 9.38272 2.28576 9.13533C3.52993 7.51116 6.51493 4.16699 9.99993 4.16699C13.4849 4.16699 16.4699 7.51116 17.7141 9.13533V9.13533Z" stroke="#01baef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						<path d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z" stroke="#01baef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</div>
+			</label>
+			<button class="modal__btn">sign in</button>
+			<div class="modal__box-bottom">
+				<label class="modal__checkbox">
+					<input type="checkbox" value="checkbox">
+					<div class="modal__checkbox-icon flex-center">
+						<img src="img/icons/modal-check.svg" alt="">
+					</div>
+					<div class="modal__checkbox-caption">stay login</div>
+				</label>
+			</div>
+		</div>
+		<div class="modal__bottom">
+			<a href="#" class="modal__bottom-link forgot--js">Forgot your password?</a>
+			<div class="modal__bottom-desc">Enter your email and within 15 minutes we will send a new password</div>
+		</div>
+	</form>
+</div><!-- end signin-modal -->
+
+<div id="registration-modal" class="registration-modal modal modal_item" style="display: none;">
+	<div class="modal__top">
+		<div class="modal__closed flex-center svg-contain" data-fancybox-close>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M16.7348 9.0794C16.8396 8.98169 16.9241 8.86431 16.9835 8.73394C17.043 8.60357 17.0761 8.46277 17.0811 8.31958C17.0862 8.17639 17.0629 8.03362 17.0127 7.89941C16.9626 7.76521 16.8865 7.64219 16.7888 7.5374C16.6911 7.4326 16.5737 7.34808 16.4433 7.28865C16.3129 7.22922 16.1721 7.19605 16.029 7.19104C15.8858 7.18603 15.743 7.20926 15.6088 7.25943C15.4746 7.30959 15.3516 7.3857 15.2468 7.4834L12.0548 10.4594L9.07877 7.26631C8.87965 7.06236 8.6086 6.94444 8.32364 6.9378C8.03868 6.93115 7.76244 7.0363 7.55402 7.23075C7.3456 7.4252 7.22156 7.69349 7.20845 7.97823C7.19534 8.26297 7.2942 8.54153 7.48387 8.75431L10.4599 11.9463L7.26677 14.9223C7.15828 15.019 7.0702 15.1364 7.00772 15.2677C6.94523 15.3989 6.9096 15.5413 6.90292 15.6865C6.89623 15.8317 6.91863 15.9767 6.96879 16.1131C7.01895 16.2496 7.09586 16.3746 7.19501 16.4808C7.29416 16.5871 7.41355 16.6725 7.54616 16.732C7.67877 16.7915 7.82194 16.8239 7.96724 16.8273C8.11254 16.8307 8.25706 16.805 8.3923 16.7517C8.52754 16.6985 8.65078 16.6188 8.75477 16.5172L11.9468 13.5423L14.9228 16.7343C15.0189 16.8448 15.1362 16.9348 15.2678 16.999C15.3995 17.0632 15.5427 17.1002 15.6889 17.1079C15.8351 17.1155 15.9814 17.0937 16.119 17.0436C16.2566 16.9935 16.3828 16.9162 16.4899 16.8164C16.597 16.7165 16.6829 16.5961 16.7425 16.4624C16.8021 16.3286 16.8341 16.1842 16.8367 16.0378C16.8393 15.8914 16.8124 15.7459 16.7576 15.6102C16.7028 15.4744 16.6212 15.351 16.5177 15.2474L13.5428 12.0554L16.7348 9.0794Z" fill="#8EA5B2"/>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M0 12C0 5.37273 5.37273 0 12 0C18.6273 0 24 5.37273 24 12C24 18.6273 18.6273 24 12 24C5.37273 24 0 18.6273 0 12ZM12 21.8182C10.7107 21.8182 9.43394 21.5642 8.24274 21.0708C7.05155 20.5774 5.9692 19.8542 5.0575 18.9425C4.14579 18.0308 3.42259 16.9485 2.92918 15.7573C2.43577 14.5661 2.18182 13.2893 2.18182 12C2.18182 10.7107 2.43577 9.43394 2.92918 8.24274C3.42259 7.05155 4.14579 5.9692 5.0575 5.0575C5.9692 4.14579 7.05155 3.42259 8.24274 2.92918C9.43394 2.43577 10.7107 2.18182 12 2.18182C14.6039 2.18182 17.1012 3.21623 18.9425 5.0575C20.7838 6.89876 21.8182 9.39606 21.8182 12C21.8182 14.6039 20.7838 17.1012 18.9425 18.9425C17.1012 20.7838 14.6039 21.8182 12 21.8182Z" fill="#8EA5B2"/>
+			</svg>
+		</div>
+	</div>
+	<form action="#" class="modal__body">
+		<div class="modal__links flex">
+			<a href="#" class="modal__link signin--js">Sign In</a>
+			<a href="javascript:void(0)" class="modal__link active">Registration</a>
+		</div>
+		<div class="modal__box">
+			<label class="modal__label">
+				<input type="text" name="text" class="modal__field field" placeholder="Enter email*">
+			</label>
+			<label class="modal__label">
+				<input type="text" name="text" class="modal__field field" placeholder="Telegram">
+			</label>
+			<label class="modal__label">
+				<input type="text" name="text" class="modal__field field" placeholder="Twiter">
+			</label>
+			<label class="modal__label password">
+				<input type="password" name="text" class="modal__field field" placeholder="Password*">
+				<div class="password__icon">
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M17.7141 9.13533C18.1091 9.65199 18.1091 10.3495 17.7141 10.8653C16.4699 12.4895 13.4849 15.8337 9.99993 15.8337C6.51493 15.8337 3.52993 12.4895 2.28576 10.8653C2.09358 10.6179 1.98926 10.3136 1.98926 10.0003C1.98926 9.68706 2.09358 9.38272 2.28576 9.13533C3.52993 7.51116 6.51493 4.16699 9.99993 4.16699C13.4849 4.16699 16.4699 7.51116 17.7141 9.13533V9.13533Z" stroke="#01baef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						<path d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z" stroke="#01baef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</div>
+			</label>
+			<label class="modal__label password">
+				<input type="password" name="text" class="modal__field field" placeholder="Repeat password*">
+				<div class="password__icon">
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M17.7141 9.13533C18.1091 9.65199 18.1091 10.3495 17.7141 10.8653C16.4699 12.4895 13.4849 15.8337 9.99993 15.8337C6.51493 15.8337 3.52993 12.4895 2.28576 10.8653C2.09358 10.6179 1.98926 10.3136 1.98926 10.0003C1.98926 9.68706 2.09358 9.38272 2.28576 9.13533C3.52993 7.51116 6.51493 4.16699 9.99993 4.16699C13.4849 4.16699 16.4699 7.51116 17.7141 9.13533V9.13533Z" stroke="#01baef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						<path d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z" stroke="#01baef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</div>
+			</label>
+			<button class="modal__btn">greate an account</button>
+		</div>
+	</form>
+</div><!-- end registration-modal -->
+
+<div id="forgot-modal" class="forgot-modal modal modal_item" style="display: none;">
+	<div class="modal__top">
+		<div class="modal__closed flex-center svg-contain" data-fancybox-close>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M16.7348 9.0794C16.8396 8.98169 16.9241 8.86431 16.9835 8.73394C17.043 8.60357 17.0761 8.46277 17.0811 8.31958C17.0862 8.17639 17.0629 8.03362 17.0127 7.89941C16.9626 7.76521 16.8865 7.64219 16.7888 7.5374C16.6911 7.4326 16.5737 7.34808 16.4433 7.28865C16.3129 7.22922 16.1721 7.19605 16.029 7.19104C15.8858 7.18603 15.743 7.20926 15.6088 7.25943C15.4746 7.30959 15.3516 7.3857 15.2468 7.4834L12.0548 10.4594L9.07877 7.26631C8.87965 7.06236 8.6086 6.94444 8.32364 6.9378C8.03868 6.93115 7.76244 7.0363 7.55402 7.23075C7.3456 7.4252 7.22156 7.69349 7.20845 7.97823C7.19534 8.26297 7.2942 8.54153 7.48387 8.75431L10.4599 11.9463L7.26677 14.9223C7.15828 15.019 7.0702 15.1364 7.00772 15.2677C6.94523 15.3989 6.9096 15.5413 6.90292 15.6865C6.89623 15.8317 6.91863 15.9767 6.96879 16.1131C7.01895 16.2496 7.09586 16.3746 7.19501 16.4808C7.29416 16.5871 7.41355 16.6725 7.54616 16.732C7.67877 16.7915 7.82194 16.8239 7.96724 16.8273C8.11254 16.8307 8.25706 16.805 8.3923 16.7517C8.52754 16.6985 8.65078 16.6188 8.75477 16.5172L11.9468 13.5423L14.9228 16.7343C15.0189 16.8448 15.1362 16.9348 15.2678 16.999C15.3995 17.0632 15.5427 17.1002 15.6889 17.1079C15.8351 17.1155 15.9814 17.0937 16.119 17.0436C16.2566 16.9935 16.3828 16.9162 16.4899 16.8164C16.597 16.7165 16.6829 16.5961 16.7425 16.4624C16.8021 16.3286 16.8341 16.1842 16.8367 16.0378C16.8393 15.8914 16.8124 15.7459 16.7576 15.6102C16.7028 15.4744 16.6212 15.351 16.5177 15.2474L13.5428 12.0554L16.7348 9.0794Z" fill="#8EA5B2"/>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M0 12C0 5.37273 5.37273 0 12 0C18.6273 0 24 5.37273 24 12C24 18.6273 18.6273 24 12 24C5.37273 24 0 18.6273 0 12ZM12 21.8182C10.7107 21.8182 9.43394 21.5642 8.24274 21.0708C7.05155 20.5774 5.9692 19.8542 5.0575 18.9425C4.14579 18.0308 3.42259 16.9485 2.92918 15.7573C2.43577 14.5661 2.18182 13.2893 2.18182 12C2.18182 10.7107 2.43577 9.43394 2.92918 8.24274C3.42259 7.05155 4.14579 5.9692 5.0575 5.0575C5.9692 4.14579 7.05155 3.42259 8.24274 2.92918C9.43394 2.43577 10.7107 2.18182 12 2.18182C14.6039 2.18182 17.1012 3.21623 18.9425 5.0575C20.7838 6.89876 21.8182 9.39606 21.8182 12C21.8182 14.6039 20.7838 17.1012 18.9425 18.9425C17.1012 20.7838 14.6039 21.8182 12 21.8182Z" fill="#8EA5B2"/>
+			</svg>
+		</div>
+	</div>
+	<form action="#" class="modal__body">
+		<div class="modal__title">Forgot your password?</div>
+		<div class="modal__subtitle">Request an email with a link to reset your password</div>
+		<div class="modal__box">
+			<label class="modal__label">
+				<input type="text" name="text" class="modal__field field" placeholder="Enter email">
+			</label>
+			<button class="modal__btn">reset the password</button>
+		</div>
+	</form>
+</div><!-- end signin-modal -->

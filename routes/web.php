@@ -1,5 +1,6 @@
 <?php
 
+use App\Facades\PageLoader;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Manage;
 
@@ -20,10 +21,13 @@ Route::group(
     [
         'as' => 'manage.',
         'prefix' => 'manage',
-        'middleware' => ['auth', 'can:view-any']
+        //'middleware' => ['auth', 'can:view-any']
     ],
     static function() {
-        Route::get('', Manage\IndexController::class)->name('index');
+        Route::get('', Manage\IndexController::class)->name('pages.index');
+
+        Route::resource('pages', Manage\Resources\PageController::class);
+        Route::resource('users', Manage\Resources\UserController::class)->except('show');
     }
 );
 
@@ -32,6 +36,6 @@ Route::group(
         'as' => 'visible.'
     ],
     static function() {
-
+        PageLoader::routes();
     }
 );

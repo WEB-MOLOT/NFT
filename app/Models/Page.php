@@ -2,10 +2,17 @@
 
 namespace App\Models;
 
+use App\Contracts\PageTemplate;
 use App\Models\Meta\PageMeta;
+use App\Support\PageTemplates\Builder;
+use App\Support\PageTemplates\Template;
+use App\Traits\Model\Actions;
+use App\Traits\Model\FormattedJsonDates;
 use App\Traits\Model\HasMeta;
+use App\Traits\Model\IsActive;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 /**
  * Class Page
@@ -14,6 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property string $slug
  * @property bool $is_active
+ * @property bool $is_index
  * @property string $template
  * @property array $data
  * @property Carbon $created_at
@@ -21,16 +29,37 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Page extends Model
 {
-    use HasMeta;
+    use HasMeta, Actions, FormattedJsonDates, IsActive;
 
     protected $fillable = [
-        'name', 'slug', 'is_active', 'template', 'data'
+        'name', 'slug', 'is_active', 'is_index', 'template', 'data'
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
+        'is_index' => 'boolean',
         'data' => 'array'
     ];
+
+    protected $attributes = [
+        'data' => '{}'
+    ];
+
+    /**
+     * @return string
+     */
+    public function getSlug(): string
+    {
+        return $this->is_index ? '' : $this->slug;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRouteName(): string
+    {
+        return Str::snake($this->slug);
+    }
 
     /**
      * @return string
@@ -40,8 +69,23 @@ class Page extends Model
         return PageMeta::class;
     }
 
-    public function getTemplate()
+    /**
+     * @return array
+     */
+    public function getActionsAttribute(): array
     {
-        // TODO
+        return [
+            'show' => route('manage.pages.show', $this),
+            'edit' => route('manage.pages.edit', $this),
+            'destroy' => route('manage.pages.destroy', $this)
+        ];
+    }
+
+    /**
+     * @return Template
+     */
+    public function getTemplate(): Template
+    {
+        return (new Builder)->template($this->template);
     }
 }

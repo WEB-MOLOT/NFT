@@ -18,6 +18,7 @@ class CreatePagesTable extends Migration
             $table->string('name', 100);
             $table->string('slug', 100)->unique()->index();
             $table->boolean('is_active');
+            $table->boolean('is_index');
             $table->string('template', 10);
             $table->json('data');
             $table->timestamps();

@@ -11,6 +11,18 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
-    .sourceMaps();
+mix
+    .sass('resources/sass/manage.scss', 'public/css')
+    .js('resources/js/manage.js', 'public/js')
+    .copyDirectory('node_modules/tinymce/skins', 'public/js/skins')
+    .copyDirectory('node_modules/tinymce/icons', 'public/js/icons')
+
+    .sass('resources/sass/visible.scss', 'public/css')
+    .js('resources/js/visible.js', 'public/js')
+    .copyDirectory('resources/visible/img', 'public/img')
+
+    .options({
+        processCssUrls: false
+    })
+    .version()
+    .disableNotifications();

@@ -1,0 +1,233 @@
+.personal-area {
+	margin-top: -20px;
+	margin-bottom: 80px;
+	&__tabs {
+		justify-content: flex-start;
+		margin: 30px -21px 0px;
+	}
+	&__tab {
+		padding: 20px 0px;
+		position: relative;
+		z-index: 10;
+		font-weight: 600;
+		font-size: 24px;
+		line-height: 100%;
+		color: #b8c7d0;
+		cursor: pointer;
+		margin: 0px 21px;
+		transition: color 0.3s;
+		&:after {
+			content: "";
+			position: absolute;
+			height: 2px;
+			width: 100%;
+			left: 0px;
+			bottom: 0px;
+			background-color: #4a59de;
+			opacity: 0;
+			transition: opacity 0.3s;
+		}
+		&:hover {
+			color: #3340b4;
+			transition: color 0.3s;
+		}
+		&.active {
+			color: #3340b4;
+			transition: color 0.3s;
+			&:after {
+				opacity: 1;
+				transition: opacity 0.3s;
+			}
+		}
+	}
+	&__body {
+		position: relative;
+	}
+	&__block {
+		position: absolute;
+		width: 100%;
+		visibility: hidden;
+		opacity: 0;
+		transform: translateY(50px);
+		transition: all 0s;
+		&.active {
+			position: relative;
+			visibility: visible;
+			opacity: 1;
+			transform: translateY(0px);
+			transition: all 0.3s;
+		}
+	}
+	&__form {
+		max-width: 1040px;
+		margin: 60px auto 150px;
+		&-body {
+			align-items: flex-start;
+			flex-wrap: wrap;
+		}
+		.form {
+			&__label {
+				width: 100%;
+			}
+			&__caption {
+				font-size: 12px;
+				color: #8ea5b2;
+				margin-bottom: 12px;
+			}
+			&__field {
+				font-size: 14px;
+				padding: 16.5px 18px;
+			}
+			&__btn {
+				margin-top: 8px;
+				padding: 21px 25px;
+				min-width: 130px;
+			}
+		}
+	}
+	&__coll {
+		width: calc(50% - 20px);
+	}
+	.catalog {
+		margin-top: 0px;
+		padding-bottom: 0;
+	}
+	&__bottom {
+		margin-top: 60px;
+	}
+	&__caption {
+		font-weight: 600;
+		font-size: 24px;
+		line-height: 100%;
+		color: #2f3e46;
+	}
+	&__type {
+		margin-top: 40px;
+	}
+	&__checkbox {
+		& + & {
+			margin-top: 16px;
+		}
+		display: flex;
+		align-items: center;
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 100%;
+		letter-spacing: 0.01em;
+		color: #2f3e46;
+		cursor: pointer;
+		input {
+			display: none;
+		}
+		&-icon {
+			position: relative;
+			z-index: 10;
+			width: 50px;
+			height: 28px;
+			background: #ffffff;
+			border-radius: 16px;
+			border: 1px solid #bfc4ed;
+			padding: 2px;
+			margin-right: 24px;
+			span {
+				display: block;
+				width: 22px;
+				height: 22px;
+				background-color: #bfc4ed;
+				border-radius: 50%;
+				transition: background-color 0.3s, transform 0.3s;
+			}
+		}
+		input[type="checkbox"]:checked + .personal-area__checkbox-icon span,
+		input[type="radio"]:checked + .personal-area__checkbox-icon span {
+			transform: translateX(22px);
+			background-color: #3340b4;
+			transition: background-color 0.3s, transform 0.3s;
+		}
+		input[type="checkbox"]:checked + .personal-area__checkbox-icon span,
+		input[type="radio"]:checked + .personal-area__checkbox-icon span {
+			transform: translateX(22px);
+			background-color: #3340b4;
+			transition: background-color 0.3s, transform 0.3s;
+		}
+	}
+}
+@media (max-width: 1010px) {
+	.personal-area {
+		margin-top: 0px;
+		margin-bottom: 60px;
+		&__tabs {
+			margin: 20px -15px 0px;
+		}
+		&__tab {
+			padding: 15px 0;
+			font-size: 20px;
+			margin: 0 15px;
+		}
+		&__form {
+			margin: 40px auto 100px;
+		}
+		&__coll {
+			width: calc(50% - 10px);
+		}
+		&__bottom {
+			margin-top: 40px;
+		}
+		&__caption {
+			font-size: 22px;
+		}
+		&__type {
+			margin-top: 20px;
+		}
+	}
+}
+@media (max-width: 760px) {
+	.personal-area {
+		margin-top: 0px;
+		margin-bottom: 60px;
+		&__tabs {
+			margin: 10px -10px 0px;
+		}
+		&__tab {
+			padding: 10px 0;
+			font-size: 16px;
+			margin: 0 10px;
+		}
+		&__form {
+			margin: 30px auto 80px;
+			.form {
+				&__caption {
+					font-size: 10px;
+					margin-bottom: 10px;
+				}
+				&__field {
+					font-size: 12px;
+					padding: 14px 18px;
+				}
+				&__btn {
+					margin-top: 10px;
+					padding: 18px 25px;
+					min-width: 130px;
+				}
+			}
+		}
+		&__coll {
+			width: 100%;
+		}
+		&__caption {
+			font-size: 20px;
+		}
+		&__type {
+			margin-top: 20px;
+		}
+		&__checkbox {
+			& + & {
+				margin-top: 10px;
+			}
+			font-size: 14px;
+			&-icon {
+				margin-right: 12px;
+			}
+		}
+	}
+}
