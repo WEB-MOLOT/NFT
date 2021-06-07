@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\ViewComposers\NavigationComposer;
+use App\Http\ViewComposers\Visible\CategoriesComposer;
 use App\Support\Navigation\Navigation;
 use App\Support\PageTemplates\PageLoader;
 use App\Support\ResourceRegistrar;
@@ -18,7 +19,8 @@ use Illuminate\Routing\ResourceRegistrar as IlluminateResourceRegistrar;
 class AppServiceProvider extends ServiceProvider
 {
     protected array $viewComposers = [
-        NavigationComposer::class => 'layouts.*'
+        NavigationComposer::class => ['layouts.*', 'visible.particles.breadcrumbs'],
+        CategoriesComposer::class => ['visible.pages.submit']
     ];
 
     /**

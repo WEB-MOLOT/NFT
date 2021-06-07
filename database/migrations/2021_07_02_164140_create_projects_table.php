@@ -17,14 +17,16 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->unsignedTinyInteger('status');
             $table->boolean('is_verified');
+            $table->string('name', 100);
             $table->string('logo');
-            $table->string('rating', 10)->nullable();
-            $table->string('rating_color', 6)->nullable();
+            $table->unsignedSmallInteger('rating');
             $table->unsignedTinyInteger('currency');
             $table->unsignedInteger('min_price')->nullable();
             $table->unsignedInteger('max_price')->nullable();
             $table->unsignedInteger('available_count')->nullable();
             $table->text('content');
+            $table->timestamp('started_at')->nullable();
+            $table->timestamp('ended_at')->nullable();
             $table->foreignId('user_id')->nullable()->references('id')->on('users');
             $table->timestamps();
         });

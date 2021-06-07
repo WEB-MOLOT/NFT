@@ -75,9 +75,9 @@ class Page extends Model
     public function getActionsAttribute(): array
     {
         return [
-            'show' => route('manage.pages.show', $this),
-            'edit' => route('manage.pages.edit', $this),
-            'destroy' => route('manage.pages.destroy', $this)
+            'show' => route('manage.resources.pages.show', $this),
+            'edit' => route('manage.resources.pages.edit', $this),
+            'destroy' => route('manage.resources.pages.destroy', $this)
         ];
     }
 
@@ -86,6 +86,6 @@ class Page extends Model
      */
     public function getTemplate(): Template
     {
-        return (new Builder)->template($this->template);
+        return (new Builder)->template($this->template)->setPage($this);
     }
 }

@@ -26,8 +26,13 @@ Route::group(
     static function() {
         Route::get('', Manage\IndexController::class)->name('pages.index');
 
-        Route::resource('pages', Manage\Resources\PageController::class);
-        Route::resource('users', Manage\Resources\UserController::class)->except('show');
+        Route::as('resources.')->group(static function() {
+            Route::resource('pages', Manage\Resources\PageController::class);
+            Route::resource('users', Manage\Resources\UserController::class)->except('show');
+
+            Route::resource('categories', Manage\Resources\CategoryController::class)->except('show');
+            Route::resource('projects', Manage\Resources\ProjectController::class)->except('create', 'store');
+        });
     }
 );
 

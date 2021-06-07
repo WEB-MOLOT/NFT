@@ -23,9 +23,10 @@ class ResourceController extends Controller
     {
         $this->middleware(function(Request $request, Closure $next) {
             $name = $this->getResourceName();
+            $currentPageName = $this->getPageResourceName($request, $name);
 
-            $this->navigation->createCrumb($name->plural(), $name->plural()->snake().'.index');
-            $this->createPageResourceBreadcrumb($request, $name);
+            $this->navigation->createCrumb($name->plural(), 'resources.'.$name->plural()->snake().'.index');
+            $currentPageName && $this->navigation->createCrumb($currentPageName);
 
             return $next($request);
         });
@@ -42,21 +43,17 @@ class ResourceController extends Controller
     /**
      * @param Request $request
      * @param Stringable $name
+     * @return string|null
      */
-    protected function createPageResourceBreadcrumb(Request $request, Stringable $name): void
+    protected function getPageResourceName(Request $request, Stringable $name): ?string
     {
         $name = $name->lower();
 
-        switch(true) {
-            case $request->routeIs('*.create'):
-                $this->navigation->createCrumb(__('Create :name', compact('name')));
-                break;
-            case $request->routeIs('*.edit'):
-                $this->navigation->createCrumb(__('Edit :name', compact('name')));
-                break;
-            case $request->routeIs('*.show'):
-                $this->navigation->createCrumb(__('Show :name', compact('name')));
-                break;
-        }
+        return match(true) {
+            $request->routeIs('*.create') => __('Create :name', compact('name')),
+            $request->routeIs('*.edit') => __('Edit :name', compact('name')),
+            $request->routeIs('*.show') => __('Show :name', compact('name')),
+            default => null
+        };
     }
 }

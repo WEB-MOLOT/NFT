@@ -2,12 +2,12 @@
 
 @section('buttons')
     <a href="#" class="btn btn-primary" data-action="update">Update</a>
-    <a href="{{ route('manage.pages.destroy', $page) }}" class="btn btn-danger" data-action="destroy">Delete</a>
-    <a href="{{ route('manage.pages.index') }}" class="btn btn-default">Back to list</a>
+    <a href="{{ route('manage.resources.pages.destroy', $page) }}" class="btn btn-danger" data-action="destroy">Delete</a>
+    <a href="{{ route('manage.resources.pages.index') }}" class="btn btn-default">Back to list</a>
 @endsection
 
 @section('content')
-    <form action="{{ route('manage.pages.update', $page) }}" method="post" data-action-form="update">
+    <form action="{{ route('manage.resources.pages.update', $page) }}" method="post" data-action-form="update">
         @method('put')
 
         <div class="card card-default">
@@ -31,7 +31,7 @@
                     <label>Template</label>
                     <select class="form-control" name="template">
                         @foreach($templates as $i)
-                            <option value="{{ $i->getId() }}" {{ $i->getId() === $page->template ? 'selected' : '' }}>{{ $i->getName() }}</option>
+                            <option value="{{ $i->getId() }}" {{ $i->getId() == $page->template ? 'selected' : '' }}>{{ $i->getName() }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -50,7 +50,17 @@
         </div>
 
         @if($template->hasManageView())
-            {!! $template->manageView() !!}
+            <div class="card card-default mt-3">
+                <div class="card-header">
+                    <h3 class="card-title">Template settings</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <div class="card-body">
+                    {!! $template->manageView() !!}
+                </div>
+                <!-- /.card-body -->
+            </div>
         @endif
 
         <div class="card card-default mt-3">

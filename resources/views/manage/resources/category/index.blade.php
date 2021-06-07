@@ -1,7 +1,7 @@
 @extends('layouts.manage')
 
 @section('buttons')
-    <a href="{{ route('manage.resources.pages.create') }}" class="btn btn-default">Create page</a>
+    <a href="{{ route('manage.resources.categories.create') }}" class="btn btn-default">Create category</a>
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
             <div class="card">
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table @dataTable('resources.pages.data', $columns) class="table table-bordered table-hover"></table>
+                    <table @dataTable('resources.categories.data', $columns) class="table table-bordered table-hover"></table>
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -26,10 +26,6 @@
         window.dataTableRenders = {
             name: {
                 title: 'Name'
-            },
-            is_active: {
-                title: 'Is active',
-                render: (data, type, row) => row.is_active ? 'Yes' : 'No'
             },
             created_at: {
                 title: 'Created at',

@@ -10,6 +10,7 @@ use App\Support\DataTable\Filter;
 use App\Support\JsonResponse;
 use App\Support\PageTemplates\Builder;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
@@ -52,6 +53,17 @@ class PageController extends ResourceController
     }
 
     /**
+     * @param Page $page
+     * @return RedirectResponse
+     */
+    public function show(Page $page): RedirectResponse
+    {
+        abort_if(!$page->is_active, 404);
+
+        return new RedirectResponse($page->getSlug());
+    }
+
+    /**
      * @param Filter $filter
      * @return JsonResponse
      */
@@ -80,7 +92,7 @@ class PageController extends ResourceController
             return $page;
         });
 
-        return JsonResponse::success('Page successfully created.')->redirectToRoute('pages.edit', $page);
+        return JsonResponse::success('Page successfully created.')->redirectToRoute('resources.pages.edit', $page);
     }
 
     /**
@@ -112,9 +124,12 @@ class PageController extends ResourceController
     {
         $page->delete();
 
-        return JsonResponse::success('Page successfully deleted.')->redirectToRoute('pages.index');
+        return JsonResponse::success('Page successfully deleted.')->redirectToRoute('resources.pages.index');
     }
 
+    /**
+     * @return string[]
+     */
     protected function getDataTableColumns(): array
     {
         return [

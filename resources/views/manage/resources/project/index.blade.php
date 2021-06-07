@@ -1,16 +1,12 @@
 @extends('layouts.manage')
 
-@section('buttons')
-    <a href="{{ route('manage.resources.pages.create') }}" class="btn btn-default">Create page</a>
-@endsection
-
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table @dataTable('resources.pages.data', $columns) class="table table-bordered table-hover"></table>
+                    <table @dataTable('resources.projects.data', $columns) class="table table-bordered table-hover"></table>
                 </div>
                 <!-- /.card-body -->
             </div>
