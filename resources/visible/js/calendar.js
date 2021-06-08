@@ -2030,31 +2030,11 @@
                 '<div class="times__left-text ">timezone</div>' +
                 '<div class="times__left-text times__left-text--js  select-timezone-open--js">UTC</div>' +
                 '<div class="times__left-select times__select times__select--js ">' +
-                    '<div class="times__select-option">-12</div>' +
-                    '<div class="times__select-option">-11</div>' +
-                    '<div class="times__select-option">-10</div>' +
-                    '<div class="times__select-option">-9</div>' +
-                    '<div class="times__select-option">-8</div>' +
-                    '<div class="times__select-option">-7</div>' +
-                    '<div class="times__select-option">-6</div>' +
-                    '<div class="times__select-option">-5</div>' +
-                    '<div class="times__select-option">-4</div>' +
-                    '<div class="times__select-option">-3</div>' +
-                    '<div class="times__select-option">-2</div>' +
-                    '<div class="times__select-option">-1</div>' +
                     '<div class="times__select-option">UTC</div>' +
-                    '<div class="times__select-option">+1</div>' +
-                    '<div class="times__select-option">+2</div>' +
-                    '<div class="times__select-option">+3</div>' +
-                    '<div class="times__select-option">+4</div>' +
-                    '<div class="times__select-option">+5</div>' +
-                    '<div class="times__select-option">+6</div>' +
-                    '<div class="times__select-option">+7</div>' +
-                    '<div class="times__select-option">+8</div>' +
-                    '<div class="times__select-option">+9</div>' +
-                    '<div class="times__select-option">+10</div>' +
-                    '<div class="times__select-option">+11</div>' +
-                    '<div class="times__select-option">+12</div>' +
+                    '<div class="times__select-option">PDT</div>' +
+                    '<div class="times__select-option">PST</div>' +
+                    '<div class="times__select-option">EDT</div>' +
+                    '<div class="times__select-option">EST</div>' +
                 '</div>' +
             '</div>' +
         '</div>' +

@@ -108,7 +108,7 @@ class Project extends Model
     /**
      * @return int[]
      */
-    public function statuses(): array
+    public static function statuses(): array
     {
         return [
             self::STATUS_CREATED, self::STATUS_UPCOMING, self::STATUS_ACTIVE, self::STATUS_CLOSED

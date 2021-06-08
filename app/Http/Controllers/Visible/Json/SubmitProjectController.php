@@ -15,6 +15,14 @@ use App\Support\JsonResponse;
 class SubmitProjectController extends Controller
 {
     /**
+     * SubmitProjectController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('google_recaptcha');
+    }
+
+    /**
      * @param SubmitProjectRequest $request
      * @param ProjectService $service
      * @return JsonResponse

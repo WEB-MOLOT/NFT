@@ -23,10 +23,10 @@
                 <div class="submit__right">
                     <form method="post" action="#" class="contacts__form form">
                         <label class="form__label bottom">
-                            <input type="text" name="text" class="form__field field" placeholder="The name of the project">
+                            <input type="text" name="text" class="form__field field " placeholder="The name of the project">
                         </label>
                         <label class="form__label bottom">
-                            <div class="file flex success">
+                            <div class="file flex">
                                 <div class="file__box flex">
                                     <div class="file__link">Select a file</div>
                                     <input type="file" class="file__value" name="calc_image" accept="image/png, image/jpeg" style="display:none;" multiple>
@@ -35,7 +35,7 @@
                             </div>
                         </label>
                         <label class="form__label bottom">
-                            <div class="file flex error">
+                            <div class="file flex">
                                 <div class="file__box flex">
                                     <div class="file__link">Select a file</div>
                                     <input type="file" class="file__value" name="calc_image" accept="image/png, image/jpeg" style="display:none;" multiple>
@@ -48,7 +48,7 @@
                                 <div class="form__caption">Project category</div>
                                 <div class="filter__category-items flex">
                                     @foreach($categories as $category)
-                                        <div class="filter__category-item filter__category-item_{{ $category->id }} filter__category-item_violet">
+                                        <div class="filter__category-item filter__category-item_{{ $category->id }} filter__category-item_violet" data-id="{{ $category->id }}">
                                             <div class="filter__category-caption">{{ $category->name }}</div>
                                             <div class="filter__category-icon">
                                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">

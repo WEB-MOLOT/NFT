@@ -3,24 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $navigation->getTitle() }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <meta name="format-detection" content="telephone=no">
     <meta name="format-detection" content="address=no">
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.svg">
-
-    <style>
-        .page.page_hide {
-            opacity: 0;
-            transition: 0.3s opacity;
-        }
-
-        @media (max-width: 760px) {
-            .filter__bottom {
-                display: none;
-            }
-        }
-    </style>
+    <style>.page.page_hide{opacity:0;transition:.3s opacity}@media(max-width:760px){.filter__bottom{display:none}}</style>
     @stack('header')
 </head>
 
@@ -732,8 +721,7 @@
 
 <link rel="preload" as="image" href="/img/promo/bg.jpg">
 <link rel="preload" as="image" href="/img/promo/bg-2.jpg">
-
+@stack('footer')
 <script src="{{ mix('js/visible.js') }}" rel="preload" as="script"></script>
 </body>
-
 </html>

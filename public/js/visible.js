@@ -5642,6 +5642,135 @@
 
 /***/ }),
 
+/***/ "./resources/js/components/visible/form.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/visible/form.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "form": () => (/* binding */ form)
+/* harmony export */ });
+var moduleName = 'form';
+function form() {
+  $(document).on('submit', 'form[data-form]', onSubmitAnyFormEvent);
+}
+
+function onSubmitAnyFormEvent(e) {
+  e.preventDefault();
+  var $this = $(e.currentTarget);
+  grecaptcha.ready(function () {
+    grecaptcha.execute(window.app.recaptcha_key, {
+      action: 'submit'
+    }).then(function (token) {
+      var data = {};
+      $this.serializeArray().forEach(function (i) {
+        data[i.name] = i.value;
+      });
+      data.recaptcha_token = token; //$this.find('[type="submit]').prop('disabled', true);
+
+      $.ajax({
+        type: $this.attr('method'),
+        url: $this.attr('action'),
+        data: data,
+        dataType: 'json',
+        success: function success(response) {},
+        error: function error(response) {}
+      });
+    })["catch"](function (q) {
+      console.log(q);
+    });
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/visible/submit.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/visible/submit.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "submit": () => (/* binding */ submit)
+/* harmony export */ });
+var moduleName = 'submit';
+var $form;
+function submit() {
+  $form = $('[data-submit-form]');
+
+  if (!$form.length) {
+    return false;
+  }
+
+  $form.on('submit', onSubmitFormEvent).on('change', onChangeAnyInputEvent);
+}
+
+function onSubmitFormEvent(e) {
+  e.preventDefault();
+  var data = new FormData();
+  $form.find('input[type="text"], textarea').each(function (k, i) {
+    data.append(i.name, i.value);
+  });
+  $form.find('.filter__category-items > .active').forEach(function (k, i) {
+    data.append('categories', i.dataset.id);
+  });
+  $form.find('input[type="file"]').each(function (k, i) {
+    for (var l = 0; l < i.files.length; l++) {
+      data.append(i.name, i.files[l]);
+    }
+  });
+  $.ajax({
+    type: $form.attr('method'),
+    url: $form.attr('action'),
+    data: data,
+    dataType: 'json',
+    cache: false,
+    contentType: false,
+    processData: false,
+    success: function success(response) {},
+    error: function error(response) {
+      var json = response.responseJSON || {};
+
+      if (typeof json.errors !== 'undefined') {
+        json.errors.forEach(function (i, k) {
+          var $input = $form.find("[name=\"".concat(k, "\"]"));
+
+          if ($input.length) {
+            switch (true) {
+              case $input.is('[type="file"]'):
+                $input.parent().parent().addClass('error');
+                break;
+
+              default:
+                $input.addClass('error');
+            }
+          }
+        });
+      }
+    }
+  });
+}
+
+function onChangeAnyInputEvent(e) {
+  var $this = $(e.currentTarget);
+
+  switch (true) {
+    case $this.is('[type="file"]'):
+      $this.parent().parent().removeClass('error');
+      break;
+
+    default:
+      $this.removeClass('error');
+  }
+}
+
+/***/ }),
+
 /***/ "./resources/visible/js/calendar.js":
 /*!******************************************!*\
   !*** ./resources/visible/js/calendar.js ***!
@@ -7564,7 +7693,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   ;
 
   (function () {
-    var template = '<!--div class="datepicker--time">' + '<div class="datepicker--time-current">' + '   <span class="datepicker--time-current-hours">#{hourVisible}</span>' + '   <span class="datepicker--time-current-colon">:</span>' + '   <span class="datepicker--time-current-minutes">#{minValue}</span>' + '</div>' + '<div class="datepicker--time-sliders">' + '   <div class="datepicker--time-row">' + '      <input type="range" name="hours" value="#{hourValue}" min="#{hourMin}" max="#{hourMax}" step="#{hourStep}"/>' + '   </div>' + '   <div class="datepicker--time-row">' + '      <input type="range" name="minutes" value="#{minValue}" min="#{minMin}" max="#{minMax}" step="#{minStep}"/>' + '   </div>' + '</div-->' + '<div class="times" data-id="#{inputID}">' + '<div class="times__left  flex">' + '<div class="times__left-icon select-clear--js">' + '<svg width="15" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.2618 5.29632C10.3229 5.23932 10.3722 5.17085 10.4069 5.0948C10.4416 5.01875 10.4609 4.93662 10.4638 4.85309C10.4668 4.76956 10.4532 4.68628 10.424 4.60799C10.3947 4.5297 10.3503 4.45795 10.2933 4.39682C10.2363 4.33569 10.1678 4.28638 10.0918 4.25171C10.0157 4.21705 9.9336 4.1977 9.85008 4.19477C9.76655 4.19185 9.68327 4.2054 9.60498 4.23467C9.52669 4.26393 9.45493 4.30832 9.3938 4.36532L7.5318 6.10132L5.7958 4.23868C5.67964 4.11971 5.52154 4.05092 5.35531 4.04705C5.18908 4.04317 5.02794 4.10451 4.90636 4.21794C4.78478 4.33136 4.71243 4.48787 4.70478 4.65397C4.69713 4.82007 4.7548 4.98256 4.86544 5.10668L6.60144 6.96868L4.7388 8.70468C4.67551 8.76109 4.62413 8.82959 4.58769 8.90614C4.55124 8.98269 4.53045 9.06575 4.52655 9.15044C4.52265 9.23514 4.53572 9.31976 4.56498 9.39933C4.59424 9.47891 4.6391 9.55183 4.69694 9.61382C4.75478 9.67582 4.82442 9.72563 4.90178 9.76033C4.97913 9.79503 5.06265 9.81393 5.14741 9.8159C5.23217 9.81788 5.31647 9.8029 5.39536 9.77184C5.47425 9.74078 5.54614 9.69427 5.6068 9.63504L7.4688 7.89968L9.2048 9.76168C9.26086 9.82614 9.32931 9.87865 9.40609 9.91609C9.48287 9.95353 9.56641 9.97512 9.65171 9.97959C9.73702 9.98406 9.82235 9.97131 9.90262 9.9421C9.98289 9.91288 10.0565 9.86781 10.1189 9.80956C10.1814 9.75131 10.2315 9.68108 10.2663 9.60305C10.3011 9.52502 10.3197 9.44079 10.3213 9.35538C10.3228 9.26997 10.3071 9.18513 10.2751 9.10592C10.2431 9.02671 10.1955 8.95474 10.1352 8.89431L8.3998 7.03232L10.2618 5.29632Z" fill="#8EA5B2"/><path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 7C0.5 3.13409 3.63409 0 7.5 0C11.3659 0 14.5 3.13409 14.5 7C14.5 10.8659 11.3659 14 7.5 14C3.63409 14 0.5 10.8659 0.5 7ZM7.5 12.7273C6.74788 12.7273 6.00313 12.5791 5.30827 12.2913C4.6134 12.0035 3.98203 11.5816 3.45021 11.0498C2.91838 10.518 2.49651 9.8866 2.20869 9.19173C1.92087 8.49687 1.77273 7.75212 1.77273 7C1.77273 6.24788 1.92087 5.50313 2.20869 4.80827C2.49651 4.1134 2.91838 3.48203 3.45021 2.95021C3.98203 2.41838 4.6134 1.99651 5.30827 1.70869C6.00313 1.42087 6.74788 1.27273 7.5 1.27273C9.01897 1.27273 10.4757 1.87613 11.5498 2.95021C12.6239 4.02428 13.2273 5.48103 13.2273 7C13.2273 8.51897 12.6239 9.97572 11.5498 11.0498C10.4757 12.1239 9.01897 12.7273 7.5 12.7273Z" fill="#8EA5B2"/></svg>' + '</div>' + '<div class="times__left-icon select-open--js">' + '<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.39 1.83398H5.61065C3.59665 1.83398 2.33398 3.25998 2.33398 5.27798V10.7233C2.33398 12.7413 3.58998 14.1673 5.61065 14.1673H11.3893C13.41 14.1673 14.6673 12.7413 14.6673 10.7233V5.27798C14.6673 3.25998 13.41 1.83398 11.39 1.83398Z" stroke="#9EB2BD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.7612 9.34584L8.50049 7.99718V5.08984" stroke="#9EB2BD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' + '</div>' + '<div class="times__left-text times__left-text--js select-open--js">time</div>' + '<div class="times__left-select times__select times__select--js">' + '<div class="times__select-option">00:00</div>' + '<div class="times__select-option">00:30</div>' + '<div class="times__select-option">01:00</div>' + '<div class="times__select-option">01:30</div>' + '<div class="times__select-option">02:00</div>' + '<div class="times__select-option">02:30</div>' + '<div class="times__select-option">03:00</div>' + '<div class="times__select-option">03:30</div>' + '<div class="times__select-option">04:00</div>' + '<div class="times__select-option">04:30</div>' + '<div class="times__select-option">05:00</div>' + '<div class="times__select-option">05:30</div>' + '<div class="times__select-option">06:00</div>' + '<div class="times__select-option">06:30</div>' + '<div class="times__select-option">07:00</div>' + '<div class="times__select-option">07:30</div>' + '<div class="times__select-option">08:00</div>' + '<div class="times__select-option">08:30</div>' + '<div class="times__select-option">09:00</div>' + '<div class="times__select-option">09:30</div>' + '<div class="times__select-option">10:00</div>' + '<div class="times__select-option">10:30</div>' + '<div class="times__select-option">11:00</div>' + '<div class="times__select-option">11:30</div>' + '<div class="times__select-option">12:00</div>' + '<div class="times__select-option">12:30</div>' + '<div class="times__select-option">13:00</div>' + '<div class="times__select-option">13:30</div>' + '<div class="times__select-option">14:00</div>' + '<div class="times__select-option">14:30</div>' + '<div class="times__select-option">15:00</div>' + '<div class="times__select-option">15:30</div>' + '<div class="times__select-option">16:00</div>' + '<div class="times__select-option">16:30</div>' + '<div class="times__select-option">17:00</div>' + '<div class="times__select-option">17:30</div>' + '<div class="times__select-option">18:00</div>' + '<div class="times__select-option">18:30</div>' + '<div class="times__select-option">19:00</div>' + '<div class="times__select-option">19:30</div>' + '<div class="times__select-option">20:00</div>' + '<div class="times__select-option">20:30</div>' + '<div class="times__select-option">21:00</div>' + '<div class="times__select-option">21:30</div>' + '<div class="times__select-option">22:00</div>' + '<div class="times__select-option">22:30</div>' + '<div class="times__select-option">23:00</div>' + '<div class="times__select-option">23:30</div>' + '</div>' + '</div>' + '<div class="times__left times__right flex">' + '<div class="times__left-text ">timezone</div>' + '<div class="times__left-text times__left-text--js  select-timezone-open--js">UTC</div>' + '<div class="times__left-select times__select times__select--js ">' + '<div class="times__select-option">-12</div>' + '<div class="times__select-option">-11</div>' + '<div class="times__select-option">-10</div>' + '<div class="times__select-option">-9</div>' + '<div class="times__select-option">-8</div>' + '<div class="times__select-option">-7</div>' + '<div class="times__select-option">-6</div>' + '<div class="times__select-option">-5</div>' + '<div class="times__select-option">-4</div>' + '<div class="times__select-option">-3</div>' + '<div class="times__select-option">-2</div>' + '<div class="times__select-option">-1</div>' + '<div class="times__select-option">UTC</div>' + '<div class="times__select-option">+1</div>' + '<div class="times__select-option">+2</div>' + '<div class="times__select-option">+3</div>' + '<div class="times__select-option">+4</div>' + '<div class="times__select-option">+5</div>' + '<div class="times__select-option">+6</div>' + '<div class="times__select-option">+7</div>' + '<div class="times__select-option">+8</div>' + '<div class="times__select-option">+9</div>' + '<div class="times__select-option">+10</div>' + '<div class="times__select-option">+11</div>' + '<div class="times__select-option">+12</div>' + '</div>' + '</div>' + '</div>' + '</div>',
+    var template = '<!--div class="datepicker--time">' + '<div class="datepicker--time-current">' + '   <span class="datepicker--time-current-hours">#{hourVisible}</span>' + '   <span class="datepicker--time-current-colon">:</span>' + '   <span class="datepicker--time-current-minutes">#{minValue}</span>' + '</div>' + '<div class="datepicker--time-sliders">' + '   <div class="datepicker--time-row">' + '      <input type="range" name="hours" value="#{hourValue}" min="#{hourMin}" max="#{hourMax}" step="#{hourStep}"/>' + '   </div>' + '   <div class="datepicker--time-row">' + '      <input type="range" name="minutes" value="#{minValue}" min="#{minMin}" max="#{minMax}" step="#{minStep}"/>' + '   </div>' + '</div-->' + '<div class="times" data-id="#{inputID}">' + '<div class="times__left  flex">' + '<div class="times__left-icon select-clear--js">' + '<svg width="15" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.2618 5.29632C10.3229 5.23932 10.3722 5.17085 10.4069 5.0948C10.4416 5.01875 10.4609 4.93662 10.4638 4.85309C10.4668 4.76956 10.4532 4.68628 10.424 4.60799C10.3947 4.5297 10.3503 4.45795 10.2933 4.39682C10.2363 4.33569 10.1678 4.28638 10.0918 4.25171C10.0157 4.21705 9.9336 4.1977 9.85008 4.19477C9.76655 4.19185 9.68327 4.2054 9.60498 4.23467C9.52669 4.26393 9.45493 4.30832 9.3938 4.36532L7.5318 6.10132L5.7958 4.23868C5.67964 4.11971 5.52154 4.05092 5.35531 4.04705C5.18908 4.04317 5.02794 4.10451 4.90636 4.21794C4.78478 4.33136 4.71243 4.48787 4.70478 4.65397C4.69713 4.82007 4.7548 4.98256 4.86544 5.10668L6.60144 6.96868L4.7388 8.70468C4.67551 8.76109 4.62413 8.82959 4.58769 8.90614C4.55124 8.98269 4.53045 9.06575 4.52655 9.15044C4.52265 9.23514 4.53572 9.31976 4.56498 9.39933C4.59424 9.47891 4.6391 9.55183 4.69694 9.61382C4.75478 9.67582 4.82442 9.72563 4.90178 9.76033C4.97913 9.79503 5.06265 9.81393 5.14741 9.8159C5.23217 9.81788 5.31647 9.8029 5.39536 9.77184C5.47425 9.74078 5.54614 9.69427 5.6068 9.63504L7.4688 7.89968L9.2048 9.76168C9.26086 9.82614 9.32931 9.87865 9.40609 9.91609C9.48287 9.95353 9.56641 9.97512 9.65171 9.97959C9.73702 9.98406 9.82235 9.97131 9.90262 9.9421C9.98289 9.91288 10.0565 9.86781 10.1189 9.80956C10.1814 9.75131 10.2315 9.68108 10.2663 9.60305C10.3011 9.52502 10.3197 9.44079 10.3213 9.35538C10.3228 9.26997 10.3071 9.18513 10.2751 9.10592C10.2431 9.02671 10.1955 8.95474 10.1352 8.89431L8.3998 7.03232L10.2618 5.29632Z" fill="#8EA5B2"/><path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 7C0.5 3.13409 3.63409 0 7.5 0C11.3659 0 14.5 3.13409 14.5 7C14.5 10.8659 11.3659 14 7.5 14C3.63409 14 0.5 10.8659 0.5 7ZM7.5 12.7273C6.74788 12.7273 6.00313 12.5791 5.30827 12.2913C4.6134 12.0035 3.98203 11.5816 3.45021 11.0498C2.91838 10.518 2.49651 9.8866 2.20869 9.19173C1.92087 8.49687 1.77273 7.75212 1.77273 7C1.77273 6.24788 1.92087 5.50313 2.20869 4.80827C2.49651 4.1134 2.91838 3.48203 3.45021 2.95021C3.98203 2.41838 4.6134 1.99651 5.30827 1.70869C6.00313 1.42087 6.74788 1.27273 7.5 1.27273C9.01897 1.27273 10.4757 1.87613 11.5498 2.95021C12.6239 4.02428 13.2273 5.48103 13.2273 7C13.2273 8.51897 12.6239 9.97572 11.5498 11.0498C10.4757 12.1239 9.01897 12.7273 7.5 12.7273Z" fill="#8EA5B2"/></svg>' + '</div>' + '<div class="times__left-icon select-open--js">' + '<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.39 1.83398H5.61065C3.59665 1.83398 2.33398 3.25998 2.33398 5.27798V10.7233C2.33398 12.7413 3.58998 14.1673 5.61065 14.1673H11.3893C13.41 14.1673 14.6673 12.7413 14.6673 10.7233V5.27798C14.6673 3.25998 13.41 1.83398 11.39 1.83398Z" stroke="#9EB2BD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.7612 9.34584L8.50049 7.99718V5.08984" stroke="#9EB2BD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' + '</div>' + '<div class="times__left-text times__left-text--js select-open--js">time</div>' + '<div class="times__left-select times__select times__select--js">' + '<div class="times__select-option">00:00</div>' + '<div class="times__select-option">00:30</div>' + '<div class="times__select-option">01:00</div>' + '<div class="times__select-option">01:30</div>' + '<div class="times__select-option">02:00</div>' + '<div class="times__select-option">02:30</div>' + '<div class="times__select-option">03:00</div>' + '<div class="times__select-option">03:30</div>' + '<div class="times__select-option">04:00</div>' + '<div class="times__select-option">04:30</div>' + '<div class="times__select-option">05:00</div>' + '<div class="times__select-option">05:30</div>' + '<div class="times__select-option">06:00</div>' + '<div class="times__select-option">06:30</div>' + '<div class="times__select-option">07:00</div>' + '<div class="times__select-option">07:30</div>' + '<div class="times__select-option">08:00</div>' + '<div class="times__select-option">08:30</div>' + '<div class="times__select-option">09:00</div>' + '<div class="times__select-option">09:30</div>' + '<div class="times__select-option">10:00</div>' + '<div class="times__select-option">10:30</div>' + '<div class="times__select-option">11:00</div>' + '<div class="times__select-option">11:30</div>' + '<div class="times__select-option">12:00</div>' + '<div class="times__select-option">12:30</div>' + '<div class="times__select-option">13:00</div>' + '<div class="times__select-option">13:30</div>' + '<div class="times__select-option">14:00</div>' + '<div class="times__select-option">14:30</div>' + '<div class="times__select-option">15:00</div>' + '<div class="times__select-option">15:30</div>' + '<div class="times__select-option">16:00</div>' + '<div class="times__select-option">16:30</div>' + '<div class="times__select-option">17:00</div>' + '<div class="times__select-option">17:30</div>' + '<div class="times__select-option">18:00</div>' + '<div class="times__select-option">18:30</div>' + '<div class="times__select-option">19:00</div>' + '<div class="times__select-option">19:30</div>' + '<div class="times__select-option">20:00</div>' + '<div class="times__select-option">20:30</div>' + '<div class="times__select-option">21:00</div>' + '<div class="times__select-option">21:30</div>' + '<div class="times__select-option">22:00</div>' + '<div class="times__select-option">22:30</div>' + '<div class="times__select-option">23:00</div>' + '<div class="times__select-option">23:30</div>' + '</div>' + '</div>' + '<div class="times__left times__right flex">' + '<div class="times__left-text ">timezone</div>' + '<div class="times__left-text times__left-text--js  select-timezone-open--js">UTC</div>' + '<div class="times__left-select times__select times__select--js ">' + '<div class="times__select-option">UTC</div>' + '<div class="times__select-option">PDT</div>' + '<div class="times__select-option">PST</div>' + '<div class="times__select-option">EDT</div>' + '<div class="times__select-option">EST</div>' + '</div>' + '</div>' + '</div>' + '</div>',
         datepicker = $.fn.datepicker,
         dp = datepicker.Constructor;
 
@@ -25660,12 +25789,47 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
 /*!*********************************!*\
   !*** ./resources/js/visible.js ***!
   \*********************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_visible_submit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/visible/submit */ "./resources/js/components/visible/submit.js");
+/* harmony import */ var _components_visible_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/visible/form */ "./resources/js/components/visible/form.js");
+
+
 window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 __webpack_require__(/*! slick-slider */ "./node_modules/slick-slider/slick/slick.js");
@@ -25707,6 +25871,22 @@ __webpack_require__(/*! ../visible/js/timer */ "./resources/visible/js/timer.js"
 __webpack_require__(/*! ../visible/js/unsubscribed */ "./resources/visible/js/unsubscribed.js");
 
 __webpack_require__(/*! ../visible/js/work-card */ "./resources/visible/js/work-card.js");
+
+window.app = {
+  current_url: location.href,
+  recaptcha_key: '6Lc2WxwbAAAAADIR95hjCOZt4cUsH14Q27rqAsyu',
+  components: [_components_visible_submit__WEBPACK_IMPORTED_MODULE_0__.submit, _components_visible_form__WEBPACK_IMPORTED_MODULE_1__.form]
+};
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+$(document).ready(function () {
+  app.components.forEach(function (i) {
+    return i();
+  });
+});
 })();
 
 /******/ })()

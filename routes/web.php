@@ -3,6 +3,7 @@
 use App\Facades\PageLoader;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Manage;
+use App\Http\Controllers\Visible\Json;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,8 @@ Route::group(
 
         Route::as('resources.')->group(static function() {
             Route::resource('pages', Manage\Resources\PageController::class);
+            Route::resource('listings', Manage\Resources\ListingController::class)->except('show');
+
             Route::resource('users', Manage\Resources\UserController::class)->except('show');
 
             Route::resource('categories', Manage\Resources\CategoryController::class)->except('show');
@@ -42,5 +45,15 @@ Route::group(
     ],
     static function() {
         PageLoader::routes();
+
+        Route::group(
+            [
+                'prefix' => 'json',
+                'as' => 'json.'
+            ],
+            static function() {
+                Route::post('order', Json\SubmitOrderController::class)->name('submit.order');
+            }
+        );
     }
 );

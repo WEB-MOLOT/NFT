@@ -5,6 +5,7 @@ namespace App\Support\PageTemplates;
 use App\Contracts\PageTemplate;
 use App\Support\PageTemplates\Templates\EmptyTemplate;
 use App\Support\PageTemplates\Templates\IndexTemplate;
+use App\Support\PageTemplates\Templates\ListingsTemplate;
 use App\Support\PageTemplates\Templates\SubmitTemplate;
 use Illuminate\Support\Collection;
 
@@ -17,7 +18,8 @@ class Builder
     protected array $templates = [
         EmptyTemplate::class,
         IndexTemplate::class,
-        SubmitTemplate::class
+        SubmitTemplate::class,
+        ListingsTemplate::class
     ];
 
     /**

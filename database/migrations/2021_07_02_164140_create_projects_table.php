@@ -37,23 +37,23 @@ class CreateProjectsTable extends Migration
             $table->string('email', 100)->nullable();
             $table->string('discord', 100)->nullable();
             $table->string('medium', 100)->nullable();
-            $table->string('website', 100)->nullable();
+            $table->string('instagram', 100)->nullable();
+            $table->string('facebook', 100)->nullable();
+            $table->string('twitter', 100);
+            $table->string('website', 100);
             $table->json('images');
             $table->json('detail_content');
-        });
-
-        Schema::create('project_socials', function(Blueprint $table) {
-            $table->id();
-            $table->foreignId('project_id')->index()->references('id')->on('projects')->cascadeOnDelete();
-            $table->unsignedTinyInteger('social_service');
-            $table->string('account');
-            $table->unsignedInteger('followers_count');
-            $table->timestamp('updated_at')->nullable();
         });
 
         Schema::create('category_project', function(Blueprint $table) {
             $table->foreignId('category_id')->references('id')->on('categories')->cascadeOnDelete();
             $table->foreignId('project_id')->references('id')->on('projects')->cascadeOnDelete();
+        });
+
+        Schema::create('project_statistics', function(Blueprint $table) {
+            $table->foreignId('project_id')->index()->references('id')->on('projects')->cascadeOnDelete();
+            $table->unsignedInteger('views');
+            $table->date('date_at');
         });
     }
 }

@@ -32,6 +32,14 @@ return [
     ],
 
     [
+        'name' => 'Listings',
+        'route' => 'resources.listings.index',
+        'aliases' => ['resources.listings.create', 'resources.listings.edit'],
+        'icon' => 'fas fa-dumbbell',
+        'type' => ManageMenu::TYPE_ITEM
+    ],
+
+    [
         'name' => 'NFT',
         'type' => ManageMenu::TYPE_HEADER
     ],

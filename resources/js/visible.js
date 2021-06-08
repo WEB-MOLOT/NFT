@@ -1,3 +1,6 @@
+import {submit} from "./components/visible/submit";
+import {form} from "./components/visible/form";
+
 window.$ = window.jQuery = require('jquery');
 
 require('slick-slider');
@@ -22,3 +25,21 @@ require('../visible/js/select');
 require('../visible/js/timer');
 require('../visible/js/unsubscribed');
 require('../visible/js/work-card');
+
+window.app = {
+    current_url: location.href,
+    recaptcha_key: '6Lc2WxwbAAAAADIR95hjCOZt4cUsH14Q27rqAsyu',
+    components: [
+        submit, form
+    ]
+};
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+$(document).ready(() => {
+    app.components.forEach(i => i());
+});
