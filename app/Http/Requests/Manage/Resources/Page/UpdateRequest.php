@@ -20,6 +20,8 @@ class UpdateRequest extends StoreRequest
         $rules['slug'] = ['required', new Slug, 'max:100', Rule::unique('pages')->whereNot('id', $this->route()->parameter('page')->id)];
         $rules['data'] = ['nullable', 'array'];
 
+        unset($rules['template']);
+
         return $rules;
     }
 }

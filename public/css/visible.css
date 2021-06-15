@@ -6593,3 +6593,25 @@ textarea.field {
 .unsubscribed__icon svg * {
   transition: all 0.3s;
 }
+
+.message-bar {
+  display: none;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+}
+
+.form__captcha {
+  font-size: 0.8rem;
+  color: #5e7c8d;
+}
+.form__captcha > a {
+  color: #5e7c8d;
+}
+.form__captcha > a:hover {
+  text-decoration: underline;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+}

@@ -43,12 +43,15 @@ class PageController extends ResourceController
         ]);
     }
 
-    public function edit(Builder $builder, Page $page): View
+    /**
+     * @param Page $page
+     * @return View
+     */
+    public function edit(Page $page): View
     {
         return view('manage.resources.page.edit', [
             'page' => $page,
-            'template' => $page->getTemplate(),
-            'templates' => $builder->templates()
+            'template' => $page->getTemplate()
         ]);
     }
 

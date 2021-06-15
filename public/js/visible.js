@@ -5660,28 +5660,35 @@ function form() {
 
 function onSubmitAnyFormEvent(e) {
   e.preventDefault();
-  var $this = $(e.currentTarget);
-  grecaptcha.ready(function () {
-    grecaptcha.execute(window.app.recaptcha_key, {
-      action: 'submit'
-    }).then(function (token) {
-      var data = {};
-      $this.serializeArray().forEach(function (i) {
-        data[i.name] = i.value;
-      });
-      data.recaptcha_token = token; //$this.find('[type="submit]').prop('disabled', true);
-
-      $.ajax({
-        type: $this.attr('method'),
-        url: $this.attr('action'),
-        data: data,
-        dataType: 'json',
-        success: function success(response) {},
-        error: function error(response) {}
-      });
-    })["catch"](function (q) {
-      console.log(q);
+  grecaptcha.execute(window.app.recaptcha_key, {
+    action: 'submit'
+  }).then(function (token) {
+    var $this = $(e.currentTarget),
+        $bar = $('.message-bar'),
+        data = {};
+    $this.serializeArray().forEach(function (i) {
+      data[i.name] = i.value;
     });
+    data.recaptcha_token = token;
+    $bar.css('display', 'none');
+    $this.find('[type="submit]').prop('disabled', true);
+    $.ajax({
+      type: $this.attr('method'),
+      url: $this.attr('action'),
+      data: data,
+      dataType: 'json',
+      success: function success(response) {
+        $bar.css('display', 'flex').find('.unsubscribed__caption').text(response.message);
+        grecaptcha.reset(window.app.recaptcha_key);
+      },
+      error: function error(response) {
+        console.log(response);
+        $bar.css('display', 'flex').find('.unsubscribed__caption').text(response.responseJSON.message);
+        grecaptcha.reset(window.app.recaptcha_key);
+      }
+    });
+  })["catch"](function () {
+    grecaptcha.reset(window.app.recaptcha_key);
   });
 }
 

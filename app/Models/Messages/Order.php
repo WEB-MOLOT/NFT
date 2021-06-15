@@ -3,6 +3,7 @@
 namespace App\Models\Messages;
 
 use App\Models\User;
+use App\Traits\Model\IpTwoConvert;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,6 +23,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Order extends Model
 {
+    use IpTwoConvert;
+
     public $timestamps = false;
 
     protected $fillable = [
@@ -38,24 +41,8 @@ class Order extends Model
      */
     protected static function boot(): void
     {
-        static::creating(static fn(Order $order) => $order->setAttribute('created_at', Carbon::now()));
-    }
-
-    /**
-     * @param string $ip
-     */
-    public function setIpAttribute(string $ip): void
-    {
-        $this->attributes['ip'] = ip2long($ip);
-    }
-
-    /**
-     * @param int $value
-     * @return string
-     */
-    public function getIpAttribute(int $value): string
-    {
-        return long2ip($value);
+        static::creating(static fn(Order $order): Order => $order->setAttribute('created_at', Carbon::now()));
+        parent::boot();
     }
 
     /**

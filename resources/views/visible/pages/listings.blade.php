@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="form__promotion-options">
                                     @foreach($listings as $listing)
-                                        <div class="form__promotion-options__item" data-id="{{ $listing->id }}">
+                                        <div class="form__promotion-options__item" data-value="{{ $listing->id }}">
                                             <div class="form__promotion-options__caption">{{ $listing->name }}</div>
                                         </div>
                                     @endforeach

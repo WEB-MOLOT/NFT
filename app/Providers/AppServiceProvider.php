@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Http\ViewComposers\NavigationComposer;
 use App\Http\ViewComposers\Visible\CategoriesComposer;
 use App\Http\ViewComposers\Visible\ListingsComposer;
+use App\Http\ViewComposers\Visible\MessageSubjectsComposer;
+use App\Http\ViewComposers\Visible\UserComposer;
 use App\Support\Navigation\Navigation;
 use App\Support\PageTemplates\PageLoader;
 use App\Support\ResourceRegistrar;
@@ -21,8 +23,10 @@ class AppServiceProvider extends ServiceProvider
 {
     protected array $viewComposers = [
         NavigationComposer::class => ['layouts.*', 'visible.particles.breadcrumbs'],
-        CategoriesComposer::class => ['visible.pages.submit'],
-        ListingsComposer::class => 'visible.pages.listings'
+        CategoriesComposer::class => ['visible.pages.submit', 'visible.pages.index'],
+        ListingsComposer::class => 'visible.pages.listings',
+        UserComposer::class => ['visible.particles.layout.user', 'visible.personal'],
+        MessageSubjectsComposer::class => 'visible.pages.contacts'
     ];
 
     /**

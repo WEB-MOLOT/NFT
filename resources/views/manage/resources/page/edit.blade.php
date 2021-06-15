@@ -29,10 +29,8 @@
 
                 <div class="form-group">
                     <label>Template</label>
-                    <select class="form-control" name="template">
-                        @foreach($templates as $i)
-                            <option value="{{ $i->getId() }}" {{ $i->getId() == $page->template ? 'selected' : '' }}>{{ $i->getName() }}</option>
-                        @endforeach
+                    <select class="form-control" name="template" disabled>
+                        <option>{{ $template->getName() }}</option>
                     </select>
                 </div>
 

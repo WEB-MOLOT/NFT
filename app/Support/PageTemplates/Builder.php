@@ -3,6 +3,7 @@
 namespace App\Support\PageTemplates;
 
 use App\Contracts\PageTemplate;
+use App\Support\PageTemplates\Templates\ContactsTemplate;
 use App\Support\PageTemplates\Templates\EmptyTemplate;
 use App\Support\PageTemplates\Templates\IndexTemplate;
 use App\Support\PageTemplates\Templates\ListingsTemplate;
@@ -19,7 +20,8 @@ class Builder
         EmptyTemplate::class,
         IndexTemplate::class,
         SubmitTemplate::class,
-        ListingsTemplate::class
+        ListingsTemplate::class,
+        ContactsTemplate::class
     ];
 
     /**

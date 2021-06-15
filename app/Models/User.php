@@ -2,14 +2,32 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
+/**
+ * Class User
+ * @package App\Models
+ * @property int $id
+ * @property string $name
+ * @property int $group
+ * @property string $email
+ * @property int $telegram_id
+ * @property int $google_id
+ * @property int $twitter_id
+ * @property string $password
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ */
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use Notifiable;
+
+    public const GROUP_ADMIN = 1;
+    public const GROUP_MODERATOR = 2;
+    public const GROUP_USER = 9;
 
     /**
      * The attributes that are mass assignable.
@@ -17,9 +35,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'name', 'group', 'email', 'telegram_id', 'google_id', 'twitter_id', 'password'
     ];
 
     /**
@@ -28,16 +44,28 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password', 'remember_token',
+    ];
+
+    protected $attributes = [
+        'group' => self::GROUP_ADMIN
     ];
 
     /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
+     * @return string
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function getLittleName(): string
+    {
+        return (string) Str::of($this->name)->limit(20)->title();
+    }
+
+    /**
+     * @return int[]
+     */
+    public static function groups(): array
+    {
+        return [
+            self::GROUP_USER, self::GROUP_MODERATOR, self::GROUP_ADMIN
+        ];
+    }
 }

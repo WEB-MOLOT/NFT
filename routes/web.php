@@ -1,9 +1,12 @@
 <?php
 
 use App\Facades\PageLoader;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\Social;
 use App\Http\Controllers\Manage;
 use App\Http\Controllers\Visible\Json;
+use App\Http\Controllers\Visible\Personal;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +20,22 @@ use App\Http\Controllers\Visible\Json;
 */
 
 Auth::routes();
+Route::get('logout', [LoginController::class, 'logout'])->middleware('auth');
+
+Route::group(
+    [
+        'as' => 'login.social.',
+        'prefix' => 'login/social',
+        'middleware' => ['guest', 'throttle:20,1']
+    ],
+    static function() {
+        Route::get('google/redirect', [Social\GoogleController::class, 'redirect'])->name('google.redirect');
+        Route::get('google', [Social\GoogleController::class, 'handle'])->name('google.handle');
+
+        Route::get('telegram/redirect', [Social\TelegramController::class, 'redirect'])->name('telegram.redirect');
+        Route::get('telegram', [Social\TelegramController::class, 'handle'])->name('telegram.handle');
+    }
+);
 
 Route::group(
     [
@@ -48,11 +67,23 @@ Route::group(
 
         Route::group(
             [
+                'prefix' => 'personal',
+                'as' => 'personal.',
+                'middleware' => 'auth'
+            ],
+            static function() {
+                Route::get('', Personal\IndexController::class)->name('index');
+            }
+        );
+
+        Route::group(
+            [
                 'prefix' => 'json',
                 'as' => 'json.'
             ],
             static function() {
                 Route::post('order', Json\SubmitOrderController::class)->name('submit.order');
+                Route::post('message', Json\SubmitMessageController::class)->name('submit.message');
             }
         );
     }
