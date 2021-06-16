@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Visible\Json\SubmitProjectRequest;
 use App\Services\ProjectService;
 use App\Support\JsonResponse;
+use Throwable;
 
 /**
  * Class SubmitProjectController
@@ -19,7 +20,7 @@ class SubmitProjectController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('google_recaptcha');
+        //$this->middleware('google_recaptcha');
     }
 
     /**
@@ -37,7 +38,10 @@ class SubmitProjectController extends Controller
         catch(ServiceException $exception) {
             return JsonResponse::error($exception->getMessage(), $exception->getErrors());
         }
+        catch(Throwable) {
+            return JsonResponse::error('Undefined error. Try submit form again.');
+        }
 
-        return JsonResponse::success();
+        return JsonResponse::success('Project successfully submitted.');
     }
 }

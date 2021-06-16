@@ -52,6 +52,12 @@ body.lock {
 	overflow: hidden;
 	height: 100vh;
 }
+html,
+body {
+	padding: 0;
+	margin: 0;
+	width: 100vw;
+}
 
 ul,
 ol {

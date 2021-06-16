@@ -59,4 +59,16 @@ return [
         'icon' => 'fas fa-project-diagram',
         'type' => ManageMenu::TYPE_ITEM
     ],
+
+    [
+        'name' => 'System',
+        'type' => ManageMenu::TYPE_HEADER
+    ],
+
+    [
+        'name' => 'Settings',
+        'route' => 'options.index',
+        'icon' => 'fas fa-sliders-h',
+        'type' => ManageMenu::TYPE_ITEM
+    ],
 ];

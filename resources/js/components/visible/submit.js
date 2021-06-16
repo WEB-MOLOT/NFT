@@ -17,14 +17,18 @@ export function submit() {
 function onSubmitFormEvent(e) {
     e.preventDefault();
 
-    let data = new FormData;
+    let data = new FormData,
+        $bar = $('.message-bar');
 
-    $form.find('input[type="text"], textarea').each((k, i) => {
+    $bar.css('display', 'none');
+    $form.find('[type="submit]').prop('disabled', true);
+
+    $form.find('input[type="text"], textarea, input[type="radio"]:checked, input[type="hidden"]').each((k, i) => {
         data.append(i.name, i.value);
     });
 
-    $form.find('.filter__category-items > .active').forEach((k, i) => {
-        data.append('categories', i.dataset.id);
+    $form.find('.filter__category-items > .active').each((k, i) => {
+        data.append('categories[]', i.dataset.id);
     });
 
     $form.find('input[type="file"]').each((k, i) => {
@@ -42,13 +46,15 @@ function onSubmitFormEvent(e) {
         contentType: false,
         processData: false,
         success: response => {
-
+            $bar.css('display', 'flex').find('.unsubscribed__caption').text(response.message);
         },
         error: response => {
             let json = response.responseJSON || {};
 
+            $bar.css('display', 'flex').find('.unsubscribed__caption').text(response.responseJSON.message);
+
             if(typeof json.errors !== 'undefined') {
-                json.errors.forEach((i, k) => {
+                json.errors.each((k, i) => {
                     let $input = $form.find(`[name="${k}"]`);
 
                     if($input.length) {

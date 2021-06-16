@@ -2030,11 +2030,11 @@
                 '<div class="times__left-text ">timezone</div>' +
                 '<div class="times__left-text times__left-text--js  select-timezone-open--js">UTC</div>' +
                 '<div class="times__left-select times__select times__select--js ">' +
-                    '<div class="times__select-option">UTC</div>' +
-                    '<div class="times__select-option">PDT</div>' +
-                    '<div class="times__select-option">PST</div>' +
-                    '<div class="times__select-option">EDT</div>' +
-                    '<div class="times__select-option">EST</div>' +
+                    '<div class="times__select-option timezone">UTC</div>' +
+                    '<div class="times__select-option timezone">PDT</div>' +
+                    '<div class="times__select-option timezone">PST</div>' +
+                    '<div class="times__select-option timezone">EDT</div>' +
+                    '<div class="times__select-option timezone">EST</div>' +
                 '</div>' +
             '</div>' +
         '</div>' +

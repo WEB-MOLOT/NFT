@@ -63,7 +63,7 @@
                             <div class="form__checkboxs flex">
                                 @foreach($message_subjects as $subject)
                                     <label class="form__checkbox">
-                                        <input type="checkbox" value="checkbox" name="subject" {{ $loop->first ? 'checked' : '' }}>
+                                        <input type="radio" value="checkbox" name="subject" {{ $loop->first ? 'checked' : '' }}>
                                         <div class="form__checkbox-icon flex-center">
                                             <img src="/img/contacts/check.svg" alt="">
                                         </div>

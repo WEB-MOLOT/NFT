@@ -2,11 +2,16 @@
 
 namespace App\Models;
 
+use App\Traits\Model\Actions;
+use App\Traits\Model\FormattedJsonDates;
+use App\Traits\Model\ProjectDates;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
+use ReflectionClass;
 
 /**
  * Class Project
@@ -22,7 +27,9 @@ use Illuminate\Support\Str;
  * @property int $available_count
  * @property string $content
  * @property Carbon $started_at
+ * @property int $started_at_timezone
  * @property Carbon $ended_at
+ * @property int $ended_at_timezone
  * @property int $user_id
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -32,6 +39,8 @@ use Illuminate\Support\Str;
  */
 class Project extends Model
 {
+    use ProjectDates, Actions, FormattedJsonDates;
+
     public const STATUS_CREATED = 1;
     public const STATUS_UPCOMING = 2;
     public const STATUS_ACTIVE = 3;
@@ -45,30 +54,42 @@ class Project extends Model
 
     protected $fillable = [
         'status', 'is_verified', 'name', 'logo', 'rating', 'currency', 'min_price', 'max_price',
-        'available_count', 'content', 'started_at', 'ended_at', 'user_id'
+        'available_count', 'content', 'started_at', 'started_at_timezone', 'ended_at', 'ended_at_timezone', 'user_id'
     ];
 
     protected $casts = [
-        'is_verified' => 'boolean',
-        'started_at' => 'datetime',
-        'ended_at' => 'datetime'
+        'is_verified' => 'boolean'
+    ];
+
+    protected $appends = [
+        'currency_name'
     ];
 
     /**
-     * @param int $value
-     * @return float
+     * @return array
      */
-    public function getRatingAttribute(int $value): float
+    public function getActionsAttribute(): array
     {
-        return floatval($value / 10);
+        return [
+            'edit' => route('manage.resources.projects.edit', $this)
+        ];
     }
 
     /**
-     * @param float $value
+     * @param int|null $value
+     * @return float|null
      */
-    public function setRatingAttribute(float $value): void
+    public function getRatingAttribute(?int $value): ?float
     {
-        $this->attributes['rating'] = $value * self::RATING_FACTOR;
+        return $value !== null ? floatval($value / 10) : null;
+    }
+
+    /**
+     * @param float|null $value
+     */
+    public function setRatingAttribute(?float $value): void
+    {
+        $this->attributes['rating'] = $value !== null ? $value * self::RATING_FACTOR : null;
     }
 
     /**
@@ -77,6 +98,30 @@ class Project extends Model
     public function getSlugAttribute(): string
     {
         return Str::slug($this->name);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCurrencyNameAttribute(): ?string
+    {
+        $reflection = new ReflectionClass($this);
+
+        foreach($reflection->getConstants() as $name => $value) {
+            if(Str::is('CURRENCY_*', $name) && $value == $this->currency) {
+                return Str::after($name, 'CURRENCY_');
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function details(): HasOne
+    {
+        return $this->hasOne(ProjectDetail::class);
     }
 
     /**

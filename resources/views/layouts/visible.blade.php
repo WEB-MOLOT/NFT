@@ -28,7 +28,7 @@
         <div class="wrapper ">
             <div class="header__wrap flex">
                 <div class="header__first">
-                    <a href="#" class="logo flex">
+                    <a href="/" class="logo flex">
                         <div class="logo__icon img-contain">
                             <img src="/img/icons/logo-icon.svg" alt="">
                         </div>
@@ -87,19 +87,19 @@
                     <div class="social social_hidden">
                         <a href="#" class="social__link flex">
                             <div class="social__icon">
-                                <img src="img/icons/twitter.svg" alt="" width="100%" height="100%">
+                                <img src="/img/icons/twitter.svg" alt="" width="100%" height="100%">
                             </div>
                             <div class="social__caption">Twitter</div>
                         </a>
                         <a href="#" class="social__link flex">
                             <div class="social__icon">
-                                <img src="img/icons/telegram.svg" alt="" width="100%" height="100%">
+                                <img src="/img/icons/telegram.svg" alt="" width="100%" height="100%">
                             </div>
                             <div class="social__caption">Telegram News (ENG) </div>
                         </a>
                         <a href="#" class="social__link flex">
                             <div class="social__icon">
-                                <img src="img/icons/telegram.svg" alt="" width="100%" height="100%">
+                                <img src="/img/icons/telegram.svg" alt="" width="100%" height="100%">
                             </div>
                             <div class="social__caption">Telegram Chat (ENG)</div>
                         </a>
@@ -127,13 +127,13 @@
                                 <ul>
                                     <li>
                                         <a href="#">
-                                            <img src="img/icons/avatar-project.svg" alt="">
+                                            <img src="/img/icons/avatar-project.svg" alt="">
                                             <span>Name project</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img src="img/icons/avatar-project.svg" alt="">
+                                            <img src="/img/icons/avatar-project.svg" alt="">
                                             <span>Name project</span>
                                         </a>
                                     </li>
@@ -144,7 +144,7 @@
                                 <ul>
                                     <li>
                                         <a href="#">
-                                            <img src="img/icons/avatar-project.svg" alt="">
+                                            <img src="/img/icons/avatar-project.svg" alt="">
                                             <span>Name project</span>
                                         </a>
                                     </li>
@@ -173,7 +173,7 @@
                         @endauth
                     </div>
                 </div>
-                <a href="#" class="header__btn flex">
+                <a href="{{ route('visible.pages.submit') }}" class="header__btn flex">
                     <span>submit nft</span>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0)">
@@ -245,14 +245,14 @@
                     <div class="project__left-top flex">
                         <div class="active-item">Active</div>
                         <div class="star star_good flex">
-                            <img src="img/catalog/star.svg" alt="">
+                            <img src="/img/catalog/star.svg" alt="">
                             <span>8.0</span>
                         </div>
                         <div class="category category_amber">collectible</div>
                     </div>
                     <div class="project__profile flex">
                         <div class="project__avatar img-cover">
-                            <img src="img/project/avatar.jpg" alt="">
+                            <img src="/img/project/avatar.jpg" alt="">
                         </div>
                         <div class="project__profile-box">
                             <div class="project__profile-caption">Start date</div>
@@ -304,29 +304,29 @@
                             <div class="social-item__coll">
                                 <a href="#" class="social-item__link flex">
                                     <div class="social-item__icon img-contain">
-                                        <img src="img/project/social/mail.svg" alt="">
-                                        <img src="img/project/social/mail-hover.svg" alt="">
+                                        <img src="/img/project/social/mail.svg" alt="">
+                                        <img src="/img/project/social/mail-hover.svg" alt="">
                                     </div>
                                     <div class="social-item__name">Email</div>
                                 </a>
                                 <a href="#" class="social-item__link flex">
                                     <div class="social-item__icon img-contain">
-                                        <img src="img/project/social/discord.svg" alt="">
-                                        <img src="img/project/social/discord-hover.svg" alt="">
+                                        <img src="/img/project/social/discord.svg" alt="">
+                                        <img src="/img/project/social/discord-hover.svg" alt="">
                                     </div>
                                     <div class="social-item__name">Discord </div>
                                 </a>
                                 <a href="#" class="social-item__link flex">
                                     <div class="social-item__icon img-contain">
-                                        <img src="img/project/social/medium.svg" alt="">
-                                        <img src="img/project/social/medium-hover.svg" alt="">
+                                        <img src="/img/project/social/medium.svg" alt="">
+                                        <img src="/img/project/social/medium-hover.svg" alt="">
                                     </div>
                                     <div class="social-item__name">Medium</div>
                                 </a>
                                 <a href="#" class="social-item__link flex">
                                     <div class="social-item__icon img-contain">
-                                        <img src="img/project/social/site.svg" alt="">
-                                        <img src="img/project/social/site-hover.svg" alt="">
+                                        <img src="/img/project/social/site.svg" alt="">
+                                        <img src="/img/project/social/site-hover.svg" alt="">
                                     </div>
                                     <div class="social-item__name">site.ru</div>
                                 </a>
@@ -334,29 +334,29 @@
                             <div class="social-item__coll">
                                 <a href="#" class="social-item__link flex">
                                     <div class="social-item__icon img-contain">
-                                        <img src="img/project/social/telegram.svg" alt="">
-                                        <img src="img/project/social/telegram-hover.svg" alt="">
+                                        <img src="/img/project/social/telegram.svg" alt="">
+                                        <img src="/img/project/social/telegram-hover.svg" alt="">
                                     </div>
                                     <div class="social-item__name">Telegram <small>(142k followers)</small></div>
                                 </a>
                                 <a href="#" class="social-item__link flex">
                                     <div class="social-item__icon img-contain">
-                                        <img src="img/project/social/instagram.svg" alt="">
-                                        <img src="img/project/social/instagram-hover.svg" alt="">
+                                        <img src="/img/project/social/instagram.svg" alt="">
+                                        <img src="/img/project/social/instagram-hover.svg" alt="">
                                     </div>
                                     <div class="social-item__name">Instagram <small>(142k followers)</small></div>
                                 </a>
                                 <a href="#" class="social-item__link flex">
                                     <div class="social-item__icon img-contain">
-                                        <img src="img/project/social/facebook.svg" alt="">
-                                        <img src="img/project/social/facebook-hover.svg" alt="">
+                                        <img src="/img/project/social/facebook.svg" alt="">
+                                        <img src="/img/project/social/facebook-hover.svg" alt="">
                                     </div>
                                     <div class="social-item__name">Facebook <small>(142k followers)</small></div>
                                 </a>
                                 <a href="#" class="social-item__link flex">
                                     <div class="social-item__icon img-contain">
-                                        <img src="img/project/social/twitter.svg" alt="">
-                                        <img src="img/project/social/twitter-hover.svg" alt="">
+                                        <img src="/img/project/social/twitter.svg" alt="">
+                                        <img src="/img/project/social/twitter-hover.svg" alt="">
                                     </div>
                                     <div class="social-item__name">Twitter <small>(142k followers)</small></div>
                                 </a>
@@ -381,22 +381,22 @@
                         <div class="project__slick">
                             <div class="project__slide swiper-slide">
                                 <a href="img/project/img-1.jpg" class="project__slide-box img-cover" data-fancybox="project">
-                                    <img src="img/project/img-1.jpg" alt="">
+                                    <img src="/img/project/img-1.jpg" alt="">
                                 </a>
                             </div>
                             <div class="project__slide swiper-slide">
                                 <a href="img/project/img-2.jpg" class="project__slide-box img-cover" data-fancybox="project">
-                                    <img src="img/project/img-2.jpg" alt="">
+                                    <img src="/img/project/img-2.jpg" alt="">
                                 </a>
                             </div>
                             <div class="project__slide swiper-slide">
                                 <a href="img/project/img-3.jpg" class="project__slide-box img-cover" data-fancybox="project">
-                                    <img src="img/project/img-3.jpg" alt="">
+                                    <img src="/img/project/img-3.jpg" alt="">
                                 </a>
                             </div>
                             <div class="project__slide swiper-slide">
                                 <a href="img/project/img-2.jpg" class="project__slide-box img-cover" data-fancybox="project">
-                                    <img src="img/project/img-2.jpg" alt="">
+                                    <img src="/img/project/img-2.jpg" alt="">
                                 </a>
                             </div>
                         </div>
@@ -435,7 +435,7 @@
                                 <div class="project__coll-caption">BlockChain:</div>
                                 <a href="#" class="project__coll-info flex">
                                     <div class="project__coll-icon">
-                                        <img src="img/project/icon-1.svg" alt="">
+                                        <img src="/img/project/icon-1.svg" alt="">
                                     </div>
                                     <div class="project__coll-name">Ethereum (ETH)</div>
                                 </a>
@@ -444,7 +444,7 @@
                                 <div class="project__coll-caption">Platform:</div>
                                 <a href="#" class="project__coll-info flex">
                                     <div class="project__coll-icon">
-                                        <img src="img/project/icon-2.svg" alt="">
+                                        <img src="/img/project/icon-2.svg" alt="">
                                     </div>
                                     <div class="project__coll-name">Dmarket</div>
                                 </a>
@@ -554,7 +554,7 @@
                         <label class="modal__checkbox">
                             <input type="checkbox" value="checkbox">
                             <div class="modal__checkbox-icon flex-center">
-                                <img src="img/icons/modal-check.svg" alt="">
+                                <img src="/img/icons/modal-check.svg" alt="">
                             </div>
                             <div class="modal__checkbox-caption">stay login</div>
                         </label>
@@ -648,7 +648,7 @@
             <div class="footer__wrap flex">
                 <a href="#" class="logo logo_white flex">
                     <div class="logo__icon img-contain">
-                        <img src="img/icons/logo-white.svg" alt="">
+                        <img src="/img/icons/logo-white.svg" alt="">
                     </div>
                     <div class="logo__caption">NFT projects</div>
                 </a>
@@ -693,19 +693,19 @@
                 <div class="social">
                     <a href="#" class="social__link flex">
                         <div class="social__icon">
-                            <img src="img/icons/twitter.svg" alt="" width="100%" height="100%">
+                            <img src="/img/icons/twitter.svg" alt="" width="100%" height="100%">
                         </div>
                         <div class="social__caption">Twitter</div>
                     </a>
                     <a href="#" class="social__link flex">
                         <div class="social__icon">
-                            <img src="img/icons/telegram.svg" alt="" width="100%" height="100%">
+                            <img src="/img/icons/telegram.svg" alt="" width="100%" height="100%">
                         </div>
                         <div class="social__caption">Telegram News (ENG) </div>
                     </a>
                     <a href="#" class="social__link flex">
                         <div class="social__icon">
-                            <img src="img/icons/telegram.svg" alt="" width="100%" height="100%">
+                            <img src="/img/icons/telegram.svg" alt="" width="100%" height="100%">
                         </div>
                         <div class="social__caption">Telegram Chat (ENG)</div>
                     </a>
@@ -719,7 +719,7 @@
             </div>
             <div class="footer__copiright flex">
                 <div class="footer__copiright-icon img-contain">
-                    <img src="img/icons/copyright.svg" alt="">
+                    <img src="/img/icons/copyright.svg" alt="">
                 </div>
                 <div class="footer__copiright-caption">2021 All rights reserved</div>
             </div>

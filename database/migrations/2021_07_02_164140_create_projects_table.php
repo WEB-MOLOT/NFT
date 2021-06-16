@@ -19,14 +19,16 @@ class CreateProjectsTable extends Migration
             $table->boolean('is_verified');
             $table->string('name', 100);
             $table->string('logo');
-            $table->unsignedSmallInteger('rating');
-            $table->unsignedTinyInteger('currency');
+            $table->unsignedSmallInteger('rating')->nullable();
+            $table->unsignedTinyInteger('currency')->nullable();
             $table->unsignedInteger('min_price')->nullable();
             $table->unsignedInteger('max_price')->nullable();
             $table->unsignedInteger('available_count')->nullable();
             $table->text('content');
             $table->timestamp('started_at')->nullable();
+            $table->unsignedTinyInteger('started_at_timezone')->nullable();
             $table->timestamp('ended_at')->nullable();
+            $table->unsignedTinyInteger('ended_at_timezone')->nullable();
             $table->foreignId('user_id')->nullable()->references('id')->on('users');
             $table->timestamps();
         });

@@ -28,3 +28,20 @@
 .grecaptcha-badge {
     visibility: hidden;
 }
+
+.menu__item {
+    background: linear-gradient(243.55deg, var(--bg-color) -0.08%, var(--bg-color) 100.12%);
+}
+
+.filter__category-item {
+    &.active,
+    &:hover {
+        color: var(--color);
+        border-color: var(--color);
+        background-color: unset;
+    }
+
+    svg * {
+        fill: var(--color)!important;
+    }
+}

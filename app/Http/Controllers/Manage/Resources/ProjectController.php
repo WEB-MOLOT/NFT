@@ -32,8 +32,9 @@ class ProjectController extends ResourceController
      */
     public function data(Filter $filter): JsonResponse
     {
-        $filter->request()->setOrderColumns(...$this->getDataTableColumns());
+        $filter->request()->setOrderColumns('name', 'rating', 'created_at', 'updated_at');
         $filter->setBuilder(Project::class)->order();
+        $filter->builder()->with('details', 'user');
 
         return $filter->toJsonResponse();
     }
@@ -44,7 +45,7 @@ class ProjectController extends ResourceController
     protected function getDataTableColumns(): array
     {
         return [
-            'name'
+            'name', 'status', 'rating', 'price', 'user_id', 'created_at', 'updated_at'
         ];
     }
 }

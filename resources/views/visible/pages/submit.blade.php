@@ -1,15 +1,5 @@
 @extends('layouts.visible')
 
-@push('header')
-    <style>
-        @foreach($categories as $category)
-            .filter__category-item_{{ $category->id  }}.active { color: {{ $category->color_code }}!important; border-color: {{ $category->color_code }}!important; background-color: unset!important; }
-            .filter__category-item_{{ $category->id  }}:hover { color: {{ $category->color_code }}!important; border-color: {{ $category->color_code }}!important; }
-            .filter__category-item_{{ $category->id  }} svg * { fill: {{ $category->color_code }}!important; }
-        @endforeach
-    </style>
-@endpush
-
 @section('content')
     @include('visible.particles.breadcrumbs')
 
@@ -21,15 +11,15 @@
                     <div class="submit__subtitle bottom">{!! $page->data['text'] ?? '' !!}</div>
                 </div>
                 <div class="submit__right">
-                    <form method="post" action="#" class="contacts__form form">
+                    <form method="post" action="{{ route('visible.json.submit.project') }}" class="contacts__form form" data-submit-form>
                         <label class="form__label bottom">
-                            <input type="text" name="text" class="form__field field " placeholder="The name of the project">
+                            <input type="text" name="name" class="form__field field " placeholder="The name of the project">
                         </label>
                         <label class="form__label bottom">
                             <div class="file flex">
                                 <div class="file__box flex">
                                     <div class="file__link">Select a file</div>
-                                    <input type="file" class="file__value" name="calc_image" accept="image/png, image/jpeg" style="display:none;" multiple>
+                                    <input type="file" class="file__value" name="logo" accept="image/png, image/jpeg" style="display:none;" multiple>
                                 </div>
                                 <div class="file__caption">Logotype (jpeg, png)</div>
                             </div>
@@ -38,7 +28,7 @@
                             <div class="file flex">
                                 <div class="file__box flex">
                                     <div class="file__link">Select a file</div>
-                                    <input type="file" class="file__value" name="calc_image" accept="image/png, image/jpeg" style="display:none;" multiple>
+                                    <input type="file" class="file__value" name="images[]" accept="image/png, image/jpeg" style="display:none;" multiple>
                                 </div>
                                 <div class="file__caption">Project illustrations</div>
                             </div>
@@ -48,7 +38,7 @@
                                 <div class="form__caption">Project category</div>
                                 <div class="filter__category-items flex">
                                     @foreach($categories as $category)
-                                        <div class="filter__category-item filter__category-item_{{ $category->id }} filter__category-item_violet" data-id="{{ $category->id }}">
+                                        <div class="filter__category-item filter__category-item_violet" data-id="{{ $category->id }}" style="--color:{{ $category->color_code }}">
                                             <div class="filter__category-caption">{{ $category->name }}</div>
                                             <div class="filter__category-icon">
                                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,14 +59,14 @@
                             <div class="form__info flex">
                                 <div class="form__info-value flex">
                                     <div class="form__radio form__radio_1">
-                                        <input type="radio" name="value" value="active" data-change="1">
+                                        <input type="radio" name="status" value="2" data-change="1">
                                         <div class="form__radio-caption">Active</div>
                                     </div>
                                     <div class="form__info-icon center flex-center">
                                         <span></span>
                                     </div>
                                     <div class="form__radio form__radio_2">
-                                        <input type="radio" name="value" value="upcoming" data-change="2">
+                                        <input type="radio" name="status" value="3" data-change="2">
                                         <div class="form__radio-caption">Upcoming</div>
                                     </div>
                                 </div>
@@ -100,7 +90,7 @@
                                                   fill="#8EA5B2" />
                                         </svg>
                                     </div>
-                                    <input type="text" name="date-from" class="form__field field date-from" placeholder="Start date" data-calendar-id="1" readonly>
+                                    <input type="text" name="started_at" class="form__field field date-from" placeholder="Start date" data-calendar-id="1" readonly>
                                 </div>
                                 <div class="form__date">
                                     <div class="form__date-icon svg-contain">
@@ -118,12 +108,12 @@
                                                   fill="#8EA5B2" />
                                         </svg>
                                     </div>
-                                    <input type="text" name="date-to" class="form__field field date-to" placeholder="Finish date" data-calendar-id="2" readonly>
+                                    <input type="text" name="ended_at" class="form__field field date-to" placeholder="Finish date" data-calendar-id="2" readonly>
                                 </div>
                             </div>
                         </label>
                         <label class="form__label bottom">
-                            <textarea class="form__field field" placeholder="Project description"></textarea>
+                            <textarea class="form__field field" placeholder="Project description" name="content"></textarea>
                         </label>
                         <div class="form__label form__label_older bottom">
                             <div class="form__flex flex">
@@ -143,41 +133,41 @@
                                             </div>
                                         </div>
                                         <div class="form__currency-options">
-                                            <div class="form__currency-options__item">
+                                            <div class="form__currency-options__item" data-value="1">
                                                 <div class="form__currency-caption">Currency</div>
                                                 <div class="form__currency-options__value">USD</div>
                                             </div>
-                                            <div class="form__currency-options__item">
+                                            <div class="form__currency-options__item" data-value="2">
                                                 <div class="form__currency-caption">Currency</div>
                                                 <div class="form__currency-options__value">ETH</div>
                                             </div>
-                                            <div class="form__currency-options__item">
+                                            <div class="form__currency-options__item" data-value="3">
                                                 <div class="form__currency-caption">Currency</div>
                                                 <div class="form__currency-options__value">BNB</div>
                                             </div>
                                         </div>
-                                        <input type="hidden" name="type" value="USD">
+                                        <input type="hidden" name="currency" value="1">
                                     </div>
                                 </div>
                                 <div class="form__flex-small">
-                                    <input type="text" name="text" class="form__field field" placeholder="Min price">
+                                    <input type="text" name="min_price" class="form__field field" placeholder="Min price">
                                 </div>
                                 <div class="form__flex-small">
-                                    <input type="text" name="text" class="form__field field" placeholder="Max price">
+                                    <input type="text" name="max_price" class="form__field field" placeholder="Max price">
                                 </div>
                                 <div class="form__flex-box">
-                                    <input type="text" name="text" class="form__field field" placeholder="Available NFTs for sale">
+                                    <input type="text" name="available_count" class="form__field field" placeholder="Available NFTs for sale">
                                 </div>
                             </div>
                         </div>
                         <label class="form__label bottom">
-                            <input type="text" name="text" class="form__field field" placeholder="To the project site*">
+                            <input type="text" name="website" class="form__field field" placeholder="To the project site*">
                         </label>
                         <label class="form__label bottom">
-                            <input type="text" name="text" class="form__field field" placeholder="Email*">
+                            <input type="text" name="email" class="form__field field" placeholder="Email*">
                         </label>
                         <label class="form__label bottom">
-                            <input type="text" name="text" class="form__field field" placeholder="Twitter*">
+                            <input type="text" name="twitter" class="form__field field" placeholder="Twitter*">
                         </label>
                         <label class="form__label form__label_social form__label_older bottom">
                             <div class="select-social">
@@ -193,31 +183,31 @@
                                 <div class="select-social__options">
                                     <div class="select-social__options-value flex" data-value="Telegram *" data-name="telegram">
                                         <div class="select-social__options-icon">
-                                            <img src="img/select-icons/telegram.svg" alt="">
+                                            <img src="/img/select-icons/telegram.svg" alt="">
                                         </div>
                                         <div class="select-social__options-caption">Telegram</div>
                                     </div>
                                     <div class="select-social__options-value flex" data-value="Instagram *" data-name="instagram">
                                         <div class="select-social__options-icon">
-                                            <img src="img/select-icons/instagram.svg" alt="">
+                                            <img src="/img/select-icons/instagram.svg" alt="">
                                         </div>
                                         <div class="select-social__options-caption">Instagram</div>
                                     </div>
                                     <div class="select-social__options-value flex" data-value="Medium *" data-name="medium">
                                         <div class="select-social__options-icon">
-                                            <img src="img/select-icons/medium.svg" alt="">
+                                            <img src="/img/select-icons/medium.svg" alt="">
                                         </div>
                                         <div class="select-social__options-caption">Medium</div>
                                     </div>
                                     <div class="select-social__options-value flex" data-value="Discord *" data-name="discord">
                                         <div class="select-social__options-icon">
-                                            <img src="img/select-icons/discord.svg" alt="">
+                                            <img src="/img/select-icons/discord.svg" alt="">
                                         </div>
                                         <div class="select-social__options-caption">Discord</div>
                                     </div>
                                     <div class="select-social__options-value flex" data-value="Facebook *" data-name="facebook">
                                         <div class="select-social__options-icon">
-                                            <img src="img/select-icons/facebook.svg" alt="">
+                                            <img src="/img/select-icons/facebook.svg" alt="">
                                         </div>
                                         <div class="select-social__options-caption">Facebook</div>
                                     </div>

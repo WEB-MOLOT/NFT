@@ -180,6 +180,13 @@ body.lock {
   height: 100vh;
 }
 
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+}
+
 ul,
 ol {
   margin-top: 0;
@@ -6614,4 +6621,17 @@ textarea.field {
 
 .grecaptcha-badge {
   visibility: hidden;
+}
+
+.menu__item {
+  background: linear-gradient(243.55deg, var(--bg-color) -0.08%, var(--bg-color) 100.12%);
+}
+
+.filter__category-item.active, .filter__category-item:hover {
+  color: var(--color);
+  border-color: var(--color);
+  background-color: unset;
+}
+.filter__category-item svg * {
+  fill: var(--color) !important;
 }

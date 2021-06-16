@@ -23,9 +23,36 @@
             name: {
                 title: 'Name'
             },
-            is_active: {
-                title: 'Is active',
-                render: (data, type, row) => row.is_active ? 'Yes' : 'No'
+            status: {
+                title: 'Status',
+                render: (data, type, row) => {
+                    switch(row.status) {
+                        case 2:
+                            return 'Active';
+                        case 3:
+                            return 'Upcoming';
+                    }
+                },
+                sortable: false
+            },
+            rating: {
+                title: 'Rating',
+                render: (data, type, row) => row.rating === null ? '-' : row.rating
+            },
+            price: {
+                title: 'Price',
+                render: (data, type, row) => {
+                    let min = row.min_price !== null ? row.min_price : '-',
+                        max = row.max_price !== null ? row.max_price : '-';
+
+                    return `${min} - ${max} ${row.currency_name}`;
+                },
+                sortable: false
+            },
+            user_id: {
+                title: 'User',
+                render: (data, type, row) => row.user ? `<a href="${row.user.actions.edit}">${htmlEncode(row.user.name)}</a>` : '-',
+                sortable: false
             },
             created_at: {
                 title: 'Created at',

@@ -51,24 +51,55 @@ $(document).on("click", function(e) {
 		$('.times__select--js.active').removeClass('active');
 	};
 });
-$('body').on("click", '.times__select--js .times__select-option', function() {
+$('body').on("click", '.times__select--js .times__select-option:not(.timezone)', function() {
 	var value = $(this).text();
 	var parent = $(this).parents('.times__left');
 	var inputID = parent.parents('.times').attr('data-id');
+	var timeZone = parent.parents('.times').find('.select-timezone-open--js').text();
 	var input = $('[data-calendar-id="'+inputID+'"]');
 	var inputVal = input.val();
 	if (inputVal!='') {
 		inputVal = inputVal.slice(0,10);
 	}
-
-	parent.find('.times__left-text--js').text(value);
+	parent.find('.times__left-text--js').text(value );
 	parent.addClass('active');
 	parent.removeClass('error');
 	$(this).parent().removeClass('active');
 	if(!parent.hasClass('times__right')){
-		input.val(inputVal + ', '+value);
+		if(inputVal.length < 10){
+			input.val(value + ', '+timeZone);
+		} else {
+			input.val(inputVal + ', '+value + ', '+timeZone);
+		}
+		
+	}	
+});
+$('body').on("click", '.times__select--js .times__select-option.timezone', function() {
+	var timeZone = $(this).text();
+	var parent = $(this).parents('.times__left');
+	var inputID = parent.parents('.times').attr('data-id');
+	var time = parent.parents('.times').find('.select-open--js').text();
+	var input = $('[data-calendar-id="'+inputID+'"]');
+	var inputVal = input.val();
+	if (inputVal!='') {
+		inputVal = inputVal.slice(0,10);
 	}
-
+	parent.find('.times__left-text--js').text(timeZone );
+	parent.addClass('active');
+	parent.removeClass('error');
+	$(this).parent().removeClass('active');
+	if(parent.hasClass('times__right')){
+		if(time != 'time'){
+			input.val(inputVal + ', '+time + ', '+timeZone);
+		} else {
+			if(inputVal.length < 10){
+				input.val(timeZone);
+			} else {
+				input.val(inputVal+ ', '+timeZone);
+			}
+		}
+		
+	}	
 });
 $('body').on("click", '.select-open--js', function() {
 	$(this).next('.times__select--js').addClass('active');

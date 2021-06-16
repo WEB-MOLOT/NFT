@@ -60,11 +60,12 @@ if ($(".date-from, .date-to").length > 0) {
 		inputID: 1,
 		onSelect(formattedDate, date, inst){
 			var time = $(".times[data-id='"+this.inputID+"']").find('.select-open--js').text();
-			time = time.slice(0,5);
+			var timeZone = $(".times[data-id='"+this.inputID+"']").find('.select-timezone-open--js').text();
+			//time = time.slice(0,5);
 
 			formattedDate = formattedDate.substring(0, formattedDate.indexOf(','));
 			if(time != 'time'){
-				$(inst.$el).val(formattedDate + ', '+time);
+				$(inst.$el).val(formattedDate + ', '+time+', '+timeZone);
 			} else {
 				$(inst.$el).val(formattedDate);
 				$(".times[data-id='"+this.inputID+"']").find('.times__left:not(.times__right)').addClass('error');
@@ -88,11 +89,12 @@ if ($(".date-from, .date-to").length > 0) {
 		minDate: new Date(),
 		onSelect(formattedDate, date, inst){
 			var time = $(".times[data-id='"+this.inputID+"']").find('.select-open--js').text();
+			var timeZone = $(".times[data-id='"+this.inputID+"']").find('.select-timezone-open--js').text();
 			time = time.slice(0,5);
 
 			formattedDate = formattedDate.substring(0, formattedDate.indexOf(','));
 			if(time != 'time'){
-				$(inst.$el).val(formattedDate + ', '+time);
+				$(inst.$el).val(formattedDate + ', '+time+', '+timeZone);
 			} else {
 				$(inst.$el).val(formattedDate);
 				$(".times[data-id='"+this.inputID+"']").find('.times__left:not(.times__right)').addClass('error');

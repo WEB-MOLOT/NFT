@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Visible\Json;
 
 use App\Models\Project;
+use App\Rules\DateTimeWithTimezone;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -26,9 +27,11 @@ class SubmitProjectRequest extends FormRequest
             'images.*' => ['image'],
             'status' => ['required', Rule::in(Project::statuses())],
             'content' => ['required', 'string', 'max:1024'],
+            'categories' => ['required', 'array', 'max:2'],
+            'categories.*' => ['integer', 'exists:categories,id'],
 
-            'started_at' => ['required', 'date_format:d.m.Y, H:i'],
-            'ended_at' => ['required', 'date_format:d.m.Y, H:i'],
+            'started_at' => ['nullable', new DateTimeWithTimezone],
+            'ended_at' => ['nullable',  new DateTimeWithTimezone],
 
             'currency' => ['nullable', Rule::in(Project::currencies())],
             'min_price' => ['nullable', 'numeric', 'min:0'],
