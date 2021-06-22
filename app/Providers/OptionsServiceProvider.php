@@ -23,7 +23,7 @@ class OptionsServiceProvider extends ServiceProvider
         $options = $this->getOptions();
         $this->setDefaultConfig($options);
 
-        if($this->isProduction()) {
+        if(!$this->isProduction()) {
             $this->setConnectionConfig($options);
         }
     }
@@ -42,7 +42,7 @@ class OptionsServiceProvider extends ServiceProvider
      */
     protected function setConnectionConfig(array $options): void
     {
-        foreach($options['connections'] as $name => $credentials) {
+        foreach($options['connections'] ?? [] as $name => $credentials) {
             foreach($credentials as $key => $value) {
                 Config::set("services.$name.$key", $value);
             }

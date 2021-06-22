@@ -32,8 +32,8 @@ Route::group(
         Route::get('google/redirect', [Social\GoogleController::class, 'redirect'])->name('google.redirect');
         Route::get('google', [Social\GoogleController::class, 'handle'])->name('google.handle');
 
-        Route::get('telegram/redirect', [Social\TelegramController::class, 'redirect'])->name('telegram.redirect');
-        Route::get('telegram', [Social\TelegramController::class, 'handle'])->name('telegram.handle');
+        /*Route::get('telegram/redirect', [Social\TelegramController::class, 'redirect'])->name('telegram.redirect');
+        Route::get('telegram', [Social\TelegramController::class, 'handle'])->name('telegram.handle');*/
     }
 );
 
@@ -58,37 +58,5 @@ Route::group(
             Route::resource('categories', Manage\Resources\CategoryController::class)->except('show');
             Route::resource('projects', Manage\Resources\ProjectController::class)->except('create', 'store');
         });
-    }
-);
-
-Route::group(
-    [
-        'as' => 'visible.'
-    ],
-    static function() {
-        PageLoader::routes();
-
-        Route::group(
-            [
-                'prefix' => 'personal',
-                'as' => 'personal.',
-                'middleware' => 'auth'
-            ],
-            static function() {
-                Route::get('', Personal\IndexController::class)->name('index');
-            }
-        );
-
-        Route::group(
-            [
-                'prefix' => 'json',
-                'as' => 'json.'
-            ],
-            static function() {
-                Route::post('order', Json\SubmitOrderController::class)->name('submit.order');
-                Route::post('message', Json\SubmitMessageController::class)->name('submit.message');
-                Route::post('project', Json\SubmitProjectController::class)->name('submit.project');
-            }
-        );
     }
 );

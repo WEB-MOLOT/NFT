@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\Data;
+use App\Http\Controllers\Api\Forms;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('message', Forms\MessageController::class)->name('messages.store');
+Route::post('order', Forms\OrderController::class)->name('orders.store');
+
+Route::resource('categories', Data\CategoryController::class)->only('index', 'show');
+Route::resource('projects', Data\ProjectController::class)->except('data', 'create', 'edit', 'destroy');

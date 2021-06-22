@@ -9,7 +9,9 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use ReflectionClass;
 
@@ -19,6 +21,7 @@ use ReflectionClass;
  * @property int $id
  * @property int $status
  * @property bool $is_verified
+ * @property bool $is_published
  * @property string $name
  * @property string $logo
  * @property int $currency
@@ -36,15 +39,16 @@ use ReflectionClass;
  *
  * @property string $slug
  * @property ?User $user
+ * @property Collection|Category[] $categories
+ *
+ * @method static $this isPublished()
  */
 class Project extends Model
 {
     use ProjectDates, Actions, FormattedJsonDates;
 
-    public const STATUS_CREATED = 1;
-    public const STATUS_UPCOMING = 2;
-    public const STATUS_ACTIVE = 3;
-    public const STATUS_CLOSED = 4;
+    public const STATUS_UPCOMING = 1;
+    public const STATUS_ACTIVE = 2;
 
     public const CURRENCY_USD = 1;
     public const CURRENCY_ETH = 2;
@@ -53,12 +57,13 @@ class Project extends Model
     public const RATING_FACTOR = 10;
 
     protected $fillable = [
-        'status', 'is_verified', 'name', 'logo', 'rating', 'currency', 'min_price', 'max_price',
+        'status', 'is_verified', 'is_published', 'name', 'logo', 'rating', 'currency', 'min_price', 'max_price',
         'available_count', 'content', 'started_at', 'started_at_timezone', 'ended_at', 'ended_at_timezone', 'user_id'
     ];
 
     protected $casts = [
-        'is_verified' => 'boolean'
+        'is_verified' => 'boolean',
+        'is_published' => 'boolean'
     ];
 
     protected $appends = [
@@ -133,11 +138,19 @@ class Project extends Model
     }
 
     /**
+     * @return BelongsToMany
+     */
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
+    /**
      * @param Builder $builder
      */
-    public function scopeIsActive(Builder $builder): void
+    public function scopeIsPublished(Builder $builder): void
     {
-        $builder->whereIn('status', [self::STATUS_ACTIVE, self::STATUS_UPCOMING]);
+        $builder->where('is_published', 1);
     }
 
     /**
@@ -156,7 +169,7 @@ class Project extends Model
     public static function statuses(): array
     {
         return [
-            self::STATUS_CREATED, self::STATUS_UPCOMING, self::STATUS_ACTIVE, self::STATUS_CLOSED
+            self::STATUS_UPCOMING, self::STATUS_ACTIVE
         ];
     }
 }

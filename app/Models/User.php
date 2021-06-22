@@ -48,7 +48,7 @@ class User extends Authenticatable
     ];
 
     protected $attributes = [
-        'group' => self::GROUP_ADMIN
+        'group' => self::GROUP_USER
     ];
 
     /**

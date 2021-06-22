@@ -5,22 +5,22 @@ namespace App\Traits\Model;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Trait Actions
+ * Trait Links
  * @package App\Traits\Model
  * @mixin Model
  */
-trait Actions
+trait Links
 {
     /**
      * @return void
      */
-    public function initializeActions(): void
+    public function initializeLinks(): void
     {
-        //$this->appends[] = 'actions';
+        $this->appends[] = 'links';
     }
 
     /**
      * @return array
      */
-    abstract function getActionsAttribute(): array;
+    abstract public function getLinksAttribute(): array;
 }

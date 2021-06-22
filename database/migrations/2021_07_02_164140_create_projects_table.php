@@ -17,6 +17,7 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->unsignedTinyInteger('status');
             $table->boolean('is_verified');
+            $table->boolean('is_published');
             $table->string('name', 100);
             $table->string('logo');
             $table->unsignedSmallInteger('rating')->nullable();

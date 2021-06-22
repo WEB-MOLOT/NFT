@@ -14,7 +14,6 @@ use stdClass;
 class Navigation
 {
     public const MANAGE_PREFIX = 'manage.';
-    public const VISIBLE_PREFIX = 'visible.';
 
     protected Collection $breadcrumbs;
 
@@ -71,28 +70,12 @@ class Navigation
     }
 
     /**
-     * @return bool
-     */
-    public function isManageArea(): bool
-    {
-        return $this->request->routeIs(self::MANAGE_PREFIX.'*');
-    }
-
-    /**
      * @param string $name
      * @return string
      */
     public function getFullRouteName(string $name): string
     {
-        return $this->getRoutePrefix().$name;
-    }
-
-    /**
-     * @return string
-     */
-    protected function getRoutePrefix(): string
-    {
-        return $this->isManageArea() ? self::MANAGE_PREFIX : self::VISIBLE_PREFIX;
+        return self::MANAGE_PREFIX.$name;
     }
 
     /**

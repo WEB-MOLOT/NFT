@@ -16,8 +16,8 @@ trait FormattedJsonDates
      */
     public function initializeFormattedJsonDates(): void
     {
-        $this->appends[] = 'formatted_created_at';
-        $this->appends[] = 'formatted_updated_at';
+        /*$this->appends[] = 'formatted_created_at';
+        $this->appends[] = 'formatted_updated_at';*/
     }
 
     /**

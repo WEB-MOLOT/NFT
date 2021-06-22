@@ -18,10 +18,6 @@ mix
     .copyDirectory('node_modules/tinymce/icons', 'public/js/icons')
     .copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts')
 
-    .sass('resources/sass/visible.scss', 'public/css')
-    .js('resources/js/visible.js', 'public/js')
-    .copyDirectory('resources/visible/img', 'public/img')
-
     .options({
         processCssUrls: false
     })
