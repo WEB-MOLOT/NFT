@@ -19,23 +19,23 @@ use App\Http\Controllers\Visible\Personal;
 |
 */
 
-Auth::routes();
-Route::get('logout', [LoginController::class, 'logout'])->middleware('auth');
+// Auth::routes();
+// Route::get('logout', [LoginController::class, 'logout'])->middleware('auth');
 
-Route::group(
-    [
-        'as' => 'login.social.',
-        'prefix' => 'login/social',
-        'middleware' => ['guest', 'throttle:20,1']
-    ],
-    static function() {
-        Route::get('google/redirect', [Social\GoogleController::class, 'redirect'])->name('google.redirect');
-        Route::get('google', [Social\GoogleController::class, 'handle'])->name('google.handle');
+// Route::group(
+//     [
+//         'as' => 'login.social.',
+//         'prefix' => 'login/social',
+//         'middleware' => ['guest', 'throttle:20,1']
+//     ],
+//     static function() {
+//         Route::get('google/redirect', [Social\GoogleController::class, 'redirect'])->name('google.redirect');
+//         Route::get('google', [Social\GoogleController::class, 'handle'])->name('google.handle');
 
-        /*Route::get('telegram/redirect', [Social\TelegramController::class, 'redirect'])->name('telegram.redirect');
-        Route::get('telegram', [Social\TelegramController::class, 'handle'])->name('telegram.handle');*/
-    }
-);
+//         /*Route::get('telegram/redirect', [Social\TelegramController::class, 'redirect'])->name('telegram.redirect');
+//         Route::get('telegram', [Social\TelegramController::class, 'handle'])->name('telegram.handle');*/
+//     }
+// );
 
 Route::group(
     [

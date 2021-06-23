@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Api\Data;
 use App\Http\Controllers\Api\Forms;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,16 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::post('login', [LoginController::class, 'login']);
+Route::post('register', [RegisterController::class, 'register']);
+
+
+Route::group(['middleware' => ['jwt.auth']], function () {
+    Route::post('logout', [LoginController::class, 'logouot']);
+    Route::get('me', [LoginController::class, 'me']);
+});
+
 
 Route::post('message', Forms\MessageController::class)->name('messages.store');
 Route::post('order', Forms\OrderController::class)->name('orders.store');
