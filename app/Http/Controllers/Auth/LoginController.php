@@ -5,11 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Validation\ValidationException;
 
-use Tymon\JWTAuth\Exceptions\{
-    JWTException
-};
-use Tymon\JWTAuth\JWTAuth;
 
 class LoginController extends Controller
 {
@@ -39,53 +36,61 @@ class LoginController extends Controller
      * @return void
      */
 
-    protected $auth;
+    // protected $auth;
 
-    public function __construct(JWTAuth $auth)
-    {
-        $this->middleware('guest')->except('logout');
-        $this->auth = $auth;
-    }
+    // public function __construct(JWTAuth $auth)
+    // {
+    //     $this->middleware('guest')->except('logout');
+    //     $this->auth = $auth;
+    // }
 
 
 
     public function login() {
-        request()->validate([
-            'email' => 'required',
+        $request->validate([
+            'email' => 'required|email',
             'password' => 'required'
         ]);
-
-        try {
-            if (!$token = $this->auth->attempt(request()->only('email', 'password'))) {
-                return response()->json(['other' => 'Email или пароль введены неправильно.'], 401);
-            }
-        } catch (JWTException $e) {
-            return response()->json(['other' => 'Email или пароль введены неправильно.'], $e->getStatusCode());
+    
+        $user = User::where('email', $request->email)->first();
+    
+        if (! $user || ! Hash::check($request->password, $user->password)) {
+            throw ValidationException::withMessages([
+                'email' => ['The provided credentials are incorrect.'],
+            ]);
         }
+    
+        return $user->createToken($request->device_name)->plainTextToken;
+        // request()->validate([
+        //     'email' => 'required',
+        //     'password' => 'required'
+        // ]);
 
-        $user = request()->user();
+        // try {
+        //     if (!$token = $this->auth->attempt(request()->only('email', 'password'))) {
+        //         return response()->json(['other' => 'Email или пароль введены неправильно.'], 401);
+        //     }
+        // } catch (JWTException $e) {
+        //     return response()->json(['other' => 'Email или пароль введены неправильно.'], $e->getStatusCode());
+        // }
 
-        return response()->json([
-            'data' => $user,
-            'meta' => [
-                'token' => $token
-            ]
-        ], 200);
+        // $user = request()->user();
+
+        // return response()->json([
+        //     'data' => $user,
+        //     'meta' => [
+        //         'token' => $token
+        //     ]
+        // ], 200);
     }
 
     public function me()
     {
         $user = request()->user();
-        $roles = [];
-
-        foreach ($user->roles as $r) {
-            array_push($roles, $r->slug);
-        }
 
         return response()->json([
             'data' => [
                 'user' => $user,
-                'role' => $roles
             ]
         ], 200);
     }

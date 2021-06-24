@@ -21,10 +21,10 @@ Route::post('login', [LoginController::class, 'login']);
 Route::post('register', [RegisterController::class, 'register']);
 
 
-Route::group(['middleware' => ['jwt.auth']], function () {
+// Route::group(function () {
     Route::post('logout', [LoginController::class, 'logouot']);
     Route::get('me', [LoginController::class, 'me']);
-});
+// });
 
 
 Route::post('message', Forms\MessageController::class)->name('messages.store');
