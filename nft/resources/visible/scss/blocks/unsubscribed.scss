@@ -1,0 +1,24 @@
+.unsubscribed {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 12px 10px;
+	background-color: #e0592e;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 100%;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: #ffffff;
+	&__icon {
+		width: 16px;
+		height: 16px;
+		cursor: pointer;
+		margin-right: 16px;
+		svg {
+			& * {
+				transition: all 0.3s;
+			}
+		}
+	}
+}

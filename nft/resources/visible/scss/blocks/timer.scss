@@ -1,0 +1,72 @@
+#countdown {
+	display: flex;
+	align-items: center;
+}
+
+.countDays,
+.countHours,
+.countMinutes,
+.countSeconds {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 32px;
+	height: 32px;
+	padding: 8px;
+	background-color: #e0592e;
+	border-radius: 2px;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 100%;
+	text-transform: uppercase;
+	color: #ffffff;
+}
+
+/**
+ * Вы можете использовать данные классы для скрытия
+ * частей счетчика, которые не нужны.
+ */
+
+.countdown {
+	display: flex;
+	align-items: center;
+}
+
+.timer {
+	&__section {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 32px;
+		height: 32px;
+		padding: 8px;
+		background-color: #e0592e;
+		border-radius: 2px;
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 100%;
+		text-transform: uppercase;
+		color: #ffffff;
+		position: relative;
+		margin-right: 8px;
+		&:after {
+			content: "";
+			position: absolute;
+			width: 6px;
+			height: 14px;
+			background-image: url(../img/icons/timer.svg);
+			background-repeat: no-repeat;
+			background-size: contain;
+			display: block;
+			margin: 0px 2px;
+			top: calc(50% - 6px);
+			right: -9px;
+		}
+		&:last-child {
+			margin-right: 0px;
+			&:after {
+				display: none;
+			}
+		}
+	}
+}

@@ -1,0 +1,216 @@
+.dates {
+	font-family: "Poppins", sans-serif;
+	background-color: #ffffff;
+	box-shadow: 0 24px 80px rgba(81, 112, 120, 0.07), 0 10.0266px 33.4221px rgba(81, 112, 120, 0.0503198), 0 5.36071px 17.869px rgba(81, 112, 120, 0.0417275), 0 3.00517px 10.0172px rgba(81, 112, 120, 0.035), 0 1.59602px 5.32008px rgba(81, 112, 120, 0.0282725), 0 0.664142px 2.21381px rgba(81, 112, 120, 0.0196802) impor !important;
+	border-radius: 8px;
+	border: none;
+	padding: 24px 25px;
+
+	.datepicker--pointer {
+		display: none;
+	}
+
+	.datepicker--nav-title {
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 100%;
+		letter-spacing: 0.01em;
+		color: #333333;
+	}
+
+	.datepicker--nav {
+		border-bottom: none;
+	}
+
+	.datepicker--days-names {
+		margin: 10px 0 12px;
+	}
+
+	.datepicker--day-name {
+		font-weight: 600;
+		font-size: 12px;
+		line-height: 100%;
+		letter-spacing: 0.01em;
+		color: #9eb2bd;
+	}
+
+	.datepicker--cell {
+		width: 24px;
+		height: 24px;
+		margin: 4px 5.2px;
+		border-radius: 50%;
+		border: 1px solid #fff;
+		font-weight: 600;
+		font-size: 12px;
+		line-height: 100%;
+		letter-spacing: 0.01em;
+		color: #5e7c8d;
+	}
+
+	.datepicker--cell-day.-other-month-,
+	.datepicker--cell-year.-other-decade-,
+	.datepicker--cell.-disabled- {
+		color: #9eb2bd;
+	}
+
+	.datepicker--cell-day.-focus-,
+	.datepicker--cell-year.-focus- {
+		background-color: #20c4f3;
+		border-color: #20c4f3;
+		color: #fff;
+	}
+
+	.datepicker--cell.-current-,
+	.datepicker--cell.-selected-,
+	.datepicker--cell.-selected-.-current- {
+		border-color: #20c4f3;
+		background-color: transparent;
+		color: #5e7c8d;
+	}
+
+	.datepicker--time-current {
+		font-weight: 600;
+		font-size: 12px;
+		line-height: 100%;
+		letter-spacing: 0.01em;
+		color: #5e7c8d;
+		flex-wrap: wrap;
+	}
+
+	.datepicker--nav-action {
+		path {
+			stroke: #2f3e46;
+		}
+	}
+}
+
+.times {
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	width: 100%;
+	padding-top: 15px;
+	justify-content: space-between;
+
+	.times__left {
+		position: relative;
+		cursor: pointer;
+		justify-content: flex-start;
+
+		&-icon {
+			svg {
+				margin-left: 15px;
+				margin-right: 10px;
+			}
+		}
+
+		&-text {
+			color: #9EB2BD;
+			font-size: 12px;
+			text-transform: uppercase;
+			font-weight: 600;
+		}
+
+		.select-clear--js {
+			position: absolute;
+			right: -35px;
+			display: none;
+		}
+
+		.select-clear--js svg {
+			height: 14px;
+			width: 15px;
+		}
+	}
+
+	.times__left:not(.times__right):hover .times__left-text {
+		color: #01BAEF;
+		transition: all 0.3s;
+	}
+
+	.times__left:not(.times__right):hover svg path {
+		stroke: #01BAEF;
+		transition: all 0.3s;
+	}
+
+	.times__left.active .select-clear--js svg path {
+		stroke: #8EA5B2;
+		transition: all 0.3s;
+	}
+
+	.times__left.active .select-clear--js:hover svg path {
+		stroke: #2F3E46;
+		transition: all 0.3s;
+	}
+
+	.times__left.active:not(.times__right) .times__left-text {
+		color: #0EAD69;
+	}
+
+	.times__left.active.times__right .select-timezone-open--js {
+		color: #0EAD69;
+	}
+
+	.times__left.active .select-clear--js {
+		display: block;
+	}
+
+	.times__left.active svg path {
+		stroke: #0EAD69;
+	}
+
+	.times__left.error .times__left-text {
+		color: #e0592e;
+	}
+
+	.times__left.error svg path {
+		stroke: #e0592e;
+	}
+
+	.times__right {
+		position: relative;
+		justify-content: end;
+		padding-right: 15px;
+	}
+
+	.select-timezone-open--js {
+		color: #2F3E46;
+		font-size: 12px;
+		text-transform: uppercase;
+		font-weight: 600;
+		margin-left: 10px;
+		cursor: pointer;
+		transition: all 0.3s;
+	}
+
+	.select-timezone-open--js:hover {
+		color: #01baef;
+		transition: all 0.3s;
+	}
+
+	.times__select {
+		position: absolute;
+		bottom: 30px;
+		left: 0;
+		height: calc(7*34px);
+		width: 90px;
+		overflow-x: auto;
+		background: #F3F6F7;
+		z-index: 9999;
+		border-radius: 5px;
+		display: none;
+	}
+
+	.times__select.active {
+		display: block;
+	}
+
+	.times__select-option {
+		padding: 13px 15px;
+		cursor: pointer;
+	}
+
+	.times__select-option:hover {
+		background: #E7EDEF;
+	}
+}

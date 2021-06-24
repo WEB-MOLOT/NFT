@@ -1,0 +1,47 @@
+@import "~slick-slider/slick/slick.css";
+@import "~@fancyapps/fancybox/dist/jquery.fancybox.min.css";
+@import "~nouislider/dist/nouislider.min.css";
+@import "~air-datepicker/dist/css/datepicker.min.css";
+
+@import "../visible/scss/main";
+
+.message-bar {
+    display: none;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+}
+
+.form__captcha {
+    font-size: .8rem;
+    color: #5e7c8d;
+
+    > a {
+        color: #5e7c8d;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.grecaptcha-badge {
+    visibility: hidden;
+}
+
+.menu__item {
+    background: linear-gradient(243.55deg, var(--bg-color) -0.08%, var(--bg-color) 100.12%);
+}
+
+.filter__category-item {
+    &.active,
+    &:hover {
+        color: var(--color);
+        border-color: var(--color);
+        background-color: unset;
+    }
+
+    svg * {
+        fill: var(--color)!important;
+    }
+}

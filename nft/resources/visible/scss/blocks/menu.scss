@@ -1,0 +1,210 @@
+.menu {
+	padding-top: 24px;
+
+	&__scroll {
+		margin: 0px -24px 0px;
+	}
+
+	&__slick {
+		display: inline-flex;
+		padding: 0px 24px 24px;
+		.slick-list {
+			overflow: visible;
+		}
+	}
+
+	&__slide {
+		width: 190.5px;
+		padding-right: 16px;
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+
+	&__item {
+		width: 100%;
+		height: 125px;
+		border-radius: 12px;
+		overflow: hidden;
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		text-align: center;
+		position: relative;
+		z-index: 10;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 100%;
+		letter-spacing: 0.01em;
+		color: #ffffff;
+		box-sizing: border-box;
+		padding: 15px;
+		transition: border-radius 0.3s, box-shadow 0.3s, transform 0.3s;
+
+		&_music {
+			background: linear-gradient(243.55deg, #3340b4 -0.08%, #525fce 100.12%);
+
+			&:hover {
+				box-shadow: 0 12px 16px rgba(51, 64, 180, 0.3);
+			}
+		}
+
+		&_art {
+			background: linear-gradient(243.55deg, #dc6acf -0.08%, #ff97f3 100.12%);
+
+			&:hover {
+				box-shadow: 0 12px 16px rgba(220, 106, 207, 0.3);
+			}
+		}
+
+		&_collectible {
+			background: linear-gradient(243.55deg, #ffbe0b -0.08%, #ffdf86 100.12%);
+
+			&:hover {
+				box-shadow: 0 12px 16px rgba(255, 190, 11, 0.3);
+			}
+		}
+
+		&_game {
+			background: linear-gradient(243.55deg, #659b5e -0.08%, #80c477 100.12%);
+
+			&:hover {
+				box-shadow: 0 12px 16px rgba(82, 168, 71, 0.3);
+			}
+		}
+
+		&_metaverse {
+			background: linear-gradient(243.39deg, #b0413e 1.97%, #dc6d6a 100.12%);
+
+			&:hover {
+				box-shadow: 0 12px 16px rgba(202, 91, 88, 0.2);
+			}
+		}
+
+		&_sports {
+			background: linear-gradient(242.55deg, #01baef -0.08%, #63d8fa 101.63%);
+
+			&:hover {
+				box-shadow: 0 12px 16px rgba(1, 186, 239, 0.3);
+			}
+		}
+
+		&_utility {
+			margin-right: 0;
+			background: linear-gradient(241.91deg, #fcaa67 2.14%, #ffc291 97.91%);
+
+			&:hover {
+				box-shadow: 0 12px 16px rgba(252, 170, 103, 0.3);
+			}
+		}
+
+		&:hover {
+			border-radius: 0;
+			transition: all 0.3s;
+
+			.menu__icon {
+				transform: translate(5px, -5px);
+				transition: box-shadow 0.3s, transform 0.3s;
+			}
+		}
+	}
+
+	&__icon {
+		position: absolute;
+		top: 0;
+		right: 0;
+		transition: box-shadow 0.3s, transform 0.3s;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-position: right;
+		}
+	}
+
+	&.bottom {
+		transform: translateY(0px);
+	}
+}
+@media (max-width: 1010px) {
+	.menu {
+		&__scroll {
+			margin-left: -15px;
+			margin-right: -15px;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+		&__slick {
+			margin-left: -15px;
+			margin-right: -15px;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+		&__slide {
+			width: 188.5px;
+		}
+	}
+}
+@media (max-width: 760px) {
+	.menu {
+		padding-top: 22px;
+		&__slide {
+			width: 145px;
+			padding-right: 12px;
+		}
+
+		&__item {
+			height: 98px;
+			padding: 8px;
+			&_music {
+				.menu__icon {
+					height: 70px;
+				}
+			}
+
+			&_art {
+				.menu__icon {
+					height: 85px;
+				}
+			}
+
+			&_collectible {
+				.menu__icon {
+					height: 70px;
+				}
+			}
+
+			&_game {
+				.menu__icon {
+					height: 68px;
+				}
+			}
+
+			&_metaverse {
+				.menu__icon {
+					height: 98px;
+				}
+			}
+
+			&_sports {
+				.menu__icon {
+					height: 68px;
+				}
+			}
+
+			&_utility {
+				.menu__icon {
+					height: 70px;
+				}
+			}
+		}
+
+		&__icon {
+			img {
+				max-width: 100%;
+				max-height: 100%;
+				object-fit: contain;
+			}
+		}
+	}
+}

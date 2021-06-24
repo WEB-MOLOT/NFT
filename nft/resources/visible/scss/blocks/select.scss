@@ -1,0 +1,283 @@
+.select {
+	position: relative;
+	z-index: 100;
+	cursor: pointer;
+	margin-right: 10px;
+
+	&.select_active {
+		.select-title {
+			border-color: #3340b4;
+			transition: border-color 0.3s, color 0.3s;
+
+			.select-title__value {
+				color: #3340b4;
+			}
+		}
+	}
+
+	&-title {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		min-width: 100px;
+		padding: 8px 12px;
+		background-color: #ffffff;
+		border: 1px solid #cedade;
+		border-radius: 8px;
+		transition: background-color 0.3s;
+
+		&:hover {
+			background-color: #f3f6f7;
+			transition: background-color 0.3s;
+		}
+
+		&__value {
+			font-weight: 600;
+			font-size: 14px;
+			line-height: 100%;
+			letter-spacing: -0.01em;
+			color: #5e7c8d;
+			display: block;
+			white-space: nowrap;
+			position: relative;
+			z-index: 20;
+		}
+	}
+
+	&-options {
+		display: none;
+		position: absolute;
+		top: 100%;
+		right: 0;
+		min-width: 100px;
+		background-color: #fff;
+		border: 1px solid #3340b4;
+		border-radius: 8px;
+		overflow: hidden;
+		z-index: 10;
+
+		&__value {
+			& + & {
+				border-top: 1px solid #3340b4;
+			}
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 9px;
+			font-weight: 600;
+			font-size: 14px;
+			line-height: 100%;
+			letter-spacing: -0.01em;
+			color: #3340b4;
+			transition: background-color 0.3s;
+
+			&:hover {
+				background-color: #f3f6f7;
+				transition: background-color 0.3s;
+			}
+		}
+	}
+
+	&.active {
+		.select-title {
+			&__arrow {
+				transform: rotate(-180deg);
+			}
+		}
+	}
+}
+
+.select-social {
+	position: relative;
+
+	&__title {
+		padding: 16px 20px;
+		height: 44px;
+		background-color: #ffffff;
+		border: 1px dashed #8ea5b2;
+		border-radius: 8px;
+		font-weight: 500;
+		font-size: 12px;
+		line-height: 100%;
+		letter-spacing: 0.01em;
+		color: #728e9d;
+		cursor: pointer;
+		transition: background-color 0.3s;
+
+		&:hover {
+			background-color: #f3f6f7;
+			transition: background-color 0.3s;
+
+			.select-social__arrow {
+				svg {
+					& * {
+						fill: #2f3e46;
+						transition: fill 0.3s;
+					}
+				}
+			}
+		}
+
+		&.active {
+			background-color: #e7edef;
+			border-color: #e7edef;
+			border-radius: 8px 8px 0 0;
+			transition: background-color 0.3s, border-color 0.3s, border-radius 0.3s;
+
+			.select-social__arrow {
+				svg {
+					& * {
+						fill: #2f3e46;
+						transition: fill 0.3s;
+					}
+				}
+			}
+		}
+	}
+
+	&__arrow {
+		width: 12px;
+		height: 12px;
+
+		svg {
+			& * {
+				transition: fill 0.3s;
+			}
+		}
+	}
+
+	&__options {
+		display: none;
+		position: absolute;
+		top: 100%;
+		right: 0;
+		min-width: 100%;
+		background-color: #fff;
+		overflow: hidden;
+		z-index: 10;
+		cursor: pointer;
+
+		&-icon {
+			width: 16px;
+			height: 16px;
+			margin-right: 12px;
+		}
+
+		&-value {
+			padding: 12px;
+			height: 40px;
+			background-color: #f3f6f7;
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			font-weight: 500;
+			font-size: 12px;
+			line-height: 100%;
+			letter-spacing: 0.01em;
+			color: #728e9d;
+			transition: background-color 0.3s;
+
+			&:hover {
+				background-color: #e7edef;
+				transition: background-color 0.3s;
+			}
+		}
+	}
+
+	&__closed {
+		position: absolute;
+		width: 12px;
+		height: 12px;
+		top: calc(50% - 6px);
+		right: 16px;
+		cursor: pointer;
+		z-index: 15;
+		svg {
+			& * {
+				transition: fill 0.3s;
+			}
+		}
+		&:hover {
+			svg {
+				& * {
+					fill: #2f3e46;
+					transition: fill 0.3s;
+				}
+			}
+		}
+	}
+}
+@media (max-width: 760px) {
+	.select {
+		width: 34%;
+
+		&-title {
+			transition: none;
+
+			&:hover {
+				transition: none;
+			}
+		}
+
+		&-options {
+			min-width: 100%;
+
+			&__value {
+				transition: none;
+
+				&:hover {
+					transition: none;
+				}
+			}
+		}
+	}
+
+	.select-social {
+		&__title {
+			transition: none;
+
+			&:hover {
+				transition: none;
+
+				.select-social__arrow {
+					svg {
+						& * {
+							transition: none;
+						}
+					}
+				}
+			}
+
+			&.active {
+				transition: none;
+
+				.select-social__arrow {
+					svg {
+						& * {
+							transition: none;
+						}
+					}
+				}
+			}
+		}
+
+		&__arrow {
+			svg {
+				& * {
+					transition: none;
+				}
+			}
+		}
+
+		&__options {
+			&-value {
+				transition: none;
+
+				&:hover {
+					transition: none;
+				}
+			}
+		}
+	}
+}
