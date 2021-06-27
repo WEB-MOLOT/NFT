@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 
 class LoginController extends Controller {
@@ -14,14 +15,26 @@ class LoginController extends Controller {
             'password' => 'required|min:8'
         ]);
 
-        if ( !auth()->attempt($request->only('email', 'password')) ) {
-            throw new AuthenticationException();
+        $credentials = $request->only('email', 'password');
+
+        if ( !auth()->attempt($credentials) ) {
+            throw ValidationException::withMessages([
+                'email' => 'Invalid credentials'
+            ]);
         }
+
+        $request->session()->regenerate();
+
+        return response()->json(null, 201);
     }
 
     public function logout(Request $request) {
-        auth()->logout();
+        auth()->guard('web')->logout();
 
-        return response()->json('success');
+        $request->session()->invalidate();
+
+        $request->session()->regeneratetoken();
+
+        return response()->json(null, 200);
     }
 }
