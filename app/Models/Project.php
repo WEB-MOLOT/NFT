@@ -15,6 +15,9 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use ReflectionClass;
 
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+
 /**
  * Class Project
  * @package App\Models
@@ -43,9 +46,9 @@ use ReflectionClass;
  *
  * @method static $this isPublished()
  */
-class Project extends Model
+class Project extends Model implements HasMedia
 {
-    use ProjectDates, Actions, FormattedJsonDates;
+    use ProjectDates, Actions, FormattedJsonDates, InteractsWithMedia;
 
     public const STATUS_UPCOMING = 1;
     public const STATUS_ACTIVE = 2;

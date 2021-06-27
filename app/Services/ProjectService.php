@@ -34,14 +34,22 @@ class ProjectService
     public function create(array $attributes, ?User $user): Project
     {
         $attributes['user_id'] = $user->id ?? null;
-        $attributes['logo'] = $attributes['logo']->store('public/projects/logo');
-        $attributes['images'] = array_map(static fn(UploadedFile $image): string => $image->store('public/projects/gallery'), $attributes['images'] ?? []);
+
         $attributes['is_verified'] ??= false;
         $attributes['detail_content'] = [];
+        $attributes['status'] = 1;
+        $attributes['is_published'] = 1;
+        $attributes['categories'] = json_decode($attributes['categories']);
 
         return DB::transaction(static function() use ($attributes) {
             $project = Project::create($attributes);
             $project->details()->create($attributes);
+
+            $project->addMedia($attributes['logo'])->toMediaCollection('project_logo');
+
+            foreach ($attributes['images'] as $image) {
+                $project->addMedia($image)->toMediaCollection('project_images');
+            }
 
             return $project;
         });

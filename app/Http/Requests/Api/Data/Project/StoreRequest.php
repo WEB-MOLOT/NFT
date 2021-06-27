@@ -19,7 +19,23 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required']
+            'name'        => ['required'],
+            'logo'        => ['required'],
+            'active'      => ['required'],
+            'upcoming'    => ['required'],
+            'categories'  => ['required'],
+            'content'     => ['required'],
+            'start_date'  => ['required'],
+            'end_date'    => ['required'],
+            'currency'    => [],
+            'email'       => ['required'],
+            'twitter'     => ['required'],
+            'images'      => [],
+            'socials'     => [],
+            'min_price'   => [],
+            'max_price'   => [],
+            'available_count'   => [],
+            'website'   => []
         ];
     }
 }
