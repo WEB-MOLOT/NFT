@@ -8,6 +8,7 @@ use App\Http\Requests\Api\Data\Project\StoreRequest;
 use App\Models\Project;
 use App\Services\ProjectService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\UploadedFile;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 

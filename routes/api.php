@@ -4,27 +4,23 @@ use App\Http\Controllers\Api\Data;
 use App\Http\Controllers\Api\Forms;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
-Route::post('login', [LoginController::class, 'login']);
-Route::post('register', [RegisterController::class, 'register']);
+use Laravel\Sanctum\Http\Controllers;
 
 
-Route::group(['middleware' => ['jwt.auth']], function () {
-    Route::post('logout', [LoginController::class, 'logouot']);
-    Route::get('me', [LoginController::class, 'me']);
+
+Route::middleware('auth:sanctum')->get('/user', function (\Illuminate\Http\Request $request) {
+    return $request->user();
 });
+
+Route::get('token', function(Request $request) {
+   return response()->json($request->session()->token());
+});
+
+Route::post('/login', LoginController::class);
+Route::post('/logout', [LoginController::class, 'logout']);
+Route::post('/register', [RegisterController::class, 'register']);
 
 
 Route::post('message', Forms\MessageController::class)->name('messages.store');
