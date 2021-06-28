@@ -16,12 +16,11 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->unsignedTinyInteger('status');
-            $table->boolean('is_verified');
-            $table->boolean('is_published');
+            $table->boolean('is_verified')->default(false);
+            $table->boolean('is_published')->default(0);
             $table->string('name', 100);
-            $table->string('logo');
             $table->unsignedSmallInteger('rating')->nullable();
-            $table->unsignedTinyInteger('currency')->nullable();
+            $table->string('currency')->nullable();
             $table->unsignedInteger('min_price')->nullable();
             $table->unsignedInteger('max_price')->nullable();
             $table->unsignedInteger('available_count')->nullable();
@@ -45,10 +44,10 @@ class CreateProjectsTable extends Migration
             $table->string('twitter', 100);
             $table->string('website', 100);
             $table->json('images');
-            $table->json('detail_content');
+            $table->json('detail_content')->nullable();
         });
 
-        Schema::create('category_project', function(Blueprint $table) {
+        Schema::create('project_categories', function(Blueprint $table) {
             $table->foreignId('category_id')->references('id')->on('categories')->cascadeOnDelete();
             $table->foreignId('project_id')->references('id')->on('projects')->cascadeOnDelete();
         });

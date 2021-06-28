@@ -33,16 +33,23 @@ class ProjectService
      */
     public function create(array $attributes, ?User $user): Project
     {
-        $attributes['user_id'] = $user->id ?? null;
+        return DB::transaction(static function() use ($attributes, $user) {
+            $project = new Project();
 
-        $attributes['is_verified'] ??= false;
-        $attributes['detail_content'] = [];
-        $attributes['status'] = 1;
-        $attributes['is_published'] = 1;
-        $attributes['categories'] = json_decode($attributes['categories']);
+            $project->name = $attributes['name'];
+            $project->status = $attributes['status'];
+            $project->currency = $attributes['currency'];
+            $project->min_price = $attributes['min_price'];
+            $project->max_price = $attributes['max_price'];
+            $project->available_count = $attributes['available_count'];
+            $project->content = $attributes['content'];
+            $project->started_at = $attributes['start_date'];
+            $project->ended_at = $attributes['end_date'];
+            $project->user_id = $user->id ?? null;
 
-        return DB::transaction(static function() use ($attributes) {
-            $project = Project::create($attributes);
+            $project->save();
+
+
             $project->details()->create($attributes);
 
             $project->addMedia($attributes['logo'])->toMediaCollection('project_logo');
@@ -73,28 +80,32 @@ class ProjectService
     {
         $builder = Project::isPublished();
 
-        if($data['status'] ?? false) {
-            $builder->where('status', $data['status']);
+        if($data['active'] && !$data['upcoming']) {
+            $builder->where('status', Project::STATUS_ACTIVE);
         }
 
-        if($data['categories'] ?? false) {
-            $builder->whereHas('categories', static fn(Builder $builder) => $builder->whereIn('id', $data['categories']));
+        if ($data['upcoming'] && !$data['active']) {
+            $builder->where('status', Project::STATUS_UPCOMING);
         }
 
-        if($data['verified'] ?? false) {
+//        if($data['categories'] ?? false) {
+//            $builder->whereHas('categories', static fn(Builder $builder) => $builder->whereIn('id', $data['categories']));
+//        }
+
+        if($data['verified']) {
             $builder->where('is_verified', 1);
         }
 
-        switch($data['order_by']) {
+        switch($data['sort_by']) {
             case FilterService::ORDER_TIME:
-                //
+                $builder->orderBy('started_at');
                 break;
             case FilterService::ORDER_PRICE:
-                //
+                $builder->orderBy('price');
                 break;
             case FilterService::ORDER_RATING:
                 $builder->orderBy('rating', $data['order_by_dir']);
-                    break;
+                break;
         }
 
         return $builder->cursorPaginate();

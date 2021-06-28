@@ -21,19 +21,18 @@ class StoreRequest extends FormRequest
         return [
             'name'        => ['required'],
             'logo'        => ['required'],
-            'active'      => ['required'],
-            'upcoming'    => ['required'],
+            'status'      => ['required'],
             'categories'  => ['required'],
             'content'     => ['required'],
             'start_date'  => ['required'],
             'end_date'    => ['required'],
-            'currency'    => [],
             'email'       => ['required'],
             'twitter'     => ['required'],
             'images'      => [],
             'socials'     => [],
             'min_price'   => [],
             'max_price'   => [],
+            'currency'    => [],
             'available_count'   => [],
             'website'   => []
         ];

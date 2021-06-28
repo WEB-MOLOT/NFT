@@ -10,18 +10,18 @@ use Laravel\Sanctum\Http\Controllers;
 
 
 
-Route::middleware('auth:sanctum')->get('/user', function (\Illuminate\Http\Request $request) {
-    return $request->user();
-});
-
-Route::get('token', function(Request $request) {
-   return response()->json($request->session()->token());
-});
-
-Route::post('/login', LoginController::class);
-Route::post('/logout', [LoginController::class, 'logout']);
-Route::post('/register', [RegisterController::class, 'register']);
-
+//Route::middleware('auth:sanctum')->get('/user', function (\Illuminate\Http\Request $request) {
+//    return $request->user();
+//});
+//
+//Route::get('token', function(Request $request) {
+//   return response()->json($request->session()->token());
+//});
+//
+//Route::post('/login', LoginController::class);
+//Route::post('/logout', [LoginController::class, 'logout']);
+//Route::post('/register', [RegisterController::class, 'register']);
+//
 
 Route::post('message', Forms\MessageController::class)->name('messages.store');
 Route::post('order', Forms\OrderController::class)->name('orders.store');
