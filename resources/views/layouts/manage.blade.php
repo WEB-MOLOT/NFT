@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $navigation->getTitle() }}</title>
-    <link rel="stylesheet" href="{{ mix('css/manage.css') }}">
+    <link rel="stylesheet" href="/css/manage.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -155,6 +155,6 @@
 <form class="d-none" method="post" data-action-form="destroy">@method('delete')</form>
 
 @stack('footer')
-<script src="{{ mix('js/manage.js') }}"></script>
+<script src="/js/manage.js"></script>
 </body>
 </html>

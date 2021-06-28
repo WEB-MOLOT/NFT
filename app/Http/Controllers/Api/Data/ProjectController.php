@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Api\Data;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Data\IndexProjectRequest;
 use App\Http\Requests\Api\Data\Project\StoreRequest;
+use App\Http\Resources\ProjectResource;
 use App\Models\Project;
+use App\Services\FilterService;
 use App\Services\ProjectService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
@@ -26,15 +29,48 @@ class ProjectController extends Controller
         protected ProjectService $projectService
     ) {}
 
-    /**
-     * @param IndexProjectRequest $request
-     * @return JsonResponse
-     */
-    public function index(IndexProjectRequest $request): JsonResponse
+    public function index(Request $request)
     {
-        return new JsonResponse(
-            $this->projectService->getProjects($request->validated())
-        );
+        $builder = Project::isPublished();
+
+        $statuses = [];
+
+        if($request->active == "true") {
+            $statuses[] = Project::STATUS_ACTIVE;
+        }
+
+        if ($request->upcoming == "true") {
+            $statuses[] = Project::STATUS_UPCOMING;
+        }
+
+        $builder->whereIn('status', $statuses);
+
+//        if($data['categories'] ?? false) {
+//            $builder->whereHas('categories', static fn(Builder $builder) => $builder->whereIn('id', $data['categories']));
+//        }
+
+        if($request->verified == "true") {
+            $builder->where('is_verified', 1);
+        }
+
+        switch($request->sort_by) {
+            case FilterService::ORDER_TIME:
+                $builder->orderBy('started_at');
+                break;
+            case FilterService::ORDER_PRICE:
+                $builder->orderBy('price');
+                break;
+            case FilterService::ORDER_RATING:
+//                $builder->orderBy('rating', $data['order_by_dir']);
+                break;
+        }
+
+        $builder->limit($request->limit);
+
+        return ProjectResource::collection($builder->get());
+//        return new JsonResponse(
+//            $this->projectService->getProjects($request->all())
+//        );
     }
 
     /**

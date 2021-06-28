@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -26,6 +27,8 @@ class RegisterController extends Controller
             'twitter_id'  => $request->twitter_id,
             'password' => Hash::make($request->password),
         ]);
+
+        Auth::login($user);
 
 
         return response()->json([
