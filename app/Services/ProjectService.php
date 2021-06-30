@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Exceptions\ServiceException;
 use App\Models\Project;
+use App\Models\ProjectSocial;
 use App\Models\User;
 use App\Support\Formatters\DateFormatter;
 use Illuminate\Contracts\Pagination\CursorPaginator;
@@ -45,12 +46,28 @@ class ProjectService
             $project->content = $attributes['content'];
             $project->started_at = $attributes['start_date'];
             $project->ended_at = $attributes['end_date'];
+            $project->email = $attributes['email'];
+            $project->twitter = $attributes['twitter'];
+            $project->website = $attributes['website'];
             $project->user_id = $user->id ?? null;
+
 
             $project->save();
 
+            foreach (json_decode($attributes['categories']) as $category) {
+                $project->categories()->attach($category);
+            }
 
-            $project->details()->create($attributes);
+            foreach (json_decode($attributes['socials']) as $item) {
+                $social = new ProjectSocial();
+
+                $social->project_id = $project->id;
+                $social->social_name = $item->social_name;
+                $social->social_data = $item->social_data;
+
+                $social->save();
+            }
+
 
             $project->addMedia($attributes['logo'])->toMediaCollection('project_logo');
 

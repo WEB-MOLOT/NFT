@@ -20,7 +20,7 @@ class ProjectResource extends JsonResource
             'verified' => $this->is_verified,
             'logo' => $this->getMedia('project_logo')->first()->getFullUrl(),
             'images' => $this->getMedia('project_images'),
-            'categories' => $this->categories(),
+            'categories' => $this->categories()->get(),
             'currency' => $this->currency,
             'min_price' => $this->min_price,
             'max_price' => $this->max_price,

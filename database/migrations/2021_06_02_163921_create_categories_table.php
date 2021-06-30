@@ -17,8 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('slug', 100)->index()->unique();
-            $table->string('image');
-            $table->string('color_code', 10);
+            $table->string('color', 100);
             $table->timestamps();
         });
 

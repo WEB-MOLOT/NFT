@@ -29,8 +29,8 @@
             <div class="filter__category">
                 <div class="form__caption">Project category</div>
                 <div class="filter__category-items flex">
-                    <div v-for="category in categories" :class="[`filter__category-item filter__category-item_${category.color}`, {active: category.active}]" @click="chooseCategory(category)">
-                        <div class="filter__category-caption">{{ category.title }}</div>
+                    <div v-for="category in categories" :class="[`filter__category-item filter__category-item_${category.color}`, {active: project.categories.indexOf(category.id) !== -1}]" @click="chooseCategory(category)">
+                        <div class="filter__category-caption">{{ category.name }}</div>
                         <div class="filter__category-icon">
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -166,7 +166,7 @@
         </label>
 
         <div class="form__label" v-for="(social, index) in project.socials">
-            <input type="text" class="form__field field" v-model="project.socials[index].value" :placeholder="`${social.title} *`">
+            <input type="text" class="form__field field" v-model="project.socials[index].social_data" :placeholder="`${social.social_title} *`">
             <div class="select-social__closed" @click="deleteSocial(social)">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.75 1L11 2.25L2.25 11L1 9.75L9.75 1Z" fill="#5E7C8D"></path>
@@ -271,49 +271,23 @@ export default {
                 }
             ],
 
-            categories: [
-                {
-                    title: 'Music',
-                    color: 'violet',
-                    active: false
-                },
-                {
-                    title: 'Art',
-                    color: 'orchid',
-                    active: false
-                },
-                {
-                    title: 'Collectible',
-                    color: 'amber',
-                    active: false
-                },
-                {
-                    title: 'Game',
-                    color: 'asparagus',
-                    active: false
-                },
-                {
-                    title: 'Metaverse',
-                    color: 'pearl',
-                    active: false
-                },
-                {
-                    title: 'Sports',
-                    color: 'blue',
-                    active: false
-                },
-                {
-                    title: 'Utility',
-                    color: 'tan',
-                    active: false
-                },
-            ]
+            categories: []
         }
     },
 
+    mounted() {
+        this.init();
+    },
+
     methods: {
+        init() {
+            axios.get('api/categories')
+                .then(response => {
+                    this.categories = response.data
+                })
+        },
+
         saveProject() {
-            console.log(this.project)
             let formData = new FormData();
 
             this.project.start_date = this.$refs.startDate.value;
@@ -336,6 +310,7 @@ export default {
                 .then(response => {
                     this.$swal('Успешно!', "Ваш проект успешно отправлен на модернизации!", 'success');
                     this.$refs.form.reset();
+                    this.project = {};
                 })
                 .catch(error => {
                     this.$swal('Ошибка!', "Что-то пошло не так! Повторите попытку позже", 'error');
@@ -343,22 +318,15 @@ export default {
         },
 
         chooseCategory(category) {
-            let index = this.categories.indexOf(category);
-
-            this.categories[index].active = !this.categories[index].active;
-
-            if (this.categories[index].active) {
+            if (this.project.categories.indexOf(category.id) === -1) {
                 if (this.project.categories.length > 1) {
-
-                    let deletedItem = this.project.categories.pop();
-                    this.categories[this.categories.indexOf(deletedItem)].active = false;
-                    this.project.categories.push(this.categories[index]);
-
+                    this.project.categories.pop();
+                    this.project.categories.push(category.id);
                 } else {
-                    this.project.categories.push(this.categories[index]);
+                    this.project.categories.push(category.id);
                 }
             } else {
-                this.project.categories.splice(this.project.categories.indexOf(category), 1);
+                this.project.categories.splice(this.project.categories.indexOf(category.id), 1);
             }
         },
 
@@ -377,8 +345,7 @@ export default {
         },
 
         addSocial(social) {
-            this.project.socials.push(social)
-            console.log(this.project.socials)
+            this.project.socials.push({ id: this.getSocialId(), social_name: social.name, social_data: '', social_title: social.title })
         },
 
         deleteSocial(social) {
@@ -387,6 +354,10 @@ export default {
 
         setStatus(status) {
             this.project.status = status;
+        },
+
+        getSocialId() {
+            return this.project.socials[this.project.socials.length] + 1 ? this.project.socials.length > 0 : 1;
         }
     }
 }

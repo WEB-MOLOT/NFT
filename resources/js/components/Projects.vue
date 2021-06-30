@@ -45,8 +45,9 @@
                                         <div class="filter__prices-title">Price</div>
                                         <div class="filter__prices-caption">Price (Range $1—$999)</div>
                                         <div class="prices">
-                                            <div class="prices__slider" id="price"></div>
-                                            <input type="hidden" name="price" ref="maxPrice" value="">
+                                            <div class="prices__slider" @click="init" id="price"></div>
+                                            <input type="hidden" v-model="filter.max_price" name="maxPrice" ref="maxPrice" value="">
+                                            <input type="hidden" v-model="filter.min_price" name="minPrice" ref="minPrice" value="">
                                         </div>
                                     </div>
                                 </div>
@@ -90,8 +91,8 @@
                             <div class="filter__category">
                                 <div class="filter__category-title">Category</div>
                                 <div class="filter__category-items flex">
-                                    <div v-for="category in categories" :class="[`filter__category-item filter__category-item_${category.color}`, {active: category.active}]" @click="chooseCategory(category)">
-                                        <div class="filter__category-caption">{{ category.title }}</div>
+                                    <div v-for="category in categories" :class="[`filter__category-item filter__category-item_${category.color}`, {active:  filter.categories.indexOf(category.id) !== -1}]" @click="chooseCategory(category)">
+                                        <div class="filter__category-caption">{{ category.name }}</div>
                                         <div class="filter__category-icon">
                                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -112,24 +113,24 @@
                                 </div>
                                 <div class="filter__bottom-box flex">
                                     <div class="select select_active select-filter--js">
-                                        <div class="select-title" @click="setSortId(1)">
+                                        <div class="select-title">
                                             <div class="select-title__value">By time</div>
                                         </div>
                                         <div class="select-options">
-                                            <div class="select-options__value" @click="setSortId(1)">
+                                            <div class="select-options__value" @click="setSort('By time')">
                                                 <span>By time</span>
                                             </div>
-                                            <div class="select-options__value">
+                                            <div class="select-options__value" @click="setSort('Will begin')">
                                                 <span>Will begin</span>
                                             </div>
-                                            <div class="select-options__value">
+                                            <div class="select-options__value" @click="setSort('Started')">
                                                 <span>Started</span>
                                             </div>
 
                                         </div>
                                     </div>
                                     <div class="filter__items flex">
-                                        <div class="filter__item filter__item_price filter-sort--js" @click="setSortId(2)">
+                                        <div class="filter__item filter__item_price filter-sort--js" @click="setSort('Price')">
                                             <span>Price</span>
                                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -137,7 +138,7 @@
                                                     fill="#5A7687" />
                                             </svg>
                                         </div>
-                                        <div class="filter__item filter__item_rating filter-sort--js" @click="setSortId(3)">
+                                        <div class="filter__item filter__item_rating filter-sort--js" @click="setSort('Rating')">
                                             <span>Rating</span>
                                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -146,8 +147,12 @@
                                             </svg>
                                         </div>
                                     </div>
-                                    <input type="hidden" class="sort_order--js" name="sort_order" value="By time">
-                                    <input type="hidden" class="sort_by--js" name="sort_by" value="ASC">
+                                    <input type="hidden" class="sort_order--js"
+                                           ref="sortOrder"
+                                           name="sort_order" value="By time">
+                                    <input type="hidden" class="sort_by--js"
+                                           ref="sortBy"
+                                           name="sort_by" value="ASC">
                                 </div>
                             </div>
                             <a href="#" class="filter__apply">
@@ -169,7 +174,7 @@
                             <div class="catalog__coll-caption caption-active visible">Active</div>
                             <div class="catalog__coll-caption caption-upcoming visible">Upcoming</div>
                         </div>
-                        <div class="catalog__items" v-if="projects.length">
+                        <div class="catalog__items">
                             <a href="#" class="catalog__item project--js flex bottom bottom_visible" v-for="project in projects">
                                 <div class="catalog__left">
                                     <div class="catalog__img img-cover">
@@ -232,7 +237,9 @@
                                         <div class="catalog__top-box">
                                             <div class="catalog__caption">{{ project.name }}</div>
                                             <div class="catalog__top-info">
-                                                <div class="category category_orchid">art</div>
+                                                <div v-for="category in project.categories" :class="`category category_${category.color}`">
+                                                    {{ category.name }}
+                                                </div>
                                                 <div class="catalog__time catalog__time_normal flex">
                                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path
@@ -253,7 +260,7 @@
                                         {{ project.content.slice(0, 150)}} <span v-if="project.content.length > 150"> ...</span>
                                     </div>
                                     <div class="catalog__item-bottom flex">
-                                        <div class="catalog__prices">$0.01 - $239</div>
+                                        <div class="catalog__prices">${{ project.min_price }} - ${{ project.max_price }}</div>
                                         <div class="catalog__time catalog__time_normal flex">
                                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -289,10 +296,6 @@
 
 <script>
 export default {
-    mounted() {
-        this.init();
-    },
-
     data() {
         return {
             filter: {
@@ -300,57 +303,36 @@ export default {
                 upcoming: true,
                 verified: true,
                 min_price: 0,
-                max_price: 0,
+                max_price: 999,
                 categories: [],
-                sort_by: 1,
-                limit: 16
+                sort_order: "By Time",
+                sort_by: 'asc',
+                limit: 8
             },
 
-            categories: [
-                {
-                    title: 'Music',
-                    color: 'violet',
-                    active: false
-                },
-                {
-                    title: 'Art',
-                    color: 'orchid',
-                    active: false
-                },
-                {
-                    title: 'Collectible',
-                    color: 'amber',
-                    active: false
-                },
-                {
-                    title: 'Game',
-                    color: 'asparagus',
-                    active: false
-                },
-                {
-                    title: 'Metaverse',
-                    color: 'pearl',
-                    active: false
-                },
-                {
-                    title: 'Sports',
-                    color: 'blue',
-                    active: false
-                },
-                {
-                    title: 'Utility',
-                    color: 'tan',
-                    active: false
-                },
-            ],
-
+            categories: [],
             projects: []
         }
+    },
+
+    mounted(){
+        this.init();
+        this.getCategories();
     },
 
     methods: {
         init() {
             this.filter.max_price = this.$refs.maxPrice.value
+            this.filter.min_price = this.$refs.minPrice.value
+
+            let that = this;
+
+            setTimeout(function () {
+                that.filter.sort_order = that.$refs.sortOrder.value;
+                that.filter.sort_by = that.$refs.sortBy.value;
+            }, 3000)
+
+            console.log(this.filter);
 
             axios.get('api/projects', { params: this.filter })
                 .then(response => {
@@ -359,20 +341,37 @@ export default {
                 })
         },
 
-        chooseCategory(category) {
-            let index = this.categories.indexOf(category);
-
-            this.categories[index].active = !this.categories[index].active;
-
-            if (this.categories[index].active) {
-                this.filter.categories.push(this.categories[index]);
-            } else {
-                this.filter.categories.splice(this.filter.categories.indexOf(category), 1);
-            }
+        getCategories() {
+            axios.get('api/categories')
+                .then(response => {
+                    this.categories = response.data;
+                })
         },
 
-        setSortId(id) {
-            this.filter.sort_by = id;
+        chooseCategory(category) {
+            if (this.filter.categories.indexOf(category.id) === -1) {
+                this.filter.categories.push(category.id);
+            } else {
+                this.filter.categories.splice(this.filter.categories.indexOf(category.id), 1);
+            }
+
+            this.init();
+        },
+
+        setSort(sort) {
+            if (this.filter.sort_order === sort) {
+                if (this.filter.sort_by === 'asc') {
+                    this.filter.sort_order = 'undefined';
+                    this.filter.sort_by = 'undefined';
+                } else {
+                    this.filter.sort_by = 'asc';
+                }
+            } else {
+                this.filter.sort_order = sort;
+                this.filter.sort_by = 'desc';
+            }
+
+            this.init();
         }
     }
 }

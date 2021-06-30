@@ -25,6 +25,9 @@ class CreateProjectsTable extends Migration
             $table->unsignedInteger('max_price')->nullable();
             $table->unsignedInteger('available_count')->nullable();
             $table->text('content');
+            $table->string('email', 100);
+            $table->string('twitter', 100);
+            $table->string('website', 100);
             $table->timestamp('started_at')->nullable();
             $table->unsignedTinyInteger('started_at_timezone')->nullable();
             $table->timestamp('ended_at')->nullable();
@@ -33,18 +36,13 @@ class CreateProjectsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('project_details', function(Blueprint $table) {
+        Schema::create('project_socials', function(Blueprint $table) {
             $table->id();
             $table->foreignId('project_id')->index()->references('id')->on('projects')->cascadeOnDelete();
-            $table->string('email', 100)->nullable();
-            $table->string('discord', 100)->nullable();
-            $table->string('medium', 100)->nullable();
-            $table->string('instagram', 100)->nullable();
-            $table->string('facebook', 100)->nullable();
-            $table->string('twitter', 100);
-            $table->string('website', 100);
-            $table->json('images');
-            $table->json('detail_content')->nullable();
+            $table->string('social_name', 100);
+            $table->string('social_data');
+            $table->timestamps();
+
         });
 
         Schema::create('project_categories', function(Blueprint $table) {

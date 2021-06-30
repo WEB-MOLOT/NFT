@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -124,12 +125,9 @@ class Project extends Model implements HasMedia
         return null;
     }
 
-    /**
-     * @return HasOne
-     */
-    public function details(): HasOne
+    public function socials(): BelongsToMany
     {
-        return $this->hasOne(ProjectDetail::class);
+        return $this->belongsToMany(ProjectSocial::class, 'project_socials');
     }
 
     /**
@@ -145,7 +143,7 @@ class Project extends Model implements HasMedia
      */
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class, 'project_categories');
     }
 
     /**

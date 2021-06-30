@@ -9,6 +9,7 @@ use App\Http\Resources\ProjectResource;
 use App\Models\Project;
 use App\Services\FilterService;
 use App\Services\ProjectService;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -45,32 +46,39 @@ class ProjectController extends Controller
 
         $builder->whereIn('status', $statuses);
 
-//        if($data['categories'] ?? false) {
-//            $builder->whereHas('categories', static fn(Builder $builder) => $builder->whereIn('id', $data['categories']));
-//        }
+        if($request->categories && count($request->categories) > 0) {
+            $builder->whereHas('categories', static fn(Builder $builder) => $builder->whereIn('id', $request->categories));
+        }
 
         if($request->verified == "true") {
             $builder->where('is_verified', 1);
         }
 
-        switch($request->sort_by) {
-            case FilterService::ORDER_TIME:
-                $builder->orderBy('started_at');
-                break;
-            case FilterService::ORDER_PRICE:
-                $builder->orderBy('price');
-                break;
-            case FilterService::ORDER_RATING:
-//                $builder->orderBy('rating', $data['order_by_dir']);
-                break;
+        $builder->where('min_price', '>=', intval($request->min_price))->where('max_price', '<=', intval($request->max_price));
+
+        if ($request->sort_order !== 'undefined' && $request->sort_by !== 'undefined') {
+            switch($request->sort_order) {
+                case 'Price':
+                    $builder->orderBy('min_price', $request->sort_by);
+                    break;
+                case 'Rating':
+                    $builder->orderBy('rating', $request->sort_by);
+                    break;
+                case 'By Time':
+                    $builder->orderBy('started_at', $request->sort_by);
+                    break;
+                case 'Will begin':
+                    $builder->orderBy('started_at', $request->sort_by);
+                    break;
+                case 'Started':
+                    $builder->orderBy('started_at', $request->sort_by);
+                    break;
+            }
         }
 
         $builder->limit($request->limit);
 
         return ProjectResource::collection($builder->get());
-//        return new JsonResponse(
-//            $this->projectService->getProjects($request->all())
-//        );
     }
 
     /**
