@@ -125,9 +125,9 @@ class Project extends Model implements HasMedia
         return null;
     }
 
-    public function socials(): BelongsToMany
+    public function socials(): HasMany
     {
-        return $this->belongsToMany(ProjectSocial::class, 'project_socials');
+        return $this->hasMany(ProjectSocial::class);
     }
 
     /**

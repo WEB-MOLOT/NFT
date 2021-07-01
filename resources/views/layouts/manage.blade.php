@@ -138,10 +138,6 @@
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <strong>Copyright &copy; {{ now()->year }} <a href="{{ config('app.url') }}" class="text-black-50">{{ config('app.name') }}</a>.</strong>
-
-        <div class="float-right d-none d-sm-inline-block">
-            <span class="small text-muted text-black-50">created by <a href="https://bimsha.art" class="text-black-50" target="_blank">bimsha</a></span>
-        </div>
     </footer>
 
     <!-- Control Sidebar -->

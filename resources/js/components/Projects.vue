@@ -1,5 +1,6 @@
 <template>
     <div class="catalog">
+        <project-modal ref="modal"></project-modal>
         <div class="wrapper">
             <div class="filter_scroll--js">
                 <div class="filter ">
@@ -174,8 +175,8 @@
                             <div class="catalog__coll-caption caption-active visible">Active</div>
                             <div class="catalog__coll-caption caption-upcoming visible">Upcoming</div>
                         </div>
-                        <div class="catalog__items">
-                            <a href="#" class="catalog__item project--js flex bottom bottom_visible" v-for="project in projects">
+                        <div class="catalog__items" v-if="projects.length > 0">
+                            <a href="#" class="catalog__item project--js flex bottom bottom_visible" v-for="project in projects" @click="showProjectModal(project)">
                                 <div class="catalog__left">
                                     <div class="catalog__img img-cover">
                                         <img :src="project.logo" alt="">
@@ -295,7 +296,11 @@
 
 
 <script>
+
+import ProjectModal from './ProjectModal';
 export default {
+    components: {ProjectModal},
+
     data() {
         return {
             filter: {
@@ -372,6 +377,11 @@ export default {
             }
 
             this.init();
+        },
+
+        showProjectModal(project) {
+            this.$refs.modal.project = project;
+            this.$refs.modal.init();
         }
     }
 }

@@ -33,8 +33,8 @@ class OptionsServiceProvider extends ServiceProvider
      */
     protected function setDefaultConfig(array $options): void
     {
-        Config::set('bimsha', $options);
-        Config::set('app.name', $options['site_name'] ?? 'bimsha');
+        Config::set('nft', $options);
+        Config::set('app.name', $options['site_name'] ?? 'nft');
     }
 
     /**

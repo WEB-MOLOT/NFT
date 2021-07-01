@@ -24,9 +24,12 @@ class ProjectResource extends JsonResource
             'currency' => $this->currency,
             'min_price' => $this->min_price,
             'max_price' => $this->max_price,
-            'available' => $this->available_count,
+            'available_count' => $this->available_count,
             'content' => $this->content,
-            'rating' => $this->rating
+            'rating' => $this->rating,
+            'email' => $this->email,
+            'website' => $this->website,
+            'socials' => $this->socials()->get()
         ];
     }
 }
