@@ -38,30 +38,5 @@ Route::group(
  }
 );
 
-Route::group(
-    [
-        'as' => 'manage.',
-        'prefix' => 'manage',
-        //'middleware' => ['auth', 'can:view-any']
-    ],
-    static function() {
-        Route::get('', Manage\IndexController::class)->name('pages.index');
-
-        Route::get('settings', [Manage\OptionController::class, 'index'])->name('options.index');
-        Route::put('settings', [Manage\OptionController::class, 'update'])->name('options.update');
-
-        Route::as('resources.')->group(static function() {
-            Route::resource('pages', Manage\Resources\PageController::class);
-            Route::resource('listings', Manage\Resources\ListingController::class)->except('show');
-
-            Route::resource('users', Manage\Resources\UserController::class)->except('show');
-
-            Route::resource('categories', Manage\Resources\CategoryController::class)->except('show');
-            Route::resource('projects', Manage\Resources\ProjectController::class)->except('create', 'store');
-        });
-    }
-);
-
-
 Route::get('/', \App\Http\Controllers\Front\IndexController::class)->name('index');
 Route::get('/submit', [\App\Http\Controllers\Front\IndexController::class, 'submit'])->name('submit');

@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use ReflectionClass;
@@ -49,7 +50,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  */
 class Project extends Model implements HasMedia
 {
-    use ProjectDates, Actions, FormattedJsonDates, InteractsWithMedia;
+    use ProjectDates, Actions, FormattedJsonDates, InteractsWithMedia, SoftDeletes;
 
     public const STATUS_UPCOMING = 1;
     public const STATUS_ACTIVE = 2;
@@ -59,6 +60,8 @@ class Project extends Model implements HasMedia
     public const CURRENCY_BNB = 3;
 
     public const RATING_FACTOR = 10;
+
+    protected $dates = ['deleted_at'];
 
     protected $fillable = [
         'status', 'is_verified', 'is_published', 'name', 'logo', 'rating', 'currency', 'min_price', 'max_price',

@@ -15,6 +15,7 @@ class ProjectResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'name' => $this->name,
             'status' => $this->status,
             'verified' => $this->is_verified,
@@ -29,7 +30,8 @@ class ProjectResource extends JsonResource
             'rating' => $this->rating,
             'email' => $this->email,
             'website' => $this->website,
-            'socials' => $this->socials()->get()
+            'socials' => $this->socials()->get(),
+            'created_at' => $this->created_at
         ];
     }
 }

@@ -3074,7 +3074,9 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
 window.axios.defaults.headers.common = {
   'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')['content'],
   Accept: 'application/json'
-}; // If you don't need the styles, do not connect
+}; // window.$ = window.jQuery = require('jquery');
+// require('admin-lte');
+// If you don't need the styles, do not connect
 // import 'sweetalert2/dist/sweetalert2.min.css';
 
 Vue.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_0__.default);

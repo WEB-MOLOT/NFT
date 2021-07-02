@@ -1,18 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Api\Data;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\Data\IndexProjectRequest;
 use App\Http\Requests\Api\Data\Project\StoreRequest;
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
-use App\Services\FilterService;
 use App\Services\ProjectService;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
@@ -117,5 +114,42 @@ class ProjectController extends Controller
         return new JsonResponse(
             $this->projectService->update($project, [])
         );
+    }
+
+    public function destroy($id) {
+        $project = Project::findOrFail($id);
+
+        $project->delete();
+
+        return response()->json([
+            'message' => 'successfully deleted'
+        ], 200);
+    }
+
+    public function publish($id): JsonResponse
+    {
+        try {
+            $project = Project::findOrFail($id);
+
+            $project->is_published = true;
+            $project->save();
+
+            return response()->json([
+                'message' => 'successfully published',
+                '$project' => $project
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 400);
+        }
+
+    }
+
+    public function getUnpublishedProjects(): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+    {
+        $projects = Project::where('is_published', 0)->get();
+
+        return ProjectResource::collection($projects);
     }
 }

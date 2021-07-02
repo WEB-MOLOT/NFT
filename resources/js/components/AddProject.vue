@@ -357,7 +357,7 @@ export default {
         },
 
         getSocialId() {
-            return this.project.socials[this.project.socials.length] + 1 ? this.project.socials.length > 0 : 1;
+            return this.project.socials.length > 0 ? this.project.socials[this.project.socials.length - 1].id + 1 : 1;
         }
     }
 }

@@ -1,7 +1,7 @@
 <?php return array (
   'app' => 
   array (
-    'name' => 'bimsha',
+    'name' => 'nft',
     'env' => 'local',
     'debug' => true,
     'url' => 'http://nftapi.local',
@@ -713,7 +713,7 @@
   ),
   'session' => 
   array (
-    'driver' => 'file',
+    'driver' => 'cookie',
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
@@ -893,7 +893,7 @@
     'proxies' => NULL,
     'headers' => 94,
   ),
-  'bimsha' => 
+  'nft' => 
   array (
   ),
   'ide-helper' => 

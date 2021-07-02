@@ -1,13 +1,10 @@
 <?php
 
-use App\Http\Controllers\Api\Data;
-use App\Http\Controllers\Api\Forms;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\MessageController;
+use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\ProjectController;
 use Illuminate\Support\Facades\Route;
-use Laravel\Sanctum\Http\Controllers;
-
 
 
 //Route::middleware('auth:sanctum')->get('/user', function (\Illuminate\Http\Request $request) {
@@ -23,8 +20,16 @@ use Laravel\Sanctum\Http\Controllers;
 //Route::post('/register', [RegisterController::class, 'register']);
 //
 
-Route::post('message', Forms\MessageController::class)->name('messages.store');
-Route::post('order', Forms\OrderController::class)->name('orders.store');
+Route::post('message', MessageController::class)->name('messages.store');
+Route::post('order', OrderController::class)->name('orders.store');
 
-Route::resource('categories', Data\CategoryController::class)->only('index', 'show');
-Route::resource('projects', Data\ProjectController::class)->except('data', 'create', 'edit', 'destroy');
+Route::resource('categories', CategoryController::class)->only('index', 'show');
+
+
+
+Route::post('projects/publish/{id}', [ProjectController::class, 'publish']);
+Route::get('projects/get-unpublished', [ProjectController::class, 'getUnpublishedProjects']);
+
+Route::resource('projects', ProjectController::class)->except('data', 'create', 'edit');
+
+
