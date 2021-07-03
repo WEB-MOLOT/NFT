@@ -1,7 +1,7 @@
 <?php return array (
   'app' => 
   array (
-    'name' => 'nft',
+    'name' => 'Laravel',
     'env' => 'local',
     'debug' => true,
     'url' => 'http://nftapi.local',
@@ -42,7 +42,7 @@
       23 => 'App\\Providers\\AuthServiceProvider',
       24 => 'App\\Providers\\EventServiceProvider',
       25 => 'App\\Providers\\RouteServiceProvider',
-      26 => 'App\\Providers\\OptionsServiceProvider',
+      26 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
     ),
     'aliases' => 
     array (
@@ -89,7 +89,7 @@
   array (
     'defaults' => 
     array (
-      'guard' => 'web',
+      'guard' => 'api',
       'passwords' => 'users',
     ),
     'guards' => 
@@ -101,13 +101,8 @@
       ),
       'api' => 
       array (
-        'driver' => 'token',
+        'driver' => 'jwt',
         'provider' => 'users',
-      ),
-      'sanctum' => 
-      array (
-        'driver' => 'sanctum',
-        'provider' => NULL,
       ),
     ),
     'providers' => 
@@ -403,6 +398,42 @@
       'time' => 2,
     ),
   ),
+  'jwt' => 
+  array (
+    'secret' => '3jmpQrIiVRyXxkanEPp8uYAA6OstfrLtK4KfDxjz1GubKKJyYqHRCPTbqU4YA9GI',
+    'keys' => 
+    array (
+      'public' => NULL,
+      'private' => NULL,
+      'passphrase' => NULL,
+    ),
+    'ttl' => 60,
+    'refresh_ttl' => 20160,
+    'algo' => 'HS256',
+    'required_claims' => 
+    array (
+      0 => 'iss',
+      1 => 'iat',
+      2 => 'exp',
+      3 => 'nbf',
+      4 => 'sub',
+      5 => 'jti',
+    ),
+    'persistent_claims' => 
+    array (
+    ),
+    'lock_subject' => true,
+    'leeway' => 0,
+    'blacklist_enabled' => true,
+    'blacklist_grace_period' => 0,
+    'decrypt_cookies' => false,
+    'providers' => 
+    array (
+      'jwt' => 'Tymon\\JWTAuth\\Providers\\JWT\\Lcobucci',
+      'auth' => 'Tymon\\JWTAuth\\Providers\\Auth\\Illuminate',
+      'storage' => 'Tymon\\JWTAuth\\Providers\\Storage\\Illuminate',
+    ),
+  ),
   'logging' => 
   array (
     'default' => 'stack',
@@ -676,19 +707,6 @@
       'table' => 'failed_jobs',
     ),
   ),
-  'sanctum' => 
-  array (
-    'stateful' => 
-    array (
-      0 => 'nftapi.local:3000',
-    ),
-    'expiration' => NULL,
-    'middleware' => 
-    array (
-      'verify_csrf_token' => 'App\\Http\\Middleware\\VerifyCsrfToken',
-      'encrypt_cookies' => 'App\\Http\\Middleware\\EncryptCookies',
-    ),
-  ),
   'services' => 
   array (
     'google' => 
@@ -892,9 +910,6 @@
   array (
     'proxies' => NULL,
     'headers' => 94,
-  ),
-  'nft' => 
-  array (
   ),
   'ide-helper' => 
   array (

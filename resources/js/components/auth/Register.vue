@@ -14,6 +14,11 @@
                 <a href="javascript:void(0)" class="modal__link active">Registration</a>
             </div>
             <div class="modal__box">
+                <div class="alert alert-danger" v-if="errors.length > 0">
+                    <ul>
+                        <li v-for="error in errors">{{ error[0] }}</li>
+                    </ul>
+                </div>
                 <label class="modal__label">
                     <input type="text" v-model="user.email" class="modal__field field" placeholder="Enter email*">
                 </label>
@@ -59,17 +64,35 @@ export default {
                 password: '',
                 password_confirmation: '',
             },
+
+            errors: []
         }
     },
 
     methods: {
         register() {
-
+            this.errors = [];
             axios.post('register', this.user)
                 .then(response => {
                     location.reload()
+                })
+                .catch(error => {
+                    Object.entries(error.response.data.errors).forEach(([key, value]) => {
+                        this.errors.push(value);
+                    });
                 })
         },
     }
 }
 </script>
+
+
+<style scoped>
+    .alert {
+        background: #f44336;
+        padding: 10px;
+        color: white;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+</style>

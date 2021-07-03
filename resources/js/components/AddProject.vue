@@ -1,5 +1,10 @@
 <template>
     <form @submit.prevent="saveProject" ref="form" class="contacts__form form">
+        <div class="alert alert-danger" v-if="errors.length > 0">
+            <ul>
+                <li v-for="error in errors">{{ error[0] }}</li>
+            </ul>
+        </div>
 
         <label class="form__label bottom ">
             <input type="text" name="text" class="form__field field" v-model="project.name" placeholder="The name of the project">
@@ -271,7 +276,8 @@ export default {
                 }
             ],
 
-            categories: []
+            categories: [],
+            errors: []
         }
     },
 
@@ -313,6 +319,9 @@ export default {
                     this.project = {};
                 })
                 .catch(error => {
+                    Object.entries(error.response.data.errors).forEach(([key, value]) => {
+                        this.errors.push(value);
+                    });
                     this.$swal('Ошибка!', "Что-то пошло не так! Повторите попытку позже", 'error');
                 })
         },
@@ -362,3 +371,13 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    .alert {
+        background: #f44336;
+        padding: 10px;
+        color: white;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+</style>

@@ -1,4 +1,11 @@
+import Vue from 'vue';
 import VueSweetalert2 from 'vue-sweetalert2';
+
+// If you don't need the styles, do not connect
+import 'sweetalert2/dist/sweetalert2.min.css';
+
+Vue.use(VueSweetalert2);
+
 window.Vue = require('vue').default;
 window.axios = require('axios');
 
@@ -8,14 +15,6 @@ window.axios.defaults.headers.common = {
         ],
     Accept: 'application/json'
 };
-
-// window.$ = window.jQuery = require('jquery');
-// require('admin-lte');
-
-// If you don't need the styles, do not connect
-// import 'sweetalert2/dist/sweetalert2.min.css';
-
-Vue.use(VueSweetalert2);
 
 Vue.component('add-project', require('./components/AddProject').default);
 Vue.component('login', require('./components/auth/Login').default);

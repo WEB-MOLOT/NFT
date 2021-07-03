@@ -18,14 +18,14 @@ class DateFormatter
      * @param string|null $value
      */
     public function __construct(
-        protected ?string $value = null
+         ?string $value = null
     ) {}
 
     /**
      * @param string|null $value
      * @return $this
      */
-    public function setValue(string|null $value): self
+    public function setValue($value): self
     {
         $this->value = $value;
 

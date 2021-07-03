@@ -24,7 +24,7 @@ class ProjectController extends Controller
      * @param ProjectService $projectService
      */
     public function __construct(
-        protected ProjectService $projectService
+        ProjectService $projectService
     ) {}
 
     public function index(Request $request)
@@ -146,10 +146,58 @@ class ProjectController extends Controller
 
     }
 
+    public function verify($id) {
+        $project = Project::findOrFail($id);
+
+        $project->is_verified = 1;
+
+        $project->save();
+
+        return response()->json([
+            'message' => 'successfully verified'
+        ], 200);
+    }
+
+    public function restore($id) {
+        $project = Project::onlyTrashed()->where('id', $id)->first();
+
+        $project->restore();
+
+        return response()->json([
+            'message' => 'successfully restored'
+        ], 200);
+    }
+
+    public function forceDelete($id) {
+        $project = Project::onlyTrashed()->where('id', $id)->first();
+
+        $project->clearMediaCollection('project_logo');
+        $project->clearMediaCollection('project_images');
+
+        $project->forceDelete();
+
+        return response()->json([
+            'message' => 'successfully deleted'
+        ], 200);
+    }
+
     public function getUnpublishedProjects(): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
         $projects = Project::where('is_published', 0)->get();
 
         return ProjectResource::collection($projects);
     }
+
+    public function getPublishedProjects() {
+        $projects = Project::isPublished()->get();
+
+        return ProjectResource::collection($projects);
+    }
+
+    public function getTrashedProjects() {
+        $projects = Project::onlyTrashed()->get();
+
+        return ProjectResource::collection($projects);
+    }
+
 }

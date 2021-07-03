@@ -46,6 +46,11 @@
                 <span>Or Sign up with email</span>
             </div>
             <div class="modal__box">
+                <div class="alert alert-danger" v-if="errors.length > 0">
+                    <ul>
+                        <li v-for="error in errors">{{ error[0] }}</li>
+                    </ul>
+                </div>
                 <label class="modal__label">
                     <input type="text" name="text" v-model="email" class="modal__field field" placeholder="Enter email">
                 </label>
@@ -85,18 +90,35 @@ export default {
             e1: false,
             password: '',
             email: '',
+            errors: []
         }
     },
 
     methods: {
         login() {
+            this.errors = [];
             axios.post('login', {
                 email: this.email,
                 password: this.password
             }).then(response => {
                 location.reload();
+            })
+            .catch(error => {
+                Object.entries(error.response.data.errors).forEach(([key, value]) => {
+                    this.errors.push(value);
+                });
             });
         },
     }
 }
 </script>
+
+<style scoped>
+.alert {
+    background: #f44336;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+</style>

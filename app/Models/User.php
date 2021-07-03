@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
-use Laravel\Sanctum\HasApiTokens;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 /**
  * Class User
@@ -22,9 +22,9 @@ use Laravel\Sanctum\HasApiTokens;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable, HasApiTokens;
+    use Notifiable;
 
     public const GROUP_ADMIN = 1;
     public const GROUP_MODERATOR = 2;
@@ -68,5 +68,15 @@ class User extends Authenticatable
         return [
             self::GROUP_USER, self::GROUP_MODERATOR, self::GROUP_ADMIN
         ];
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

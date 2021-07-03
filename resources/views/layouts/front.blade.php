@@ -44,10 +44,11 @@
 <link rel="preload" media="all" href="/css/libs.css" as="style" onload="this.rel='stylesheet'">
 <link rel="preload" media="all" href="/css/index.css" as="style" onload="this.rel='stylesheet'">
 
+<script src="/js/app.js"></script>
+
 <script src="/js/libs.js" rel="preload" as="script" defer></script>
 <script src="/js/index.js" rel="preload" as="script" defer></script>
 
-<script src="/js/app.js"></script>
 </body>
 
 </html>

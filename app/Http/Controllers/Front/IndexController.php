@@ -10,7 +10,6 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-//        dd(Auth::user());
         return view('front.index');
     }
 
