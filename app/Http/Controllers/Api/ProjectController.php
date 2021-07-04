@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Data\Project\StoreRequest;
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
+use App\Models\Subscription;
 use App\Services\ProjectService;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
@@ -23,9 +26,9 @@ class ProjectController extends Controller
      * ProjectController constructor.
      * @param ProjectService $projectService
      */
-    public function __construct(
-        ProjectService $projectService
-    ) {}
+    public function __construct(ProjectService $projectService) {
+
+    }
 
     public function index(Request $request)
     {
@@ -178,6 +181,33 @@ class ProjectController extends Controller
 
         return response()->json([
             'message' => 'successfully deleted'
+        ], 200);
+    }
+
+    public function follow($id, Request $request) {
+        $project = Project::findOrFail($id);
+        $user = User::findOrFail($request->user_id);
+
+
+        if ($user) {
+            Subscription::create([
+                'project_id' => $project->id,
+                'user_id' => $user->id
+            ]);
+
+            return response()->json('subscribed');
+        } else {
+            return response()->json('unauthenticated', 401);
+        }
+    }
+
+    public function unfollow($id, Request $request) {
+        $subscription = Subscription::where('project_id', $id)->where('user_id', $request->user_id)->first();
+
+        $subscription->delete();
+
+        return response()->json([
+            'message' => 'successfully unsubscribed'
         ], 200);
     }
 

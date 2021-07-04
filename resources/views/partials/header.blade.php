@@ -35,10 +35,10 @@
                 <nav class="header__menu">
                     <ul>
                         <li>
-                            <a href="#">Active NFT</a>
+                            <a href="{{ route('active') }}">Active NFT</a>
                         </li>
                         <li>
-                            <a href="#">Upcoming NFT</a>
+                            <a href="{{ route('upcoming') }}">Upcoming NFT</a>
                         </li>
                     </ul>
                 </nav>

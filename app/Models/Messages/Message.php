@@ -24,14 +24,6 @@ class Message extends Model
 {
     use IpTwoConvert;
 
-    public const SUBJECT_ICO = 1;
-    public const SUBJECT_AIRDROP = 2;
-    public const SUBJECT_FEEDBACK = 3;
-    public const SUBJECT_AD = 4;
-    public const SUBJECT_BUSINESS = 5;
-    public const SUBJECT_REPORT = 6;
-    public const SUBJECT_OTHER = 7;
-
     public $timestamps = false;
 
     protected $fillable = [
@@ -45,15 +37,5 @@ class Message extends Model
     {
         static::creating(static fn(Message $message): Message => $message->setAttribute('created_at', Carbon::now()));
         parent::boot();
-    }
-
-    /**
-     * @return int[]
-     */
-    public static function subjects(): array
-    {
-        return [
-            self::SUBJECT_ICO, self::SUBJECT_AIRDROP, self::SUBJECT_FEEDBACK, self::SUBJECT_AD, self::SUBJECT_BUSINESS, self::SUBJECT_REPORT, self::SUBJECT_OTHER
-        ];
     }
 }

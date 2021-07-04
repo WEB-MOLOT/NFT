@@ -40,3 +40,6 @@ Route::group(
 
 Route::get('/', \App\Http\Controllers\Front\IndexController::class)->name('index');
 Route::get('/submit', [\App\Http\Controllers\Front\IndexController::class, 'submit'])->name('submit');
+Route::get('/active', [\App\Http\Controllers\Front\IndexController::class, 'active'])->name('active');
+Route::get('upcoming', [\App\Http\Controllers\Front\IndexController::class, 'upcoming'])->name('upcoming');
+Route::get('/contact', [\App\Http\Controllers\Front\IndexController::class, 'contact'])->name('contact');

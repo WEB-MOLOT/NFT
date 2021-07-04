@@ -16,10 +16,12 @@ window.axios.defaults.headers.common = {
     Accept: 'application/json'
 };
 
+
 Vue.component('add-project', require('./components/AddProject').default);
 Vue.component('login', require('./components/auth/Login').default);
 Vue.component('register', require('./components/auth/Register').default);
 Vue.component('forgot', require('./components/auth/Forgot').default);
+Vue.component('contact-form', require('./components/ContactForm').default);
 
 Vue.component('projects', require('./components/Projects').default);
 

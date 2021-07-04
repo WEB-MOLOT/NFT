@@ -176,7 +176,7 @@
                             <div class="catalog__coll-caption caption-upcoming visible">Upcoming</div>
                         </div>
                         <div class="catalog__items" v-if="projects.length > 0">
-                            <a href="#" class="catalog__item project--js flex bottom bottom_visible" v-for="project in projects" @click="showProjectModal(project)">
+                            <a href="#" class="catalog__item project--js flex bottom bottom_visible" v-for="project in projects">
                                 <div class="catalog__left">
                                     <div class="catalog__img img-cover">
                                         <img :src="project.logo" alt="">
@@ -204,20 +204,8 @@
                                                 <div class="catalog__left-info__desc">text description</div>
                                             </div>
                                         </div>
-                                        <div class="catalog__left-btn follow flex-center">
-                                            <div class="catalog__left-btn__follow">
-                                                <div class="catalog__left-btn__icon">
-                                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                              d="M2.04223 8.04281V7.91507C2.06097 7.53714 2.1821 7.17094 2.39312 6.85426C2.74437 6.47384 2.98482 6.00767 3.08925 5.50465C3.08925 5.11587 3.08925 4.72154 3.12321 4.33276C3.29865 2.46107 5.14933 1.16699 6.97736 1.16699H7.02264C8.85068 1.16699 10.7014 2.46107 10.8825 4.33276C10.9164 4.72154 10.8825 5.11587 10.9108 5.50465C11.0166 6.00884 11.2568 6.47646 11.6069 6.85982C11.8195 7.17369 11.9408 7.53854 11.9578 7.91507V8.03726C11.9704 8.54502 11.7955 9.04014 11.4654 9.43131C11.0291 9.88869 10.4371 10.1732 9.80148 10.2311C7.93749 10.431 6.05685 10.431 4.19286 10.2311C3.55792 10.1707 2.96677 9.8866 2.52895 9.43131C2.20391 9.03984 2.03139 8.54767 2.04223 8.04281Z"
-                                                              stroke="#3340B4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                                        <path d="M5.57373 12.1641C5.86497 12.5296 6.29267 12.7662 6.76215 12.8214C7.23164 12.8767 7.7042 12.746 8.07526 12.4584C8.18938 12.3734 8.29207 12.2744 8.38087 12.1641" stroke="#3340B4" stroke-width="1.5"
-                                                              stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
-                                                </div>
-                                                <div class="catalog__left-btn__caption">Follow</div>
-                                            </div>
-                                            <div class="catalog__left-btn__unfollow">
+                                        <div class="catalog__left-btn unfollow flex-center" v-if="isUserSubscribed(project)">
+                                            <div class="catalog__left-btn__unfollow" @click="unfollowProject(project)">
                                                 <div class="catalog__left-btn__icon">
                                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path
@@ -231,9 +219,24 @@
                                                 <div class="catalog__left-btn__caption">unfollow</div>
                                             </div>
                                         </div>
+                                        <div class="catalog__left-btn follow flex-center" v-else>
+                                            <div class="catalog__left-btn__follow"  @click="followProject(project)">
+                                                <div class="catalog__left-btn__icon">
+                                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                              d="M2.04223 8.04281V7.91507C2.06097 7.53714 2.1821 7.17094 2.39312 6.85426C2.74437 6.47384 2.98482 6.00767 3.08925 5.50465C3.08925 5.11587 3.08925 4.72154 3.12321 4.33276C3.29865 2.46107 5.14933 1.16699 6.97736 1.16699H7.02264C8.85068 1.16699 10.7014 2.46107 10.8825 4.33276C10.9164 4.72154 10.8825 5.11587 10.9108 5.50465C11.0166 6.00884 11.2568 6.47646 11.6069 6.85982C11.8195 7.17369 11.9408 7.53854 11.9578 7.91507V8.03726C11.9704 8.54502 11.7955 9.04014 11.4654 9.43131C11.0291 9.88869 10.4371 10.1732 9.80148 10.2311C7.93749 10.431 6.05685 10.431 4.19286 10.2311C3.55792 10.1707 2.96677 9.8866 2.52895 9.43131C2.20391 9.03984 2.03139 8.54767 2.04223 8.04281Z"
+                                                              stroke="#3340B4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M5.57373 12.1641C5.86497 12.5296 6.29267 12.7662 6.76215 12.8214C7.23164 12.8767 7.7042 12.746 8.07526 12.4584C8.18938 12.3734 8.29207 12.2744 8.38087 12.1641" stroke="#3340B4" stroke-width="1.5"
+                                                              stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                                <div class="catalog__left-btn__caption">Follow</div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
-                                <div class="catalog__right">
+                                <div class="catalog__right" @click="showProjectModal(project)">
                                     <div class="catalog__top flex">
                                         <div class="catalog__top-box">
                                             <div class="catalog__caption">{{ project.name }}</div>
@@ -278,7 +281,7 @@
                     </div>
                 </div>
                 <div class="catalog__bottom bottom">
-                    <a class="catalog__btn flex-center"  @click="init">
+                    <a class="catalog__btn flex-center"  @click="increaseLimit">
                         <div class="catalog__btn-caption">Show more</div>
                         <div class="catalog__btn-icon svg-contain">
                             <svg width="17" height="4" viewBox="0 0 17 4" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -301,11 +304,13 @@ import ProjectModal from './ProjectModal';
 export default {
     components: {ProjectModal},
 
+    props: ['active', 'upcoming'],
+
     data() {
         return {
             filter: {
-                active: true,
-                upcoming: true,
+                active: this.active,
+                upcoming: this.upcoming,
                 verified: true,
                 min_price: 0,
                 max_price: 999,
@@ -314,6 +319,8 @@ export default {
                 sort_by: 'asc',
                 limit: 8
             },
+
+            user: null,
 
             categories: [],
             projects: []
@@ -337,11 +344,9 @@ export default {
                 that.filter.sort_by = that.$refs.sortBy.value;
             }, 3000)
 
-            console.log(this.filter);
 
             axios.get('api/projects', { params: this.filter })
                 .then(response => {
-                    console.log(response)
                     this.projects = response.data.data;
                 })
         },
@@ -379,9 +384,53 @@ export default {
             this.init();
         },
 
+        followProject(project) {
+            if (window.user) {
+                axios.post('api/projects/follow/' + project.id, { user_id: window.user.id})
+                    .then(response => {
+                        this.$swal('Success', 'Subscribed', 'success')
+                        this.init();
+                    })
+            }
+            else {
+                alert('no auth')
+            }
+        },
+
+        unfollowProject(project) {
+            axios.post('api/projects/unfollow/' + project.id, {user_id: window.user.id})
+                .then(response => {
+                    this.$swal('Success', 'Unsubscribed', 'success')
+                    this.init();
+                })
+        },
+
         showProjectModal(project) {
             this.$refs.modal.project = project;
             this.$refs.modal.init();
+        },
+
+        isUserSubscribed(project) {
+            if (!window.user) {
+                return false
+            }
+
+            if (project.subscribers.length < 1) {
+                return false;
+            }
+
+            for (let i in project.subscribers) {
+                if (window.user.id === project.subscribers[i].user_id) {
+                    return true;
+                }
+            }
+
+            return false;
+        },
+
+        increaseLimit() {
+            this.filter.limit += 20;
+            this.init();
         }
     }
 }

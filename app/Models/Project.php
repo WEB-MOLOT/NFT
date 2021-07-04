@@ -141,6 +141,10 @@ class Project extends Model implements HasMedia
         return $this->belongsTo(User::class);
     }
 
+    public function subscribers() {
+        return $this->hasMany(Subscription::class);
+    }
+
     /**
      * @return BelongsToMany
      */

@@ -19,7 +19,7 @@ class CreateMessagesTable extends Migration
             $table->string('email', 100);
             $table->string('telegram', 100);
             $table->text('message');
-            $table->unsignedTinyInteger('subject');
+            $table->string('subject');
             $table->foreignId('user_id')->nullable()->references('id')->on('users');
             $table->unsignedInteger('ip');
             $table->timestamp('executed_at')->nullable();

@@ -44,6 +44,10 @@
 <link rel="preload" media="all" href="/css/libs.css" as="style" onload="this.rel='stylesheet'">
 <link rel="preload" media="all" href="/css/index.css" as="style" onload="this.rel='stylesheet'">
 
+<script>
+    window.user = {!! json_encode(\Illuminate\Support\Facades\Auth::user()) !!}
+</script>
+
 <script src="/js/app.js"></script>
 
 <script src="/js/libs.js" rel="preload" as="script" defer></script>

@@ -16,4 +16,16 @@ class IndexController extends Controller
     public function submit() {
         return view('front.submit');
     }
+
+    public function active() {
+        return view('front.active');
+    }
+
+    public function upcoming() {
+        return view('front.upcoming');
+    }
+
+    public function contact() {
+        return view('front.contact');
+    }
 }

@@ -7,12 +7,12 @@ use App\Http\Controllers\Api\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::post('login',  [\App\Http\Controllers\Auth\ApiLoginController::class, 'login']);
-
-Route::group(['middleware' => ['jwt.auth']], function () {
-    Route::post('logout', [\App\Http\Controllers\Auth\ApiLoginController::class, 'logout']);
-    Route::get('me', [\App\Http\Controllers\Auth\ApiLoginController::class, 'me']);
-});
+//Route::post('login',  [\App\Http\Controllers\Auth\ApiLoginController::class, 'login']);
+//
+//Route::group(['middleware' => ['jwt.auth']], function () {
+//    Route::post('logout', [\App\Http\Controllers\Auth\ApiLoginController::class, 'logout']);
+//    Route::get('me', [\App\Http\Controllers\Auth\ApiLoginController::class, 'me']);
+//});
 
 Route::post('message', MessageController::class)->name('messages.store');
 Route::post('order', OrderController::class)->name('orders.store');
@@ -26,7 +26,9 @@ Route::get('projects/get-published', [ProjectController::class, 'getPublishedPro
 Route::get('projects/get-trashed', [ProjectController::class, 'getTrashedProjects']);
 Route::post('projects/restore/{id}', [ProjectController::class, 'restore']);
 Route::post('projects/verify/{id}', [ProjectController::class, 'verify']);
-
 Route::delete('projects/force-delete/{id}', [ProjectController::class, 'forceDelete']);
+
+Route::post('projects/follow/{id}', [ProjectController::class, 'follow']);
+Route::post('projects/unfollow/{id}', [ProjectController::class, 'unfollow']);
 
 Route::resource('projects', ProjectController::class)->except('data', 'create', 'edit');

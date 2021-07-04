@@ -89,7 +89,7 @@
   array (
     'defaults' => 
     array (
-      'guard' => 'api',
+      'guard' => 'web',
       'passwords' => 'users',
     ),
     'guards' => 

@@ -24,7 +24,7 @@ class MessageRequest extends FormRequest
             'email' => ['required', 'email', 'max:100'],
             'telegram' => ['nullable', 'string', 'max:100'],
             'message' => ['required', 'string', 'max:1024'],
-            'subject' => ['required', 'integer', Rule::in(Message::subjects())]
+            'subject' => ['required']
         ];
     }
 
