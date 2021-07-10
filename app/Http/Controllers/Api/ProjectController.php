@@ -4,15 +4,15 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Data\Project\StoreRequest;
+use App\Http\Requests\Api\Data\Project\UpdateRequest;
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
-use App\Models\Subscription;
+use App\Models\Social;
 use App\Services\ProjectService;
-use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
@@ -26,8 +26,9 @@ class ProjectController extends Controller
      * ProjectController constructor.
      * @param ProjectService $projectService
      */
+    protected $projectService;
     public function __construct(ProjectService $projectService) {
-
+        $this->projectService = $projectService;
     }
 
     public function index(Request $request)
@@ -59,8 +60,18 @@ class ProjectController extends Controller
         if ($request->sort_order !== 'undefined' && $request->sort_by !== 'undefined') {
             switch($request->sort_order) {
                 case 'Price':
-                    $builder->orderBy('min_price', $request->sort_by);
+                    if ($request->sort_by == "desc") {
+                        $builder->orderBy('min_price');
+                        break;
+                    }
+
+                    if ($request->sort_by == "asc") {
+                        $builder->orderBy('max_price', 'desc');
+                        break;
+                    }
+
                     break;
+
                 case 'Rating':
                     $builder->orderBy('rating', $request->sort_by);
                     break;
@@ -76,9 +87,15 @@ class ProjectController extends Controller
             }
         }
 
+        $showMore = $builder->count() > $request->limit ? true : false;
+
+
         $builder->limit($request->limit);
 
-        return ProjectResource::collection($builder->get());
+        return response()->json([
+            'projects' => ProjectResource::collection($builder->get()),
+            'showMore' => $showMore
+        ]);
     }
 
     /**
@@ -101,22 +118,127 @@ class ProjectController extends Controller
      * @return JsonResponse
      * @throws Throwable
      */
-    public function store(StoreRequest $request): JsonResponse
+    public function store(StoreRequest $request)
     {
-        return new JsonResponse(
-            $this->projectService->create($request->validated(), $request->user())
-        );
+        if (count(explode(',', $request->start_date)) < 3 || count(explode(',', $request->end_date)) < 3) {
+            return response()->json([
+                'message' => 'THe given data was invalid',
+                'errors' => [
+                    'date' => ['Please select a time and timezone for the Start Date or Finish Date fields.']
+                ]
+            ], 422);
+        }
+
+        $startDateArray = explode(',', $request->start_date);
+        $endDateArray = explode(',', $request->end_date);
+
+        $params = $request->all();
+
+        $params['started_at'] = Carbon::parse($startDateArray[0] . $startDateArray[1])->setTimezone(trim($startDateArray[2]));
+        $params['ended_at'] = Carbon::parse($endDateArray[0] . $endDateArray[1])->setTimezone(trim($endDateArray[2]));
+        $params['started_at_timezone'] = trim($startDateArray[2]);
+        $params['ended_at_timezone'] = trim($endDateArray[2]);
+        $params['user_id'] = $user->id ?? null;
+
+
+        $project = Project::create($params);
+
+        $project->categories()->sync(json_decode($request->categories));
+
+        foreach (json_decode($request->socials) as $item) {
+            $social = new Social();
+
+            $social->name = $item->name;
+            $social->data = $item->data;
+
+            $social->save();
+
+            $project->socials()->attach($social);
+        }
+
+
+        $project->addMedia($request->logo)->toMediaCollection('project_logo');
+
+        if ($request->images) {
+            foreach ($request->images as $image) {
+                $project->addMedia($image)->toMediaCollection('project_images');
+            }
+        }
+
+        return response()->json([
+            'message' => 'Successfully saved',
+            'project' => $project
+        ], 200);
     }
 
     /**
+     * @param StoreRequest $request
      * @param Project $project
      * @return JsonResponse
      */
-    public function update(Project $project): JsonResponse
+    public function update(Project $project, UpdateRequest $request)
     {
-        return new JsonResponse(
-            $this->projectService->update($project, [])
-        );
+        if (count(explode(',', $request->start_date)) < 3 || count(explode(',', $request->end_date)) < 3) {
+            return response()->json([
+                'message' => 'THe given data was invalid',
+                'errors' => [
+                    'date' => ['Please select a time and timezone for the Start Date or Finish Date fields.']
+                ]
+            ], 422);
+        }
+
+        $startDateArray = explode(',', $request->start_date);
+        $endDateArray = explode(',', $request->end_date);
+
+        $params = $request->all();
+
+        $params['started_at'] = Carbon::parse($startDateArray[0] . $startDateArray[1])->setTimezone(trim($startDateArray[2]));
+        $params['ended_at'] = Carbon::parse($endDateArray[0] . $endDateArray[1])->setTimezone(trim($endDateArray[2]));
+        $params['started_at_timezone'] = trim($startDateArray[2]);
+        $params['ended_at_timezone'] = trim($endDateArray[2]);
+        $params['user_id'] = 1;
+        $params['rating'] = 1.0;
+
+
+        $project->update($params);
+
+        $project->categories()->sync(json_decode($request->categories));
+
+        $socialIds = [];
+
+        foreach (json_decode($request->socials) as $item) {
+            $social = Social::updateOrCreate(
+                ['name' => $item->name, 'data' => $item->data],
+                ['name' => $item->name, 'data' => $item->data]
+            );
+
+            $socialIds[] = $social->id;
+        }
+
+        foreach ($project->socials()->allRelatedIds()->toArray() as $id) {
+            if (!in_array($id, $socialIds)) Social::find($id)->delete();
+        }
+
+        $project->socials()->sync($socialIds);
+
+        if($request->new_logo) {
+            $project->clearMediaCollection('project_logo');
+            $project->addMedia($request->logo)->toMediaCollection('project_logo');
+        }
+
+        if ($request->new_images) {
+            $project->clearMediaCollection('project_images');
+
+            foreach ($request->new_images as $image) {
+                $project->addMedia($image)->toMediaCollection('project_images');
+            }
+        }
+
+
+        return response()->json([
+            'message' => 'Successfully saved',
+            'project' => $project
+        ], 200);
     }
 
     public function destroy($id) {
@@ -186,25 +308,16 @@ class ProjectController extends Controller
 
     public function follow($id, Request $request) {
         $project = Project::findOrFail($id);
-        $user = User::findOrFail($request->user_id);
 
+        $project->subscribers()->attach($request->user_id);
 
-        if ($user) {
-            Subscription::create([
-                'project_id' => $project->id,
-                'user_id' => $user->id
-            ]);
-
-            return response()->json('subscribed');
-        } else {
-            return response()->json('unauthenticated', 401);
-        }
+        return response()->json('subscribed');
     }
 
     public function unfollow($id, Request $request) {
-        $subscription = Subscription::where('project_id', $id)->where('user_id', $request->user_id)->first();
+        $project = Project::findOrFail($id);
 
-        $subscription->delete();
+        $project->subscribers()->detach($request->user_id);
 
         return response()->json([
             'message' => 'successfully unsubscribed'
@@ -229,5 +342,4 @@ class ProjectController extends Controller
 
         return ProjectResource::collection($projects);
     }
-
 }

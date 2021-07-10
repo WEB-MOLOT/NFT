@@ -142,7 +142,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::fS56WTac57q1iZjX',
+            '_route' => 'generated::05yT7NgSmEvJUE9T',
           ),
           1 => NULL,
           2 => 
@@ -162,7 +162,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::Fv7ssWpZnboG5tEN',
+            '_route' => 'generated::Qm4HqSLqI7EwENoF',
           ),
           1 => NULL,
           2 => 
@@ -182,7 +182,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::7WnLEkLmXyQRk1n6',
+            '_route' => 'generated::ng3jpRXlNnfwjZDS',
           ),
           1 => NULL,
           2 => 
@@ -232,6 +232,97 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/api/promotions/send-order' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::XhMhKp6NwcXV2VLA',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/api/promotions' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'promotions.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'promotions.store',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/api/users' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'users.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'users.store',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/login' => 
       array (
         0 => 
@@ -255,7 +346,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::OJkTH5vkutawAyXW',
+            '_route' => 'generated::KyTCI7DuU4mBthAW',
           ),
           1 => NULL,
           2 => 
@@ -290,7 +381,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::jx0AzwCaY87RsFuR',
+            '_route' => 'generated::rKW73WRIfqHVcOpJ',
           ),
           1 => NULL,
           2 => 
@@ -327,7 +418,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::8NoWjo5N5dzbbm7p',
+            '_route' => 'generated::c8DmAW8wUGe7urdw',
           ),
           1 => NULL,
           2 => 
@@ -418,7 +509,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::7vwOzNP8MVPhqjS9',
+            '_route' => 'generated::M1dJaJEVr1dIwf84',
           ),
           1 => NULL,
           2 => 
@@ -431,13 +522,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/login/social/google/redirect' => 
+      '/auth/google' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'login.social.google.redirect',
+            '_route' => 'auth.google',
           ),
           1 => NULL,
           2 => 
@@ -451,19 +542,18 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/login/social/google' => 
+      '/auth/google/callback' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'login.social.google.handle',
+            '_route' => 'generated::fYw9fymwXRGk8Cco',
           ),
           1 => NULL,
           2 => 
           array (
-            'GET' => 0,
-            'HEAD' => 1,
+            'POST' => 0,
           ),
           3 => NULL,
           4 => false,
@@ -571,10 +661,50 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/promotion' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'promotion',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/personal-area' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'personal-area',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
     ),
     2 => 
     array (
-      0 => '{^(?|/_debugbar/(?|c(?|lockwork/([^/]++)(*:42)|ache/([^/]++)(?:/([^/]++))?(*:76))|telescope/([^/]++)(*:102))|/api/(?|categories/([^/]++)(*:138)|projects/(?|publish/([^/]++)(*:174)|restore/([^/]++)(*:198)|verify/([^/]++)(*:221)|fo(?|rce\\-delete/([^/]++)(*:254)|llow/([^/]++)(*:275))|unfollow/([^/]++)(*:301)|([^/]++)(?|(*:320))))|/password/reset/([^/]++)(*:355))/?$}sDu',
+      0 => '{^(?|/_debugbar/(?|c(?|lockwork/([^/]++)(*:42)|ache/([^/]++)(?:/([^/]++))?(*:76))|telescope/([^/]++)(*:102))|/api/(?|categories/([^/]++)(*:138)|pro(?|jects/(?|publish/([^/]++)(*:177)|restore/([^/]++)(*:201)|verify/([^/]++)(*:224)|fo(?|rce\\-delete/([^/]++)(*:257)|llow/([^/]++)(*:278))|unfollow/([^/]++)(*:304)|([^/]++)(?|(*:323)))|motions/([^/]++)(?|(*:352)))|users/(?|get\\-(?|followed\\-projects/([^/]++)(*:406)|projects/([^/]++)(*:431))|([^/]++)(?|(*:451))))|/password/reset/([^/]++)(*:486))/?$}sDu',
     ),
     3 => 
     array (
@@ -671,13 +801,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      174 => 
+      177 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::AhRgbgkcA7pspc0I',
+            '_route' => 'generated::jkND8orMBjnbwRN2',
           ),
           1 => 
           array (
@@ -693,13 +823,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      198 => 
+      201 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::FklD9I6zEGnZdREp',
+            '_route' => 'generated::BfkAV0QpQEVr5xet',
           ),
           1 => 
           array (
@@ -715,13 +845,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      221 => 
+      224 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::ZiNDZQnPyRrkMzN9',
+            '_route' => 'generated::CHasWUWZFzXOvyPk',
           ),
           1 => 
           array (
@@ -737,13 +867,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      254 => 
+      257 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::1kWbs2boiPfFJIm7',
+            '_route' => 'generated::8hYJAY0dc0xeigGn',
           ),
           1 => 
           array (
@@ -759,13 +889,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      275 => 
+      278 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::qNP1EuAOpM6LoQQJ',
+            '_route' => 'generated::OMzGBsE1fOu78DBV',
           ),
           1 => 
           array (
@@ -781,13 +911,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      301 => 
+      304 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::jQOL6634aAQJHf4o',
+            '_route' => 'generated::chhivEq8ZnHKUcBI',
           ),
           1 => 
           array (
@@ -803,7 +933,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      320 => 
+      323 => 
       array (
         0 => 
         array (
@@ -865,7 +995,177 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      355 => 
+      352 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'promotions.show',
+          ),
+          1 => 
+          array (
+            0 => 'promotion',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'promotions.update',
+          ),
+          1 => 
+          array (
+            0 => 'promotion',
+          ),
+          2 => 
+          array (
+            'PUT' => 0,
+            'PATCH' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'promotions.destroy',
+          ),
+          1 => 
+          array (
+            0 => 'promotion',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      406 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::EVmvPkWqsDS9YDLv',
+          ),
+          1 => 
+          array (
+            0 => 'userId',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      431 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::zW46o9iyU02yLtPP',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      451 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'users.show',
+          ),
+          1 => 
+          array (
+            0 => 'user',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'users.update',
+          ),
+          1 => 
+          array (
+            0 => 'user',
+          ),
+          2 => 
+          array (
+            'PUT' => 0,
+            'PATCH' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        2 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'users.destroy',
+          ),
+          1 => 
+          array (
+            0 => 'user',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      486 => 
       array (
         0 => 
         array (
@@ -1266,7 +1566,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::AhRgbgkcA7pspc0I' => 
+    'generated::jkND8orMBjnbwRN2' => 
     array (
       'methods' => 
       array (
@@ -1286,7 +1586,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::AhRgbgkcA7pspc0I',
+        'as' => 'generated::jkND8orMBjnbwRN2',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1301,7 +1601,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::fS56WTac57q1iZjX' => 
+    'generated::05yT7NgSmEvJUE9T' => 
     array (
       'methods' => 
       array (
@@ -1322,7 +1622,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::fS56WTac57q1iZjX',
+        'as' => 'generated::05yT7NgSmEvJUE9T',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1337,7 +1637,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::Fv7ssWpZnboG5tEN' => 
+    'generated::Qm4HqSLqI7EwENoF' => 
     array (
       'methods' => 
       array (
@@ -1358,7 +1658,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::Fv7ssWpZnboG5tEN',
+        'as' => 'generated::Qm4HqSLqI7EwENoF',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1373,7 +1673,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::7WnLEkLmXyQRk1n6' => 
+    'generated::ng3jpRXlNnfwjZDS' => 
     array (
       'methods' => 
       array (
@@ -1394,7 +1694,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::7WnLEkLmXyQRk1n6',
+        'as' => 'generated::ng3jpRXlNnfwjZDS',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1409,7 +1709,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::FklD9I6zEGnZdREp' => 
+    'generated::BfkAV0QpQEVr5xet' => 
     array (
       'methods' => 
       array (
@@ -1429,7 +1729,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::FklD9I6zEGnZdREp',
+        'as' => 'generated::BfkAV0QpQEVr5xet',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1444,7 +1744,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::ZiNDZQnPyRrkMzN9' => 
+    'generated::CHasWUWZFzXOvyPk' => 
     array (
       'methods' => 
       array (
@@ -1464,7 +1764,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::ZiNDZQnPyRrkMzN9',
+        'as' => 'generated::CHasWUWZFzXOvyPk',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1479,7 +1779,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::1kWbs2boiPfFJIm7' => 
+    'generated::8hYJAY0dc0xeigGn' => 
     array (
       'methods' => 
       array (
@@ -1499,7 +1799,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::1kWbs2boiPfFJIm7',
+        'as' => 'generated::8hYJAY0dc0xeigGn',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1514,7 +1814,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::qNP1EuAOpM6LoQQJ' => 
+    'generated::OMzGBsE1fOu78DBV' => 
     array (
       'methods' => 
       array (
@@ -1534,7 +1834,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::qNP1EuAOpM6LoQQJ',
+        'as' => 'generated::OMzGBsE1fOu78DBV',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1549,7 +1849,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::jQOL6634aAQJHf4o' => 
+    'generated::chhivEq8ZnHKUcBI' => 
     array (
       'methods' => 
       array (
@@ -1569,7 +1869,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::jQOL6634aAQJHf4o',
+        'as' => 'generated::chhivEq8ZnHKUcBI',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1762,6 +2062,469 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
+    'generated::XhMhKp6NwcXV2VLA' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'api/promotions/send-order',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\PromotionController@sendOrder',
+        'controller' => 'App\\Http\\Controllers\\Api\\PromotionController@sendOrder',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::XhMhKp6NwcXV2VLA',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'promotions.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/promotions',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'promotions.index',
+        'uses' => 'App\\Http\\Controllers\\Api\\PromotionController@index',
+        'controller' => 'App\\Http\\Controllers\\Api\\PromotionController@index',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'promotions.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'api/promotions',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'promotions.store',
+        'uses' => 'App\\Http\\Controllers\\Api\\PromotionController@store',
+        'controller' => 'App\\Http\\Controllers\\Api\\PromotionController@store',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'promotions.show' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/promotions/{promotion}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'promotions.show',
+        'uses' => 'App\\Http\\Controllers\\Api\\PromotionController@show',
+        'controller' => 'App\\Http\\Controllers\\Api\\PromotionController@show',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'promotions.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PUT',
+        1 => 'PATCH',
+      ),
+      'uri' => 'api/promotions/{promotion}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'promotions.update',
+        'uses' => 'App\\Http\\Controllers\\Api\\PromotionController@update',
+        'controller' => 'App\\Http\\Controllers\\Api\\PromotionController@update',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'promotions.destroy' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'api/promotions/{promotion}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'promotions.destroy',
+        'uses' => 'App\\Http\\Controllers\\Api\\PromotionController@destroy',
+        'controller' => 'App\\Http\\Controllers\\Api\\PromotionController@destroy',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'generated::EVmvPkWqsDS9YDLv' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/users/get-followed-projects/{userId}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\UserController@getFollowedProjects',
+        'controller' => 'App\\Http\\Controllers\\Api\\UserController@getFollowedProjects',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::EVmvPkWqsDS9YDLv',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'generated::zW46o9iyU02yLtPP' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/users/get-projects/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Api\\UserController@getProjects',
+        'controller' => 'App\\Http\\Controllers\\Api\\UserController@getProjects',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::zW46o9iyU02yLtPP',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'users.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/users',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'users.index',
+        'uses' => 'App\\Http\\Controllers\\Api\\UserController@index',
+        'controller' => 'App\\Http\\Controllers\\Api\\UserController@index',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'users.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'api/users',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'users.store',
+        'uses' => 'App\\Http\\Controllers\\Api\\UserController@store',
+        'controller' => 'App\\Http\\Controllers\\Api\\UserController@store',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'users.show' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'api/users/{user}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'users.show',
+        'uses' => 'App\\Http\\Controllers\\Api\\UserController@show',
+        'controller' => 'App\\Http\\Controllers\\Api\\UserController@show',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'users.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PUT',
+        1 => 'PATCH',
+      ),
+      'uri' => 'api/users/{user}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'users.update',
+        'uses' => 'App\\Http\\Controllers\\Api\\UserController@update',
+        'controller' => 'App\\Http\\Controllers\\Api\\UserController@update',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'users.destroy' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'api/users/{user}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'api',
+        ),
+        'as' => 'users.destroy',
+        'uses' => 'App\\Http\\Controllers\\Api\\UserController@destroy',
+        'controller' => 'App\\Http\\Controllers\\Api\\UserController@destroy',
+        'namespace' => NULL,
+        'prefix' => 'api',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
     'login' => 
     array (
       'methods' => 
@@ -1798,7 +2561,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::OJkTH5vkutawAyXW' => 
+    'generated::KyTCI7DuU4mBthAW' => 
     array (
       'methods' => 
       array (
@@ -1818,7 +2581,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::OJkTH5vkutawAyXW',
+        'as' => 'generated::KyTCI7DuU4mBthAW',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1904,7 +2667,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::8NoWjo5N5dzbbm7p' => 
+    'generated::c8DmAW8wUGe7urdw' => 
     array (
       'methods' => 
       array (
@@ -1924,7 +2687,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::8NoWjo5N5dzbbm7p',
+        'as' => 'generated::c8DmAW8wUGe7urdw',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2117,7 +2880,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::7vwOzNP8MVPhqjS9' => 
+    'generated::M1dJaJEVr1dIwf84' => 
     array (
       'methods' => 
       array (
@@ -2137,7 +2900,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::7vwOzNP8MVPhqjS9',
+        'as' => 'generated::M1dJaJEVr1dIwf84',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2152,7 +2915,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::jx0AzwCaY87RsFuR' => 
+    'generated::rKW73WRIfqHVcOpJ' => 
     array (
       'methods' => 
       array (
@@ -2174,7 +2937,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::jx0AzwCaY87RsFuR',
+        'as' => 'generated::rKW73WRIfqHVcOpJ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2189,30 +2952,28 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'login.social.google.redirect' => 
+    'auth.google' => 
     array (
       'methods' => 
       array (
         0 => 'GET',
         1 => 'HEAD',
       ),
-      'uri' => 'login/social/google/redirect',
+      'uri' => 'auth/google',
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'web',
-          1 => 'guest',
-          2 => 'throttle:20,1',
         ),
         'uses' => 'App\\Http\\Controllers\\Auth\\Social\\GoogleController@redirect',
         'controller' => 'App\\Http\\Controllers\\Auth\\Social\\GoogleController@redirect',
-        'as' => 'login.social.google.redirect',
         'namespace' => NULL,
-        'prefix' => '/login/social',
+        'prefix' => NULL,
         'where' => 
         array (
         ),
+        'as' => 'auth.google',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2227,30 +2988,27 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'login.social.google.handle' => 
+    'generated::fYw9fymwXRGk8Cco' => 
     array (
       'methods' => 
       array (
-        0 => 'GET',
-        1 => 'HEAD',
+        0 => 'POST',
       ),
-      'uri' => 'login/social/google',
+      'uri' => 'auth/google/callback',
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'web',
-          1 => 'guest',
-          2 => 'throttle:20,1',
         ),
-        'uses' => 'App\\Http\\Controllers\\Auth\\Social\\GoogleController@handle',
-        'controller' => 'App\\Http\\Controllers\\Auth\\Social\\GoogleController@handle',
-        'as' => 'login.social.google.handle',
+        'uses' => 'App\\Http\\Controllers\\Auth\\Social\\GoogleController@login',
+        'controller' => 'App\\Http\\Controllers\\Auth\\Social\\GoogleController@login',
         'namespace' => NULL,
-        'prefix' => '/login/social',
+        'prefix' => NULL,
         'where' => 
         array (
         ),
+        'as' => 'generated::fYw9fymwXRGk8Cco',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2431,6 +3189,78 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'contact',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'promotion' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'promotion',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Front\\IndexController@promotion',
+        'controller' => 'App\\Http\\Controllers\\Front\\IndexController@promotion',
+        'namespace' => NULL,
+        'prefix' => NULL,
+        'where' => 
+        array (
+        ),
+        'as' => 'promotion',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'personal-area' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'personal-area',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Front\\IndexController@personalArea',
+        'controller' => 'App\\Http\\Controllers\\Front\\IndexController@personalArea',
+        'namespace' => NULL,
+        'prefix' => NULL,
+        'where' => 
+        array (
+        ),
+        'as' => 'personal-area',
       ),
       'fallback' => false,
       'defaults' => 

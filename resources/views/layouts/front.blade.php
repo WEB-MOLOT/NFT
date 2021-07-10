@@ -53,6 +53,12 @@
 <script src="/js/libs.js" rel="preload" as="script" defer></script>
 <script src="/js/index.js" rel="preload" as="script" defer></script>
 
+<style>
+
+    .datepicker {
+        z-index: 1000000 !important;
+    }
+</style>
 </body>
 
 </html>

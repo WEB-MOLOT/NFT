@@ -28,4 +28,12 @@ class IndexController extends Controller
     public function contact() {
         return view('front.contact');
     }
+
+    public function promotion() {
+        return view('front.promotion');
+    }
+
+    public function personalArea() {
+        return view('front.personal-area');
+    }
 }

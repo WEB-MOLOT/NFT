@@ -17,7 +17,7 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => '/login/social/google'
+        'redirect' => '/auth/google/callback'
     ],
 
     'twitter' => [

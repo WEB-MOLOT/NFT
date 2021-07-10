@@ -129,7 +129,7 @@
             </form>
             <div class="header__buttons flex">
                 <div class="header__buttons-hidden"></div>
-                <a href="#" class="header__promotion flex">
+                <a href="{{ route('promotion') }}" class="header__promotion flex">
                     <div class="header__promotion-icon">
                         <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -154,7 +154,7 @@
                             </div>
                             <div class="header__profile-block">
                                 <a href="{{ route('logout') }}" class="header__profile-link">logout</a>
-                                <a href="#" class="header__profile-link">Personal area</a>
+                                <a href="{{ route('personal-area') }}" class="header__profile-link">Personal area</a>
                             </div>
                         </div>
                     @endguest

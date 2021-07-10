@@ -520,11 +520,11 @@
       'smtp' => 
       array (
         'transport' => 'smtp',
-        'host' => 'mailhog',
-        'port' => '1025',
-        'encryption' => NULL,
-        'username' => NULL,
-        'password' => NULL,
+        'host' => 'smtp.mailtrap.io',
+        'port' => '2525',
+        'encryption' => 'tls',
+        'username' => '877a1a9f8e1b43',
+        'password' => '9001281f21a1f5',
         'timeout' => NULL,
         'auth_mode' => NULL,
       ),
@@ -557,8 +557,8 @@
     ),
     'from' => 
     array (
-      'address' => NULL,
-      'name' => 'Laravel',
+      'address' => 'hello@example.com',
+      'name' => 'Example',
     ),
     'markdown' => 
     array (
@@ -655,7 +655,7 @@
   ),
   'queue' => 
   array (
-    'default' => 'sync',
+    'default' => 'database',
     'connections' => 
     array (
       'sync' => 
@@ -711,9 +711,9 @@
   array (
     'google' => 
     array (
-      'client_id' => NULL,
-      'client_secret' => NULL,
-      'redirect' => '/login/social/google',
+      'client_id' => '1055348286953-r44ksu2h1k98alea7mub95p695nf0iqm.apps.googleusercontent.com',
+      'client_secret' => 'yNl_phkHVTcjm5ir9XwVJqXs',
+      'redirect' => '/auth/google/callback',
     ),
     'twitter' => 
     array (

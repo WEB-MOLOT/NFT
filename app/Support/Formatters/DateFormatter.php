@@ -17,9 +17,10 @@ class DateFormatter
      * DateFormatter constructor.
      * @param string|null $value
      */
-    public function __construct(
-         ?string $value = null
-    ) {}
+    protected $value;
+    public function __construct($value = null) {
+        $this->value = $value;
+    }
 
     /**
      * @param string|null $value

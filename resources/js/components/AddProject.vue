@@ -194,6 +194,7 @@
                 <div class="select-social__options">
                     <div
                         class="select-social__options-value flex"
+                        style="z-index: 999;"
                         v-for="social in socials"
                         :data-value="`${social.title} *`"
                         :data-name="social.name"
@@ -230,21 +231,21 @@ export default {
     data() {
         return {
             project: {
-                name: '',
+                name: 'test',
                 logo: [],
                 images: [],
-                categories: [],
+                categories: [1, 2],
                 status: 2,
-                start_date: '',
-                end_date: '',
-                content: '',
+                start_date: '08.07.2021',
+                end_date: '12.07.2021',
+                content: 'test',
                 currency: 'USD',
-                min_price: '',
-                max_price: '',
-                available_count: '',
-                website: '',
-                email: '',
-                twitter: '',
+                min_price: '12',
+                max_price: '12',
+                available_count: '1212',
+                website: 'https://test.com',
+                email: 'test@gmail.com',
+                twitter: 'test',
                 socials: []
             },
 
@@ -294,6 +295,8 @@ export default {
         },
 
         saveProject() {
+            this.errors = [];
+
             let formData = new FormData();
 
             this.project.start_date = this.$refs.startDate.value;
@@ -319,10 +322,12 @@ export default {
                     this.project = {};
                 })
                 .catch(error => {
+                    console.log(error.response)
                     Object.entries(error.response.data.errors).forEach(([key, value]) => {
                         this.errors.push(value);
+                        console.log(this.errors)
                     });
-                    this.$swal('Ошибка!', "Что-то пошло не так! Повторите попытку позже", 'error');
+                    this.$swal('Error!', error.response.data.message, 'error');
                 })
         },
 

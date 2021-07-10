@@ -32,3 +32,11 @@ Route::post('projects/follow/{id}', [ProjectController::class, 'follow']);
 Route::post('projects/unfollow/{id}', [ProjectController::class, 'unfollow']);
 
 Route::resource('projects', ProjectController::class)->except('data', 'create', 'edit');
+
+
+Route::post('promotions/send-order', [\App\Http\Controllers\Api\PromotionController::class, 'sendOrder']);
+Route::apiResource('promotions', \App\Http\Controllers\Api\PromotionController::class);
+
+Route::get('users/get-followed-projects/{userId}', [\App\Http\Controllers\Api\UserController::class, 'getFollowedProjects']);
+Route::get('users/get-projects/{id}', [\App\Http\Controllers\Api\UserController::class, 'getProjects']);
+Route::apiResource('users', \App\Http\Controllers\Api\UserController::class);

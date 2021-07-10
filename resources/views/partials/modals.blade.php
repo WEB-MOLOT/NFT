@@ -28,17 +28,6 @@
     </form>
 </div><!-- end callback-modal -->
 
-<div id="delete-modal" class="delete-modal modal" style="display: none;">
-    <div class="delete-modal__body">
-        <div class="delete-modal__title">Delete selected project?</div>
-        <div class="delete-modal__buttons">
-            <a href="#" class="delete-modal__btn btn btn_blue">delete</a>
-            <div class="delete-modal__btn btn btn_gray" data-fancybox-close>cancel</div>
-        </div>
-    </div>
-</div><!-- end delete-modal -->
-
-
 <login></login>
 <register></register>
 <forgot></forgot>

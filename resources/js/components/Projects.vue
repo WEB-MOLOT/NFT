@@ -176,7 +176,7 @@
                             <div class="catalog__coll-caption caption-upcoming visible">Upcoming</div>
                         </div>
                         <div class="catalog__items" v-if="projects.length > 0">
-                            <a href="#" class="catalog__item project--js flex bottom bottom_visible" v-for="project in projects">
+                            <a class="catalog__item project--js flex bottom bottom_visible" v-for="project in projects">
                                 <div class="catalog__left">
                                     <div class="catalog__img img-cover">
                                         <img :src="project.logo" alt="">
@@ -280,7 +280,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="catalog__bottom bottom">
+                <div class="catalog__bottom bottom" v-show="showMore">
                     <a class="catalog__btn flex-center"  @click="increaseLimit">
                         <div class="catalog__btn-caption">Show more</div>
                         <div class="catalog__btn-icon svg-contain">
@@ -300,7 +300,7 @@
 
 <script>
 
-import ProjectModal from './ProjectModal';
+import ProjectModal from './modals/ProjectModal';
 export default {
     components: {ProjectModal},
 
@@ -319,6 +319,8 @@ export default {
                 sort_by: 'asc',
                 limit: 8
             },
+
+            showMore: true,
 
             user: null,
 
@@ -347,7 +349,8 @@ export default {
 
             axios.get('api/projects', { params: this.filter })
                 .then(response => {
-                    this.projects = response.data.data;
+                    this.showMore = response.data.showMore;
+                    this.projects = response.data.projects;
                 })
         },
 
@@ -420,7 +423,7 @@ export default {
             }
 
             for (let i in project.subscribers) {
-                if (window.user.id === project.subscribers[i].user_id) {
+                if (window.user.id === project.subscribers[i].id) {
                     return true;
                 }
             }

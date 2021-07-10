@@ -22,8 +22,9 @@ Vue.component('login', require('./components/auth/Login').default);
 Vue.component('register', require('./components/auth/Register').default);
 Vue.component('forgot', require('./components/auth/Forgot').default);
 Vue.component('contact-form', require('./components/ContactForm').default);
-
+Vue.component('promotions', require('./components/Promotions').default);
 Vue.component('projects', require('./components/Projects').default);
+Vue.component('profile', require('./components/Profile').default);
 
 const app = new Vue({
     el: '#app',

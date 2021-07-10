@@ -19,19 +19,20 @@ class CreateProjectsTable extends Migration
             $table->boolean('is_verified')->default(false);
             $table->boolean('is_published')->default(0);
             $table->string('name', 100);
+            $table->string('slug');
             $table->unsignedSmallInteger('rating')->nullable();
             $table->string('currency')->nullable();
             $table->unsignedInteger('min_price')->nullable();
             $table->unsignedInteger('max_price')->nullable();
             $table->unsignedInteger('available_count')->nullable();
-            $table->text('content');
+            $table->text('description');
             $table->string('email', 100);
             $table->string('twitter', 100);
             $table->string('website', 100);
             $table->timestamp('started_at')->nullable();
-            $table->unsignedTinyInteger('started_at_timezone')->nullable();
+            $table->string('started_at_timezone')->nullable();
             $table->timestamp('ended_at')->nullable();
-            $table->unsignedTinyInteger('ended_at_timezone')->nullable();
+            $table->string('ended_at_timezone')->nullable();
             $table->foreignId('user_id')->nullable()->references('id')->on('users');
             $table->timestamps();
         });
@@ -39,10 +40,8 @@ class CreateProjectsTable extends Migration
         Schema::create('project_socials', function(Blueprint $table) {
             $table->id();
             $table->foreignId('project_id')->index()->references('id')->on('projects')->cascadeOnDelete();
-            $table->string('social_name', 100);
-            $table->string('social_data');
+            $table->foreignId('social_id')->index()->references('id')->on('socials')->cascadeOnDelete();
             $table->timestamps();
-
         });
 
         Schema::create('project_categories', function(Blueprint $table) {
@@ -54,6 +53,11 @@ class CreateProjectsTable extends Migration
             $table->foreignId('project_id')->index()->references('id')->on('projects')->cascadeOnDelete();
             $table->unsignedInteger('views');
             $table->date('date_at');
+        });
+
+        Schema::create('project_user_subscriptions', function(Blueprint $table) {
+            $table->foreignId('project_id')->index()->references('id')->on('projects')->cascadeOnDelete();
+            $table->foreignId('user_id')->index()->references('id')->on('users')->cascadeOnDelete();
         });
     }
 }

@@ -60,6 +60,14 @@ class User extends Authenticatable implements JWTSubject
         return (string) Str::of($this->name)->limit(20)->title();
     }
 
+    public function projects() {
+        return $this->hasMany(Project::class);
+    }
+
+    public function followedProjects() {
+        return $this->belongsToMany(Project::class, 'project_user_subscriptions');
+    }
+
     /**
      * @return int[]
      */

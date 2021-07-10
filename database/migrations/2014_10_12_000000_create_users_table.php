@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name', 100)->nullable();
             $table->unsignedTinyInteger('group');
             $table->string('email', 100)->nullable();
+            $table->string('telegram', 100)->nullable();
+            $table->string('twitter', 100)->nullable();
             $table->string('telegram_id', 40)->nullable();
             $table->string('google_id', 40)->nullable();
             $table->string('twitter_id', 40)->nullable();

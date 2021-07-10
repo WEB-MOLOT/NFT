@@ -7,6 +7,7 @@ use App\Traits\Model\FormattedJsonDates;
 use App\Traits\Model\ProjectDates;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -19,6 +20,8 @@ use ReflectionClass;
 
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * Class Project
@@ -45,12 +48,15 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  * @property string $slug
  * @property ?User $user
  * @property Collection|Category[] $categories
+ * @property mixed email
+ * @property mixed twitter
+ * @property mixed website
  *
  * @method static $this isPublished()
  */
 class Project extends Model implements HasMedia
 {
-    use ProjectDates, Actions, FormattedJsonDates, InteractsWithMedia, SoftDeletes;
+    use InteractsWithMedia, SoftDeletes, HasSlug,  HasFactory;
 
     public const STATUS_UPCOMING = 1;
     public const STATUS_ACTIVE = 2;
@@ -64,8 +70,9 @@ class Project extends Model implements HasMedia
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'status', 'is_verified', 'is_published', 'name', 'logo', 'rating', 'currency', 'min_price', 'max_price',
-        'available_count', 'content', 'started_at', 'started_at_timezone', 'ended_at', 'ended_at_timezone', 'user_id'
+        'status', 'is_verified', 'is_published', 'name', 'rating', 'currency', 'min_price', 'max_price',
+        'available_count', 'description', 'website', 'email', 'twitter',
+        'started_at', 'started_at_timezone', 'ended_at', 'ended_at_timezone', 'user_id'
     ];
 
     protected $casts = [
@@ -99,10 +106,10 @@ class Project extends Model implements HasMedia
     /**
      * @param float|null $value
      */
-    public function setRatingAttribute(?float $value): void
-    {
-        $this->attributes['rating'] = $value !== null ? $value * self::RATING_FACTOR : null;
-    }
+//    public function setRatingAttribute(?float $value): void
+//    {
+//        $this->attributes['rating'] = $value !== null ? $value * self::RATING_FACTOR : null;
+//    }
 
     /**
      * @return string
@@ -128,9 +135,9 @@ class Project extends Model implements HasMedia
         return null;
     }
 
-    public function socials(): HasMany
+    public function socials(): BelongsToMany
     {
-        return $this->hasMany(ProjectSocial::class);
+        return $this->belongsToMany(Social::class, 'project_socials');
     }
 
     /**
@@ -142,7 +149,7 @@ class Project extends Model implements HasMedia
     }
 
     public function subscribers() {
-        return $this->hasMany(Subscription::class);
+        return $this->belongsToMany(User::class, 'project_user_subscriptions');
     }
 
     /**
@@ -179,5 +186,12 @@ class Project extends Model implements HasMedia
         return [
             self::STATUS_UPCOMING, self::STATUS_ACTIVE
         ];
+    }
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
     }
 }
