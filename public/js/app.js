@@ -2097,7 +2097,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         status: 2,
         start_date: '08.07.2021',
         end_date: '12.07.2021',
-        content: 'test',
+        description: 'test',
         currency: 'USD',
         min_price: '12',
         max_price: '12',
@@ -2228,9 +2228,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     addSocial: function addSocial(social) {
       this.project.socials.push({
         id: this.getSocialId(),
-        social_name: social.name,
-        social_data: '',
-        social_title: social.title
+        name: social.name,
+        data: '',
+        title: social.title
       });
     },
     deleteSocial: function deleteSocial(social) {
@@ -10450,19 +10450,19 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.project.content,
-              expression: "project.content"
+              value: _vm.project.description,
+              expression: "project.description"
             }
           ],
           staticClass: "form__field field",
           attrs: { placeholder: "Project description" },
-          domProps: { value: _vm.project.content },
+          domProps: { value: _vm.project.description },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.$set(_vm.project, "content", $event.target.value)
+              _vm.$set(_vm.project, "description", $event.target.value)
             }
           }
         })
@@ -10678,13 +10678,13 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.project.socials[index].social_data,
-                expression: "project.socials[index].social_data"
+                value: _vm.project.socials[index].data,
+                expression: "project.socials[index].data"
               }
             ],
             staticClass: "form__field field",
-            attrs: { type: "text", placeholder: social.social_title + " *" },
-            domProps: { value: _vm.project.socials[index].social_data },
+            attrs: { type: "text", placeholder: social.title + " *" },
+            domProps: { value: _vm.project.socials[index].data },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
@@ -10692,7 +10692,7 @@ var render = function() {
                 }
                 _vm.$set(
                   _vm.project.socials[index],
-                  "social_data",
+                  "data",
                   $event.target.value
                 )
               }
@@ -13979,10 +13979,10 @@ var render = function() {
                               _c("div", { staticClass: "catalog__desc" }, [
                                 _vm._v(
                                   "\n                                    " +
-                                    _vm._s(project.content.slice(0, 150)) +
+                                    _vm._s(project.description.slice(0, 150)) +
                                     " "
                                 ),
-                                project.content.length > 150
+                                project.description.length > 150
                                   ? _c("span", [_vm._v(" ...")])
                                   : _vm._e()
                               ]),
@@ -17098,7 +17098,7 @@ var render = function() {
             _c("div", { staticClass: "project__article" }, [
               _c("h2", [_vm._v("About")]),
               _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(_vm.project.content))])
+              _c("p", [_vm._v(_vm._s(_vm.project.description))])
             ]),
             _vm._v(" "),
             _vm._m(8),

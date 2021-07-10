@@ -261,7 +261,7 @@
                                         </div>
                                     </div>
                                     <div class="catalog__desc">
-                                        {{ project.content.slice(0, 150)}} <span v-if="project.content.length > 150"> ...</span>
+                                        {{ project.description.slice(0, 150)}} <span v-if="project.description.length > 150"> ...</span>
                                     </div>
                                     <div class="catalog__item-bottom flex">
                                         <div class="catalog__prices">${{ project.min_price }} - ${{ project.max_price }}</div>

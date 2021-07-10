@@ -174,7 +174,7 @@
                     </div>
                     <div class="project__article">
                         <h2>About</h2>
-                        <p>{{ project.content }}</p>
+                        <p>{{ project.description }}</p>
                     </div>
                     <div class="project__article">
                         <h2>Testnet Goals</h2>

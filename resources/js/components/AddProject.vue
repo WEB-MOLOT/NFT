@@ -111,7 +111,7 @@
         </label>
 
         <label class="form__label bottom ">
-            <textarea class="form__field field" v-model="project.content" placeholder="Project description"></textarea>
+            <textarea class="form__field field" v-model="project.description" placeholder="Project description"></textarea>
         </label>
 
         <div class="form__label form__label_older bottom ">
@@ -171,7 +171,7 @@
         </label>
 
         <div class="form__label" v-for="(social, index) in project.socials">
-            <input type="text" class="form__field field" v-model="project.socials[index].social_data" :placeholder="`${social.social_title} *`">
+            <input type="text" class="form__field field" v-model="project.socials[index].data" :placeholder="`${social.title} *`">
             <div class="select-social__closed" @click="deleteSocial(social)">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.75 1L11 2.25L2.25 11L1 9.75L9.75 1Z" fill="#5E7C8D"></path>
@@ -238,7 +238,7 @@ export default {
                 status: 2,
                 start_date: '08.07.2021',
                 end_date: '12.07.2021',
-                content: 'test',
+                description: 'test',
                 currency: 'USD',
                 min_price: '12',
                 max_price: '12',
@@ -359,7 +359,7 @@ export default {
         },
 
         addSocial(social) {
-            this.project.socials.push({ id: this.getSocialId(), social_name: social.name, social_data: '', social_title: social.title })
+            this.project.socials.push({ id: this.getSocialId(), name: social.name, data: '', title: social.title })
         },
 
         deleteSocial(social) {
