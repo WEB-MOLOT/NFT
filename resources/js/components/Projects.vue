@@ -46,9 +46,9 @@
                                         <div class="filter__prices-title">Price</div>
                                         <div class="filter__prices-caption">Price (Range $1—$999)</div>
                                         <div class="prices">
-                                            <div class="prices__slider" @click="init" id="price"></div>
-                                            <input type="hidden" v-model="filter.max_price" name="maxPrice" ref="maxPrice" value="">
-                                            <input type="hidden" v-model="filter.min_price" name="minPrice" ref="minPrice" value="">
+                                            <div class="prices__slider" @mouseleave="init" @click="init" id="price"></div>
+                                            <input type="hidden" v-model="filter.max_price" name="maxPrice" ref="maxPrice">
+                                            <input type="hidden" v-model="filter.min_price" name="minPrice" ref="minPrice">
                                         </div>
                                     </div>
                                 </div>
@@ -277,6 +277,9 @@
                                     </div>
                                 </div>
                             </a>
+                        </div>
+                        <div v-else>
+                            <h3>Nothing was found. Change the filter conditions</h3>
                         </div>
                     </div>
                 </div>

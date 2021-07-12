@@ -1,4 +1,7 @@
 @extends('layouts.front')
+
+@section('title') Personal Area @endsection
+
 @section('content')
 
     <div class="main-page">

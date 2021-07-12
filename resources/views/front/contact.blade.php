@@ -1,4 +1,7 @@
 @extends('layouts.front')
+
+@section('title') Contact us @endsection
+
 @section('content')
 
     <div class="main-page">

@@ -9,7 +9,7 @@
         <div class="footer__wrap flex">
             <a href="#" class="logo logo_white flex">
                 <div class="logo__icon img-contain">
-                    <img src="img/icons/logo-white.svg" alt="">
+                    <img src="/img/icons/logo-white.svg" alt="">
                 </div>
                 <div class="logo__caption">NFT projects</div>
             </a>
@@ -54,19 +54,19 @@
             <div class="social">
                 <a href="#" class="social__link flex">
                     <div class="social__icon">
-                        <img src="img/icons/twitter.svg" alt="" width="100%" height="100%">
+                        <img src="/img/icons/twitter.svg" alt="" width="100%" height="100%">
                     </div>
                     <div class="social__caption">Twitter</div>
                 </a>
                 <a href="#" class="social__link flex">
                     <div class="social__icon">
-                        <img src="img/icons/telegram.svg" alt="" width="100%" height="100%">
+                        <img src="/img/icons/telegram.svg" alt="" width="100%" height="100%">
                     </div>
                     <div class="social__caption">Telegram News (ENG) </div>
                 </a>
                 <a href="#" class="social__link flex">
                     <div class="social__icon">
-                        <img src="img/icons/telegram.svg" alt="" width="100%" height="100%">
+                        <img src="/img/icons/telegram.svg" alt="" width="100%" height="100%">
                     </div>
                     <div class="social__caption">Telegram Chat (ENG)</div>
                 </a>
@@ -80,7 +80,7 @@
         </div>
         <div class="footer__copiright flex">
             <div class="footer__copiright-icon img-contain">
-                <img src="img/icons/copyright.svg" alt="">
+                <img src="/img/icons/copyright.svg" alt="">
             </div>
             <div class="footer__copiright-caption">2021 All rights reserved</div>
         </div>

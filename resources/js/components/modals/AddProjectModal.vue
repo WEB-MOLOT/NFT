@@ -366,10 +366,14 @@ export default {
             }
 
             for (let i = 0; i < this.project.images.length; i++) {
-                formData.append("new_images[]", this.project.images[i]);
+                formData.append("images[]", this.project.images[i]);
             }
 
-            console.log(this.project.categories)
+            if (this.isEditing) {
+                for (let i = 0; i < this.project.new_images.length; i++) {
+                    formData.append("new_images[]", this.project.new_images[i]);
+                }
+            }
 
             if (this.isEditing) {
 
@@ -377,8 +381,6 @@ export default {
 
                 axios.post('api/projects/' + this.project.id, formData, { headers: { "Content-Type": "multipart/form-data" } })
                     .then(response => {
-                        // console.log(response)
-
                         $.fancybox.close();
                         this.$swal('Успешно!', "Ваш проект успешно отправлен на модернизации!", 'success');
                         this.$refs.form.reset();
@@ -424,12 +426,14 @@ export default {
         },
 
         onImagesUpload(event){
+            this.project.new_images = [];
+
             for (let file of event.target.files) {
-                try {
-                    let reader = new FileReader();
-                    reader.readAsDataURL(file); // Not sure if this will work in this context.
+                if (this.isEditing) {
+                    this.project.new_images.push(file);
+                } else {
                     this.project.images.push(file);
-                } catch {}
+                }
             }
         },
 

@@ -39,7 +39,7 @@ class ProjectResource extends JsonResource
             'email' => $this->email,
             'website' => $this->website,
             'socials' => $this->socials()->get(),
-            'created_at' => $this->created_at,
+            'created_at' => Carbon::parse($this->created_at)->format('d.m.Y H:i'),
             'subscribers' => $this->subscribers()->get(),
             'twitter' => $this->twitter
         ];

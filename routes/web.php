@@ -47,4 +47,8 @@ Route::get('/active', [\App\Http\Controllers\Front\IndexController::class, 'acti
 Route::get('upcoming', [\App\Http\Controllers\Front\IndexController::class, 'upcoming'])->name('upcoming');
 Route::get('/contact', [\App\Http\Controllers\Front\IndexController::class, 'contact'])->name('contact');
 Route::get('/promotion', [\App\Http\Controllers\Front\IndexController::class, 'promotion'])->name('promotion');
-Route::get('/personal-area', [\App\Http\Controllers\Front\IndexController::class, 'personalArea'])->name('personal-area');
+Route::get('/personal-area', [\App\Http\Controllers\Front\IndexController::class, 'personalArea'])
+    ->middleware('auth')
+    ->name('personal-area');
+
+Route::get('/categories/{slug}', [\App\Http\Controllers\Front\IndexController::class, 'showCategory'])->name('category');

@@ -30,6 +30,7 @@
         "js-htmlencode": "^0.3.0",
         "overlayscrollbars": "^1.13.1",
         "vue-auth": "^1.0.0-alpha.1",
+        "vue-slick-carousel": "^1.0.6",
         "vue-sweetalert2": "^4.3.1"
     }
 }

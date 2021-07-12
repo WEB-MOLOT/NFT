@@ -1,4 +1,7 @@
 @extends('layouts.front')
+
+@section('title') Upcoming NFTs @endsection
+
 @section('content')
 
     <div class="main-page">

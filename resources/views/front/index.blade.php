@@ -1,4 +1,7 @@
 @extends('layouts.front')
+
+@section('title') NFT Projects @endsection
+
 @section('content')
 
     <div class="main-page">
@@ -8,7 +11,7 @@
                 <div class="menu__scroll dragscroll">
                     <div class="menu__slick">
                         <div class="menu__slide">
-                            <a href="#" class="menu__item menu__item_music">
+                            <a href="{{ route('category', 'music') }}" class="menu__item menu__item_music">
                                 <div class="menu__icon">
                                     <img src="img/menu/icon-1.svg" alt="">
                                 </div>
@@ -16,7 +19,7 @@
                             </a>
                         </div>
                         <div class="menu__slide">
-                            <a href="#" class="menu__item menu__item_art">
+                            <a href="{{ route('category', 'art') }}" class="menu__item menu__item_art">
                                 <div class="menu__icon">
                                     <img src="img/menu/icon-2.svg" alt="">
                                 </div>
@@ -24,7 +27,7 @@
                             </a>
                         </div>
                         <div class="menu__slide">
-                            <a href="#" class="menu__item menu__item_collectible">
+                            <a href="{{ route('category', 'collectible') }}" class="menu__item menu__item_collectible">
                                 <div class="menu__icon">
                                     <img src="img/menu/icon-3.svg" alt="">
                                 </div>
@@ -32,7 +35,7 @@
                             </a>
                         </div>
                         <div class="menu__slide">
-                            <a href="#" class="menu__item menu__item_game">
+                            <a href="{{ route('category', 'game') }}" class="menu__item menu__item_game">
                                 <div class="menu__icon">
                                     <img src="img/menu/icon-4.svg" alt="">
                                 </div>
@@ -40,7 +43,7 @@
                             </a>
                         </div>
                         <div class="menu__slide">
-                            <a href="#" class="menu__item menu__item_metaverse">
+                            <a href="{{ route('category', 'metaverse') }}" class="menu__item menu__item_metaverse">
                                 <div class="menu__icon">
                                     <img src="img/menu/icon-5.svg" alt="">
                                 </div>
@@ -48,7 +51,7 @@
                             </a>
                         </div>
                         <div class="menu__slide">
-                            <a href="#" class="menu__item menu__item_sports">
+                            <a href="{{ route('category', 'sports') }}" class="menu__item menu__item_sports">
                                 <div class="menu__icon">
                                     <img src="img/menu/icon-6.png" alt="">
                                 </div>
@@ -56,7 +59,7 @@
                             </a>
                         </div>
                         <div class="menu__slide">
-                            <a href="#" class="menu__item menu__item_utility">
+                            <a href="{{ route('category', 'utility') }}" class="menu__item menu__item_utility">
                                 <div class="menu__icon">
                                     <img src="img/menu/icon-7.svg" alt="">
                                 </div>
@@ -112,6 +115,6 @@
             </div>
         </div>
 
-        <projects :active="true" :upcomig="true"></projects>
+        <projects :active="true" :upcoming="true"></projects>
     </div>
 @endsection

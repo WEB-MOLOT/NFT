@@ -2,14 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\Meta\CategoryMeta;
-use App\Traits\Model\Actions;
-use App\Traits\Model\FormattedJsonDates;
-use App\Traits\Model\HasMeta;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * Class Category
@@ -24,7 +20,7 @@ use Illuminate\Support\Str;
  */
 class Category extends Model
 {
-    use Actions, HasMeta, FormattedJsonDates;
+    use HasSlug;
 
     protected $fillable = [
         'name', 'slug', 'image', 'color_code'
@@ -39,46 +35,27 @@ class Category extends Model
     ];
 
     /**
-     * @return string
+     * Get the options for generating the slug.
      */
-    public function getMetaModelName(): string
+    public function getSlugOptions() : SlugOptions
     {
-        return CategoryMeta::class;
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
     }
 
+    public function projects() {
+        return $this->belongsToMany(Project::class, 'project_categories')->where('is_published', 1);
+    }
+
+    public function getImageLinkAttribute() {
+
+    }
     /**
      * @return string
      */
-    public function getImageLinkAttribute(): string
-    {
-        return url(Storage::url($this->image));
-    }
-
-    /**
-     * @param string $code
-     */
-    public function setColorCodeAttribute(string $code): void
-    {
-        $this->attributes['color_code'] = Str::substr($code, 1, 6);
-    }
-
-    /**
-     * @param string $value
-     * @return string
-     */
-    public function getColorCodeAttribute(string $value): string
-    {
-        return "#{$value}";
-    }
-
-    /**
-     * @return array
-     */
-    public function getActionsAttribute(): array
-    {
-        return [
-            'edit' => route('manage.resources.categories.edit', $this),
-            'destroy' => route('manage.resources.categories.destroy', $this)
-        ];
-    }
+//    public function getMetaModelName(): string
+//    {
+//        return CategoryMeta::class;
+//    }
 }

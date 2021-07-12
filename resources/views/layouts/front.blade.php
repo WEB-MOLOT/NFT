@@ -16,7 +16,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta property="og:image:width" content="250">
     <meta property="og:image:height" content="250">
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.svg">
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.svg">
 
     <style>
         .page.page_hide {

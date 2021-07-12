@@ -1,5 +1,7 @@
 @extends('layouts.front')
 
+@section('title') Submit new NFT @endsection
+
 @section('content')
     <div class="main-page">
 

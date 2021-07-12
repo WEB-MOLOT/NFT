@@ -15,9 +15,9 @@
                     <div class="project__left-top flex">
                         <div class="active-item" v-if="project.status === 2">Active</div>
                         <div class="active-item" v-if="project.status === 1">Upcoming</div>
-                        <div class="star star_good flex">
-                            <img src="img/catalog/star.svg" alt="">
-                            <span>8.0</span>
+                        <div class="star star_good flex" v-if="project.rating">
+                            <img src="/img/catalog/star.svg" alt="">
+                            <span>{{ project.rating }}</span>
                         </div>
                         <div v-for="category in project.categories" :class="`category category_${category.color}`">
                             {{ category.name }}
@@ -29,7 +29,7 @@
                         </div>
                         <div class="project__profile-box">
                             <div class="project__profile-caption">Start date</div>
-                            <div class="project__profile-date">05-04-2021 3:00PM UTC</div>
+                            <div class="project__profile-date">{{ project.start_date }}</div>
                         </div>
                     </div>
                     <div class="timer">
@@ -77,24 +77,24 @@
                             <div class="social-item__coll">
                                 <a :href="`mailto:${project.email}`" class="social-item__link flex">
                                     <div class="social-item__icon img-contain">
-                                        <img src="img/project/social/mail.svg" alt="">
-                                        <img src="img/project/social/mail-hover.svg" alt="">
+                                        <img src="/img/project/social/mail.svg" alt="">
+                                        <img src="/img/project/social/mail-hover.svg" alt="">
                                     </div>
                                     <div class="social-item__name">Email</div>
                                 </a>
                                 <a :href="project.website" class="social-item__link flex">
                                     <div class="social-item__icon img-contain">
-                                        <img src="img/project/social/site.svg" alt="">
-                                        <img src="img/project/social/site-hover.svg" alt="">
+                                        <img src="/img/project/social/site.svg" alt="">
+                                        <img src="/img/project/social/site-hover.svg" alt="">
                                     </div>
                                     <div class="social-item__name">site.ru</div>
                                 </a>
-                                <a v-for="social in project.socials" :href="social.social_data" class="social-item__link flex">
+                                <a v-for="social in project.socials" :href="social.data" class="social-item__link flex">
                                     <div class="social-item__icon img-contain">
-                                        <img :src="`img/project/social/${social.social_name}.svg`" alt="">
-                                        <img :src="`img/project/social/${social.social_name}-hover.svg`" alt="">
+                                        <img :src="`/img/project/social/${social.name}.svg`" alt="">
+                                        <img :src="`/img/project/social/${social.name}-hover.svg`" alt="">
                                     </div>
-                                    <div class="social-item__name">{{ social.social_name.charAt(0).toUpperCase() + social.social_name.slice(1) }}</div>
+                                    <div class="social-item__name">{{ social.name.charAt(0).toUpperCase() + social.name.slice(1) }}</div>
                                 </a>
                             </div>
                         </div>
@@ -102,25 +102,31 @@
                 </div>
                 <div class="project__right">
                     <div class="project__wrap">
-                        <div class="arrow arrow_prew">
+                        <div class="arrow arrow_prew" @click="$refs.carousel.prev()">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M16.875 10.0002C16.875 9.57833 16.533 9.23633 16.1111 9.23633H3.88889C3.467 9.23633 3.125 9.57833 3.125 10.0002C3.125 10.4221 3.467 10.7641 3.88889 10.7641H16.1111C16.533 10.7641 16.875 10.4221 16.875 10.0002Z" fill="#3340B4"/>
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M9.77626 4.11241C9.47794 3.81409 8.99428 3.81409 8.69596 4.11241L3.34874 9.45963C3.05042 9.75795 3.05042 10.2416 3.34874 10.5399L8.69596 15.8872C8.99428 16.1855 9.47794 16.1855 9.77626 15.8872C10.0746 15.5888 10.0746 15.1052 9.77626 14.8069L4.96919 9.99978L9.77626 5.19271C10.0746 4.89439 10.0746 4.41073 9.77626 4.11241Z" fill="#3340B4"/>
                             </svg>
                         </div>
-                        <div class="arrow arrow_next">
+                        <div class="arrow arrow_next" @click="$refs.carousel.next()">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M3.12524 9.99881C3.12524 10.4207 3.46725 10.7627 3.88913 10.7627L16.1114 10.7627C16.5332 10.7627 16.8752 10.4207 16.8752 9.99881C16.8752 9.57693 16.5332 9.23492 16.1114 9.23492L3.88913 9.23492C3.46725 9.23492 3.12524 9.57692 3.12524 9.99881Z" fill="#3340B4"/>
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.224 15.8866C10.5223 16.1849 11.006 16.1849 11.3043 15.8866L16.6515 10.5394C16.9498 10.2411 16.9498 9.75741 16.6515 9.45909L11.3043 4.11187C11.006 3.81355 10.5223 3.81355 10.224 4.11187C9.92567 4.41018 9.92567 4.89385 10.224 5.19217L15.0311 9.99924L10.224 14.8063C9.92566 15.1046 9.92566 15.5883 10.224 15.8866Z" fill="#3340B4"/>
                             </svg>
                         </div>
-                        <div class="project__slick" v-if="project.images">
-                            <div class="project__slide swiper-slide" v-for="image in project.images">
-                                <a :href="image.original_url" class="project__slide-box img-cover" data-fancybox="project">
-                                    <img :src="image.original_url" alt="">
-                                </a>
-                            </div>
-                        </div>
+<!--                        <div class="project__slick">-->
+                            <VueSlickCarousel
+                                :arrows="false"
+                                :slidesToShow="3"
+                                :slidesToScroll="1"
+                                :dots="false"
+                                ref="carousel" v-if="project.images">
+                                <div class="project__slide swiper-slide" v-for="image in project.images">
+                                    <a :href="image.original_url" class="project__slide-box img-cover" data-fancybox="project">
+                                        <img :src="image.original_url" alt="">
+                                    </a>
+                                </div>
+                            </VueSlickCarousel>
                     </div>
                     <div class="project__items">
                         <div class="project__item">
@@ -156,7 +162,7 @@
                                 <div class="project__coll-caption">BlockChain:</div>
                                 <a href="#" class="project__coll-info flex">
                                     <div class="project__coll-icon">
-                                        <img src="img/project/icon-1.svg" alt="">
+                                        <img src="/img/project/icon-1.svg" alt="">
                                     </div>
                                     <div class="project__coll-name">Ethereum (ETH)</div>
                                 </a>
@@ -165,7 +171,7 @@
                                 <div class="project__coll-caption">Platform:</div>
                                 <a href="#" class="project__coll-info flex">
                                     <div class="project__coll-icon">
-                                        <img src="img/project/icon-2.svg" alt="">
+                                        <img src="/img/project/icon-2.svg" alt="">
                                     </div>
                                     <div class="project__coll-name">Dmarket</div>
                                 </a>
@@ -203,11 +209,24 @@
 
 
 <script>
+
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+// optional style for arrows & dots
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+
 export default {
     data() {
         return {
             project: {}
         }
+    },
+
+    components: {VueSlickCarousel},
+
+
+    mounted() {
+
     },
 
     methods: {
@@ -218,22 +237,25 @@ export default {
                 baseClass: 'dark-fancybox',
                 touch: false,
             });
-            $(".project__slick").slick('setPosition');
 
-            $('.fancybox-slide').on('scroll',  function (){
-                setTimeout(function(){
-                    if ($('.project-modal').length > 0) {
-                        var scroll = $('.fancybox-slide').scrollTop();
+            if (this.project.images) {
+                $(".project__slick").slick('setPosition');
 
-                        if(scroll  > 50  ) {
-                            $('.project-modal .modal__closed').addClass('fixed')
-                        } else {
-                            $('.project-modal .modal__closed').removeClass('fixed')
+                $('.fancybox-slide').on('scroll',  function (){
+                    setTimeout(function(){
+                        if ($('.project-modal').length > 0) {
+                            var scroll = $('.fancybox-slide').scrollTop();
+
+                            if(scroll  > 50  ) {
+                                $('.project-modal .modal__closed').addClass('fixed')
+                            } else {
+                                $('.project-modal .modal__closed').removeClass('fixed')
+                            }
                         }
-                    }
-                }, 100);
+                    }, 100);
 
-            });
+                });
+            }
         }
     }
 }

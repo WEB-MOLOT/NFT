@@ -24,6 +24,7 @@ Vue.component('forgot', require('./components/auth/Forgot').default);
 Vue.component('contact-form', require('./components/ContactForm').default);
 Vue.component('promotions', require('./components/Promotions').default);
 Vue.component('projects', require('./components/Projects').default);
+Vue.component('category-projects', require('./components/CategoryProjects').default);
 Vue.component('profile', require('./components/Profile').default);
 
 const app = new Vue({
