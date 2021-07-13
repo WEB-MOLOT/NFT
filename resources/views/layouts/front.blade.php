@@ -41,6 +41,9 @@
 
     @include('partials.footer')
 </div>
+
+
+<link rel="preload" media="all" href="/css/tailwind.css" as="style" onload="this.rel='stylesheet'">
 <link rel="preload" media="all" href="/css/libs.css" as="style" onload="this.rel='stylesheet'">
 <link rel="preload" media="all" href="/css/index.css" as="style" onload="this.rel='stylesheet'">
 

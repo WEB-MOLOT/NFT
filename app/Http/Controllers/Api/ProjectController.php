@@ -37,16 +37,6 @@ class ProjectController extends Controller
 
         $statuses = [];
 
-        if($request->active == "true") {
-            $statuses[] = Project::STATUS_ACTIVE;
-        }
-
-        if ($request->upcoming == "true") {
-            $statuses[] = Project::STATUS_UPCOMING;
-        }
-
-        $builder->whereIn('status', $statuses);
-
         if($request->categories && count($request->categories) > 0) {
             $builder->whereHas('categories', static fn(Builder $builder) => $builder->whereIn('id', $request->categories));
         }
@@ -87,15 +77,38 @@ class ProjectController extends Controller
             }
         }
 
+
+        if($request->active == "true") {
+            $statuses[] = Project::STATUS_ACTIVE;
+        }
+
+        if ($request->upcoming == "true") {
+            $statuses[] = Project::STATUS_UPCOMING;
+        }
+
         $showMore = $builder->count() > $request->limit ? true : false;
 
+        if (count($statuses) == 2) {
 
-        $builder->limit($request->limit);
+            $active = clone $builder;
+            $upcoming = clone $builder;
 
-        return response()->json([
-            'projects' => ProjectResource::collection($builder->get()),
-            'showMore' => $showMore
-        ]);
+            return response()->json([
+                'active' => ProjectResource::collection($active->where('status', 2)->limit($request->limit / 2)->get()),
+                'upcoming' => ProjectResource::collection($upcoming->where('status', 1)->limit($request->limit / 2)->get()),
+                'showMore' => $showMore
+            ]);
+        } else {
+
+            $builder->whereIn('status', $statuses);
+
+            $builder->limit($request->limit);
+
+            return response()->json([
+                'projects' => ProjectResource::collection($builder->get()),
+                'showMore' => $showMore
+            ]);
+        }
     }
 
     /**
@@ -120,19 +133,10 @@ class ProjectController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        if (count(explode(',', $request->start_date)) < 3 || count(explode(',', $request->end_date)) < 3) {
-            return response()->json([
-                'message' => 'THe given data was invalid',
-                'errors' => [
-                    'date' => ['Please select a time and timezone for the Start Date or Finish Date fields.']
-                ]
-            ], 422);
-        }
-
+        $params = $request->all();
         $startDateArray = explode(',', $request->start_date);
         $endDateArray = explode(',', $request->end_date);
 
-        $params = $request->all();
 
         $params['started_at'] = Carbon::parse($startDateArray[0] . $startDateArray[1])->setTimezone(trim($startDateArray[2]));
         $params['ended_at'] = Carbon::parse($endDateArray[0] . $endDateArray[1])->setTimezone(trim($endDateArray[2]));
@@ -178,19 +182,11 @@ class ProjectController extends Controller
      */
     public function update(Project $project, UpdateRequest $request)
     {
-        if (count(explode(',', $request->start_date)) < 3 || count(explode(',', $request->end_date)) < 3) {
-            return response()->json([
-                'message' => 'THe given data was invalid',
-                'errors' => [
-                    'date' => ['Please select a time and timezone for the Start Date or Finish Date fields.']
-                ]
-            ], 422);
-        }
+        $params = $request->all();
+
 
         $startDateArray = explode(',', $request->start_date);
         $endDateArray = explode(',', $request->end_date);
-
-        $params = $request->all();
 
         $params['started_at'] = Carbon::parse($startDateArray[0] . $startDateArray[1])->setTimezone(trim($startDateArray[2]));
         $params['ended_at'] = Carbon::parse($endDateArray[0] . $endDateArray[1])->setTimezone(trim($endDateArray[2]));

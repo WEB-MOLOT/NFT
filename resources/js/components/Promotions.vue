@@ -24,14 +24,14 @@
             <form @submit.prevent="sendOrder" class="promotion__form form">
                 <div class="promotion__form-body">
                     <label class="form__label bottom error">
-                        <input type="text" name="text" class="form__field field  validate--js" v-model="selectedPromotion.title" placeholder="Project name">
+                        <input type="text" name="text" class="form__field field  validate--js" v-model="selectedPromotion.name" placeholder="Project name">
                     </label>
                     <label class="form__label bottom success">
                         <input type="text" name="text" class="form__field field validate--js  validate-email--js" v-model="email" placeholder="Your e-mail">
                     </label>
                     <label class="form__label form__label_older bottom">
                         <div class="form__promotion">
-                            <div class="form__promotion-title">
+                            <div :class="['form__promotion-title field', {success: selectedPromotion}]">
                                 <div class="form__promotion-caption">{{ selectedPromotion.title }}</div>
                                 <div class="form__promotion-arrow">
                                     <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="form__promotion-options">
-                                <div class="form__promotion-options__item" v-for="promotion in promotions">
+                                <div class="form__promotion-options__item t-bg-green-300" v-for="promotion in promotions">
                                     <div class="form__promotion-options__caption">{{ promotion.title }}</div>
                                 </div>
                             </div>

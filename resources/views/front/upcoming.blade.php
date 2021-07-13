@@ -71,6 +71,6 @@
             </div>
         </div>
 
-        <projects :active="false" :upcomig="true"></projects>
+        <projects :active="false" :upcoming="true"></projects>
     </div>
 @endsection

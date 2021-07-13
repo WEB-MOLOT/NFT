@@ -4,6 +4,7 @@ namespace App\Http\Requests\Api\Data\Project;
 
 use App\Models\Category;
 use App\Models\User;
+use App\Rules\DateTimeWithTimezone;
 use App\Services\FilterService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
@@ -56,8 +57,8 @@ class StoreRequest extends FormRequest
             'status'      => ['required'],
             'categories'  => ['required'],
             'description' => ['required'],
-            'start_date'  => ['required'],
-            'end_date'    => ['required'],
+            'start_date'  => ['required', new DateTimeWithTimezone()],
+            'end_date'    => ['required', new DateTimeWithTimezone()],
             'email'       => ['required'],
             'twitter'     => ['required'],
             'images'      => [],
