@@ -171,7 +171,7 @@
             <div class="catalog__body">
                 <div class="catalog__row">
                     <div class="catalog__coll">
-                        <div class="catalog__coll-top flex bottom">
+                        <div class="catalog__coll-top flex bottom bottom_visible" v-if="(projects && projects.length > 0) || (activeProjects && activeProjects.length > 0) || (upcomingProjects && upcomingProjects.length > 0)">
                             <div :class="['catalog__coll-caption caption-active', {visible: filter.active}]">Active</div>
                             <div :class="['catalog__coll-caption caption-upcoming', {visible: filter.upcoming}]">Upcoming</div>
                         </div>
@@ -188,7 +188,7 @@
                             </div>
                         </div>
 
-                        <div v-else>test</div>
+                        <div v-else>Nothing was found. Change the filter conditions.</div>
                     </div>
                 </div>
 

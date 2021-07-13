@@ -15242,29 +15242,40 @@ var render = function() {
         _c("div", { staticClass: "catalog__body" }, [
           _c("div", { staticClass: "catalog__row" }, [
             _c("div", { staticClass: "catalog__coll" }, [
-              _c("div", { staticClass: "catalog__coll-top flex bottom" }, [
-                _c(
-                  "div",
-                  {
-                    class: [
-                      "catalog__coll-caption caption-active",
-                      { visible: _vm.filter.active }
+              (_vm.projects && _vm.projects.length > 0) ||
+              (_vm.activeProjects && _vm.activeProjects.length > 0) ||
+              (_vm.upcomingProjects && _vm.upcomingProjects.length > 0)
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "catalog__coll-top flex bottom bottom_visible"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          class: [
+                            "catalog__coll-caption caption-active",
+                            { visible: _vm.filter.active }
+                          ]
+                        },
+                        [_vm._v("Active")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          class: [
+                            "catalog__coll-caption caption-upcoming",
+                            { visible: _vm.filter.upcoming }
+                          ]
+                        },
+                        [_vm._v("Upcoming")]
+                      )
                     ]
-                  },
-                  [_vm._v("Active")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    class: [
-                      "catalog__coll-caption caption-upcoming",
-                      { visible: _vm.filter.upcoming }
-                    ]
-                  },
-                  [_vm._v("Upcoming")]
-                )
-              ]),
+                  )
+                : _vm._e(),
               _vm._v(" "),
               _vm.projects && _vm.projects.length > 0
                 ? _c(
@@ -15307,7 +15318,9 @@ var render = function() {
                       1
                     )
                   ])
-                : _c("div", [_vm._v("test")])
+                : _c("div", [
+                    _vm._v("Nothing was found. Change the filter conditions.")
+                  ])
             ])
           ]),
           _vm._v(" "),
