@@ -23,7 +23,6 @@ class ProjectService
 {
     public function __construct(
         DateFormatter $dateFormatter,
-        FilterService $filterService
     ) {}
 
     /**

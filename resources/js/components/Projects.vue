@@ -11,14 +11,14 @@
                                     <div class="filter__top-first flex">
                                         <div class="filter__type flex">
                                             <label class="filter__checkbox active">
-                                                <input type="checkbox" value="checkbox" v-model="filter.active" @change="init" check-all="active" name="caption-active" data-chenge="1" checked>
+                                                <input type="checkbox" value="checkbox" v-model="filter.active" @change="init" name="caption-active" data-chenge="1" checked>
                                                 <div class="filter__checkbox-icon">
                                                     <span></span>
                                                 </div>
                                                 <div class="filter__checkbox-caption">Active</div>
                                             </label>
                                             <label class="filter__checkbox active">
-                                                <input type="checkbox" value="checkbox" v-model="filter.upcoming" @change="init" check-all="upcoming" name="caption-upcoming" data-chenge="2" checked>
+                                                <input type="checkbox" value="checkbox" v-model="filter.upcoming" @change="init" name="caption-upcoming" data-chenge="2" checked>
                                                 <div class="filter__checkbox-icon">
                                                     <span></span>
                                                 </div>

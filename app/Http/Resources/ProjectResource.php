@@ -20,6 +20,9 @@ class ProjectResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'slug' => $this->slug,
+            'date' => $this->date($this->started_at, $this->ended_at),
+            'timer' => $this->getTimer($this->started_at),
             'status' => $this->status,
             'verified' => $this->is_verified,
             'published' => $this->is_published,
@@ -43,5 +46,56 @@ class ProjectResource extends JsonResource
             'subscribers' => $this->subscribers()->get(),
             'twitter' => $this->twitter
         ];
+    }
+
+    protected function date($startDate, $endDate) {
+        $startDate = Carbon::make($startDate);
+        $endDate = Carbon::make($endDate);
+
+        if ($startDate && !Carbon::now()->gt($startDate)) {
+            if ($startDate->diffInDays(Carbon::now()) > 3) {
+                return 'Start ' . Carbon::parse($startDate)->format('d F');
+            }
+
+            if ($startDate->diffInDays(Carbon::now()) > 2) {
+                return '3 days to start';
+            }
+
+            if ($startDate->diffInHours(Carbon::now()) > 1 && $startDate->diffInHours(Carbon::now()) < 24) {
+                return $startDate->diffInHours(Carbon::now()) . ' hours to start';
+            }
+
+            if ($startDate->diffInMinutes(Carbon::now()) < 60) {
+                return $startDate->diffInMinutes(Carbon::now()) . ' MIN TO START';
+            }
+        }
+
+        if ($endDate && !Carbon::now()->gt($endDate) && Carbon::now()->gt($startDate)) {
+            if ($endDate->diffInDays(Carbon::now()) > 3) {
+                return 'Start' . Carbon::parse($endDate)->format('d F');
+            }
+
+            if ($startDate->diffInDays(Carbon::now()) > 2) {
+                return '3 days to start';
+            }
+
+            if ($endDate->diffInHours(Carbon::now()) > 1 && $endDate->diffInHours(Carbon::now()) < 24) {
+                return $endDate->diffInHours(Carbon::now()) . ' hours to start';
+            }
+
+            if ($endDate->diffInMinutes(Carbon::now()) < 60) {
+                return $endDate->diffInMinutes(Carbon::now()) . ' MIN TO START';
+            }
+        }
+    }
+
+    protected function getTimer($startDate) {
+        $startDate = Carbon::make($startDate);
+
+        if (Carbon::now()->gt($startDate)) {
+            return null;
+        }
+
+        return $startDate->diffInSeconds(Carbon::now());
     }
 }

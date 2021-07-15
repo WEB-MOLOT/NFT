@@ -41,14 +41,13 @@ Route::get('logout', [LoginController::class, 'logout'])->middleware('auth');
 Route::get('/auth/google', [Social\GoogleController::class, 'redirect'])->name('auth.google');
 Route::post('/auth/google/callback', [Social\GoogleController::class, 'login']);
 
-Route::get('/', \App\Http\Controllers\Front\IndexController::class)->name('index');
-Route::get('/submit', [\App\Http\Controllers\Front\IndexController::class, 'submit'])->name('submit');
-Route::get('/active', [\App\Http\Controllers\Front\IndexController::class, 'active'])->name('active');
-Route::get('upcoming', [\App\Http\Controllers\Front\IndexController::class, 'upcoming'])->name('upcoming');
-Route::get('/contact', [\App\Http\Controllers\Front\IndexController::class, 'contact'])->name('contact');
-Route::get('/promotion', [\App\Http\Controllers\Front\IndexController::class, 'promotion'])->name('promotion');
-Route::get('/personal-area', [\App\Http\Controllers\Front\IndexController::class, 'personalArea'])
-    ->middleware('auth')
-    ->name('personal-area');
+Route::view('/', 'front.index')->name('index');
+Route::view('/submit', 'front.submit')->name('submit');
+Route::view('/active', 'front.active')->name('active');
+Route::view('/upcoming', 'front.upcoming')->name('upcoming');
+Route::view('/contact', 'front.contact')->name('contact');
+Route::view('/promotion', 'front.promotion')->name('promotion');
+Route::view('/personal-area', 'front.personal-area')->middleware('auth')->name('personal-area');
 
 Route::get('/categories/{slug}', [\App\Http\Controllers\Front\IndexController::class, 'showCategory'])->name('category');
+Route::get('projects/{slug}', [\App\Http\Controllers\Front\IndexController::class, 'showProject'])->name('project');

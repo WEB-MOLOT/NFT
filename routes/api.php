@@ -40,3 +40,5 @@ Route::apiResource('promotions', \App\Http\Controllers\Api\PromotionController::
 Route::get('users/get-followed-projects/{userId}', [\App\Http\Controllers\Api\UserController::class, 'getFollowedProjects']);
 Route::get('users/get-projects/{id}', [\App\Http\Controllers\Api\UserController::class, 'getProjects']);
 Route::apiResource('users', \App\Http\Controllers\Api\UserController::class);
+
+Route::get('search', \App\Http\Controllers\Api\SearchController::class);

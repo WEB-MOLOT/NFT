@@ -86,7 +86,7 @@
             <div class="catalog__desc">
                 {{ project.description.slice(0, 125)}} <span v-if="project.description.length > 125"> ...</span>
             </div>
-            <div class="catalog__item-bottom flex">
+            <div class="catalog__item-bottom flex" v-if="project.date">
                 <div class="catalog__prices">${{ project.min_price }} - ${{ project.max_price }}</div>
                 <div class="catalog__time catalog__time_normal flex">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -95,7 +95,7 @@
                             fill="#8EA5B2" />
                         <path d="M8.66658 4.66699H7.33325V8.27633L9.52858 10.4717L10.4713 9.52899L8.66658 7.72433V4.66699Z" fill="#8EA5B2" />
                     </svg>
-                    <span>Start 7 Apr</span>
+                    <span>{{ project.date }}</span>
                 </div>
             </div>
         </div>

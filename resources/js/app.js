@@ -26,6 +26,8 @@ Vue.component('promotions', require('./components/Promotions').default);
 Vue.component('projects', require('./components/Projects').default);
 Vue.component('category-projects', require('./components/CategoryProjects').default);
 Vue.component('profile', require('./components/Profile').default);
+Vue.component('search', require('./components/Search').default);
+Vue.component('project-details', require('./components/ProjectDeatils').default);
 
 const app = new Vue({
     el: '#app',
