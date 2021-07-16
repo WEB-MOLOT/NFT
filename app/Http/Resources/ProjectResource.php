@@ -57,7 +57,7 @@ class ProjectResource extends JsonResource
                 return 'Start ' . Carbon::parse($startDate)->format('d F');
             }
 
-            if ($startDate->diffInDays(Carbon::now()) > 2) {
+            if ($startDate->diffInDays(Carbon::now()) >= 2) {
                 return '3 days to start';
             }
 

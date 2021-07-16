@@ -1,6 +1,7 @@
 <template>
     <div class="catalog">
         <project-modal ref="modal"></project-modal>
+        <login ref="login"></login>
         <div class="wrapper">
             <div class="filter_scroll--js">
                 <div class="filter ">
@@ -215,8 +216,10 @@
 
 import ProjectModal from './modals/ProjectModal';
 import ProjectCard from "./ProjectCard";
+import Login from "./auth/Login";
+
 export default {
-    components: {ProjectModal, ProjectCard},
+    components: {ProjectModal, ProjectCard, Login},
 
     props: ['active', 'upcoming', 'category'],
 
@@ -313,49 +316,6 @@ export default {
             this.init();
         },
 
-        followProject(project) {
-            if (window.user) {
-                axios.post('api/projects/follow/' + project.id, { user_id: window.user.id})
-                    .then(response => {
-                        this.$swal('Success', 'Subscribed', 'success')
-                        this.init();
-                    })
-            }
-            else {
-                alert('no auth')
-            }
-        },
-
-        unfollowProject(project) {
-            axios.post('api/projects/unfollow/' + project.id, {user_id: window.user.id})
-                .then(response => {
-                    this.$swal('Success', 'Unsubscribed', 'success')
-                    this.init();
-                })
-        },
-
-        showProjectModal(project) {
-            this.$refs.modal.project = project;
-            this.$refs.modal.init();
-        },
-
-        isUserSubscribed(project) {
-            if (!window.user) {
-                return false
-            }
-
-            if (project.subscribers.length < 1) {
-                return false;
-            }
-
-            for (let i in project.subscribers) {
-                if (window.user.id === project.subscribers[i].id) {
-                    return true;
-                }
-            }
-
-            return false;
-        },
 
         increaseLimit() {
             this.filter.limit += 20;

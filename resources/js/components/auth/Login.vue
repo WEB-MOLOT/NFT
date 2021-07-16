@@ -66,7 +66,7 @@
                 <button class="modal__btn">sign in</button>
                 <div class="modal__box-bottom">
                     <label class="modal__checkbox">
-                        <input type="checkbox" value="checkbox">
+                        <input type="checkbox" v-model="remember" value="checkbox">
                         <div class="modal__checkbox-icon flex-center">
                             <img src="/img/icons/modal-check.svg" alt="">
                         </div>
@@ -90,16 +90,28 @@ export default {
             e1: false,
             password: '',
             email: '',
+            remember: false,
             errors: []
         }
     },
 
     methods: {
+        init() {
+            $.fancybox.open({
+                closeExisting: true,
+                loop: false,
+                src: '#signin-modal',
+                baseClass: 'dark-fancybox',
+                touch: false,
+            });
+        },
+
         login() {
             this.errors = [];
             axios.post('login', {
                 email: this.email,
-                password: this.password
+                password: this.password,
+                remember: this.remember
             }).then(response => {
                 location.reload();
             })

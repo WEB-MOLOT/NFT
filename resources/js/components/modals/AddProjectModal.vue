@@ -251,21 +251,21 @@ export default {
     data() {
         return {
             project: {
-                name: 'test',
+                name: '',
                 logo: [],
                 images: [],
-                categories: [1, 2],
-                status: 2,
-                start_date: '08.07.2021',
-                end_date: '12.07.2021',
-                description: 'test',
-                currency: 'USD',
-                min_price: '12',
-                max_price: '12',
-                available_count: '1212',
-                website: 'https://test.com',
-                email: 'test@gmail.com',
-                twitter: 'test',
+                categories: [],
+                status: 0,
+                start_date: '',
+                end_date: '',
+                description: '',
+                currency: '',
+                min_price: '',
+                max_price: '',
+                available_count: '',
+                website: '',
+                email: '',
+                twitter: '',
                 socials: []
             },
 
@@ -318,6 +318,7 @@ export default {
                 baseClass: 'dark-fancybox',
                 touch: false,
             });
+
             $(".project__slick").slick('setPosition');
 
             $('.fancybox-slide').on('scroll',  function (){

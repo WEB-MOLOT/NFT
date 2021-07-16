@@ -44,6 +44,7 @@ Route::post('/auth/google/callback', [Social\GoogleController::class, 'login']);
 Route::view('/', 'front.index')->name('index');
 Route::view('/submit', 'front.submit')->name('submit');
 Route::view('/active', 'front.active')->name('active');
+Route::view('/all', 'front.all')->name('all');
 Route::view('/upcoming', 'front.upcoming')->name('upcoming');
 Route::view('/contact', 'front.contact')->name('contact');
 Route::view('/promotion', 'front.promotion')->name('promotion');

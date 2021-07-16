@@ -1,6 +1,6 @@
 @extends('layouts.front')
 
-@section('title') Active NFTs @endsection
+@section('title') All NFTs @endsection
 
 @section('content')
 
@@ -71,6 +71,6 @@
             </div>
         </div>
 
-        <projects :active="true" :upcoming="false"></projects>
+        <projects :active="true" :upcoming="true"></projects>
     </div>
 @endsection

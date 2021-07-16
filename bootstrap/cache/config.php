@@ -911,67 +911,6 @@
     'proxies' => NULL,
     'headers' => 94,
   ),
-  'ide-helper' => 
-  array (
-    'filename' => '_ide_helper.php',
-    'meta_filename' => '.phpstorm.meta.php',
-    'include_fluent' => false,
-    'include_factory_builders' => false,
-    'write_model_magic_where' => true,
-    'write_model_external_builder_methods' => true,
-    'write_model_relation_count_properties' => true,
-    'write_eloquent_model_mixins' => false,
-    'include_helpers' => false,
-    'helper_files' => 
-    array (
-      0 => '/home/ahmadshoh/web/nftapi.local/vendor/laravel/framework/src/Illuminate/Support/helpers.php',
-    ),
-    'model_locations' => 
-    array (
-      0 => 'app',
-    ),
-    'ignored_models' => 
-    array (
-    ),
-    'model_hooks' => 
-    array (
-    ),
-    'extra' => 
-    array (
-      'Eloquent' => 
-      array (
-        0 => 'Illuminate\\Database\\Eloquent\\Builder',
-        1 => 'Illuminate\\Database\\Query\\Builder',
-      ),
-      'Session' => 
-      array (
-        0 => 'Illuminate\\Session\\Store',
-      ),
-    ),
-    'magic' => 
-    array (
-    ),
-    'interfaces' => 
-    array (
-    ),
-    'custom_db_types' => 
-    array (
-    ),
-    'model_camel_case_properties' => false,
-    'type_overrides' => 
-    array (
-      'integer' => 'int',
-      'boolean' => 'bool',
-    ),
-    'include_class_docblocks' => false,
-    'force_fqn' => false,
-    'additional_relation_types' => 
-    array (
-    ),
-    'post_migrate' => 
-    array (
-    ),
-  ),
   'tinker' => 
   array (
     'commands' => 

@@ -27,20 +27,21 @@
                             <div class="project__profile-date">{{ project.start_date }}</div>
                         </div>
                     </div>
-                    <div class="timer bottom">
+
+                    <div class="timer bottom" v-if="project.timer">
                         <div class="timer__caption">before the start</div>
                         <div class="countdown">
                             <div class="timer__section">
-                                <span class="count" id="days"></span>
+                                <span class="count" id="days">{{ showingTimer[0] }}</span>
                             </div>
                             <div class="timer__section">
-                                <span class="count" id="hours"></span>
+                                <span class="count" id="hours">{{ showingTimer[1] }}</span>
                             </div>
                             <div class="timer__section">
-                                <span class="count" id="minutes"></span>
+                                <span class="count" id="minutes">{{ showingTimer[2] }}</span>
                             </div>
                             <div class="timer__section">
-                                <span class="count" id="seconds"></span>
+                                <span class="count" id="seconds">{{ showingTimer[3] }}</span>
                             </div>
                         </div>
                     </div>
@@ -63,14 +64,24 @@
                                 </svg>
                             </div>
                         </a>
-                        <a href="#" class="project__btn btn">
+                        <a @click="unfollowProject" v-if="isSubscribed" class="project__btn unfollow btn">
+                            <div class="btn__icon svg-contain">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M11.1564 6.05293C11.2263 5.9878 11.2826 5.90954 11.3222 5.82263C11.3619 5.73571 11.384 5.64185 11.3873 5.54639C11.3907 5.45093 11.3752 5.35575 11.3417 5.26628C11.3083 5.1768 11.2576 5.0948 11.1924 5.02493C11.1273 4.95507 11.049 4.89872 10.9621 4.8591C10.8752 4.81948 10.7813 4.79737 10.6859 4.79403C10.5904 4.79068 10.4952 4.80618 10.4058 4.83962C10.3163 4.87306 10.2343 4.9238 10.1644 4.98893L8.03642 6.97293L6.05241 4.8442C5.91966 4.70824 5.73897 4.62963 5.54899 4.6252C5.35902 4.62077 5.17485 4.69087 5.03591 4.8205C4.89696 4.95013 4.81427 5.129 4.80553 5.31882C4.79679 5.50865 4.8627 5.69435 4.98914 5.8362L6.97314 7.9642L4.84441 9.9482C4.77208 10.0127 4.71337 10.091 4.67171 10.1784C4.63005 10.2659 4.6063 10.3609 4.60184 10.4576C4.59739 10.5544 4.61232 10.6511 4.64576 10.7421C4.6792 10.833 4.73047 10.9164 4.79657 10.9872C4.86267 11.0581 4.94226 11.115 5.03067 11.1547C5.11908 11.1943 5.21452 11.2159 5.31139 11.2182C5.40826 11.2204 5.50461 11.2033 5.59477 11.1678C5.68493 11.1323 5.76708 11.0792 5.83641 11.0115L7.96442 9.0282L9.94842 11.1562C10.0125 11.2299 10.0907 11.2899 10.1785 11.3327C10.2662 11.3755 10.3617 11.4001 10.4592 11.4052C10.5567 11.4104 10.6542 11.3958 10.7459 11.3624C10.8377 11.329 10.9217 11.2775 10.9931 11.2109C11.0645 11.1444 11.1218 11.0641 11.1615 10.9749C11.2013 10.8857 11.2226 10.7895 11.2244 10.6919C11.2261 10.5943 11.2082 10.4973 11.1716 10.4068C11.1351 10.3162 11.0807 10.234 11.0117 10.1649L9.02841 8.03693L11.1564 6.05293Z"
+                                        fill="white" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M0 8C0 3.58182 3.58182 0 8 0C12.4182 0 16 3.58182 16 8C16 12.4182 12.4182 16 8 16C3.58182 16 0 12.4182 0 8ZM8 14.5455C7.14044 14.5455 6.28929 14.3762 5.49516 14.0472C4.70103 13.7183 3.97947 13.2361 3.37166 12.6283C2.76386 12.0205 2.28173 11.299 1.95279 10.5048C1.62385 9.71071 1.45455 8.85956 1.45455 8C1.45455 7.14044 1.62385 6.28929 1.95279 5.49516C2.28173 4.70103 2.76386 3.97947 3.37166 3.37166C3.97947 2.76386 4.70103 2.28173 5.49516 1.95279C6.28929 1.62385 7.14044 1.45455 8 1.45455C9.73596 1.45455 11.4008 2.14415 12.6283 3.37166C13.8558 4.59918 14.5455 6.26404 14.5455 8C14.5455 9.73596 13.8558 11.4008 12.6283 12.6283C11.4008 13.8558 9.73596 14.5455 8 14.5455Z"
+                                          fill="white" />
+                                </svg>
+                            </div>
+                            <div class="btn__caption">unfollow</div>
+                        </a>
+                        <a @click="followProject" v-else class="project__btn btn">
                             <div class="btn__icon svg-contain">
                                 <svg width="13" height="16" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                          d="M0.833886 9.19109V9.0451C0.855303 8.61317 0.993735 8.19467 1.23491 7.83274C1.63634 7.39798 1.91114 6.86521 2.03048 6.29033C2.03048 5.84601 2.03048 5.39534 2.06929 4.95103C2.2698 2.81195 4.38485 1.33301 6.47404 1.33301H6.52578C8.61497 1.33301 10.73 2.81195 10.937 4.95103C10.9758 5.39534 10.937 5.84601 10.9693 6.29033C11.0903 6.86654 11.3648 7.40097 11.7649 7.83909C12.0079 8.19781 12.1465 8.61478 12.1659 9.0451V9.18474C12.1804 9.76504 11.9805 10.3309 11.6032 10.7779C11.1046 11.3007 10.4281 11.6259 9.70161 11.692C7.57133 11.9205 5.42202 11.9205 3.29175 11.692C2.5661 11.623 1.89051 11.2983 1.39014 10.7779C1.01867 10.3305 0.821496 9.76806 0.833886 9.19109Z"
-                                          stroke="#3340B4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M4.86996 13.9014C5.20281 14.3191 5.6916 14.5895 6.22815 14.6527C6.76471 14.7158 7.30478 14.5665 7.72884 14.2378C7.85927 14.1406 7.97663 14.0275 8.07812 13.9014" stroke="#3340B4" stroke-width="1.5" stroke-linecap="round"
-                                          stroke-linejoin="round" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.833886 9.19109V9.0451C0.855303 8.61317 0.993735 8.19467 1.23491 7.83274C1.63634 7.39798 1.91114 6.86521 2.03048 6.29033C2.03048 5.84601 2.03048 5.39534 2.06929 4.95103C2.2698 2.81195 4.38485 1.33301 6.47404 1.33301H6.52578C8.61497 1.33301 10.73 2.81195 10.937 4.95103C10.9758 5.39534 10.937 5.84601 10.9693 6.29033C11.0903 6.86654 11.3648 7.40097 11.7649 7.83909C12.0079 8.19781 12.1465 8.61478 12.1659 9.0451V9.18474C12.1804 9.76504 11.9805 10.3309 11.6032 10.7779C11.1046 11.3007 10.4281 11.6259 9.70161 11.692C7.57133 11.9205 5.42202 11.9205 3.29175 11.692C2.5661 11.623 1.89051 11.2983 1.39014 10.7779C1.01867 10.3305 0.821496 9.76806 0.833886 9.19109Z" stroke="#3340B4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.86996 13.9014C5.20281 14.3191 5.6916 14.5895 6.22815 14.6527C6.76471 14.7158 7.30478 14.5665 7.72884 14.2378C7.85927 14.1406 7.97663 14.0275 8.07812 13.9014" stroke="#3340B4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
                             <div class="btn__caption">follow</div>
@@ -222,6 +233,84 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
     props: ['project'],
 
-    components: {VueSlickCarousel}
+    components: {VueSlickCarousel},
+
+    data() {
+        return {
+            showingTimer: [],
+            isSubscribed: false
+        }
+    },
+
+    mounted() {
+        this.init();
+    },
+
+    methods: {
+        init() {
+            this.prettyTime();
+            this.countDownTimer();
+            this.isSubscribed = this.isUserSubscribed();
+        },
+
+        followProject() {
+            if (window.user) {
+                axios.post('/api/projects/follow/' + this.project.id, { user_id: window.user.id})
+                    .then(response => {
+                        this.isSubscribed = !this.isSubscribed;
+                    })
+            }
+            else {
+                this.$refs.login.init();
+            }
+        },
+
+        unfollowProject() {
+            axios.post('/api/projects/unfollow/' + this.project.id, {user_id: window.user.id})
+                .then(response => {
+                    this.isSubscribed = !this.isSubscribed;
+                })
+        },
+
+        isUserSubscribed() {
+            if (!window.user) {
+                return false
+            }
+
+            if (this.project.subscribers.length < 1) {
+                return false;
+            }
+
+            for (let i in this.project.subscribers) {
+                if (window.user.id === this.project.subscribers[i].id) {
+                    return true;
+                }
+            }
+
+            return false;
+        },
+
+        countDownTimer() {
+            if(this.project.timer) {
+                setTimeout(() => {
+                    this.project.timer -= 1
+                    this.prettyTime();
+                    this.countDownTimer()
+                }, 1000)
+            }
+        },
+
+        prettyTime () {
+            let minutes = parseInt(this.project.timer / 60);
+            let seconds = Math.round(this.project.timer - minutes * 60)
+            let hours = parseInt(minutes / 60);
+            minutes = Math.round(minutes - hours * 60)
+            let days = parseInt(hours / 24);
+            hours = Math.round(hours - days * 24);
+
+            this.showingTimer = [days, hours, minutes, seconds];
+        },
+
+    }
 }
 </script>

@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="form__promotion-options">
-                                <div class="form__promotion-options__item t-bg-green-300" v-for="promotion in promotions">
+                                <div class="form__promotion-options__item" v-for="promotion in promotions">
                                     <div class="form__promotion-options__caption">{{ promotion.title }}</div>
                                 </div>
                             </div>

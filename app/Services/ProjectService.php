@@ -21,8 +21,7 @@ use Throwable;
  */
 class ProjectService
 {
-    public function __construct(
-        DateFormatter $dateFormatter,
+    public function __construct(DateFormatter $dateFormatter
     ) {}
 
     /**

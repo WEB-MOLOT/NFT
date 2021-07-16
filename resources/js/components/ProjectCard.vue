@@ -6,7 +6,7 @@
             </div>
             <div class="catalog__verified flex" v-show="project.verified">
                 <div class="catalog__verified-icon img-contain">
-                    <img src="img/catalog/verified-icon.svg" alt="">
+                    <img src="/img/catalog/verified-icon.svg" alt="">
                 </div>
                 <div class="catalog__verified-caption">
                     <span>Verified</span>
@@ -114,11 +114,11 @@ export default {
                 axios.post('api/projects/follow/' + project.id, { user_id: window.user.id})
                     .then(response => {
                         this.$swal('Success', 'Subscribed', 'success')
-                        this.init();
+                        this.$parent.init();
                     })
             }
             else {
-                alert('no auth')
+                this.$parent.$refs.login.init();
             }
         },
 
@@ -126,7 +126,7 @@ export default {
             axios.post('api/projects/unfollow/' + project.id, {user_id: window.user.id})
                 .then(response => {
                     this.$swal('Success', 'Unsubscribed', 'success')
-                    this.init();
+                    this.$parent.init();
                 })
         },
 
