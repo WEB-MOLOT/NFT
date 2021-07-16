@@ -3277,6 +3277,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_slick_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_slick_carousel__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_slick_carousel_dist_vue_slick_carousel_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-slick-carousel/dist/vue-slick-carousel.css */ "./node_modules/vue-slick-carousel/dist/vue-slick-carousel.css");
 /* harmony import */ var vue_slick_carousel_dist_vue_slick_carousel_theme_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-slick-carousel/dist/vue-slick-carousel-theme.css */ "./node_modules/vue-slick-carousel/dist/vue-slick-carousel-theme.css");
+/* harmony import */ var _auth_Login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auth/Login */ "./resources/js/components/auth/Login.vue");
+//
 //
 //
 //
@@ -3508,10 +3510,12 @@ __webpack_require__.r(__webpack_exports__);
  // optional style for arrows & dots
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['project'],
   components: {
-    VueSlickCarousel: (vue_slick_carousel__WEBPACK_IMPORTED_MODULE_0___default())
+    VueSlickCarousel: (vue_slick_carousel__WEBPACK_IMPORTED_MODULE_0___default()),
+    Login: _auth_Login__WEBPACK_IMPORTED_MODULE_3__.default
   },
   data: function data() {
     return {
@@ -5758,10 +5762,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/css/tailwind.css":
-/*!************************************!*\
-  !*** ./resources/css/tailwind.css ***!
-  \************************************/
+/***/ "./resources/sass/app.scss":
+/*!*********************************!*\
+  !*** ./resources/sass/app.scss ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -15165,584 +15169,593 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "project" }, [
-    _c("div", { staticClass: "wrapper wrapper_big" }, [
-      _c("div", { staticClass: "project__body flex" }, [
-        _c("div", { staticClass: "project__left" }, [
-          _c("div", { staticClass: "bottom" }, [
-            _c("div", { staticClass: "project__title" }, [
-              _vm._v(_vm._s(_vm.project.name))
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "project__left-top flex" },
-              [
-                _vm.project.status === 2
-                  ? _c("div", { staticClass: "active-item" }, [
-                      _vm._v("Active")
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.project.status === 1
-                  ? _c("div", { staticClass: "active-item" }, [
-                      _vm._v("Upcoming")
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", { staticClass: "star star_good flex" }, [
-                  _c("img", {
-                    attrs: { src: "/img/catalog/star.svg", alt: "" }
-                  }),
-                  _vm._v(" "),
-                  _c("span", [_vm._v(_vm._s(_vm.project.rating))])
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.project.categories, function(category) {
-                  return _c(
-                    "div",
-                    { class: "category category_" + category.color },
-                    [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(category.name) +
-                          "\n                        "
-                      )
-                    ]
-                  )
-                })
-              ],
-              2
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "project__profile flex bottom" }, [
-            _c("div", { staticClass: "project__avatar img-cover" }, [
-              _c("img", { attrs: { src: _vm.project.logo, alt: "" } })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "project__profile-box" }, [
-              _c("div", { staticClass: "project__profile-caption" }, [
-                _vm._v("Start date")
+  return _c(
+    "div",
+    { staticClass: "project" },
+    [
+      _c("login", { ref: "login" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "wrapper wrapper_big" }, [
+        _c("div", { staticClass: "project__body flex" }, [
+          _c("div", { staticClass: "project__left" }, [
+            _c("div", { staticClass: "bottom" }, [
+              _c("div", { staticClass: "project__title" }, [
+                _vm._v(_vm._s(_vm.project.name))
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "project__profile-date" }, [
-                _vm._v(_vm._s(_vm.project.start_date))
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _vm.project.timer
-            ? _c("div", { staticClass: "timer bottom" }, [
-                _c("div", { staticClass: "timer__caption" }, [
-                  _vm._v("before the start")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "countdown" }, [
-                  _c("div", { staticClass: "timer__section" }, [
-                    _c(
-                      "span",
-                      { staticClass: "count", attrs: { id: "days" } },
-                      [_vm._v(_vm._s(_vm.showingTimer[0]))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "timer__section" }, [
-                    _c(
-                      "span",
-                      { staticClass: "count", attrs: { id: "hours" } },
-                      [_vm._v(_vm._s(_vm.showingTimer[1]))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "timer__section" }, [
-                    _c(
-                      "span",
-                      { staticClass: "count", attrs: { id: "minutes" } },
-                      [_vm._v(_vm._s(_vm.showingTimer[2]))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "timer__section" }, [
-                    _c(
-                      "span",
-                      { staticClass: "count", attrs: { id: "seconds" } },
-                      [_vm._v(_vm._s(_vm.showingTimer[3]))]
-                    )
-                  ])
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c("div", { staticClass: "project__buttons flex bottom" }, [
-            _c(
-              "a",
-              {
-                staticClass: "project__btn btn btn_blue",
-                attrs: { href: _vm.project.website }
-              },
-              [
-                _c("div", { staticClass: "btn__caption" }, [
-                  _vm._v("site project")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "btn__icon svg-contain" }, [
-                  _c(
-                    "svg",
-                    {
-                      attrs: {
-                        width: "16",
-                        height: "16",
-                        viewBox: "0 0 16 16",
-                        fill: "none",
-                        xmlns: "http://www.w3.org/2000/svg"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          "fill-rule": "evenodd",
-                          "clip-rule": "evenodd",
-                          d:
-                            "M9.33334 1.99967C9.33334 1.63148 9.63182 1.33301 10 1.33301H14C14.3682 1.33301 14.6667 1.63148 14.6667 1.99967C14.6667 2.36786 14.3682 2.66634 14 2.66634H10C9.63182 2.66634 9.33334 2.36786 9.33334 1.99967Z",
-                          fill: "white"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("path", {
-                        attrs: {
-                          "fill-rule": "evenodd",
-                          "clip-rule": "evenodd",
-                          d:
-                            "M14 1.33301C14.3682 1.33301 14.6667 1.63148 14.6667 1.99967V5.99967C14.6667 6.36786 14.3682 6.66634 14 6.66634C13.6318 6.66634 13.3333 6.36786 13.3333 5.99967V1.99967C13.3333 1.63148 13.6318 1.33301 14 1.33301Z",
-                          fill: "white"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("path", {
-                        attrs: {
-                          "fill-rule": "evenodd",
-                          "clip-rule": "evenodd",
-                          d:
-                            "M13.8047 2.19526C14.0651 2.45561 14.0651 2.87772 13.8047 3.13807L9.13807 7.80474C8.87772 8.06509 8.45561 8.06509 8.19526 7.80474C7.93491 7.54439 7.93491 7.12228 8.19526 6.86193L12.8619 2.19526C13.1223 1.93491 13.5444 1.93491 13.8047 2.19526Z",
-                          fill: "white"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("path", {
-                        attrs: {
-                          "fill-rule": "evenodd",
-                          "clip-rule": "evenodd",
-                          d:
-                            "M2.66667 3.33268C2.66667 2.96449 2.96515 2.66602 3.33334 2.66602H7.33334C7.70153 2.66602 8 2.96449 8 3.33268C8 3.70087 7.70153 3.99935 7.33334 3.99935H4.00001V11.9993H12V8.66602C12 8.29783 12.2985 7.99935 12.6667 7.99935C13.0349 7.99935 13.3333 8.29783 13.3333 8.66602V12.666C13.3333 13.0342 13.0349 13.3327 12.6667 13.3327H3.33334C2.96515 13.3327 2.66667 13.0342 2.66667 12.666V3.33268Z",
-                          fill: "white"
-                        }
-                      })
-                    ]
-                  )
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _vm.isSubscribed
-              ? _c(
-                  "a",
-                  {
-                    staticClass: "project__btn unfollow btn",
-                    on: { click: _vm.unfollowProject }
-                  },
-                  [
-                    _c("div", { staticClass: "btn__icon svg-contain" }, [
-                      _c(
-                        "svg",
-                        {
-                          attrs: {
-                            width: "16",
-                            height: "16",
-                            viewBox: "0 0 16 16",
-                            fill: "none",
-                            xmlns: "http://www.w3.org/2000/svg"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M11.1564 6.05293C11.2263 5.9878 11.2826 5.90954 11.3222 5.82263C11.3619 5.73571 11.384 5.64185 11.3873 5.54639C11.3907 5.45093 11.3752 5.35575 11.3417 5.26628C11.3083 5.1768 11.2576 5.0948 11.1924 5.02493C11.1273 4.95507 11.049 4.89872 10.9621 4.8591C10.8752 4.81948 10.7813 4.79737 10.6859 4.79403C10.5904 4.79068 10.4952 4.80618 10.4058 4.83962C10.3163 4.87306 10.2343 4.9238 10.1644 4.98893L8.03642 6.97293L6.05241 4.8442C5.91966 4.70824 5.73897 4.62963 5.54899 4.6252C5.35902 4.62077 5.17485 4.69087 5.03591 4.8205C4.89696 4.95013 4.81427 5.129 4.80553 5.31882C4.79679 5.50865 4.8627 5.69435 4.98914 5.8362L6.97314 7.9642L4.84441 9.9482C4.77208 10.0127 4.71337 10.091 4.67171 10.1784C4.63005 10.2659 4.6063 10.3609 4.60184 10.4576C4.59739 10.5544 4.61232 10.6511 4.64576 10.7421C4.6792 10.833 4.73047 10.9164 4.79657 10.9872C4.86267 11.0581 4.94226 11.115 5.03067 11.1547C5.11908 11.1943 5.21452 11.2159 5.31139 11.2182C5.40826 11.2204 5.50461 11.2033 5.59477 11.1678C5.68493 11.1323 5.76708 11.0792 5.83641 11.0115L7.96442 9.0282L9.94842 11.1562C10.0125 11.2299 10.0907 11.2899 10.1785 11.3327C10.2662 11.3755 10.3617 11.4001 10.4592 11.4052C10.5567 11.4104 10.6542 11.3958 10.7459 11.3624C10.8377 11.329 10.9217 11.2775 10.9931 11.2109C11.0645 11.1444 11.1218 11.0641 11.1615 10.9749C11.2013 10.8857 11.2226 10.7895 11.2244 10.6919C11.2261 10.5943 11.2082 10.4973 11.1716 10.4068C11.1351 10.3162 11.0807 10.234 11.0117 10.1649L9.02841 8.03693L11.1564 6.05293Z",
-                              fill: "white"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("path", {
-                            attrs: {
-                              "fill-rule": "evenodd",
-                              "clip-rule": "evenodd",
-                              d:
-                                "M0 8C0 3.58182 3.58182 0 8 0C12.4182 0 16 3.58182 16 8C16 12.4182 12.4182 16 8 16C3.58182 16 0 12.4182 0 8ZM8 14.5455C7.14044 14.5455 6.28929 14.3762 5.49516 14.0472C4.70103 13.7183 3.97947 13.2361 3.37166 12.6283C2.76386 12.0205 2.28173 11.299 1.95279 10.5048C1.62385 9.71071 1.45455 8.85956 1.45455 8C1.45455 7.14044 1.62385 6.28929 1.95279 5.49516C2.28173 4.70103 2.76386 3.97947 3.37166 3.37166C3.97947 2.76386 4.70103 2.28173 5.49516 1.95279C6.28929 1.62385 7.14044 1.45455 8 1.45455C9.73596 1.45455 11.4008 2.14415 12.6283 3.37166C13.8558 4.59918 14.5455 6.26404 14.5455 8C14.5455 9.73596 13.8558 11.4008 12.6283 12.6283C11.4008 13.8558 9.73596 14.5455 8 14.5455Z",
-                              fill: "white"
-                            }
-                          })
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "btn__caption" }, [
-                      _vm._v("unfollow")
-                    ])
-                  ]
-                )
-              : _c(
-                  "a",
-                  {
-                    staticClass: "project__btn btn",
-                    on: { click: _vm.followProject }
-                  },
-                  [
-                    _c("div", { staticClass: "btn__icon svg-contain" }, [
-                      _c(
-                        "svg",
-                        {
-                          attrs: {
-                            width: "13",
-                            height: "16",
-                            viewBox: "0 0 13 16",
-                            fill: "none",
-                            xmlns: "http://www.w3.org/2000/svg"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              "fill-rule": "evenodd",
-                              "clip-rule": "evenodd",
-                              d:
-                                "M0.833886 9.19109V9.0451C0.855303 8.61317 0.993735 8.19467 1.23491 7.83274C1.63634 7.39798 1.91114 6.86521 2.03048 6.29033C2.03048 5.84601 2.03048 5.39534 2.06929 4.95103C2.2698 2.81195 4.38485 1.33301 6.47404 1.33301H6.52578C8.61497 1.33301 10.73 2.81195 10.937 4.95103C10.9758 5.39534 10.937 5.84601 10.9693 6.29033C11.0903 6.86654 11.3648 7.40097 11.7649 7.83909C12.0079 8.19781 12.1465 8.61478 12.1659 9.0451V9.18474C12.1804 9.76504 11.9805 10.3309 11.6032 10.7779C11.1046 11.3007 10.4281 11.6259 9.70161 11.692C7.57133 11.9205 5.42202 11.9205 3.29175 11.692C2.5661 11.623 1.89051 11.2983 1.39014 10.7779C1.01867 10.3305 0.821496 9.76806 0.833886 9.19109Z",
-                              stroke: "#3340B4",
-                              "stroke-width": "1.5",
-                              "stroke-linecap": "round",
-                              "stroke-linejoin": "round"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M4.86996 13.9014C5.20281 14.3191 5.6916 14.5895 6.22815 14.6527C6.76471 14.7158 7.30478 14.5665 7.72884 14.2378C7.85927 14.1406 7.97663 14.0275 8.07812 13.9014",
-                              stroke: "#3340B4",
-                              "stroke-width": "1.5",
-                              "stroke-linecap": "round",
-                              "stroke-linejoin": "round"
-                            }
-                          })
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "btn__caption" }, [
-                      _vm._v("follow")
-                    ])
-                  ]
-                )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "social-item bottom" }, [
-            _c("div", { staticClass: "social-item__caption" }, [
-              _vm._v("project links")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "social-item__list flex" }, [
               _c(
                 "div",
-                { staticClass: "social-item__coll" },
+                { staticClass: "project__left-top flex" },
                 [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "social-item__link flex",
-                      attrs: { href: "mailto:" + _vm.project.email }
-                    },
-                    [
-                      _vm._m(0),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "social-item__name" }, [
-                        _vm._v("Email")
+                  _vm.project.status === 2
+                    ? _c("div", { staticClass: "active-item" }, [
+                        _vm._v("Active")
                       ])
-                    ]
-                  ),
+                    : _vm._e(),
                   _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "social-item__link flex",
-                      attrs: { href: _vm.project.website }
-                    },
-                    [
-                      _vm._m(1),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "social-item__name" }, [
-                        _vm._v("site.ru")
+                  _vm.project.status === 1
+                    ? _c("div", { staticClass: "active-item" }, [
+                        _vm._v("Upcoming")
                       ])
-                    ]
-                  ),
+                    : _vm._e(),
                   _vm._v(" "),
-                  _vm._l(_vm.project.socials, function(social) {
+                  _c("div", { staticClass: "star star_good flex" }, [
+                    _c("img", {
+                      attrs: { src: "/img/catalog/star.svg", alt: "" }
+                    }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v(_vm._s(_vm.project.rating))])
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.project.categories, function(category) {
                     return _c(
-                      "a",
-                      {
-                        staticClass: "social-item__link flex",
-                        attrs: { href: social.data }
-                      },
+                      "div",
+                      { class: "category category_" + category.color },
                       [
-                        _c(
-                          "div",
-                          { staticClass: "social-item__icon img-contain" },
-                          [
-                            _c("img", {
-                              attrs: {
-                                src:
-                                  "/img/project/social/" + social.name + ".svg",
-                                alt: ""
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("img", {
-                              attrs: {
-                                src:
-                                  "/img/project/social/" +
-                                  social.name +
-                                  "-hover.svg",
-                                alt: ""
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "social-item__name" }, [
-                          _vm._v(
-                            _vm._s(
-                              social.name.charAt(0).toUpperCase() +
-                                social.name.slice(1)
-                            )
-                          )
-                        ])
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(category.name) +
+                            "\n                        "
+                        )
                       ]
                     )
                   })
                 ],
                 2
               )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "project__right" }, [
-          _c(
-            "div",
-            { staticClass: "project__wrap bottom" },
-            [
-              _vm.project.images.length > 3
-                ? _c(
-                    "div",
-                    {
-                      staticClass: "arrow arrow_prew",
-                      on: {
-                        click: function($event) {
-                          return _vm.$refs.carousel.prev()
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          attrs: {
-                            width: "20",
-                            height: "20",
-                            viewBox: "0 0 20 20",
-                            fill: "none",
-                            xmlns: "http://www.w3.org/2000/svg"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              "fill-rule": "evenodd",
-                              "clip-rule": "evenodd",
-                              d:
-                                "M16.875 10.0002C16.875 9.57833 16.533 9.23633 16.1111 9.23633H3.88889C3.467 9.23633 3.125 9.57833 3.125 10.0002C3.125 10.4221 3.467 10.7641 3.88889 10.7641H16.1111C16.533 10.7641 16.875 10.4221 16.875 10.0002Z",
-                              fill: "#3340B4"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("path", {
-                            attrs: {
-                              "fill-rule": "evenodd",
-                              "clip-rule": "evenodd",
-                              d:
-                                "M9.77626 4.11241C9.47794 3.81409 8.99428 3.81409 8.69596 4.11241L3.34874 9.45963C3.05042 9.75795 3.05042 10.2416 3.34874 10.5399L8.69596 15.8872C8.99428 16.1855 9.47794 16.1855 9.77626 15.8872C10.0746 15.5888 10.0746 15.1052 9.77626 14.8069L4.96919 9.99978L9.77626 5.19271C10.0746 4.89439 10.0746 4.41073 9.77626 4.11241Z",
-                              fill: "#3340B4"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.project.images.length > 3
-                ? _c(
-                    "div",
-                    {
-                      staticClass: "arrow arrow_next",
-                      on: {
-                        click: function($event) {
-                          return _vm.$refs.carousel.next()
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          attrs: {
-                            width: "20",
-                            height: "20",
-                            viewBox: "0 0 20 20",
-                            fill: "none",
-                            xmlns: "http://www.w3.org/2000/svg"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              "fill-rule": "evenodd",
-                              "clip-rule": "evenodd",
-                              d:
-                                "M3.12524 9.99881C3.12524 10.4207 3.46725 10.7627 3.88913 10.7627L16.1114 10.7627C16.5332 10.7627 16.8752 10.4207 16.8752 9.99881C16.8752 9.57693 16.5332 9.23492 16.1114 9.23492L3.88913 9.23492C3.46725 9.23492 3.12524 9.57692 3.12524 9.99881Z",
-                              fill: "#3340B4"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("path", {
-                            attrs: {
-                              "fill-rule": "evenodd",
-                              "clip-rule": "evenodd",
-                              d:
-                                "M10.224 15.8866C10.5223 16.1849 11.006 16.1849 11.3043 15.8866L16.6515 10.5394C16.9498 10.2411 16.9498 9.75741 16.6515 9.45909L11.3043 4.11187C11.006 3.81355 10.5223 3.81355 10.224 4.11187C9.92567 4.41018 9.92567 4.89385 10.224 5.19217L15.0311 9.99924L10.224 14.8063C9.92566 15.1046 9.92566 15.5883 10.224 15.8866Z",
-                              fill: "#3340B4"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.project.images
-                ? _c(
-                    "VueSlickCarousel",
-                    {
-                      ref: "carousel",
-                      attrs: {
-                        arrows: false,
-                        slidesToShow: 3,
-                        slidesToScroll: 1,
-                        dots: false
-                      }
-                    },
-                    _vm._l(_vm.project.images, function(image) {
-                      return _c(
-                        "div",
-                        { staticClass: "project__slide swiper-slide" },
-                        [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "project__slide-box img-cover",
-                              attrs: {
-                                href: image.original_url,
-                                "data-fancybox": "project"
-                              }
-                            },
-                            [
-                              _c("img", {
-                                attrs: { src: image.original_url, alt: "" }
-                              })
-                            ]
-                          )
-                        ]
-                      )
-                    }),
-                    0
-                  )
-                : _vm._e()
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "project__items bottom" }, [
-            _c("div", { staticClass: "project__item" }, [
-              _c("div", { staticClass: "project__item-caption" }, [
-                _vm._v("Min price")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "project__item-desc" }, [
-                _vm._v("$" + _vm._s(_vm.project.min_price))
-              ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "project__item" }, [
-              _c("div", { staticClass: "project__item-caption" }, [
-                _vm._v("Max price")
+            _c("div", { staticClass: "project__profile flex bottom" }, [
+              _c("div", { staticClass: "project__avatar img-cover" }, [
+                _c("img", { attrs: { src: _vm.project.logo, alt: "" } })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "project__item-desc" }, [
-                _vm._v("$" + _vm._s(_vm.project.max_price))
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "project__item" }, [
-              _c("div", { staticClass: "project__item-caption" }, [
-                _vm._v("Available for sale")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "project__item-desc" }, [
-                _vm._v(_vm._s(_vm.project.available_count) + " tokens")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "project__row flex bottom" }, [
-            _c("div", { staticClass: "project__coll" }, [
-              _c("div", { staticClass: "project__coll-item flex" }, [
-                _c("div", { staticClass: "project__coll-caption" }, [
-                  _vm._v("Website:")
+              _c("div", { staticClass: "project__profile-box" }, [
+                _c("div", { staticClass: "project__profile-caption" }, [
+                  _vm._v("Start date")
                 ]),
                 _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "project__coll-link", attrs: { href: "#" } },
-                  [_vm._v(_vm._s(_vm.project.website))]
-                )
-              ]),
-              _vm._v(" "),
-              _vm._m(2),
-              _vm._v(" "),
-              _vm._m(3)
+                _c("div", { staticClass: "project__profile-date" }, [
+                  _vm._v(_vm._s(_vm.project.start_date))
+                ])
+              ])
             ]),
             _vm._v(" "),
-            _vm._m(4)
+            _vm.project.timer
+              ? _c("div", { staticClass: "timer bottom" }, [
+                  _c("div", { staticClass: "timer__caption" }, [
+                    _vm._v("before the start")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "countdown" }, [
+                    _c("div", { staticClass: "timer__section" }, [
+                      _c(
+                        "span",
+                        { staticClass: "count", attrs: { id: "days" } },
+                        [_vm._v(_vm._s(_vm.showingTimer[0]))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "timer__section" }, [
+                      _c(
+                        "span",
+                        { staticClass: "count", attrs: { id: "hours" } },
+                        [_vm._v(_vm._s(_vm.showingTimer[1]))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "timer__section" }, [
+                      _c(
+                        "span",
+                        { staticClass: "count", attrs: { id: "minutes" } },
+                        [_vm._v(_vm._s(_vm.showingTimer[2]))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "timer__section" }, [
+                      _c(
+                        "span",
+                        { staticClass: "count", attrs: { id: "seconds" } },
+                        [_vm._v(_vm._s(_vm.showingTimer[3]))]
+                      )
+                    ])
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("div", { staticClass: "project__buttons flex bottom" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "project__btn btn btn_blue",
+                  attrs: { href: _vm.project.website }
+                },
+                [
+                  _c("div", { staticClass: "btn__caption" }, [
+                    _vm._v("site project")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "btn__icon svg-contain" }, [
+                    _c(
+                      "svg",
+                      {
+                        attrs: {
+                          width: "16",
+                          height: "16",
+                          viewBox: "0 0 16 16",
+                          fill: "none",
+                          xmlns: "http://www.w3.org/2000/svg"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            "fill-rule": "evenodd",
+                            "clip-rule": "evenodd",
+                            d:
+                              "M9.33334 1.99967C9.33334 1.63148 9.63182 1.33301 10 1.33301H14C14.3682 1.33301 14.6667 1.63148 14.6667 1.99967C14.6667 2.36786 14.3682 2.66634 14 2.66634H10C9.63182 2.66634 9.33334 2.36786 9.33334 1.99967Z",
+                            fill: "white"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("path", {
+                          attrs: {
+                            "fill-rule": "evenodd",
+                            "clip-rule": "evenodd",
+                            d:
+                              "M14 1.33301C14.3682 1.33301 14.6667 1.63148 14.6667 1.99967V5.99967C14.6667 6.36786 14.3682 6.66634 14 6.66634C13.6318 6.66634 13.3333 6.36786 13.3333 5.99967V1.99967C13.3333 1.63148 13.6318 1.33301 14 1.33301Z",
+                            fill: "white"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("path", {
+                          attrs: {
+                            "fill-rule": "evenodd",
+                            "clip-rule": "evenodd",
+                            d:
+                              "M13.8047 2.19526C14.0651 2.45561 14.0651 2.87772 13.8047 3.13807L9.13807 7.80474C8.87772 8.06509 8.45561 8.06509 8.19526 7.80474C7.93491 7.54439 7.93491 7.12228 8.19526 6.86193L12.8619 2.19526C13.1223 1.93491 13.5444 1.93491 13.8047 2.19526Z",
+                            fill: "white"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("path", {
+                          attrs: {
+                            "fill-rule": "evenodd",
+                            "clip-rule": "evenodd",
+                            d:
+                              "M2.66667 3.33268C2.66667 2.96449 2.96515 2.66602 3.33334 2.66602H7.33334C7.70153 2.66602 8 2.96449 8 3.33268C8 3.70087 7.70153 3.99935 7.33334 3.99935H4.00001V11.9993H12V8.66602C12 8.29783 12.2985 7.99935 12.6667 7.99935C13.0349 7.99935 13.3333 8.29783 13.3333 8.66602V12.666C13.3333 13.0342 13.0349 13.3327 12.6667 13.3327H3.33334C2.96515 13.3327 2.66667 13.0342 2.66667 12.666V3.33268Z",
+                            fill: "white"
+                          }
+                        })
+                      ]
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _vm.isSubscribed
+                ? _c(
+                    "a",
+                    {
+                      staticClass: "project__btn unfollow btn",
+                      on: { click: _vm.unfollowProject }
+                    },
+                    [
+                      _c("div", { staticClass: "btn__icon svg-contain" }, [
+                        _c(
+                          "svg",
+                          {
+                            attrs: {
+                              width: "16",
+                              height: "16",
+                              viewBox: "0 0 16 16",
+                              fill: "none",
+                              xmlns: "http://www.w3.org/2000/svg"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M11.1564 6.05293C11.2263 5.9878 11.2826 5.90954 11.3222 5.82263C11.3619 5.73571 11.384 5.64185 11.3873 5.54639C11.3907 5.45093 11.3752 5.35575 11.3417 5.26628C11.3083 5.1768 11.2576 5.0948 11.1924 5.02493C11.1273 4.95507 11.049 4.89872 10.9621 4.8591C10.8752 4.81948 10.7813 4.79737 10.6859 4.79403C10.5904 4.79068 10.4952 4.80618 10.4058 4.83962C10.3163 4.87306 10.2343 4.9238 10.1644 4.98893L8.03642 6.97293L6.05241 4.8442C5.91966 4.70824 5.73897 4.62963 5.54899 4.6252C5.35902 4.62077 5.17485 4.69087 5.03591 4.8205C4.89696 4.95013 4.81427 5.129 4.80553 5.31882C4.79679 5.50865 4.8627 5.69435 4.98914 5.8362L6.97314 7.9642L4.84441 9.9482C4.77208 10.0127 4.71337 10.091 4.67171 10.1784C4.63005 10.2659 4.6063 10.3609 4.60184 10.4576C4.59739 10.5544 4.61232 10.6511 4.64576 10.7421C4.6792 10.833 4.73047 10.9164 4.79657 10.9872C4.86267 11.0581 4.94226 11.115 5.03067 11.1547C5.11908 11.1943 5.21452 11.2159 5.31139 11.2182C5.40826 11.2204 5.50461 11.2033 5.59477 11.1678C5.68493 11.1323 5.76708 11.0792 5.83641 11.0115L7.96442 9.0282L9.94842 11.1562C10.0125 11.2299 10.0907 11.2899 10.1785 11.3327C10.2662 11.3755 10.3617 11.4001 10.4592 11.4052C10.5567 11.4104 10.6542 11.3958 10.7459 11.3624C10.8377 11.329 10.9217 11.2775 10.9931 11.2109C11.0645 11.1444 11.1218 11.0641 11.1615 10.9749C11.2013 10.8857 11.2226 10.7895 11.2244 10.6919C11.2261 10.5943 11.2082 10.4973 11.1716 10.4068C11.1351 10.3162 11.0807 10.234 11.0117 10.1649L9.02841 8.03693L11.1564 6.05293Z",
+                                fill: "white"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("path", {
+                              attrs: {
+                                "fill-rule": "evenodd",
+                                "clip-rule": "evenodd",
+                                d:
+                                  "M0 8C0 3.58182 3.58182 0 8 0C12.4182 0 16 3.58182 16 8C16 12.4182 12.4182 16 8 16C3.58182 16 0 12.4182 0 8ZM8 14.5455C7.14044 14.5455 6.28929 14.3762 5.49516 14.0472C4.70103 13.7183 3.97947 13.2361 3.37166 12.6283C2.76386 12.0205 2.28173 11.299 1.95279 10.5048C1.62385 9.71071 1.45455 8.85956 1.45455 8C1.45455 7.14044 1.62385 6.28929 1.95279 5.49516C2.28173 4.70103 2.76386 3.97947 3.37166 3.37166C3.97947 2.76386 4.70103 2.28173 5.49516 1.95279C6.28929 1.62385 7.14044 1.45455 8 1.45455C9.73596 1.45455 11.4008 2.14415 12.6283 3.37166C13.8558 4.59918 14.5455 6.26404 14.5455 8C14.5455 9.73596 13.8558 11.4008 12.6283 12.6283C11.4008 13.8558 9.73596 14.5455 8 14.5455Z",
+                                fill: "white"
+                              }
+                            })
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "btn__caption" }, [
+                        _vm._v("unfollow")
+                      ])
+                    ]
+                  )
+                : _c(
+                    "a",
+                    {
+                      staticClass: "project__btn btn",
+                      on: { click: _vm.followProject }
+                    },
+                    [
+                      _c("div", { staticClass: "btn__icon svg-contain" }, [
+                        _c(
+                          "svg",
+                          {
+                            attrs: {
+                              width: "13",
+                              height: "16",
+                              viewBox: "0 0 13 16",
+                              fill: "none",
+                              xmlns: "http://www.w3.org/2000/svg"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                "fill-rule": "evenodd",
+                                "clip-rule": "evenodd",
+                                d:
+                                  "M0.833886 9.19109V9.0451C0.855303 8.61317 0.993735 8.19467 1.23491 7.83274C1.63634 7.39798 1.91114 6.86521 2.03048 6.29033C2.03048 5.84601 2.03048 5.39534 2.06929 4.95103C2.2698 2.81195 4.38485 1.33301 6.47404 1.33301H6.52578C8.61497 1.33301 10.73 2.81195 10.937 4.95103C10.9758 5.39534 10.937 5.84601 10.9693 6.29033C11.0903 6.86654 11.3648 7.40097 11.7649 7.83909C12.0079 8.19781 12.1465 8.61478 12.1659 9.0451V9.18474C12.1804 9.76504 11.9805 10.3309 11.6032 10.7779C11.1046 11.3007 10.4281 11.6259 9.70161 11.692C7.57133 11.9205 5.42202 11.9205 3.29175 11.692C2.5661 11.623 1.89051 11.2983 1.39014 10.7779C1.01867 10.3305 0.821496 9.76806 0.833886 9.19109Z",
+                                stroke: "#3340B4",
+                                "stroke-width": "1.5",
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M4.86996 13.9014C5.20281 14.3191 5.6916 14.5895 6.22815 14.6527C6.76471 14.7158 7.30478 14.5665 7.72884 14.2378C7.85927 14.1406 7.97663 14.0275 8.07812 13.9014",
+                                stroke: "#3340B4",
+                                "stroke-width": "1.5",
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round"
+                              }
+                            })
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "btn__caption" }, [
+                        _vm._v("follow")
+                      ])
+                    ]
+                  )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "social-item bottom" }, [
+              _c("div", { staticClass: "social-item__caption" }, [
+                _vm._v("project links")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "social-item__list flex" }, [
+                _c(
+                  "div",
+                  { staticClass: "social-item__coll" },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "social-item__link flex",
+                        attrs: { href: "mailto:" + _vm.project.email }
+                      },
+                      [
+                        _vm._m(0),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "social-item__name" }, [
+                          _vm._v("Email")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "social-item__link flex",
+                        attrs: { href: _vm.project.website }
+                      },
+                      [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "social-item__name" }, [
+                          _vm._v("site.ru")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.project.socials, function(social) {
+                      return _c(
+                        "a",
+                        {
+                          staticClass: "social-item__link flex",
+                          attrs: { href: social.data }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "social-item__icon img-contain" },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  src:
+                                    "/img/project/social/" +
+                                    social.name +
+                                    ".svg",
+                                  alt: ""
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("img", {
+                                attrs: {
+                                  src:
+                                    "/img/project/social/" +
+                                    social.name +
+                                    "-hover.svg",
+                                  alt: ""
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "social-item__name" }, [
+                            _vm._v(
+                              _vm._s(
+                                social.name.charAt(0).toUpperCase() +
+                                  social.name.slice(1)
+                              )
+                            )
+                          ])
+                        ]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ])
+            ])
           ]),
           _vm._v(" "),
-          _vm._m(5),
-          _vm._v(" "),
-          _vm._m(6),
-          _vm._v(" "),
-          _vm._m(7)
+          _c("div", { staticClass: "project__right" }, [
+            _c(
+              "div",
+              { staticClass: "project__wrap bottom" },
+              [
+                _vm.project.images.length > 3
+                  ? _c(
+                      "div",
+                      {
+                        staticClass: "arrow arrow_prew",
+                        on: {
+                          click: function($event) {
+                            return _vm.$refs.carousel.prev()
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            attrs: {
+                              width: "20",
+                              height: "20",
+                              viewBox: "0 0 20 20",
+                              fill: "none",
+                              xmlns: "http://www.w3.org/2000/svg"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                "fill-rule": "evenodd",
+                                "clip-rule": "evenodd",
+                                d:
+                                  "M16.875 10.0002C16.875 9.57833 16.533 9.23633 16.1111 9.23633H3.88889C3.467 9.23633 3.125 9.57833 3.125 10.0002C3.125 10.4221 3.467 10.7641 3.88889 10.7641H16.1111C16.533 10.7641 16.875 10.4221 16.875 10.0002Z",
+                                fill: "#3340B4"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("path", {
+                              attrs: {
+                                "fill-rule": "evenodd",
+                                "clip-rule": "evenodd",
+                                d:
+                                  "M9.77626 4.11241C9.47794 3.81409 8.99428 3.81409 8.69596 4.11241L3.34874 9.45963C3.05042 9.75795 3.05042 10.2416 3.34874 10.5399L8.69596 15.8872C8.99428 16.1855 9.47794 16.1855 9.77626 15.8872C10.0746 15.5888 10.0746 15.1052 9.77626 14.8069L4.96919 9.99978L9.77626 5.19271C10.0746 4.89439 10.0746 4.41073 9.77626 4.11241Z",
+                                fill: "#3340B4"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.project.images.length > 3
+                  ? _c(
+                      "div",
+                      {
+                        staticClass: "arrow arrow_next",
+                        on: {
+                          click: function($event) {
+                            return _vm.$refs.carousel.next()
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            attrs: {
+                              width: "20",
+                              height: "20",
+                              viewBox: "0 0 20 20",
+                              fill: "none",
+                              xmlns: "http://www.w3.org/2000/svg"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                "fill-rule": "evenodd",
+                                "clip-rule": "evenodd",
+                                d:
+                                  "M3.12524 9.99881C3.12524 10.4207 3.46725 10.7627 3.88913 10.7627L16.1114 10.7627C16.5332 10.7627 16.8752 10.4207 16.8752 9.99881C16.8752 9.57693 16.5332 9.23492 16.1114 9.23492L3.88913 9.23492C3.46725 9.23492 3.12524 9.57692 3.12524 9.99881Z",
+                                fill: "#3340B4"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("path", {
+                              attrs: {
+                                "fill-rule": "evenodd",
+                                "clip-rule": "evenodd",
+                                d:
+                                  "M10.224 15.8866C10.5223 16.1849 11.006 16.1849 11.3043 15.8866L16.6515 10.5394C16.9498 10.2411 16.9498 9.75741 16.6515 9.45909L11.3043 4.11187C11.006 3.81355 10.5223 3.81355 10.224 4.11187C9.92567 4.41018 9.92567 4.89385 10.224 5.19217L15.0311 9.99924L10.224 14.8063C9.92566 15.1046 9.92566 15.5883 10.224 15.8866Z",
+                                fill: "#3340B4"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.project.images
+                  ? _c(
+                      "VueSlickCarousel",
+                      {
+                        ref: "carousel",
+                        attrs: {
+                          arrows: false,
+                          slidesToShow: 3,
+                          slidesToScroll: 1,
+                          dots: false
+                        }
+                      },
+                      _vm._l(_vm.project.images, function(image) {
+                        return _c(
+                          "div",
+                          { staticClass: "project__slide swiper-slide" },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "project__slide-box img-cover",
+                                attrs: {
+                                  href: image.original_url,
+                                  "data-fancybox": "project"
+                                }
+                              },
+                              [
+                                _c("img", {
+                                  attrs: { src: image.original_url, alt: "" }
+                                })
+                              ]
+                            )
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  : _vm._e()
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "project__items bottom" }, [
+              _c("div", { staticClass: "project__item" }, [
+                _c("div", { staticClass: "project__item-caption" }, [
+                  _vm._v("Min price")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "project__item-desc" }, [
+                  _vm._v("$" + _vm._s(_vm.project.min_price))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "project__item" }, [
+                _c("div", { staticClass: "project__item-caption" }, [
+                  _vm._v("Max price")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "project__item-desc" }, [
+                  _vm._v("$" + _vm._s(_vm.project.max_price))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "project__item" }, [
+                _c("div", { staticClass: "project__item-caption" }, [
+                  _vm._v("Available for sale")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "project__item-desc" }, [
+                  _vm._v(_vm._s(_vm.project.available_count) + " tokens")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "project__row flex bottom" }, [
+              _c("div", { staticClass: "project__coll" }, [
+                _c("div", { staticClass: "project__coll-item flex" }, [
+                  _c("div", { staticClass: "project__coll-caption" }, [
+                    _vm._v("Website:")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    { staticClass: "project__coll-link", attrs: { href: "#" } },
+                    [_vm._v(_vm._s(_vm.project.website))]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _vm._m(3)
+              ]),
+              _vm._v(" "),
+              _vm._m(4)
+            ]),
+            _vm._v(" "),
+            _vm._m(5),
+            _vm._v(" "),
+            _vm._m(6),
+            _vm._v(" "),
+            _vm._m(7)
+          ])
         ])
       ])
-    ])
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -17459,7 +17472,7 @@ var render = function() {
               "a",
               {
                 staticClass: "modal__social-link telegram flex",
-                attrs: { href: "#" }
+                attrs: { href: "/auth/telegram" }
               },
               [
                 _c("div", { staticClass: "modal__social-icon" }, [
@@ -17500,7 +17513,7 @@ var render = function() {
               "a",
               {
                 staticClass: "modal__social-link twitter flex",
-                attrs: { href: "#" }
+                attrs: { href: "/auth/twitter" }
               },
               [
                 _c("div", { staticClass: "modal__social-icon" }, [
@@ -19356,7 +19369,7 @@ var render = function() {
       attrs: { id: "project-modal" }
     },
     [
-      _c("login"),
+      _c("login", { ref: "login" }),
       _vm._v(" "),
       _c("div", { staticClass: "modal__top" }, [
         _c(
@@ -43593,7 +43606,7 @@ webpackContext.id = "./public/img/select-icons sync recursive ^\\.\\/.*\\.svg$";
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
-/******/ 			"css/tailwind": 0
+/******/ 			"css/app": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -43641,8 +43654,8 @@ webpackContext.id = "./public/img/select-icons sync recursive ^\\.\\/.*\\.svg$";
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/tailwind"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/tailwind"], () => (__webpack_require__("./resources/css/tailwind.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

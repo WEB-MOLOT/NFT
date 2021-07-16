@@ -23,7 +23,7 @@
                     </div>
                     <div class="modal__social-caption">Sign In with Google</div>
                 </a>
-                <a href="#" class="modal__social-link telegram flex">
+                <a href="/auth/telegram" class="modal__social-link telegram flex">
                     <div class="modal__social-icon">
                         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="18" cy="18" r="18" fill="#2F89CE"/>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="modal__social-caption">Sign In with Telegram</div>
                 </a>
-                <a href="#" class="modal__social-link twitter flex">
+                <a href="/auth/twitter" class="modal__social-link twitter flex">
                     <div class="modal__social-icon">
                         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="18" cy="18" r="18" fill="#55ACE3"/>

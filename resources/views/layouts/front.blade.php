@@ -35,6 +35,8 @@
 <body>
 <div class="page page_hide" id="app">
     @include('partials.header')
+
+
     @yield('content')
 
     @include('partials.modals')

@@ -717,16 +717,16 @@
     ),
     'twitter' => 
     array (
-      'client_id' => NULL,
-      'client_secret' => NULL,
+      'client_id' => 'fsafdasdfaasdf',
+      'client_secret' => '232345354',
       'redirect' => NULL,
     ),
     'telegram' => 
     array (
-      'bot' => NULL,
+      'bot' => 'nftlogin_bot',
       'client_id' => NULL,
-      'client_secret' => NULL,
-      'redirect' => '/login/social/telegram',
+      'client_secret' => '1720181233:AAGCHEL4YkOo-sXx8VFHbIy4qC-3vM1QlHM',
+      'redirect' => '/auth/telegram/callback',
     ),
   ),
   'session' => 

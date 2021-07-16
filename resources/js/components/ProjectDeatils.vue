@@ -1,6 +1,7 @@
 <template>
 
     <div class="project">
+        <login ref="login"></login>
         <div class="wrapper wrapper_big">
             <div class="project__body flex">
                 <div class="project__left">
@@ -230,10 +231,12 @@ import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 // optional style for arrows & dots
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+import Login from "./auth/Login";
+
 export default {
     props: ['project'],
 
-    components: {VueSlickCarousel},
+    components: {VueSlickCarousel, Login},
 
     data() {
         return {

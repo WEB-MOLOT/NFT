@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4fc03b180caee755659ba9343a4ae193",
+    "content-hash": "8a53bf21d09211df6e1b2bfe6e8de445",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3146,6 +3146,47 @@
                 "source": "https://github.com/SocialiteProviders/Telegram/tree/4.1.1"
             },
             "time": "2021-01-11T22:24:42+00:00"
+        },
+        {
+            "name": "socialiteproviders/twitter",
+            "version": "4.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Twitter.git",
+                "reference": "e5edf2b6e3f37e64be6488111629ed5e41e645ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/Twitter/zipball/e5edf2b6e3f37e64be6488111629ed5e41e645ad",
+                "reference": "e5edf2b6e3f37e64be6488111629ed5e41e645ad",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.2 || ^8.0",
+                "socialiteproviders/manager": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\Twitter\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brian Faust",
+                    "email": "hello@brianfaust.de"
+                }
+            ],
+            "description": "Twitter OAuth1 Provider for Laravel Socialite",
+            "support": {
+                "source": "https://github.com/SocialiteProviders/Twitter/tree/4.1.1"
+            },
+            "time": "2021-01-29T05:41:11+00:00"
         },
         {
             "name": "spatie/image",

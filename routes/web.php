@@ -39,7 +39,11 @@ Route::get('logout', [LoginController::class, 'logout'])->middleware('auth');
 //);
 
 Route::get('/auth/google', [Social\GoogleController::class, 'redirect'])->name('auth.google');
-Route::post('/auth/google/callback', [Social\GoogleController::class, 'login']);
+Route::get('/auth/google/callback', [Social\GoogleController::class, 'login']);
+Route::get('/auth/telegram', [Social\TelegramController::class, 'redirect'])->name('auth.telegram');
+Route::get('/auth/telegram/callback', [Social\TelegramController::class, 'login']);
+Route::get('/auth/twitter', [Social\TwitterController::class, 'redirect'])->name('auth.twitter');
+Route::get('/auth/twitter/callback', [Social\TwitterController::class, 'login']);
 
 Route::view('/', 'front.index')->name('index');
 Route::view('/submit', 'front.submit')->name('submit');

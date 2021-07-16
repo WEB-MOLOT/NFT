@@ -30,6 +30,6 @@ return [
         'bot' => env('TELEGRAM_BOT_NAME'),  // The bot's username
         'client_id' => null,
         'client_secret' => env('TELEGRAM_TOKEN'),
-        'redirect' => '/login/social/telegram',
+        'redirect' => '/auth/telegram/callback',
     ],
 ];

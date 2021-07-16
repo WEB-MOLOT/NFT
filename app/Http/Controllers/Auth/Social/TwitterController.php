@@ -11,16 +11,16 @@ use Laravel\Socialite\Facades\Socialite;
  * Class GoogleController
  * @package App\Http\Controllers\Auth\Social
  */
-class GoogleController extends Controller
+class TwitterController extends Controller
 {
     public function redirect() {
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver('twitter')->redirect();
     }
 
     public function login() {
         try {
-            $user = Socialite::driver('google')->stateless()->user();
-            $isUser = User::where('google_id', $user->id)->first();
+            $user = Socialite::driver('twitter')->stateless()->user();
+            $isUser = User::where('twitter_id', $user->id)->first();
 
             if ($isUser) {
                 Auth::login($isUser);
