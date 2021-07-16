@@ -52,3 +52,7 @@ Route::view('/personal-area', 'front.personal-area')->middleware('auth')->name('
 
 Route::get('/categories/{slug}', [\App\Http\Controllers\Front\IndexController::class, 'showCategory'])->name('category');
 Route::get('projects/{slug}', [\App\Http\Controllers\Front\IndexController::class, 'showProject'])->name('project');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

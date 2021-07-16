@@ -41,15 +41,15 @@
             </svg>
         </div>
     </div>
-    <form action="{{ route('password.email') }}" class="modal__body" method="post">
+    <form action="{{ route('password.email') }}" class="modal__body" method="POST">
         @csrf
         <div class="modal__title">Forgot your password?</div>
         <div class="modal__subtitle">Request an email with a link to reset your password</div>
         <div class="modal__box">
             <label class="modal__label">
-                <input type="email" name="email" class="modal__field field" placeholder="Enter email">
+                <input id="email" type="email" name="email" class="modal__field field" placeholder="Enter email"value="{{ old('email') }}" required autocomplete="email" autofocus>
             </label>
-            <button class="modal__btn">reset the password</button>
+            <button class="modal__btn" type="submit">reset the password</button>
         </div>
     </form>
 </div><!-- end signin-modal -->
