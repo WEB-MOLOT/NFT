@@ -194,11 +194,14 @@ class ProjectController extends Controller
         $params['ended_at_timezone'] = trim($endDateArray[2]);
         $params['user_id'] = 1;
         $params['rating'] = 1.0;
+        $params['is_published'] = 0;
 
 
         $project->update($params);
 
         $project->categories()->sync(json_decode($request->categories));
+
+
 
         $socialIds = [];
 

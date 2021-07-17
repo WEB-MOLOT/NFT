@@ -416,7 +416,6 @@ export default {
             } else {
                 this.project.categories.splice(this.project.categories.indexOf(category.id), 1);
             }
-
         },
 
         onLogoUpload(event) {

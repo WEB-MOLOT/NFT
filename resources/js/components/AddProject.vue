@@ -1,17 +1,20 @@
 <template>
     <form @submit.prevent="saveProject" ref="form" class="contacts__form form">
-        <div class="alert alert-danger" v-if="errors.length > 0">
-            <ul>
-                <li v-for="error in errors">{{ error[0] }}</li>
-            </ul>
-        </div>
+<!--        <div class="alert alert-danger" v-if="errors.length > 0">-->
+<!--            <ul>-->
+<!--                <li v-for="error in errors">{{ error[0] }}</li>-->
+<!--            </ul>-->
+<!--        </div>-->
 
-        <label class="form__label bottom ">
-            <input type="text" name="text" class="form__field field" v-model="project.name" placeholder="The name of the project">
+        <label class="form__label bottom">
+            <input type="text" name="text" :class="['form__field field', {error: errors.hasOwnProperty('name')}]" v-model="project.name" placeholder="The name of the project">
+            <span class="t-text-red-400" role="alert">
+                {{ getError('name') }}
+            </span>
         </label>
 
         <label class="form__label bottom">
-            <div class="file flex success">
+            <div class="file flex">
                 <div class="file__box flex">
                     <div class="file__link">Select a file</div>
                     <input type="file" class="file__value" name="calc_image" @change="onLogoUpload" accept="image/png, image/jpeg" style="display:none;" multiple>
@@ -21,7 +24,7 @@
         </label>
 
         <label class="form__label bottom ">
-            <div class="file flex error">
+            <div class="file flex">
                 <div class="file__box flex">
                     <div class="file__link">Select a file</div>
                     <input type="file" class="file__value" @change="onImagesUpload" name="calc_image" accept="image/png, image/jpeg" style="display:none;" multiple>
@@ -58,7 +61,7 @@
                         <input type="radio" name="value" v-model="project.status" value="active" data-change="1">
                         <div class="form__radio-caption">Active</div>
                     </div>
-                    <div class="form__info-icon center flex-center">
+                    <div class="form__info-icon center flex-center" ref="status">
                         <span></span>
                     </div>
                     <div class="form__radio form__radio_2" @click="setStatus(1)">
@@ -167,7 +170,7 @@
             <input type="text" name="text" class="form__field field" v-model="project.email" placeholder="Email*">
         </label>
         <label class="form__label bottom ">
-            <input type="text" name="text" class="form__field field" v-model="project.twitter" placeholder="Twitter*">
+            <input type="text" name="text" :class="['form__field field', {error: hasError('twitter')}]" v-model="project.twitter" placeholder="Twitter*">
         </label>
 
         <div class="form__label" v-for="(social, index) in project.socials">
@@ -278,7 +281,7 @@ export default {
             ],
 
             categories: [],
-            errors: []
+            errors: {}
         }
     },
 
@@ -295,8 +298,6 @@ export default {
         },
 
         saveProject() {
-            this.errors = [];
-
             let formData = new FormData();
 
             this.project.start_date = this.$refs.startDate.value;
@@ -322,13 +323,22 @@ export default {
                     this.project = {};
                 })
                 .catch(error => {
-                    console.log(error.response)
                     Object.entries(error.response.data.errors).forEach(([key, value]) => {
-                        this.errors.push(value);
-                        console.log(this.errors)
+                        this.errors[key] = value;
                     });
-                    this.$swal('Error!', error.response.data.message, 'error');
+
+                    this.$refs.status.click();
                 })
+        },
+
+        hasError(error) {
+            return this.errors.hasOwnProperty(error);
+        },
+
+        getError(error) {
+            if (this.errors[error]) {
+                return this.errors[error][0];
+            }
         },
 
         chooseCategory(category) {

@@ -2086,6 +2086,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2129,7 +2132,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         value: ''
       }],
       categories: [],
-      errors: []
+      errors: {}
     };
   },
   mounted: function mounted() {
@@ -2146,7 +2149,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     saveProject: function saveProject() {
       var _this2 = this;
 
-      this.errors = [];
       var formData = new FormData();
       this.project.start_date = this.$refs.startDate.value;
       this.project.end_date = this.$refs.endDate.value;
@@ -2175,19 +2177,24 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
         _this2.project = {};
       })["catch"](function (error) {
-        console.log(error.response);
         Object.entries(error.response.data.errors).forEach(function (_ref) {
           var _ref2 = _slicedToArray(_ref, 2),
               key = _ref2[0],
               value = _ref2[1];
 
-          _this2.errors.push(value);
-
-          console.log(_this2.errors);
+          _this2.errors[key] = value;
         });
 
-        _this2.$swal('Error!', error.response.data.message, 'error');
+        _this2.$refs.status.click();
       });
+    },
+    hasError: function hasError(error) {
+      return this.errors.hasOwnProperty(error);
+    },
+    getError: function getError(error) {
+      if (this.errors[error]) {
+        return this.errors[error][0];
+      }
     },
     chooseCategory: function chooseCategory(category) {
       if (this.project.categories.indexOf(category.id) === -1) {
@@ -3237,6 +3244,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     showProjectModal: function showProjectModal(project) {
+      history.pushState({}, project.name, "/projects/" + project.slug);
       this.$parent.$refs.modal.project = project;
       this.$parent.$refs.modal.init();
     },
@@ -5265,6 +5273,9 @@ __webpack_require__.r(__webpack_exports__);
       this.prettyTime();
       this.countDownTimer();
       this.isSubscribed = this.isUserSubscribed();
+    },
+    closeModal: function closeModal() {
+      history.back();
     },
     followProject: function followProject() {
       var _this = this;
@@ -11408,19 +11419,7 @@ var render = function() {
       }
     },
     [
-      _vm.errors.length > 0
-        ? _c("div", { staticClass: "alert alert-danger" }, [
-            _c(
-              "ul",
-              _vm._l(_vm.errors, function(error) {
-                return _c("li", [_vm._v(_vm._s(error[0]))])
-              }),
-              0
-            )
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("label", { staticClass: "form__label bottom " }, [
+      _c("label", { staticClass: "form__label bottom" }, [
         _c("input", {
           directives: [
             {
@@ -11430,7 +11429,10 @@ var render = function() {
               expression: "project.name"
             }
           ],
-          staticClass: "form__field field",
+          class: [
+            "form__field field",
+            { error: _vm.errors.hasOwnProperty("name") }
+          ],
           attrs: {
             type: "text",
             name: "text",
@@ -11445,11 +11447,23 @@ var render = function() {
               _vm.$set(_vm.project, "name", $event.target.value)
             }
           }
-        })
+        }),
+        _vm._v(" "),
+        _c(
+          "span",
+          { staticClass: "t-text-red-400", attrs: { role: "alert" } },
+          [
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.getError("name")) +
+                "\n            "
+            )
+          ]
+        )
       ]),
       _vm._v(" "),
       _c("label", { staticClass: "form__label bottom" }, [
-        _c("div", { staticClass: "file flex success" }, [
+        _c("div", { staticClass: "file flex" }, [
           _c("div", { staticClass: "file__box flex" }, [
             _c("div", { staticClass: "file__link" }, [_vm._v("Select a file")]),
             _vm._v(" "),
@@ -11473,7 +11487,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("label", { staticClass: "form__label bottom " }, [
-        _c("div", { staticClass: "file flex error" }, [
+        _c("div", { staticClass: "file flex" }, [
           _c("div", { staticClass: "file__box flex" }, [
             _c("div", { staticClass: "file__link" }, [_vm._v("Select a file")]),
             _vm._v(" "),
@@ -11611,7 +11625,14 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _vm._m(0),
+            _c(
+              "div",
+              {
+                ref: "status",
+                staticClass: "form__info-icon center flex-center"
+              },
+              [_c("span")]
+            ),
             _vm._v(" "),
             _c(
               "div",
@@ -11864,7 +11885,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(1),
+              _vm._m(0),
               _vm._v(" "),
               _c("input", {
                 ref: "currency",
@@ -12013,7 +12034,7 @@ var render = function() {
               expression: "project.twitter"
             }
           ],
-          staticClass: "form__field field",
+          class: ["form__field field", { error: _vm.hasError("twitter") }],
           attrs: { type: "text", name: "text", placeholder: "Twitter*" },
           domProps: { value: _vm.project.twitter },
           on: {
@@ -12235,14 +12256,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form__info-icon center flex-center" }, [
-      _c("span")
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -19376,7 +19389,8 @@ var render = function() {
           "div",
           {
             staticClass: "modal__closed flex-center svg-contain",
-            attrs: { "data-fancybox-close": "" }
+            attrs: { "data-fancybox-close": "" },
+            on: { click: _vm.closeModal }
           },
           [
             _c(

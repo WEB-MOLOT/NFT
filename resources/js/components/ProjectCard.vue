@@ -131,6 +131,7 @@ export default {
         },
 
         showProjectModal(project) {
+            history.pushState({}, project.name, "/projects/" + project.slug)
             this.$parent.$refs.modal.project = project;
             this.$parent.$refs.modal.init();
         },
