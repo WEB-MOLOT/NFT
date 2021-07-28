@@ -2089,6 +2089,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -11406,856 +11414,944 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "form",
-    {
-      ref: "form",
-      staticClass: "contacts__form form",
-      on: {
-        submit: function($event) {
-          $event.preventDefault()
-          return _vm.saveProject.apply(null, arguments)
-        }
-      }
-    },
-    [
-      _c("label", { staticClass: "form__label bottom" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.project.name,
-              expression: "project.name"
-            }
-          ],
-          class: [
-            "form__field field",
-            { error: _vm.errors.hasOwnProperty("name") }
-          ],
-          attrs: {
-            type: "text",
-            name: "text",
-            placeholder: "The name of the project"
-          },
-          domProps: { value: _vm.project.name },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.project, "name", $event.target.value)
-            }
-          }
-        }),
+  return _c("div", { staticClass: "submit" }, [
+    _c("div", { staticClass: "wrapper wrapper_big" }, [
+      _c("div", { staticClass: "submit__body flex" }, [
+        _vm._m(0),
         _vm._v(" "),
-        _c(
-          "span",
-          { staticClass: "t-text-red-400", attrs: { role: "alert" } },
-          [
-            _vm._v(
-              "\n                " +
-                _vm._s(_vm.getError("name")) +
-                "\n            "
-            )
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("label", { staticClass: "form__label bottom" }, [
-        _c("div", { staticClass: "file flex" }, [
-          _c("div", { staticClass: "file__box flex" }, [
-            _c("div", { staticClass: "file__link" }, [_vm._v("Select a file")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "file__value",
-              staticStyle: { display: "none" },
-              attrs: {
-                type: "file",
-                name: "calc_image",
-                accept: "image/png, image/jpeg",
-                multiple: ""
-              },
-              on: { change: _vm.onLogoUpload }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "file__caption" }, [
-            _vm._v("Logotype (jpeg, png)")
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("label", { staticClass: "form__label bottom " }, [
-        _c("div", { staticClass: "file flex" }, [
-          _c("div", { staticClass: "file__box flex" }, [
-            _c("div", { staticClass: "file__link" }, [_vm._v("Select a file")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "file__value",
-              staticStyle: { display: "none" },
-              attrs: {
-                type: "file",
-                name: "calc_image",
-                accept: "image/png, image/jpeg",
-                multiple: ""
-              },
-              on: { change: _vm.onImagesUpload }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "file__caption" }, [
-            _vm._v("Project illustrations")
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("label", { staticClass: "form__label bottom " }, [
-        _c("div", { staticClass: "filter__category" }, [
-          _c("div", { staticClass: "form__caption" }, [
-            _vm._v("Project category")
-          ]),
-          _vm._v(" "),
+        _c("div", { staticClass: "submit__right" }, [
           _c(
-            "div",
-            { staticClass: "filter__category-items flex" },
-            _vm._l(_vm.categories, function(category) {
-              return _c(
-                "div",
-                {
-                  class: [
-                    "filter__category-item filter__category-item_" +
-                      category.color,
+            "form",
+            { staticClass: "contacts__form form" },
+            [
+              _c("label", { staticClass: "form__label bottom" }, [
+                _c("input", {
+                  directives: [
                     {
-                      active: _vm.project.categories.indexOf(category.id) !== -1
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.project.name,
+                      expression: "project.name"
                     }
                   ],
+                  class: [
+                    "form__field field",
+                    { error: _vm.errors.hasOwnProperty("name") }
+                  ],
+                  attrs: {
+                    type: "text",
+                    name: "text",
+                    placeholder: "The name of the project"
+                  },
+                  domProps: { value: _vm.project.name },
                   on: {
-                    click: function($event) {
-                      return _vm.chooseCategory(category)
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.project, "name", $event.target.value)
                     }
                   }
-                },
-                [
-                  _c("div", { staticClass: "filter__category-caption" }, [
-                    _vm._v(_vm._s(category.name))
+                }),
+                _vm._v(" "),
+                _vm.errors.hasOwnProperty("name")
+                  ? _c(
+                      "span",
+                      {
+                        staticClass: "t-text-red-400",
+                        attrs: { role: "alert" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.getError("name")) +
+                            "\n                        "
+                        )
+                      ]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("label", { staticClass: "form__label bottom" }, [
+                _c("div", { staticClass: "file flex" }, [
+                  _c("div", { staticClass: "file__box flex" }, [
+                    _c("div", { staticClass: "file__link" }, [
+                      _vm._v("Select a file")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "file__value",
+                      staticStyle: { display: "none" },
+                      attrs: {
+                        type: "file",
+                        name: "calc_image",
+                        accept: "image/png, image/jpeg",
+                        multiple: ""
+                      },
+                      on: { change: _vm.onLogoUpload }
+                    })
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "filter__category-icon" }, [
+                  _c("div", { staticClass: "file__caption" }, [
+                    _vm._v("Logotype (jpeg, png)")
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("label", { staticClass: "form__label bottom " }, [
+                _c("div", { staticClass: "file flex" }, [
+                  _c("div", { staticClass: "file__box flex" }, [
+                    _c("div", { staticClass: "file__link" }, [
+                      _vm._v("Select a file")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "file__value",
+                      staticStyle: { display: "none" },
+                      attrs: {
+                        type: "file",
+                        name: "calc_image",
+                        accept: "image/png, image/jpeg",
+                        multiple: ""
+                      },
+                      on: { change: _vm.onImagesUpload }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "file__caption" }, [
+                    _vm._v("Project illustrations")
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("label", { staticClass: "form__label bottom " }, [
+                _c("div", { staticClass: "filter__category" }, [
+                  _c("div", { staticClass: "form__caption" }, [
+                    _vm._v("Project category")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "filter__category-items flex" },
+                    _vm._l(_vm.categories, function(category) {
+                      return _c(
+                        "div",
+                        {
+                          class: [
+                            "filter__category-item filter__category-item_" +
+                              category.color,
+                            {
+                              active:
+                                _vm.project.categories.indexOf(category.id) !==
+                                -1
+                            }
+                          ],
+                          on: {
+                            click: function($event) {
+                              return _vm.chooseCategory(category)
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "filter__category-caption" },
+                            [_vm._v(_vm._s(category.name))]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "filter__category-icon" }, [
+                            _c(
+                              "svg",
+                              {
+                                attrs: {
+                                  width: "14",
+                                  height: "14",
+                                  viewBox: "0 0 14 14",
+                                  fill: "none",
+                                  xmlns: "http://www.w3.org/2000/svg"
+                                }
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    d:
+                                      "M9.76229 5.29632C9.82342 5.23932 9.87273 5.17085 9.90739 5.0948C9.94206 5.01875 9.96141 4.93662 9.96433 4.85309C9.96726 4.76956 9.9537 4.68628 9.92444 4.60799C9.89518 4.5297 9.85078 4.45795 9.79379 4.39682C9.7368 4.33569 9.66832 4.28638 9.59227 4.25171C9.51622 4.21705 9.43409 4.1977 9.35056 4.19477C9.26704 4.19185 9.18375 4.2054 9.10547 4.23467C9.02718 4.26393 8.95542 4.30832 8.89429 4.36532L7.03229 6.10132L5.29629 4.23868C5.18013 4.11971 5.02202 4.05092 4.8558 4.04705C4.68957 4.04317 4.52843 4.10451 4.40685 4.21794C4.28527 4.33136 4.21292 4.48787 4.20527 4.65397C4.19762 4.82007 4.25529 4.98256 4.36593 5.10668L6.10193 6.96868L4.23929 8.70468C4.176 8.76109 4.12462 8.82959 4.08817 8.90614C4.05173 8.98269 4.03094 9.06575 4.02704 9.15044C4.02314 9.23514 4.0362 9.31976 4.06546 9.39933C4.09473 9.47891 4.13959 9.55183 4.19743 9.61382C4.25527 9.67582 4.32491 9.72563 4.40227 9.76033C4.47962 9.79503 4.56313 9.81393 4.64789 9.8159C4.73266 9.81788 4.81696 9.8029 4.89585 9.77184C4.97474 9.74078 5.04663 9.69427 5.10729 9.63504L6.96929 7.89968L8.70529 9.76168C8.76134 9.82614 8.8298 9.87865 8.90658 9.91609C8.98336 9.95353 9.06689 9.97512 9.1522 9.97959C9.2375 9.98406 9.32283 9.97131 9.40311 9.9421C9.48338 9.91288 9.55694 9.86781 9.61943 9.80956C9.68191 9.75131 9.73202 9.68108 9.76678 9.60305C9.80154 9.52502 9.82023 9.44079 9.82175 9.35538C9.82326 9.26997 9.80757 9.18513 9.7756 9.10592C9.74362 9.02671 9.69603 8.95474 9.63565 8.89431L7.90029 7.03232L9.76229 5.29632Z",
+                                    fill: "#3340B4"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("path", {
+                                  attrs: {
+                                    "fill-rule": "evenodd",
+                                    "clip-rule": "evenodd",
+                                    d:
+                                      "M0 7C0 3.13409 3.13409 0 7 0C10.8659 0 14 3.13409 14 7C14 10.8659 10.8659 14 7 14C3.13409 14 0 10.8659 0 7ZM7 12.7273C6.24788 12.7273 5.50313 12.5791 4.80827 12.2913C4.1134 12.0035 3.48203 11.5816 2.95021 11.0498C2.41838 10.518 1.99651 9.8866 1.70869 9.19173C1.42087 8.49687 1.27273 7.75212 1.27273 7C1.27273 6.24788 1.42087 5.50313 1.70869 4.80827C1.99651 4.1134 2.41838 3.48203 2.95021 2.95021C3.48203 2.41838 4.1134 1.99651 4.80827 1.70869C5.50313 1.42087 6.24788 1.27273 7 1.27273C8.51897 1.27273 9.97572 1.87613 11.0498 2.95021C12.1239 4.02428 12.7273 5.48103 12.7273 7C12.7273 8.51897 12.1239 9.97572 11.0498 11.0498C9.97572 12.1239 8.51897 12.7273 7 12.7273Z",
+                                    fill: "#3340B4"
+                                  }
+                                })
+                              ]
+                            )
+                          ])
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("label", { staticClass: "form__label bottom " }, [
+                _c("div", { staticClass: "form__info flex" }, [
+                  _c("div", { staticClass: "form__info-value flex" }, [
                     _c(
-                      "svg",
+                      "div",
                       {
-                        attrs: {
-                          width: "14",
-                          height: "14",
-                          viewBox: "0 0 14 14",
-                          fill: "none",
-                          xmlns: "http://www.w3.org/2000/svg"
+                        staticClass: "form__radio form__radio_1",
+                        on: {
+                          click: function($event) {
+                            return _vm.setStatus(2)
+                          }
                         }
                       },
                       [
-                        _c("path", {
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.project.status,
+                              expression: "project.status"
+                            }
+                          ],
                           attrs: {
-                            d:
-                              "M9.76229 5.29632C9.82342 5.23932 9.87273 5.17085 9.90739 5.0948C9.94206 5.01875 9.96141 4.93662 9.96433 4.85309C9.96726 4.76956 9.9537 4.68628 9.92444 4.60799C9.89518 4.5297 9.85078 4.45795 9.79379 4.39682C9.7368 4.33569 9.66832 4.28638 9.59227 4.25171C9.51622 4.21705 9.43409 4.1977 9.35056 4.19477C9.26704 4.19185 9.18375 4.2054 9.10547 4.23467C9.02718 4.26393 8.95542 4.30832 8.89429 4.36532L7.03229 6.10132L5.29629 4.23868C5.18013 4.11971 5.02202 4.05092 4.8558 4.04705C4.68957 4.04317 4.52843 4.10451 4.40685 4.21794C4.28527 4.33136 4.21292 4.48787 4.20527 4.65397C4.19762 4.82007 4.25529 4.98256 4.36593 5.10668L6.10193 6.96868L4.23929 8.70468C4.176 8.76109 4.12462 8.82959 4.08817 8.90614C4.05173 8.98269 4.03094 9.06575 4.02704 9.15044C4.02314 9.23514 4.0362 9.31976 4.06546 9.39933C4.09473 9.47891 4.13959 9.55183 4.19743 9.61382C4.25527 9.67582 4.32491 9.72563 4.40227 9.76033C4.47962 9.79503 4.56313 9.81393 4.64789 9.8159C4.73266 9.81788 4.81696 9.8029 4.89585 9.77184C4.97474 9.74078 5.04663 9.69427 5.10729 9.63504L6.96929 7.89968L8.70529 9.76168C8.76134 9.82614 8.8298 9.87865 8.90658 9.91609C8.98336 9.95353 9.06689 9.97512 9.1522 9.97959C9.2375 9.98406 9.32283 9.97131 9.40311 9.9421C9.48338 9.91288 9.55694 9.86781 9.61943 9.80956C9.68191 9.75131 9.73202 9.68108 9.76678 9.60305C9.80154 9.52502 9.82023 9.44079 9.82175 9.35538C9.82326 9.26997 9.80757 9.18513 9.7756 9.10592C9.74362 9.02671 9.69603 8.95474 9.63565 8.89431L7.90029 7.03232L9.76229 5.29632Z",
-                            fill: "#3340B4"
+                            type: "radio",
+                            name: "value",
+                            value: "active",
+                            "data-change": "1"
+                          },
+                          domProps: {
+                            checked: _vm._q(_vm.project.status, "active")
+                          },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(_vm.project, "status", "active")
+                            }
                           }
                         }),
                         _vm._v(" "),
-                        _c("path", {
-                          attrs: {
-                            "fill-rule": "evenodd",
-                            "clip-rule": "evenodd",
-                            d:
-                              "M0 7C0 3.13409 3.13409 0 7 0C10.8659 0 14 3.13409 14 7C14 10.8659 10.8659 14 7 14C3.13409 14 0 10.8659 0 7ZM7 12.7273C6.24788 12.7273 5.50313 12.5791 4.80827 12.2913C4.1134 12.0035 3.48203 11.5816 2.95021 11.0498C2.41838 10.518 1.99651 9.8866 1.70869 9.19173C1.42087 8.49687 1.27273 7.75212 1.27273 7C1.27273 6.24788 1.42087 5.50313 1.70869 4.80827C1.99651 4.1134 2.41838 3.48203 2.95021 2.95021C3.48203 2.41838 4.1134 1.99651 4.80827 1.70869C5.50313 1.42087 6.24788 1.27273 7 1.27273C8.51897 1.27273 9.97572 1.87613 11.0498 2.95021C12.1239 4.02428 12.7273 5.48103 12.7273 7C12.7273 8.51897 12.1239 9.97572 11.0498 11.0498C9.97572 12.1239 8.51897 12.7273 7 12.7273Z",
-                            fill: "#3340B4"
-                          }
-                        })
+                        _c("div", { staticClass: "form__radio-caption" }, [
+                          _vm._v("Active")
+                        ])
                       ]
-                    )
-                  ])
-                ]
-              )
-            }),
-            0
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("label", { staticClass: "form__label bottom " }, [
-        _c("div", { staticClass: "form__info flex" }, [
-          _c("div", { staticClass: "form__info-value flex" }, [
-            _c(
-              "div",
-              {
-                staticClass: "form__radio form__radio_1",
-                on: {
-                  click: function($event) {
-                    return _vm.setStatus(2)
-                  }
-                }
-              },
-              [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.project.status,
-                      expression: "project.status"
-                    }
-                  ],
-                  attrs: {
-                    type: "radio",
-                    name: "value",
-                    value: "active",
-                    "data-change": "1"
-                  },
-                  domProps: { checked: _vm._q(_vm.project.status, "active") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.project, "status", "active")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "form__radio-caption" }, [
-                  _vm._v("Active")
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                ref: "status",
-                staticClass: "form__info-icon center flex-center"
-              },
-              [_c("span")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "form__radio form__radio_2",
-                on: {
-                  click: function($event) {
-                    return _vm.setStatus(1)
-                  }
-                }
-              },
-              [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.project.status,
-                      expression: "project.status"
-                    }
-                  ],
-                  attrs: {
-                    type: "radio",
-                    name: "value",
-                    value: "upcoming",
-                    "data-change": "2"
-                  },
-                  domProps: { checked: _vm._q(_vm.project.status, "upcoming") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.project, "status", "upcoming")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "form__radio-caption" }, [
-                  _vm._v("Upcoming")
-                ])
-              ]
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("label", { staticClass: "form__label bottom " }, [
-        _c("div", { staticClass: "form__info flex" }, [
-          _c("div", { staticClass: "form__date" }, [
-            _c("div", { staticClass: "form__date-icon svg-contain" }, [
-              _c(
-                "svg",
-                {
-                  attrs: {
-                    width: "15",
-                    height: "16",
-                    viewBox: "0 0 15 16",
-                    fill: "none",
-                    xmlns: "http://www.w3.org/2000/svg"
-                  }
-                },
-                [
-                  _c("path", {
-                    attrs: {
-                      "fill-rule": "evenodd",
-                      "clip-rule": "evenodd",
-                      d:
-                        "M3.33333 3.33333C2.22876 3.33333 1.33333 4.22876 1.33333 5.33333V12C1.33333 13.1046 2.22876 14 3.33333 14H11.3333C12.4379 14 13.3333 13.1046 13.3333 12V5.33333C13.3333 4.22876 12.4379 3.33333 11.3333 3.33333H3.33333ZM0 5.33333C0 3.49238 1.49238 2 3.33333 2H11.3333C13.1743 2 14.6667 3.49238 14.6667 5.33333V12C14.6667 13.8409 13.1743 15.3333 11.3333 15.3333H3.33333C1.49238 15.3333 0 13.8409 0 12V5.33333Z",
-                      fill: "#8EA5B2"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("path", {
-                    attrs: {
-                      "fill-rule": "evenodd",
-                      "clip-rule": "evenodd",
-                      d:
-                        "M4.66667 0.666992C5.03486 0.666992 5.33333 0.965469 5.33333 1.33366V4.00033C5.33333 4.36852 5.03486 4.66699 4.66667 4.66699C4.29848 4.66699 4 4.36852 4 4.00033V1.33366C4 0.965469 4.29848 0.666992 4.66667 0.666992Z",
-                      fill: "#8EA5B2"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("path", {
-                    attrs: {
-                      "fill-rule": "evenodd",
-                      "clip-rule": "evenodd",
-                      d:
-                        "M9.99992 0.666992C10.3681 0.666992 10.6666 0.965469 10.6666 1.33366V4.00033C10.6666 4.36852 10.3681 4.66699 9.99992 4.66699C9.63173 4.66699 9.33325 4.36852 9.33325 4.00033V1.33366C9.33325 0.965469 9.63173 0.666992 9.99992 0.666992Z",
-                      fill: "#8EA5B2"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("path", {
-                    attrs: {
-                      "fill-rule": "evenodd",
-                      "clip-rule": "evenodd",
-                      d:
-                        "M0 6.66667C0 6.29848 0.298477 6 0.666667 6H14C14.3682 6 14.6667 6.29848 14.6667 6.66667C14.6667 7.03486 14.3682 7.33333 14 7.33333H0.666667C0.298477 7.33333 0 7.03486 0 6.66667Z",
-                      fill: "#8EA5B2"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              ref: "startDate",
-              staticClass: "form__field field date-from",
-              attrs: {
-                type: "text",
-                name: "date-from",
-                placeholder: "Start date",
-                "data-calendar-id": "1",
-                readonly: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form__date" }, [
-            _c("div", { staticClass: "form__date-icon svg-contain" }, [
-              _c(
-                "svg",
-                {
-                  attrs: {
-                    width: "15",
-                    height: "16",
-                    viewBox: "0 0 15 16",
-                    fill: "none",
-                    xmlns: "http://www.w3.org/2000/svg"
-                  }
-                },
-                [
-                  _c("path", {
-                    attrs: {
-                      "fill-rule": "evenodd",
-                      "clip-rule": "evenodd",
-                      d:
-                        "M3.33333 3.33333C2.22876 3.33333 1.33333 4.22876 1.33333 5.33333V12C1.33333 13.1046 2.22876 14 3.33333 14H11.3333C12.4379 14 13.3333 13.1046 13.3333 12V5.33333C13.3333 4.22876 12.4379 3.33333 11.3333 3.33333H3.33333ZM0 5.33333C0 3.49238 1.49238 2 3.33333 2H11.3333C13.1743 2 14.6667 3.49238 14.6667 5.33333V12C14.6667 13.8409 13.1743 15.3333 11.3333 15.3333H3.33333C1.49238 15.3333 0 13.8409 0 12V5.33333Z",
-                      fill: "#8EA5B2"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("path", {
-                    attrs: {
-                      "fill-rule": "evenodd",
-                      "clip-rule": "evenodd",
-                      d:
-                        "M4.66667 0.666992C5.03486 0.666992 5.33333 0.965469 5.33333 1.33366V4.00033C5.33333 4.36852 5.03486 4.66699 4.66667 4.66699C4.29848 4.66699 4 4.36852 4 4.00033V1.33366C4 0.965469 4.29848 0.666992 4.66667 0.666992Z",
-                      fill: "#8EA5B2"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("path", {
-                    attrs: {
-                      "fill-rule": "evenodd",
-                      "clip-rule": "evenodd",
-                      d:
-                        "M9.99992 0.666992C10.3681 0.666992 10.6666 0.965469 10.6666 1.33366V4.00033C10.6666 4.36852 10.3681 4.66699 9.99992 4.66699C9.63173 4.66699 9.33325 4.36852 9.33325 4.00033V1.33366C9.33325 0.965469 9.63173 0.666992 9.99992 0.666992Z",
-                      fill: "#8EA5B2"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("path", {
-                    attrs: {
-                      "fill-rule": "evenodd",
-                      "clip-rule": "evenodd",
-                      d:
-                        "M0 6.66667C0 6.29848 0.298477 6 0.666667 6H14C14.3682 6 14.6667 6.29848 14.6667 6.66667C14.6667 7.03486 14.3682 7.33333 14 7.33333H0.666667C0.298477 7.33333 0 7.03486 0 6.66667Z",
-                      fill: "#8EA5B2"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              ref: "endDate",
-              staticClass: "form__field field date-to",
-              attrs: {
-                type: "text",
-                name: "date-to",
-                placeholder: "Finish date",
-                "data-calendar-id": "2",
-                readonly: ""
-              }
-            })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("label", { staticClass: "form__label bottom " }, [
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.project.description,
-              expression: "project.description"
-            }
-          ],
-          staticClass: "form__field field",
-          attrs: { placeholder: "Project description" },
-          domProps: { value: _vm.project.description },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.project, "description", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form__label form__label_older bottom " }, [
-        _c("div", { staticClass: "form__flex flex" }, [
-          _c("div", { staticClass: "form__flex-box" }, [
-            _c("div", { staticClass: "form__currency" }, [
-              _c("div", { staticClass: "form__currency-title" }, [
-                _c("div", { staticClass: "form__currency-caption" }, [
-                  _vm._v("Currency")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form__currency-title__box" }, [
-                  _c("div", { staticClass: "form__currency-title__value" }, [
-                    _vm._v("USD")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form__currency-title__arrow" }, [
+                    ),
+                    _vm._v(" "),
                     _c(
-                      "svg",
+                      "div",
                       {
-                        attrs: {
-                          width: "8",
-                          height: "8",
-                          viewBox: "0 0 8 8",
-                          fill: "none",
-                          xmlns: "http://www.w3.org/2000/svg"
+                        ref: "status",
+                        staticClass: "form__info-icon center flex-center"
+                      },
+                      [_c("span")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "form__radio form__radio_2",
+                        on: {
+                          click: function($event) {
+                            return _vm.setStatus(1)
+                          }
                         }
                       },
                       [
-                        _c("path", {
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.project.status,
+                              expression: "project.status"
+                            }
+                          ],
                           attrs: {
-                            d:
-                              "M3.7261 6.52333C3.75668 6.56774 3.7976 6.60405 3.84533 6.62914C3.89306 6.65423 3.94618 6.66734 4.0001 6.66734C4.05402 6.66734 4.10714 6.65423 4.15487 6.62914C4.2026 6.60405 4.24352 6.56774 4.2741 6.52333L7.2741 2.18999C7.30883 2.14001 7.32919 2.08147 7.33298 2.02073C7.33677 1.95999 7.32384 1.89937 7.2956 1.84546C7.26735 1.79155 7.22488 1.74641 7.17278 1.71494C7.12068 1.68348 7.06096 1.6669 7.0001 1.66699H1.0001C0.939382 1.66724 0.87988 1.68404 0.827995 1.71558C0.776109 1.74712 0.733802 1.79221 0.705624 1.84599C0.677446 1.89978 0.664463 1.96022 0.668071 2.02084C0.671679 2.08145 0.691741 2.13993 0.726101 2.18999L3.7261 6.52333Z",
-                            fill: "#2F3E46"
+                            type: "radio",
+                            name: "value",
+                            value: "upcoming",
+                            "data-change": "2"
+                          },
+                          domProps: {
+                            checked: _vm._q(_vm.project.status, "upcoming")
+                          },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(_vm.project, "status", "upcoming")
+                            }
                           }
-                        })
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form__radio-caption" }, [
+                          _vm._v("Upcoming")
+                        ])
                       ]
                     )
                   ])
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(0),
-              _vm._v(" "),
-              _c("input", {
-                ref: "currency",
-                attrs: { type: "hidden", name: "type", value: "USD" }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form__flex-small" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.project.min_price,
-                  expression: "project.min_price"
-                }
-              ],
-              staticClass: "form__field field",
-              attrs: { type: "text", name: "text", placeholder: "Min price" },
-              domProps: { value: _vm.project.min_price },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.project, "min_price", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form__flex-small" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.project.max_price,
-                  expression: "project.max_price"
-                }
-              ],
-              staticClass: "form__field field",
-              attrs: { type: "text", name: "text", placeholder: "Max price" },
-              domProps: { value: _vm.project.max_price },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.project, "max_price", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form__flex-box" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.project.available_count,
-                  expression: "project.available_count"
-                }
-              ],
-              staticClass: "form__field field",
-              attrs: {
-                type: "text",
-                name: "text",
-                placeholder: "Available NFTs for sale"
-              },
-              domProps: { value: _vm.project.available_count },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.project, "available_count", $event.target.value)
-                }
-              }
-            })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("label", { staticClass: "form__label bottom " }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.project.website,
-              expression: "project.website"
-            }
-          ],
-          staticClass: "form__field field",
-          attrs: {
-            type: "text",
-            name: "text",
-            placeholder: "To the project site*"
-          },
-          domProps: { value: _vm.project.website },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.project, "website", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("label", { staticClass: "form__label bottom " }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.project.email,
-              expression: "project.email"
-            }
-          ],
-          staticClass: "form__field field",
-          attrs: { type: "text", name: "text", placeholder: "Email*" },
-          domProps: { value: _vm.project.email },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.project, "email", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("label", { staticClass: "form__label bottom " }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.project.twitter,
-              expression: "project.twitter"
-            }
-          ],
-          class: ["form__field field", { error: _vm.hasError("twitter") }],
-          attrs: { type: "text", name: "text", placeholder: "Twitter*" },
-          domProps: { value: _vm.project.twitter },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.project, "twitter", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.project.socials, function(social, index) {
-        return _c("div", { staticClass: "form__label" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.project.socials[index].data,
-                expression: "project.socials[index].data"
-              }
-            ],
-            staticClass: "form__field field",
-            attrs: { type: "text", placeholder: social.title + " *" },
-            domProps: { value: _vm.project.socials[index].data },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(
-                  _vm.project.socials[index],
-                  "data",
-                  $event.target.value
-                )
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "select-social__closed",
-              on: {
-                click: function($event) {
-                  return _vm.deleteSocial(social)
-                }
-              }
-            },
-            [
-              _c(
-                "svg",
-                {
-                  attrs: {
-                    width: "12",
-                    height: "12",
-                    viewBox: "0 0 12 12",
-                    fill: "none",
-                    xmlns: "http://www.w3.org/2000/svg"
-                  }
-                },
-                [
-                  _c("path", {
-                    attrs: {
-                      d: "M9.75 1L11 2.25L2.25 11L1 9.75L9.75 1Z",
-                      fill: "#5E7C8D"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("path", {
-                    attrs: {
-                      d: "M11 9.75L9.75 11L1 2.25L2.25 1L11 9.75Z",
-                      fill: "#5E7C8D"
-                    }
-                  })
-                ]
-              )
-            ]
-          )
-        ])
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        {
-          staticClass:
-            "form__label form__label_social form__label_older bottom "
-        },
-        [
-          _c("div", { staticClass: "select-social" }, [
-            _c("div", { staticClass: "select-social__title flex" }, [
-              _c("div", { staticClass: "select-social__title-value" }, [
-                _vm._v("Add a social network")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "select-social__arrow svg-contain" }, [
-                _c(
-                  "svg",
-                  {
-                    attrs: {
-                      width: "12",
-                      height: "12",
-                      viewBox: "0 0 12 12",
-                      fill: "none",
-                      xmlns: "http://www.w3.org/2000/svg"
-                    }
-                  },
-                  [
-                    _c("rect", {
-                      attrs: {
-                        x: "5.14307",
-                        width: "1.71429",
-                        height: "12",
-                        fill: "#5E7C8D"
-                      }
-                    }),
+              _c("label", { staticClass: "form__label bottom " }, [
+                _c("div", { staticClass: "form__info flex" }, [
+                  _c("div", { staticClass: "form__date" }, [
+                    _c("div", { staticClass: "form__date-icon svg-contain" }, [
+                      _c(
+                        "svg",
+                        {
+                          attrs: {
+                            width: "15",
+                            height: "16",
+                            viewBox: "0 0 15 16",
+                            fill: "none",
+                            xmlns: "http://www.w3.org/2000/svg"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              "fill-rule": "evenodd",
+                              "clip-rule": "evenodd",
+                              d:
+                                "M3.33333 3.33333C2.22876 3.33333 1.33333 4.22876 1.33333 5.33333V12C1.33333 13.1046 2.22876 14 3.33333 14H11.3333C12.4379 14 13.3333 13.1046 13.3333 12V5.33333C13.3333 4.22876 12.4379 3.33333 11.3333 3.33333H3.33333ZM0 5.33333C0 3.49238 1.49238 2 3.33333 2H11.3333C13.1743 2 14.6667 3.49238 14.6667 5.33333V12C14.6667 13.8409 13.1743 15.3333 11.3333 15.3333H3.33333C1.49238 15.3333 0 13.8409 0 12V5.33333Z",
+                              fill: "#8EA5B2"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            attrs: {
+                              "fill-rule": "evenodd",
+                              "clip-rule": "evenodd",
+                              d:
+                                "M4.66667 0.666992C5.03486 0.666992 5.33333 0.965469 5.33333 1.33366V4.00033C5.33333 4.36852 5.03486 4.66699 4.66667 4.66699C4.29848 4.66699 4 4.36852 4 4.00033V1.33366C4 0.965469 4.29848 0.666992 4.66667 0.666992Z",
+                              fill: "#8EA5B2"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            attrs: {
+                              "fill-rule": "evenodd",
+                              "clip-rule": "evenodd",
+                              d:
+                                "M9.99992 0.666992C10.3681 0.666992 10.6666 0.965469 10.6666 1.33366V4.00033C10.6666 4.36852 10.3681 4.66699 9.99992 4.66699C9.63173 4.66699 9.33325 4.36852 9.33325 4.00033V1.33366C9.33325 0.965469 9.63173 0.666992 9.99992 0.666992Z",
+                              fill: "#8EA5B2"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            attrs: {
+                              "fill-rule": "evenodd",
+                              "clip-rule": "evenodd",
+                              d:
+                                "M0 6.66667C0 6.29848 0.298477 6 0.666667 6H14C14.3682 6 14.6667 6.29848 14.6667 6.66667C14.6667 7.03486 14.3682 7.33333 14 7.33333H0.666667C0.298477 7.33333 0 7.03486 0 6.66667Z",
+                              fill: "#8EA5B2"
+                            }
+                          })
+                        ]
+                      )
+                    ]),
                     _vm._v(" "),
-                    _c("rect", {
+                    _c("input", {
+                      ref: "startDate",
+                      staticClass: "form__field field date-from",
                       attrs: {
-                        x: "12",
-                        y: "5.14258",
-                        width: "1.71429",
-                        height: "12",
-                        transform: "rotate(90 12 5.14258)",
-                        fill: "#5E7C8D"
+                        type: "text",
+                        name: "date-from",
+                        placeholder: "Start date",
+                        "data-calendar-id": "1",
+                        readonly: ""
                       }
                     })
-                  ]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "select-social__options" },
-              _vm._l(_vm.socials, function(social) {
-                return _c(
-                  "div",
-                  {
-                    staticClass: "select-social__options-value flex",
-                    staticStyle: { "z-index": "999" },
-                    attrs: {
-                      "data-value": social.title + " *",
-                      "data-name": social.name
-                    },
-                    on: {
-                      click: function($event) {
-                        return _vm.addSocial(social)
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form__date" }, [
+                    _c("div", { staticClass: "form__date-icon svg-contain" }, [
+                      _c(
+                        "svg",
+                        {
+                          attrs: {
+                            width: "15",
+                            height: "16",
+                            viewBox: "0 0 15 16",
+                            fill: "none",
+                            xmlns: "http://www.w3.org/2000/svg"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              "fill-rule": "evenodd",
+                              "clip-rule": "evenodd",
+                              d:
+                                "M3.33333 3.33333C2.22876 3.33333 1.33333 4.22876 1.33333 5.33333V12C1.33333 13.1046 2.22876 14 3.33333 14H11.3333C12.4379 14 13.3333 13.1046 13.3333 12V5.33333C13.3333 4.22876 12.4379 3.33333 11.3333 3.33333H3.33333ZM0 5.33333C0 3.49238 1.49238 2 3.33333 2H11.3333C13.1743 2 14.6667 3.49238 14.6667 5.33333V12C14.6667 13.8409 13.1743 15.3333 11.3333 15.3333H3.33333C1.49238 15.3333 0 13.8409 0 12V5.33333Z",
+                              fill: "#8EA5B2"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            attrs: {
+                              "fill-rule": "evenodd",
+                              "clip-rule": "evenodd",
+                              d:
+                                "M4.66667 0.666992C5.03486 0.666992 5.33333 0.965469 5.33333 1.33366V4.00033C5.33333 4.36852 5.03486 4.66699 4.66667 4.66699C4.29848 4.66699 4 4.36852 4 4.00033V1.33366C4 0.965469 4.29848 0.666992 4.66667 0.666992Z",
+                              fill: "#8EA5B2"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            attrs: {
+                              "fill-rule": "evenodd",
+                              "clip-rule": "evenodd",
+                              d:
+                                "M9.99992 0.666992C10.3681 0.666992 10.6666 0.965469 10.6666 1.33366V4.00033C10.6666 4.36852 10.3681 4.66699 9.99992 4.66699C9.63173 4.66699 9.33325 4.36852 9.33325 4.00033V1.33366C9.33325 0.965469 9.63173 0.666992 9.99992 0.666992Z",
+                              fill: "#8EA5B2"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            attrs: {
+                              "fill-rule": "evenodd",
+                              "clip-rule": "evenodd",
+                              d:
+                                "M0 6.66667C0 6.29848 0.298477 6 0.666667 6H14C14.3682 6 14.6667 6.29848 14.6667 6.66667C14.6667 7.03486 14.3682 7.33333 14 7.33333H0.666667C0.298477 7.33333 0 7.03486 0 6.66667Z",
+                              fill: "#8EA5B2"
+                            }
+                          })
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      ref: "endDate",
+                      staticClass: "form__field field date-to",
+                      attrs: {
+                        type: "text",
+                        name: "date-to",
+                        placeholder: "Finish date",
+                        "data-calendar-id": "2",
+                        readonly: ""
                       }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("label", { staticClass: "form__label bottom " }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.project.description,
+                      expression: "project.description"
                     }
-                  },
-                  [
-                    _c("div", { staticClass: "select-social__options-icon" }, [
-                      _c("img", {
+                  ],
+                  staticClass: "form__field field",
+                  attrs: { placeholder: "Project description" },
+                  domProps: { value: _vm.project.description },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.project, "description", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form__label form__label_older bottom " },
+                [
+                  _c("div", { staticClass: "form__flex flex" }, [
+                    _c("div", { staticClass: "form__flex-box" }, [
+                      _c("div", { staticClass: "form__currency" }, [
+                        _c("div", { staticClass: "form__currency-title" }, [
+                          _c("div", { staticClass: "form__currency-caption" }, [
+                            _vm._v("Currency")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "form__currency-title__box" },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "form__currency-title__value" },
+                                [_vm._v("USD")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form__currency-title__arrow" },
+                                [
+                                  _c(
+                                    "svg",
+                                    {
+                                      attrs: {
+                                        width: "8",
+                                        height: "8",
+                                        viewBox: "0 0 8 8",
+                                        fill: "none",
+                                        xmlns: "http://www.w3.org/2000/svg"
+                                      }
+                                    },
+                                    [
+                                      _c("path", {
+                                        attrs: {
+                                          d:
+                                            "M3.7261 6.52333C3.75668 6.56774 3.7976 6.60405 3.84533 6.62914C3.89306 6.65423 3.94618 6.66734 4.0001 6.66734C4.05402 6.66734 4.10714 6.65423 4.15487 6.62914C4.2026 6.60405 4.24352 6.56774 4.2741 6.52333L7.2741 2.18999C7.30883 2.14001 7.32919 2.08147 7.33298 2.02073C7.33677 1.95999 7.32384 1.89937 7.2956 1.84546C7.26735 1.79155 7.22488 1.74641 7.17278 1.71494C7.12068 1.68348 7.06096 1.6669 7.0001 1.66699H1.0001C0.939382 1.66724 0.87988 1.68404 0.827995 1.71558C0.776109 1.74712 0.733802 1.79221 0.705624 1.84599C0.677446 1.89978 0.664463 1.96022 0.668071 2.02084C0.671679 2.08145 0.691741 2.13993 0.726101 2.18999L3.7261 6.52333Z",
+                                          fill: "#2F3E46"
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c("input", {
+                          ref: "currency",
+                          attrs: { type: "hidden", name: "type", value: "USD" }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form__flex-small" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.project.min_price,
+                            expression: "project.min_price"
+                          }
+                        ],
+                        staticClass: "form__field field",
                         attrs: {
-                          src: __webpack_require__("./public/img/select-icons sync recursive ^\\.\\/.*\\.svg$")("./" +
-                            social.name +
-                            ".svg"),
-                          alt: ""
+                          type: "text",
+                          name: "text",
+                          placeholder: "Min price"
+                        },
+                        domProps: { value: _vm.project.min_price },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.project,
+                              "min_price",
+                              $event.target.value
+                            )
+                          }
                         }
                       })
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "select-social__options-caption" },
-                      [_vm._v(_vm._s(social.title))]
-                    )
-                  ]
-                )
-              }),
-              0
-            )
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c("label", { staticClass: "form__label bottom " }, [
-        _c(
-          "button",
-          { staticClass: "form__btn btn btn_blue", attrs: { type: "submit" } },
-          [
-            _c("div", { staticClass: "btn__caption" }, [
-              _vm._v("site project")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "btn__icon svg-contain" }, [
-              _c(
-                "svg",
-                {
+                    _c("div", { staticClass: "form__flex-small" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.project.max_price,
+                            expression: "project.max_price"
+                          }
+                        ],
+                        staticClass: "form__field field",
+                        attrs: {
+                          type: "text",
+                          name: "text",
+                          placeholder: "Max price"
+                        },
+                        domProps: { value: _vm.project.max_price },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.project,
+                              "max_price",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form__flex-box" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.project.available_count,
+                            expression: "project.available_count"
+                          }
+                        ],
+                        staticClass: "form__field field",
+                        attrs: {
+                          type: "text",
+                          name: "text",
+                          placeholder: "Available NFTs for sale"
+                        },
+                        domProps: { value: _vm.project.available_count },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.project,
+                              "available_count",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("label", { staticClass: "form__label bottom " }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.project.website,
+                      expression: "project.website"
+                    }
+                  ],
+                  staticClass: "form__field field",
                   attrs: {
-                    width: "16",
-                    height: "16",
-                    viewBox: "0 0 16 16",
-                    fill: "none",
-                    xmlns: "http://www.w3.org/2000/svg"
+                    type: "text",
+                    name: "text",
+                    placeholder: "To the project site*"
+                  },
+                  domProps: { value: _vm.project.website },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.project, "website", $event.target.value)
+                    }
                   }
+                })
+              ]),
+              _vm._v(" "),
+              _c("label", { staticClass: "form__label bottom " }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.project.email,
+                      expression: "project.email"
+                    }
+                  ],
+                  staticClass: "form__field field",
+                  attrs: { type: "text", name: "text", placeholder: "Email*" },
+                  domProps: { value: _vm.project.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.project, "email", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("label", { staticClass: "form__label bottom " }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.project.twitter,
+                      expression: "project.twitter"
+                    }
+                  ],
+                  class: [
+                    "form__field field",
+                    { error: _vm.hasError("twitter") }
+                  ],
+                  attrs: {
+                    type: "text",
+                    name: "text",
+                    placeholder: "Twitter*"
+                  },
+                  domProps: { value: _vm.project.twitter },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.project, "twitter", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.project.socials, function(social, index) {
+                return _c("div", { staticClass: "form__label" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.project.socials[index].data,
+                        expression: "project.socials[index].data"
+                      }
+                    ],
+                    staticClass: "form__field field",
+                    attrs: { type: "text", placeholder: social.title + " *" },
+                    domProps: { value: _vm.project.socials[index].data },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.project.socials[index],
+                          "data",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "select-social__closed",
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteSocial(social)
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          attrs: {
+                            width: "12",
+                            height: "12",
+                            viewBox: "0 0 12 12",
+                            fill: "none",
+                            xmlns: "http://www.w3.org/2000/svg"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d: "M9.75 1L11 2.25L2.25 11L1 9.75L9.75 1Z",
+                              fill: "#5E7C8D"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            attrs: {
+                              d: "M11 9.75L9.75 11L1 2.25L2.25 1L11 9.75Z",
+                              fill: "#5E7C8D"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "form__label form__label_social form__label_older bottom "
                 },
                 [
-                  _c("path", {
-                    attrs: {
-                      "fill-rule": "evenodd",
-                      "clip-rule": "evenodd",
-                      d:
-                        "M2.47144 7.45148C2.2052 7.48813 2 7.71973 2 7.99997C2 8.30569 2.24421 8.55352 2.54545 8.55352L12.1333 8.55352L8.66986 12.0542L8.61692 12.1162C8.45804 12.3326 8.47501 12.6401 8.66826 12.8371C8.88083 13.0537 9.22619 13.0544 9.43965 12.8387L13.8323 8.39931C13.8543 8.37789 13.8745 8.35463 13.8927 8.32976L13.8927 8.32969C14.052 8.11265 14.0343 7.80406 13.8396 7.60737L9.43962 3.16129L9.37832 3.10782C9.16445 2.9475 8.86146 2.96603 8.66823 3.16297C8.45567 3.37961 8.45642 3.7301 8.66989 3.9458L12.1343 7.44642L2.54545 7.44642L2.47144 7.45148Z",
-                      fill: "white"
-                    }
-                  })
+                  _c("div", { staticClass: "select-social" }, [
+                    _c("div", { staticClass: "select-social__title flex" }, [
+                      _c("div", { staticClass: "select-social__title-value" }, [
+                        _vm._v("Add a social network")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "select-social__arrow svg-contain" },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              attrs: {
+                                width: "12",
+                                height: "12",
+                                viewBox: "0 0 12 12",
+                                fill: "none",
+                                xmlns: "http://www.w3.org/2000/svg"
+                              }
+                            },
+                            [
+                              _c("rect", {
+                                attrs: {
+                                  x: "5.14307",
+                                  width: "1.71429",
+                                  height: "12",
+                                  fill: "#5E7C8D"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                attrs: {
+                                  x: "12",
+                                  y: "5.14258",
+                                  width: "1.71429",
+                                  height: "12",
+                                  transform: "rotate(90 12 5.14258)",
+                                  fill: "#5E7C8D"
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "select-social__options" },
+                      _vm._l(_vm.socials, function(social) {
+                        return _c(
+                          "div",
+                          {
+                            staticClass: "select-social__options-value flex",
+                            staticStyle: { "z-index": "999" },
+                            attrs: {
+                              "data-value": social.title + " *",
+                              "data-name": social.name
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.addSocial(social)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "select-social__options-icon" },
+                              [
+                                _c("img", {
+                                  attrs: {
+                                    src: __webpack_require__("./public/img/select-icons sync recursive ^\\.\\/.*\\.svg$")("./" +
+                                      social.name +
+                                      ".svg"),
+                                    alt: ""
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "select-social__options-caption" },
+                              [_vm._v(_vm._s(social.title))]
+                            )
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  ])
                 ]
-              )
-            ])
-          ]
-        )
+              ),
+              _vm._v(" "),
+              _c("label", { staticClass: "form__label bottom " }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "form__btn btn btn_blue",
+                    on: { click: _vm.saveProject }
+                  },
+                  [
+                    _c("div", { staticClass: "btn__caption" }, [
+                      _vm._v("site project")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "btn__icon svg-contain" }, [
+                      _c(
+                        "svg",
+                        {
+                          attrs: {
+                            width: "16",
+                            height: "16",
+                            viewBox: "0 0 16 16",
+                            fill: "none",
+                            xmlns: "http://www.w3.org/2000/svg"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              "fill-rule": "evenodd",
+                              "clip-rule": "evenodd",
+                              d:
+                                "M2.47144 7.45148C2.2052 7.48813 2 7.71973 2 7.99997C2 8.30569 2.24421 8.55352 2.54545 8.55352L12.1333 8.55352L8.66986 12.0542L8.61692 12.1162C8.45804 12.3326 8.47501 12.6401 8.66826 12.8371C8.88083 13.0537 9.22619 13.0544 9.43965 12.8387L13.8323 8.39931C13.8543 8.37789 13.8745 8.35463 13.8927 8.32976L13.8927 8.32969C14.052 8.11265 14.0343 7.80406 13.8396 7.60737L9.43962 3.16129L9.37832 3.10782C9.16445 2.9475 8.86146 2.96603 8.66823 3.16297C8.45567 3.37961 8.45642 3.7301 8.66989 3.9458L12.1343 7.44642L2.54545 7.44642L2.47144 7.45148Z",
+                              fill: "white"
+                            }
+                          })
+                        ]
+                      )
+                    ])
+                  ]
+                )
+              ])
+            ],
+            2
+          )
+        ])
       ])
-    ],
-    2
-  )
+    ])
+  ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "submit__left" }, [
+      _c("div", { staticClass: "submit__title title bottom" }, [
+        _vm._v("Submit"),
+        _c("br"),
+        _vm._v(" New ICO")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "submit__subtitle bottom" }, [
+        _vm._v(
+          "Before submitting a project for moderation, please first check that it isn't already listed in our ICO database. We don't guarantee that your ICO will be listed on the ICOmarks, but if your project\n                    interests us, then we will publish it as soon as possible."
+        )
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
